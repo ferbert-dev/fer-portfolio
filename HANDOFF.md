@@ -6,6 +6,14 @@ Paste the prompt below into a new Claude Code session on this repository, branch
 
 Continue the Ferbert agency website. Read `PRODUCT.md`, `.impeccable/surfaces/src-app-locale-page-tsx.md` (direction contract) and the latest file in `.impeccable/critique/` first.
 
+In progress (2026-10-10, moved from the local session to the cloud):
+- The owner now wants ONE design with a light and a dark theme instead of two separate designs. The dark design (`D-Home.dc.html`) is the base. A switch in the header offers Auto (follows the system), Light and Dark.
+- Done in `D-Home.dc.html`, committed but NOT yet rendered, checked or published to the canvas: every colour is a CSS custom property on `.d`; `.d.t-light` and `@media (prefers-color-scheme: light) { .d.t-auto }` carry the light values; the header has a three-button theme switch (a single cycling button up to 900 px); the choice is stored in `localStorage` under `ferbert-theme`; the B/D review pill is removed from D.
+- Also done and published: the timeline line "30 min / 2–3 weeks / [N] weeks." moved from its own section after the hero into "How we work", under the headline.
+- Next: render D in light, dark and auto at 1440 and 390 px, fix what the light theme shows (contrast of lime on light surfaces, SVG attributes that use `var()`, hero background), run the design detector, publish to the canvas, then ask the owner whether the old light artboard `B-Home.dc.html` can be removed. `docs/design-directions.md` and `docs/design-system.md` still describe two separate designs and the old section order; update them after the owner confirms the themed design.
+- Sections the owner named as good in the dark design and wants identical in light: hero, process analysis, support agent demo, documents demo, what we automate, data rules, from first call to running agent, three ways to start.
+- Waiting on the owner: branch protection for `main` (proposed: require a pull request, 0 approvals, no force pushes, no deletion; not applied), whether to delete the leftover remote branch `claude/quirky-einstein-pxoffy`.
+
 State (updated 2026-10-10, end of local session):
 - Brand: "Ferbert", an AI automation company (voice "we"). Main offer: process analysis (find what AI can automate), then building agents. Voice agents are out of scope for now.
 - Live canvas: https://claude.ai/artifact/Y6TFjZsTwU942rENtGrqqi. Files in `design/canvas/` mirror it. Directions A and C are deleted.
