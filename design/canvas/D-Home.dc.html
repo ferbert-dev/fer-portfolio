@@ -12,9 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0}
-.d{--bg:#050505;--frame:#0B0B0C;--p1:#0D0D0E;--p2:#121213;--p3:#1A1A1C;--chat:#0A0A0B;--tx:#FFFFFF;--sub:#A6A6A6;--mut:#8C8C8C;--log:#D6D6D6;--ln:#242426;--ln2:#3A3A3D;--ln3:#2C2C2F;--ln4:#5A5A5E;--dot:#1E1E20;--ring:#262628;--glow:#25272B;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#B8F47A;--acc-tint:#1E2A14;--acc-bd:#5E8A32;--inv:#FFFFFF;--on-inv:#050505;--hdr:rgba(5,5,5,.82);--card:rgba(8,8,9,.78);--warn-tx:#F2CB5C;--warn-bd:#6B5A1E;--bar:#4A4A4E;--grain:.16;color-scheme:dark}
-.d.t-light{--bg:#FAFAF8;--frame:#F1F0EB;--p1:#FFFFFF;--p2:#F6F5F1;--p3:#EEEDE8;--chat:#FCFCFB;--tx:#111113;--sub:#55555F;--mut:#6B6B74;--log:#3A3A44;--ln:#E3E2DC;--ln2:#C9C7BF;--ln3:#DEDCD5;--ln4:#A9A7A0;--dot:#E2E1DB;--ring:#E6E5DF;--glow:#FFFFFF;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#3B7A0E;--acc-tint:#E7F8D2;--acc-bd:#93CE58;--inv:#111113;--on-inv:#FFFFFF;--hdr:rgba(250,250,248,.86);--card:rgba(255,255,255,.84);--warn-tx:#8A5200;--warn-bd:#E3C16A;--bar:#C9C7BF;--grain:.07;color-scheme:light}
-@media (prefers-color-scheme: light){.d.t-auto{--bg:#FAFAF8;--frame:#F1F0EB;--p1:#FFFFFF;--p2:#F6F5F1;--p3:#EEEDE8;--chat:#FCFCFB;--tx:#111113;--sub:#55555F;--mut:#6B6B74;--log:#3A3A44;--ln:#E3E2DC;--ln2:#C9C7BF;--ln3:#DEDCD5;--ln4:#A9A7A0;--dot:#E2E1DB;--ring:#E6E5DF;--glow:#FFFFFF;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#3B7A0E;--acc-tint:#E7F8D2;--acc-bd:#93CE58;--inv:#111113;--on-inv:#FFFFFF;--hdr:rgba(250,250,248,.86);--card:rgba(255,255,255,.84);--warn-tx:#8A5200;--warn-bd:#E3C16A;--bar:#C9C7BF;--grain:.07;color-scheme:light}}
+.d{--sh1:0 0 0 0 transparent;--sh2:0 0 0 0 transparent;--sh-btn:0 0 0 0 transparent;--bg:#050505;--frame:#0B0B0C;--p1:#0D0D0E;--p2:#121213;--p3:#1A1A1C;--chat:#0A0A0B;--tx:#FFFFFF;--sub:#A6A6A6;--mut:#8C8C8C;--log:#D6D6D6;--ln:#242426;--ln2:#3A3A3D;--ln3:#2C2C2F;--ln4:#5A5A5E;--dot:#1E1E20;--ring:#262628;--glow:#25272B;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#B8F47A;--acc-tint:#1E2A14;--acc-bd:#5E8A32;--inv:#FFFFFF;--on-inv:#050505;--hdr:rgba(5,5,5,.82);--card:rgba(8,8,9,.78);--warn-tx:#F2CB5C;--warn-bd:#6B5A1E;--bar:#4A4A4E;--grain:.16;color-scheme:dark}
+.d.t-light{--sh1:0 1px 2px rgba(17,17,19,.05),0 14px 34px -22px rgba(17,17,19,.22);--sh2:0 1px 2px rgba(17,17,19,.04),0 34px 80px -46px rgba(17,17,19,.34);--sh-btn:0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px -8px rgba(17,17,19,.45);--bg:#FAFAF8;--frame:#F1F0EB;--p1:#FFFFFF;--p2:#F6F5F1;--p3:#EEEDE8;--chat:#FCFCFB;--tx:#111113;--sub:#55555F;--mut:#6B6B74;--log:#3A3A44;--ln:#E3E2DC;--ln2:#C9C7BF;--ln3:#DEDCD5;--ln4:#A9A7A0;--dot:#E2E1DB;--ring:#E6E5DF;--glow:#FFFFFF;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#3B7A0E;--acc-tint:#E7F8D2;--acc-bd:#93CE58;--inv:#111113;--on-inv:#FFFFFF;--hdr:rgba(250,250,248,.86);--card:rgba(255,255,255,.84);--warn-tx:#8A5200;--warn-bd:#E3C16A;--bar:#C9C7BF;--grain:.07;color-scheme:light}
+@media (prefers-color-scheme: light){.d.t-auto{--sh1:0 1px 2px rgba(17,17,19,.05),0 14px 34px -22px rgba(17,17,19,.22);--sh2:0 1px 2px rgba(17,17,19,.04),0 34px 80px -46px rgba(17,17,19,.34);--sh-btn:0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px -8px rgba(17,17,19,.45);--bg:#FAFAF8;--frame:#F1F0EB;--p1:#FFFFFF;--p2:#F6F5F1;--p3:#EEEDE8;--chat:#FCFCFB;--tx:#111113;--sub:#55555F;--mut:#6B6B74;--log:#3A3A44;--ln:#E3E2DC;--ln2:#C9C7BF;--ln3:#DEDCD5;--ln4:#A9A7A0;--dot:#E2E1DB;--ring:#E6E5DF;--glow:#FFFFFF;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#3B7A0E;--acc-tint:#E7F8D2;--acc-bd:#93CE58;--inv:#111113;--on-inv:#FFFFFF;--hdr:rgba(250,250,248,.86);--card:rgba(255,255,255,.84);--warn-tx:#8A5200;--warn-bd:#E3C16A;--bar:#C9C7BF;--grain:.07;color-scheme:light}}
 .d{background:var(--bg);color:var(--tx);min-height:100vh;font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.45;letter-spacing:-.01em;overflow-x:clip}
 .d a{color:inherit}
 .d ::selection{background:var(--acc);color:var(--on-acc)}
@@ -29,14 +29,20 @@ body{margin:0}
 .lg{margin:0;font-size:clamp(38px,5vw,72px);line-height:.97;letter-spacing:-.04em;font-weight:400;text-wrap:balance}
 .md{margin:0;font-size:clamp(24px,2.4vw,34px);line-height:1.18;letter-spacing:-.02em;font-weight:400}
 .sub{color:var(--sub)}
-.panel{background:var(--p1);border:1px solid var(--ln);border-radius:20px}
+.panel{background:var(--p1);border:1px solid var(--ln);border-radius:20px;box-shadow:var(--sh1)}
+.lift{box-shadow:var(--sh2)}
 .pill{display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border:1px solid var(--ln2);border-radius:999px}
 .mk{display:inline-block;padding:0 .09em;color:var(--on-acc);background:var(--acc) linear-gradient(var(--bg),var(--bg)) no-repeat right center;background-size:0 100%;transition:background-size .8s cubic-bezier(.16,1,.3,1) .25s,color .3s .3s}
 .btn{display:inline-flex;align-items:stretch;gap:4px;text-decoration:none}
-.btn-l{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:10px;background:linear-gradient(90deg,var(--inv) 0,var(--inv) 50%,var(--acc) 100%);background-size:200% 100%;background-position:0 0;color:var(--on-inv);font-size:14px;font-weight:500;letter-spacing:-.01em;white-space:nowrap;transition:background-position .55s cubic-bezier(.16,1,.3,1),color .3s}
+.btn-l{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:10px;background:linear-gradient(90deg,var(--inv) 0,var(--inv) 50%,var(--acc) 100%);background-size:200% 100%;background-position:0 0;color:var(--on-inv);font-size:14px;font-weight:500;letter-spacing:-.01em;white-space:nowrap;box-shadow:var(--sh-btn);transition:background-position .55s cubic-bezier(.16,1,.3,1),color .3s}
 .btn-t{flex:0 0 46px;border-radius:10px;background:var(--acc);color:var(--on-acc);display:grid;place-items:center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
 .btn:hover .btn-l{background-position:100% 0;color:var(--on-acc)}
 .btn:hover .btn-t{transform:translateX(3px)}
+.btn-o{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:10px;border:1px solid var(--ln2);background:var(--p1);color:var(--tx);font-size:14px;font-weight:500;letter-spacing:-.01em;white-space:nowrap;text-decoration:none;box-shadow:var(--sh1);transition:border-color .25s,color .25s}
+.btn-o:hover{border-color:var(--acc-tx)}
+.lang a{text-decoration:none;color:var(--sub);padding:12px 2px}.lang a[aria-current]{color:var(--tx)}.lang a:hover{color:var(--acc-tx)}
+.cta-s{display:none}
+.svc{display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1.6fr);gap:12px 32px;align-items:baseline;padding:32px 16px 36px;border-top:1px solid var(--ln)}
 .lnk{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:var(--tx)}
 .lnk-t{flex:0 0 26px;height:26px;border-radius:50%;background:var(--acc-tint);color:var(--acc-tx);display:grid;place-items:center;transition:background .3s,color .3s,transform .45s cubic-bezier(.16,1,.3,1)}
 .lnk:hover .lnk-t{background:var(--acc);color:var(--on-acc);transform:translateX(3px)}
@@ -76,6 +82,9 @@ body{margin:0}
 .wf-grid{grid-template-columns:minmax(0,1fr);gap:8px}
 .wf-link,.nav-links,.rail,.how-x,.th-seg{display:none!important}
 .th-one{display:inline-flex!important}
+.lang,.cta-l{display:none!important}
+.cta-s{display:inline!important}
+.svc{grid-template-columns:48px minmax(0,1fr);padding:28px 0 32px}.svc>div{grid-column:1/-1}
 .how{grid-template-columns:minmax(0,1fr);gap:36px}
 }
 @media (max-width:960px){
@@ -100,19 +109,20 @@ body{margin:0}
 </a>
 <div style="display: flex; align-items: center; gap: clamp(16px, 3vw, 44px);">
 <div class="nav-links" style="display: flex; align-items: center; gap: clamp(16px, 3vw, 44px);">
-<a class="navl" href="#analysis">Analysis</a><a class="navl" href="#demos">Demos</a><a class="navl" href="#services">Services</a><a class="navl" href="#start">Pricing</a><a class="navl" href="#faq">FAQ</a>
+<a class="navl" href="#analysis">Analysis</a><a class="navl" href="#demos">Demos</a><a class="navl" href="#services">What we automate</a><a class="navl" href="#start">Pricing</a><a class="navl" href="#faq">FAQ</a>
 </div>
 <div class="th-seg" role="group" aria-label="Colour theme" style="display: flex; align-items: center; gap: 2px; padding: 2px; border: 1px solid var(--ln2); border-radius: 999px;">
 <sc-for list="{{themes}}" as="t" hint-placeholder-count="3"><button type="button" class="mono th" onClick="{{t.pick}}" aria-pressed="{{t.pressed}}" style="min-height: 28px; padding: 0 11px; border: 0; border-radius: 999px; cursor: pointer; background: {{t.bg}}; color: {{t.fg}};">{{t.label}}</button></sc-for>
 </div>
 <button type="button" class="mono th th-one" onClick="{{cycleTheme}}" aria-label="{{themeAria}}" style="display: none; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border: 1px solid var(--ln2); border-radius: 999px; background: transparent; color: var(--tx); cursor: pointer;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.4"></circle><path d="M6 1a5 5 0 010 10z" fill="currentColor"></path></svg>{{themeLabel}}</button>
-<a href="D-Contact.dc.html" class="navl" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid var(--tx); border-radius: 999px; white-space: nowrap;">Contact us</a>
+<span class="lang" style="display: flex; align-items: center; gap: 6px;"><a href="#" aria-current="page" aria-label="English">EN</a><span aria-hidden="true" style="color: var(--ln4);">/</span><a href="#" lang="de" aria-label="Deutsch">DE</a></span>
+<a href="D-Contact.dc.html" class="hdr-cta" style="display: inline-flex; align-items: center; min-height: 34px; padding: 0 14px; border-radius: 999px; background: var(--inv); color: var(--on-inv); text-decoration: none; white-space: nowrap; box-shadow: var(--sh-btn);"><span class="cta-l">Get a process analysis</span><span class="cta-s">Contact</span></a>
 </div>
 </nav>
 </header>
 
 <section aria-label="Introduction" style="padding: 12px 12px 0;">
-<div style="position: relative; overflow: hidden; display: flex; min-height: 700px; border: 1px solid var(--ln2); border-radius: 28px; background-color: var(--frame); background-image: radial-gradient(80% 90% at 78% 30%, var(--glow) 0%, transparent 62%), radial-gradient(var(--dot) 1px, transparent 1px); background-size: auto, 22px 22px;">
+<div style="position: relative; overflow: hidden; display: flex; min-height: 700px; border: 1px solid var(--ln2); border-radius: 28px; box-shadow: var(--sh2); background-color: var(--frame); background-image: radial-gradient(80% 90% at 78% 30%, var(--glow) 0%, transparent 62%), radial-gradient(var(--dot) 1px, transparent 1px); background-size: auto, 22px 22px;">
 <svg aria-hidden="true" width="100%" height="100%" style="position: absolute; inset: 0; opacity: var(--grain); pointer-events: none;"><filter id="d-grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#d-grain)"></rect></svg>
 
 <div class="rail mono" aria-hidden="true" style="position: relative; flex: 0 0 56px; border-right: 1px solid var(--ln); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 28px 0;">
@@ -130,10 +140,10 @@ body{margin:0}
 <p class="sub" data-rv style="--dl: .12s; margin: 0; max-width: 50ch; font-size: 17px;">Ferbert analyses how your company works, shows you which processes AI can take over and what that saves, then builds the agents that run them.</p>
 <div data-rv style="--dl: .2s; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 36px;">
 <a href="D-Contact.dc.html" class="btn" aria-label="Get a process analysis"><span class="btn-l" data-scr>Get a process analysis</span><span class="btn-t" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
-<a href="#demos" class="lnk mono" aria-label="Watch an agent think"><span data-scr>Watch an agent think</span><span class="lnk-t" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
+<a href="#demos" class="btn-o">Watch an agent think</a>
 </div>
 
-<div data-rv style="--dl: .32s; margin-top: auto; align-self: flex-end; width: min(100%, 440px); display: flex; border: 1px solid var(--ln2); border-radius: 16px; background: var(--card); backdrop-filter: blur(8px); overflow: hidden;">
+<div data-rv style="--dl: .32s; margin-top: auto; align-self: flex-end; width: min(100%, 440px); display: flex; border: 1px solid var(--ln2); border-radius: 16px; background: var(--card); backdrop-filter: blur(8px); overflow: hidden; box-shadow: var(--sh2);">
 <div style="flex: 1; min-width: 0; padding: 16px; display: flex; flex-direction: column; gap: 18px;">
 <span style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 500; letter-spacing: -0.03em;"><svg width="11" height="11" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M1 1h4v4H1zM1 9h4v4H1zM9 5h4v4H9z"></path></svg>ferbert</span>
 <span class="mono" style="color: var(--tx); line-height: 1.5;">An automation company that starts with an analysis, not a guess.</span>
@@ -174,7 +184,7 @@ body{margin:0}
 <h2 id="wf-title" class="lg" data-rv style="max-width: 13ch;">An invoice, handled <span class="mk">end to end</span>.</h2>
 <p class="sub" data-rv style="margin: 0; max-width: 40ch;">An example automation for illustration. It runs on every new email. Yours is designed around your process.</p>
 </div>
-<div class="panel" data-rv style="padding: clamp(18px, 2.4vw, 32px); background-image: radial-gradient(var(--dot) 1px, transparent 1px); background-size: 22px 22px;">
+<div class="panel lift" data-rv style="padding: clamp(18px, 2.4vw, 32px); background-image: radial-gradient(var(--dot) 1px, transparent 1px); background-size: 22px 22px;">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 24px;">
 <div class="mono" style="display: flex; align-items: center; gap: 10px; color: var(--tx);"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{wfDot}};"></span>Invoice intake <span style="color: var(--sub);">{{wfStatus}}</span></div>
 <button type="button" class="mono qb" onClick="{{togglePause}}" aria-pressed="{{pausedStr}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--ln2); background: transparent; color: var(--tx);">
@@ -219,7 +229,7 @@ body{margin:0}
 </ul>
 <a href="D-Contact.dc.html" class="btn" data-rv aria-label="Get a process analysis" style="align-self: flex-start;"><span class="btn-l" data-scr>Get a process analysis</span><span class="btn-t" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
 </div>
-<figure class="panel" data-rv style="--dl: .1s; flex: 1 1 520px; min-width: 0; margin: 0; padding: clamp(18px, 2.2vw, 28px);">
+<figure class="panel lift" data-rv style="--dl: .1s; flex: 1 1 520px; min-width: 0; margin: 0; padding: clamp(18px, 2.2vw, 28px);">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 22px;">
 <div style="font-size: 20px; font-weight: 500; letter-spacing: -0.02em;">Process analysis</div>
 <div class="mono">Sample report · fictional company</div>
@@ -254,7 +264,7 @@ body{margin:0}
 <h2 id="ag-title" class="lg" data-rv style="max-width: 12ch;">Watch a support agent <span class="mk">think</span>.</h2>
 <p class="sub" data-rv style="margin: 0; max-width: 44ch;">Ask the shop assistant a question. On the left you see every step it takes before it answers: understanding, searching your help centre, checking your order database, following your rules.</p>
 </div>
-<div class="panel ag-panel" data-rv style="overflow: hidden; display: flex; flex-wrap: wrap;">
+<div class="panel lift ag-panel" data-rv style="overflow: hidden; display: flex; flex-wrap: wrap;">
 <div class="ag-steps" style="flex: 999 1 520px; min-width: 0; padding: clamp(18px, 2.2vw, 28px); background-image: radial-gradient(var(--dot) 1px, transparent 1px); background-size: 22px 22px; border-right: 1px solid var(--ln);">
 <div class="mono" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px;"><span style="color: var(--tx);">Inside the agent</span><span style="font-variant-numeric: tabular-nums;">{{timer}}</span></div>
 <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;">
@@ -324,7 +334,7 @@ body{margin:0}
 <h2 id="rag-title" class="lg" data-rv style="max-width: 15ch; font-size: clamp(34px, 4.2vw, 60px);">Your team can ask the company’s <span class="mk">documents</span> too.</h2>
 <p class="sub" data-rv style="margin: 0; max-width: 42ch;">The same retrieval works internally. The agent finds the right passages first, then answers only from them, and shows where each fact came from.</p>
 </div>
-<div class="panel" data-rv style="padding: clamp(18px, 2.2vw, 28px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 28px;">
+<div class="panel lift" data-rv style="padding: clamp(18px, 2.2vw, 28px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 28px;">
 <div style="display: flex; flex-direction: column; gap: 10px;">
 <div class="mono" style="margin-bottom: 4px;">Ask a question</div>
 <sc-for list="{{questions}}" as="q" hint-placeholder-count="3">
@@ -360,22 +370,19 @@ body{margin:0}
 
 <section id="services" aria-labelledby="sv-title" class="wrap sec">
 <div class="mono lab" data-rv>What we automate</div>
-<div style="display: flex; flex-wrap: wrap; gap: 24px; padding: 40px 0 48px;">
-<div class="how-x" style="flex: 1 1 320px;"></div>
-<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
-<h2 id="sv-title" class="lg" data-rv>Our <span class="mk">services</span>.</h2>
-<p class="sub" data-rv style="margin: 0; max-width: 36ch;">Five kinds of work, one team. Where a demo on this page shows it, the row takes you there.</p>
-</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; padding: 40px 0 48px;">
+<h2 id="sv-title" class="lg" data-rv style="max-width: 14ch;">What we <span class="mk">automate</span>.</h2>
+<p class="sub" data-rv style="margin: 0; max-width: 40ch;">Five kinds of work. Where a demo on this page shows it, the row takes you there.</p>
 </div>
 <ol style="list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--ln);">
 <sc-for list="{{services}}" as="s" hint-placeholder-count="5">
-<li class="row" data-rv style="display: flex; flex-wrap: wrap; gap: 16px 24px; padding: 32px 0 36px; border-top: 1px solid var(--ln);">
-<span aria-hidden="true" style="flex: 1 1 320px; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums;">/{{s.n}}</span>
-<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
-<h3 class="md">{{s.title}}.</h3>
-<p class="sub" style="margin: 0; max-width: 46ch;">{{s.body}}</p>
-<ul aria-label="Includes" style="list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px;">
-<sc-for list="{{s.tags}}" as="t" hint-placeholder-count="4"><li class="mono pill" style="color: var(--tx); border-color: var(--ln3); background: var(--p2);">{{t}}</li></sc-for>
+<li class="svc row" data-rv>
+<span aria-hidden="true" style="font-size: clamp(26px, 2.6vw, 36px); line-height: 1; letter-spacing: -0.04em; color: var(--mut); font-variant-numeric: tabular-nums;">{{s.n}}</span>
+<h3 class="md" style="font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -0.03em;">{{s.title}}</h3>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+<p class="sub" style="margin: 0; max-width: 52ch;">{{s.body}}</p>
+<ul aria-label="Includes" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px;">
+<sc-for list="{{s.tags}}" as="t" hint-placeholder-count="4"><li style="padding: 5px 12px; border-radius: 999px; background: var(--p1); border: 1px solid var(--ln); box-shadow: var(--sh1); font-size: 14px; font-weight: 500; color: var(--log);">{{t}}</li></sc-for>
 </ul>
 <sc-if value="{{s.hasLink}}" hint-placeholder-val="{{true}}"><a href="{{s.href}}" class="lnk mono" style="align-self: flex-start;">{{s.linkText}}<span class="lnk-t" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a></sc-if>
 </div>
@@ -509,7 +516,7 @@ body{margin:0}
 <div style="display: flex; flex-direction: column; gap: 22px; min-width: 0;">
 <a href="mailto:ferbertigo@gmail.com" style="font-size: clamp(24px, 3vw, 44px); letter-spacing: -0.03em; text-decoration: none; overflow-wrap: anywhere;">ferbertigo@gmail.com</a>
 <div class="mono" style="display: flex; flex-wrap: wrap; gap: 6px;">
-<a class="pill navl" href="#analysis" style="padding: 0 12px; min-height: 32px;">Analysis</a><a class="pill navl" href="#demos" style="padding: 0 12px; min-height: 32px;">Demos</a><a class="pill navl" href="#services" style="padding: 0 12px; min-height: 32px;">Services</a><a class="pill navl" href="D-Blog.dc.html" style="padding: 0 12px; min-height: 32px;">Blog</a><a class="pill navl" href="D-Contact.dc.html" style="padding: 0 12px; min-height: 32px;">Contact</a>
+<a class="pill navl" href="#analysis" style="padding: 0 12px; min-height: 32px;">Analysis</a><a class="pill navl" href="#demos" style="padding: 0 12px; min-height: 32px;">Demos</a><a class="pill navl" href="#services" style="padding: 0 12px; min-height: 32px;">What we automate</a><a class="pill navl" href="D-Blog.dc.html" style="padding: 0 12px; min-height: 32px;">Blog</a><a class="pill navl" href="D-Contact.dc.html" style="padding: 0 12px; min-height: 32px;">Contact</a>
 </div>
 </div>
 <div class="mono" style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
@@ -610,7 +617,7 @@ class Component extends DCLogic {
       var done = w > i + 1 || w >= 6, active = w === i + 1, lit = done || active;
       n.link = i < nodeDefs.length - 1;
       n.border = lit ? LIME : 'var(--ln3)';
-      n.shadow = active ? '0 0 0 4px var(--acc-tint)' : '0 0 0 0 var(--acc-tint)';
+      n.shadow = active ? '0 0 0 4px var(--acc-tint), var(--sh1)' : '0 0 0 0 var(--acc-tint), var(--sh1)';
       n.iconColor = lit ? LIME : 'var(--mut)';
       n.checkBg = done ? ACC : 'var(--p3)';
       n.lineColor = done ? LIME : 'var(--ln3)';

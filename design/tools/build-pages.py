@@ -12,7 +12,7 @@ canvas = Path(sys.argv[1])
 home = (canvas / 'D-Home.dc.html').read_text()
 
 # Token block (dark default, light, auto) straight from the home page.
-tokens = '\n'.join(l for l in home.splitlines() if l.startswith('.d{--bg') or l.startswith('.d.t-light') or l.startswith('@media (prefers-color-scheme: light){.d.t-auto'))
+tokens = '\n'.join(l for l in home.splitlines() if (l.startswith('.d{--') and '--bg:' in l) or l.startswith('.d.t-light') or l.startswith('@media (prefers-color-scheme: light){.d.t-auto'))
 assert tokens.count('--bg') == 3, 'token block not found'
 
 BASE = r"""
@@ -30,11 +30,12 @@ body{margin:0}
 .lg{margin:0;font-size:clamp(38px,5vw,72px);line-height:.97;letter-spacing:-.04em;font-weight:400;text-wrap:balance}
 .md{margin:0;font-size:clamp(24px,2.4vw,34px);line-height:1.18;letter-spacing:-.02em;font-weight:400}
 .sub{color:var(--sub)}
-.panel{background:var(--p1);border:1px solid var(--ln);border-radius:20px}
+.panel{background:var(--p1);border:1px solid var(--ln);border-radius:20px;box-shadow:var(--sh1)}
+.lift{box-shadow:var(--sh2)}
 .pill{display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border:1px solid var(--ln2);border-radius:999px}
 .mk{display:inline-block;padding:0 .09em;color:var(--on-acc);background:var(--acc)}
 .btn{display:inline-flex;align-items:stretch;gap:4px;text-decoration:none;border:0;padding:0;background:none;font:inherit;cursor:pointer}
-.btn-l{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:10px;background:linear-gradient(90deg,var(--inv) 0,var(--inv) 50%,var(--acc) 100%);background-size:200% 100%;background-position:0 0;color:var(--on-inv);font-size:14px;font-weight:500;letter-spacing:-.01em;white-space:nowrap;transition:background-position .55s cubic-bezier(.16,1,.3,1),color .3s}
+.btn-l{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:10px;background:linear-gradient(90deg,var(--inv) 0,var(--inv) 50%,var(--acc) 100%);background-size:200% 100%;background-position:0 0;color:var(--on-inv);font-size:14px;font-weight:500;letter-spacing:-.01em;white-space:nowrap;box-shadow:var(--sh-btn);transition:background-position .55s cubic-bezier(.16,1,.3,1),color .3s}
 .btn-t{flex:0 0 46px;border-radius:10px;background:var(--acc);color:var(--on-acc);display:grid;place-items:center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
 .btn:hover .btn-l{background-position:100% 0;color:var(--on-acc)}
 .btn:hover .btn-t{transform:translateX(3px)}
@@ -48,8 +49,11 @@ body{margin:0}
 .row{transition:background .3s}
 .row:hover{background:var(--p1)}
 .menu-btn{display:none}
+.lang a{text-decoration:none;color:var(--sub);padding:12px 2px}.lang a[aria-current]{color:var(--tx)}.lang a:hover{color:var(--acc-tx)}
+.cta-s{display:none}
 @media (max-width:900px){
-.nav-links,.th-seg,.hide-s{display:none!important}
+.nav-links,.th-seg,.hide-s,.lang,.cta-l{display:none!important}
+.cta-s{display:inline!important}
 .th-one,.menu-btn{display:inline-flex!important}
 }
 @media (prefers-reduced-motion: reduce){.btn-l,.btn-t,.lnk-t{transition:none!important}}
@@ -59,7 +63,7 @@ LOGO = '<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria
 ARROW = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg>'
 HALF = '<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.4"></circle><path d="M6 1a5 5 0 010 10z" fill="currentColor"></path></svg>'
 
-NAV = [('Analysis', 'D-Home.dc.html#analysis'), ('Demos', 'D-Home.dc.html#demos'), ('Services', 'D-Home.dc.html#services'),
+NAV = [('Analysis', 'D-Home.dc.html#analysis'), ('Demos', 'D-Home.dc.html#demos'), ('What we automate', 'D-Home.dc.html#services'),
        ('Pricing', 'D-Home.dc.html#start'), ('Blog', 'D-Blog.dc.html')]
 
 
@@ -68,7 +72,7 @@ def header(current):
         f'<a class="navl" href="{h}"{" aria-current=\"page\"" if n == current else ""}>{n}</a>' for n, h in NAV)
     menu_links = ''.join(
         f'<a class="navl" href="{h}" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: \'Geist\', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;"{" aria-current=\"page\"" if n == current else ""}>{n}<span class="lnk-t">{ARROW}</span></a>'
-        for n, h in NAV + [('Contact', 'D-Contact.dc.html')])
+        for n, h in NAV + [('Contact', 'D-Contact.dc.html')]) + '<div class="mono" style="display: flex; gap: 14px; padding-top: 18px;"><a href="#" aria-current="page" style="color: var(--tx); text-decoration: none;">English</a><a href="#" lang="de" style="color: var(--sub); text-decoration: none;">Deutsch</a></div>'
     contact_cur = ' aria-current="page"' if current == 'Contact' else ''
     return f'''<header style="position: sticky; top: 0; z-index: 20; background: var(--hdr); backdrop-filter: blur(14px); border-bottom: 1px solid var(--p3);">
 <nav class="wrap mono" aria-label="Main" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 56px; color: var(--tx);">
@@ -85,7 +89,8 @@ def header(current):
 <sc-for list="{{{{themes}}}}" as="t" hint-placeholder-count="3"><button type="button" class="mono th" onClick="{{{{t.pick}}}}" aria-pressed="{{{{t.pressed}}}}" style="min-height: 28px; padding: 0 11px; border: 0; border-radius: 999px; cursor: pointer; background: {{{{t.bg}}}}; color: {{{{t.fg}}}};">{{{{t.label}}}}</button></sc-for>
 </div>
 <button type="button" class="mono th th-one" onClick="{{{{cycleTheme}}}}" aria-label="{{{{themeAria}}}}" style="display: none; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border: 1px solid var(--ln2); border-radius: 999px; background: transparent; color: var(--tx); cursor: pointer;">{HALF}{{{{themeLabel}}}}</button>
-<a href="D-Contact.dc.html" class="navl nav-links" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid var(--tx); border-radius: 999px; white-space: nowrap;"{contact_cur}>Contact us</a>
+<span class="lang" style="display: flex; align-items: center; gap: 6px;"><a href="#" aria-current="page" aria-label="English">EN</a><span aria-hidden="true" style="color: var(--ln4);">/</span><a href="#" lang="de" aria-label="Deutsch">DE</a></span>
+<a href="D-Contact.dc.html" class="nav-links" style="display: inline-flex; align-items: center; min-height: 34px; padding: 0 14px; border-radius: 999px; background: var(--inv); color: var(--on-inv); text-decoration: none; white-space: nowrap; box-shadow: var(--sh-btn);"{contact_cur}>Get a process analysis</a>
 <button type="button" class="mono menu-btn" onClick="{{{{toggleMenu}}}}" aria-expanded="{{{{menuStr}}}}" aria-controls="d-menu" style="align-items: center; gap: 8px; min-height: 36px; padding: 0 12px; border: 1px solid var(--tx); border-radius: 999px; background: transparent; color: var(--tx); cursor: pointer;">{{{{menuLabel}}}}</button>
 </div>
 </nav>
@@ -101,7 +106,7 @@ def header(current):
 
 def footer():
     pills = ''.join(f'<a class="pill navl" href="{h}" style="padding: 0 12px; min-height: 32px;">{n}</a>' for n, h in
-                    [('Analysis', 'D-Home.dc.html#analysis'), ('Demos', 'D-Home.dc.html#demos'), ('Services', 'D-Home.dc.html#services'),
+                    [('Analysis', 'D-Home.dc.html#analysis'), ('Demos', 'D-Home.dc.html#demos'), ('What we automate', 'D-Home.dc.html#services'),
                      ('Blog', 'D-Blog.dc.html'), ('Contact', 'D-Contact.dc.html')])
     return f'''<footer style="padding: 12px;">
 <div class="panel" style="border-radius: 28px; padding: clamp(24px, 3vw, 44px); display: flex; flex-wrap: wrap; gap: 40px 24px; justify-content: space-between; align-items: flex-end;">
@@ -218,7 +223,7 @@ CONTACT_BODY = f'''<div class="d {{{{themeCls}}}}">
 </sc-for>
 </div>
 </div>
-<div class="panel" style="padding: clamp(20px, 2.8vw, 40px); min-width: 0;">
+<div class="panel lift" style="padding: clamp(20px, 2.8vw, 40px); min-width: 0;">
 <sc-if value="{{{{sent}}}}" hint-placeholder-val="{{{{false}}}}">
 <div role="status" style="display: flex; flex-direction: column; gap: 20px; min-height: 520px; justify-content: center; align-items: flex-start;">
 <span style="width: 48px; height: 48px; border-radius: 50%; background: var(--acc); color: var(--on-acc); display: grid; place-items: center;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4L16 6"></path></svg></span>
@@ -299,7 +304,7 @@ BLOG_BODY = f'''<div class="d {{{{themeCls}}}}">
 <sc-for list="{{{{filters}}}}" as="f" hint-placeholder-count="4"><button type="button" class="mono fl" onClick="{{{{f.pick}}}}" aria-pressed="{{{{f.pressed}}}}" style="border: 1px solid {{{{f.border}}}}; background: {{{{f.bg}}}}; color: {{{{f.fg}}}};">{{{{f.label}}}}</button></sc-for>
 </div>
 <sc-if value="{{{{showFeat}}}}" hint-placeholder-val="{{{{true}}}}">
-<a href="#" class="panel feat">
+<a href="#" class="panel lift feat">
 <div class="cover" style="min-height: 380px;"><span class="mono pill" style="background: var(--p1);">[COVER IMAGE]</span></div>
 <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding: clamp(12px, 2vw, 28px);">
 <div style="display: flex; flex-direction: column; gap: 18px;">
