@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ferbert — Impressum and privacy</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FAFAF8}
+a{color:#4B3FE0}
+::selection{background:#5B4FF5;color:#fff}
+:focus-visible{outline:2px solid #5B4FF5;outline-offset:3px}
+.nav a:not(.btn){color:#3A3A44;text-decoration:none}.nav a:not(.btn):hover{color:#18181F}
+.toc a{display:block;padding:8px 12px;border-radius:10px;color:#3A3A44;text-decoration:none}
+.toc a:hover{background:#fff;color:#18181F}
+</style>
+</helmet>
+<div style="background: #FAFAF8; color: #18181F; font-family: 'Onest', system-ui, sans-serif; font-size: 17px; line-height: 1.65; min-height: 100vh;">
+<header style="border-bottom: 1px solid #ECEBE5;">
+<nav class="nav" aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+<a href="B-Home.dc.html" style="display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; letter-spacing: -0.03em;"><svg width="26" height="26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="7" fill="#18181F"></rect><circle cx="9" cy="13" r="3" fill="#7BE0B0"></circle><circle cx="17" cy="9" r="2.4" fill="#FFC44D"></circle><circle cx="17" cy="17" r="2.4" fill="#8F86FF"></circle><path d="M11.5 12L15 9.6M11.5 14L15 16.4" stroke="#fff" stroke-width="1.3"></path></svg>ferbert</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 16px; font-weight: 500;"><a href="B-Home.dc.html">Home</a><a href="B-Blog.dc.html">Blog</a><span style="display: flex; gap: 6px; font-size: 14px;"><a href="#" aria-current="page" style="font-weight: 700;">EN</a><span aria-hidden="true" style="color: #75747C;">/</span><a href="#" lang="de">DE</a></span></div>
+</nav>
+</header>
+<main style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 100px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+<nav class="toc" aria-label="On this page" style="flex: 0 1 220px; position: sticky; top: 24px; font-size: 15px;">
+<a href="#impressum">Impressum</a><a href="#privacy">Privacy notice</a><a href="#ai">How our agents use data</a><a href="#rights">Your rights</a>
+</nav>
+<article style="flex: 999 1 560px; min-width: 0; max-width: 72ch;">
+<h1 style="margin: 0 0 12px; font-size: clamp(38px, 4.4vw, 56px); line-height: 1.04; letter-spacing: -0.04em; font-weight: 700;">Impressum and privacy</h1>
+<p style="margin: 0 0 40px; color: #55555F;">Last updated [DATE]. The German version of this page is the legally binding one for clients in Germany. Texts below are a structure for your lawyer to complete, not legal advice.</p>
+
+<h2 id="impressum" style="margin: 0 0 14px; font-size: 28px; letter-spacing: -0.03em;">Impressum</h2>
+<dl style="margin: 0 0 40px; display: grid; grid-template-columns: minmax(140px, auto) 1fr; gap: 0; border: 1px solid #E3E2DC; border-radius: 16px; background: #fff; overflow: hidden;">
+<sc-for list="{{imprint}}" as="r" hint-placeholder-count="7"><dt style="padding: 12px 16px; border-top: 1px solid #F0EFEA; color: #5F5F68; font-size: 15px;">{{r.k}}</dt><dd style="margin: 0; padding: 12px 16px; border-top: 1px solid #F0EFEA;">{{r.v}}</dd></sc-for>
+</dl>
+
+<h2 id="privacy" style="margin: 0 0 14px; font-size: 28px; letter-spacing: -0.03em;">Privacy notice</h2>
+<p style="margin: 0 0 16px;">We only collect what we need to answer you and run this website. When you write to us through the contact form, we use your name, email, company and message to reply. We keep enquiries for [RETENTION PERIOD] and never sell or share them for advertising.</p>
+<p style="margin: 0 0 40px;">This website is hosted by [HOSTING PROVIDER, REGION]. We use [ANALYTICS: e.g. none / privacy-friendly analytics without cookies].</p>
+
+<h2 id="ai" style="margin: 0 0 14px; font-size: 28px; letter-spacing: -0.03em;">How our agents use data</h2>
+<ul style="margin: 0 0 40px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+<li>Client data is processed only under a signed data processing agreement (AVV / DPA).</li>
+<li>Agents run on EU-hosted infrastructure and EU-region AI models: [PROVIDERS AND REGIONS].</li>
+<li>Client data is not used to train AI models.</li>
+<li>Every agent action is logged; clients can review and export the logs.</li>
+</ul>
+
+<h2 id="rights" style="margin: 0 0 14px; font-size: 28px; letter-spacing: -0.03em;">Your rights</h2>
+<p style="margin: 0;">You can ask what data we hold about you, have it corrected or deleted, and object to its use. Write to [PRIVACY EMAIL]. You can also complain to your data protection authority.</p>
+</article>
+</main>
+<footer style="border-top: 1px solid #ECEBE5;">
+<div class="nav" style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; gap: 16px 28px; justify-content: space-between; font-size: 15px; color: #5F5F68;"><span>© 2026 Ferbert, Valencia, Spain</span><span style="display: flex; gap: 22px;"><a href="#impressum">Impressum</a><a href="#privacy">Privacy</a></span></div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { imprint: [
+      { k: 'Company', v: '[LEGAL NAME, e.g. Ferbert S.L.]' },
+      { k: 'Address', v: '[STREET, POSTCODE] Valencia, Spain' },
+      { k: 'Represented by', v: '[MANAGING DIRECTOR]' },
+      { k: 'Email', v: '[hello@DOMAIN]' },
+      { k: 'Phone', v: '[PHONE]' },
+      { k: 'Commercial register', v: '[REGISTRO MERCANTIL, ENTRY]' },
+      { k: 'VAT ID', v: '[ES NIF / VAT NUMBER]' }
+    ] };
+  }
+}
+</script>
+</body>
+</html>

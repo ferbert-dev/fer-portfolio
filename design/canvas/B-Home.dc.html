@@ -31,10 +31,6 @@ a{color:#4B3FE0}
 @keyframes dots{0%,80%,100%{opacity:.25}40%{opacity:1}}
 @keyframes type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 @keyframes glowChunk{from{background:transparent}to{background:var(--hl)}}
-.node{animation:nodeOn 11s cubic-bezier(.16,1,.3,1) infinite}
-.check{animation:checkOn 11s cubic-bezier(.16,1,.3,1) infinite}
-.dot{animation:travel 11s cubic-bezier(.65,0,.35,1) infinite}
-.log{opacity:0;animation:logIn 11s ease-out infinite}
 .bar{transform-origin:left center;animation:grow 1.2s cubic-bezier(.16,1,.3,1) both}
 .bub{animation:bubble .45s cubic-bezier(.16,1,.3,1) both}
 .step-active{animation:ring 1.1s ease-in-out infinite}
@@ -56,7 +52,7 @@ a{color:#4B3FE0}
 ferbert
 </a>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 16px; font-weight: 500;">
-<a href="#analysis">Process analysis</a><a href="#demos">Demos</a><a href="#services">What we automate</a><a href="B-Blog.dc.html">Blog</a><a href="#company">Company</a>
+<a href="#analysis">Process analysis</a><a href="#demos">Demos</a><a href="#services">What we automate</a><a href="B-Blog.dc.html">Blog</a><a href="#trust">Data protection</a>
 <span style="display: flex; gap: 6px; font-size: 14px;"><a href="#" aria-current="page" style="font-weight: 700;">EN</a><span aria-hidden="true" style="color: #75747C;">/</span><a href="#" lang="de">DE</a></span>
 <a href="B-Contact.dc.html" class="btn btn-pri" style="padding: 11px 18px; font-size: 15px;">Get a process analysis</a>
 </div>
@@ -73,34 +69,36 @@ ferbert
 </section>
 
 <section aria-label="Example automation, running" style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 24px;">
-<div style="position: relative; border: 1px solid #E3E2DC; border-radius: 24px; background-color: #FFFFFF; background-image: radial-gradient(#E4E3DD 1px, transparent 1px); background-size: 20px 20px; padding: 40px 40px 28px; box-shadow: 0 30px 80px -40px rgba(24,24,31,0.25);">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 32px;">
-<div style="display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #2BB673; box-shadow: 0 0 0 4px #D9F3E6;"></span>Invoice intake <span style="font-weight: 400; color: #6B6B74;">running, example automation</span></div>
-<div style="font-size: 14px; color: #6B6B74;">Every new email, 24/7</div>
+<div style="position: relative; border: 1px solid #E3E2DC; border-radius: 24px; background-color: #FFFFFF; background-image: radial-gradient(#E4E3DD 1px, transparent 1px); background-size: 20px 20px; padding: 32px 40px 28px; box-shadow: 0 30px 80px -40px rgba(24,24,31,0.25);">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 28px;">
+<div style="display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{wfDot}}; box-shadow: 0 0 0 4px {{wfHalo}};"></span>Invoice intake <span style="font-weight: 400; color: #6B6B74;">{{wfStatus}}</span></div>
+<div style="display: flex; align-items: center; gap: 14px; font-size: 14px; color: #6B6B74;"><span>Example automation, runs on every new email</span>
+<button type="button" onClick="{{togglePause}}" aria-pressed="{{pausedStr}}" style="display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border-radius: 10px; border: 1px solid #E3E2DC; background: #fff; font: inherit; font-size: 14px; font-weight: 500; color: #3A3A44; cursor: pointer;">
+<sc-if value="{{paused}}" hint-placeholder-val="{{false}}"><svg width="12" height="12" fill="#3A3A44" aria-hidden="true"><path d="M2.5 1.5v9l8-4.5z"></path></svg></sc-if>
+<sc-if value="{{running}}" hint-placeholder-val="{{true}}"><svg width="12" height="12" fill="#3A3A44" aria-hidden="true"><rect x="2" y="1.5" width="3" height="9" rx="1"></rect><rect x="7" y="1.5" width="3" height="9" rx="1"></rect></svg></sc-if>
+{{pauseLabel}}</button></div>
 </div>
-<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; align-items: stretch;">
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: stretch;">
 <sc-for list="{{nodes}}" as="n" hint-placeholder-count="5">
-<div style="display: flex; align-items: center;">
-<div class="node" style="--c: {{n.color}}; --halo: {{n.halo}}; animation-delay: {{n.delay}}; flex: 1; min-width: 0; position: relative; background: #fff; border: 1.5px solid #E3E2DC; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: left;">
+<li style="display: flex; align-items: stretch;">
+<div style="flex: 1; min-width: 0; background: #fff; border: 1.5px solid {{n.border}}; box-shadow: {{n.shadow}}; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; transition: border-color .35s cubic-bezier(.16,1,.3,1), box-shadow .35s cubic-bezier(.16,1,.3,1);">
 <div style="display: flex; justify-content: space-between; align-items: center;">
 <span style="width: 34px; height: 34px; border-radius: 10px; background: {{n.halo}}; color: {{n.color}}; display: grid; place-items: center;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{n.icon}}"></path></svg></span>
-<span class="check" style="animation-delay: {{n.delay}}; width: 22px; height: 22px; border-radius: 50%; background: #2BB673; display: grid; place-items: center; opacity: 0;"><svg width="12" height="12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.4 2.4L9.8 3.6"></path></svg></span>
+<span style="width: 22px; height: 22px; border-radius: 50%; background: {{n.checkBg}}; display: grid; place-items: center; transition: background .3s;"><svg width="12" height="12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.4 2.4L9.8 3.6"></path></svg></span>
 </div>
-<div style="font-size: 13px; font-weight: 600; color: #6B6B74;">{{n.kind}}</div>
+<div style="font-size: 13px; font-weight: 600; color: #5F5F68;">{{n.kind}}</div>
 <div style="font-size: 16px; font-weight: 600; line-height: 1.25;">{{n.title}}</div>
 <div style="font-size: 13px; color: #5F5F68; line-height: 1.4;">{{n.detail}}</div>
 </div>
-<sc-if value="{{n.link}}" hint-placeholder-val="{{true}}">
-<div aria-hidden="true" style="position: relative; width: 28px; height: 2px; background: #E3E2DC; flex: 0 0 28px;"><span class="dot" style="animation-delay: {{n.delay}}; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: {{n.color}};"></span></div>
-</sc-if>
-</div>
+<sc-if value="{{n.link}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="align-self: center; flex: 0 0 24px; height: 2px; background: {{n.lineColor}}; transition: background .35s;"></span></sc-if>
+</li>
 </sc-for>
-</div>
-<div style="margin-top: 28px; border-top: 1px solid #ECEBE5; padding-top: 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 32px; font-size: 14px; color: #55555F; min-height: 70px;">
+</ol>
+<ol aria-live="polite" style="list-style: none; margin: 24px 0 0; padding: 16px 0 0; border-top: 1px solid #ECEBE5; display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #3A3A44; min-height: 150px;">
 <sc-for list="{{logs}}" as="l" hint-placeholder-count="5">
-<div class="log" style="animation-delay: {{l.delay}}; display: flex; gap: 10px;"><span style="color: #75747C; font-variant-numeric: tabular-nums;">{{l.t}}</span><span>{{l.msg}}</span></div>
+<li class="bub" style="display: flex; gap: 12px;"><span style="color: #6B6B74; font-variant-numeric: tabular-nums;">{{l.t}}</span><span>{{l.msg}}</span></li>
 </sc-for>
-</div>
+</ol>
 </div>
 <p style="margin: 14px 0 0; text-align: center; font-size: 14px; color: #6B6B74;">An example automation for illustration. Yours is designed around your process.</p>
 </section>
@@ -172,6 +170,19 @@ ferbert
 <div style="flex: 1; min-width: 0; padding: 8px 0 18px; display: flex; flex-direction: column; gap: 4px;">
 <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;"><span style="font-weight: 600; font-size: 16px; color: {{s.titleColor}};">{{s.title}}</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: {{s.tagBg}}; color: {{s.tagFg}};">{{s.tag}}</span></div>
 <div style="font-size: 14px; color: #5F5F68; min-height: 21px;">{{s.detail}}</div>
+<sc-if value="{{s.hasRag}}" hint-placeholder-val="{{false}}">
+<div class="bub" style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
+<sc-for list="{{s.rag}}" as="r" hint-placeholder-count="2"><div style="background: #fff; border: 1px solid #E3E2DC; border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.45;"><div style="font-weight: 600; margin-bottom: 2px; display: flex; justify-content: space-between; gap: 8px;"><span>{{r.title}}</span><span style="font-weight: 500; color: #4B3FE0;">{{r.score}}</span></div><div style="color: #3A3A44;">{{r.text}}</div></div></sc-for>
+</div>
+</sc-if>
+<sc-if value="{{s.hasDb}}" hint-placeholder-val="{{false}}">
+<div class="bub" style="margin-top: 4px; background: #fff; border: 1px solid #E3E2DC; border-radius: 12px; overflow: hidden;">
+<div style="padding: 6px 12px; font-size: 12px; font-weight: 600; color: #5F5F68; background: #F6F5F1; border-bottom: 1px solid #E3E2DC;">{{s.dbTable}}</div>
+<table style="width: 100%; border-collapse: collapse; font-size: 13px;"><tbody>
+<sc-for list="{{s.db}}" as="d" hint-placeholder-count="4"><tr><th scope="row" style="text-align: left; font-weight: 500; color: #5F5F68; padding: 5px 12px; width: 40%; border-top: 1px solid #F0EFEA;">{{d.k}}</th><td style="padding: 5px 12px; border-top: 1px solid #F0EFEA; font-variant-numeric: tabular-nums;">{{d.v}}</td></tr></sc-for>
+</tbody></table>
+</div>
+</sc-if>
 </div>
 </li>
 </sc-for>
@@ -298,6 +309,25 @@ ferbert
 </div>
 </section>
 
+<section id="trust" aria-labelledby="trust-title" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px 40px;">
+<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<h2 id="trust-title" style="margin: 0; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.06; letter-spacing: -0.035em; font-weight: 700; max-width: 14ch;">Built for European data rules.</h2>
+<p style="margin: 0; max-width: 40ch; color: #55555F;">Automation only works if you know where your data goes. These are the rules every Ferbert project follows.</p>
+<a href="B-Legal.dc.html" style="font-weight: 600;">Read our privacy notice</a>
+</div>
+<ul style="flex: 999 1 560px; min-width: 0; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px;">
+<sc-for list="{{trust}}" as="t" hint-placeholder-count="4">
+<li style="border-radius: 20px; background: #fff; border: 1px solid #E3E2DC; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
+<span style="width: 40px; height: 40px; border-radius: 12px; background: {{t.halo}}; color: {{t.color}}; display: grid; place-items: center;"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.icon}}"></path></svg></span>
+<span style="font-weight: 600; font-size: 19px; letter-spacing: -0.01em;">{{t.title}}</span>
+<span style="color: #55555F; font-size: 16px;">{{t.body}}</span>
+</li>
+</sc-for>
+</ul>
+</div>
+</section>
+
 <section id="how" aria-labelledby="how-title" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px 40px;">
 <h2 id="how-title" style="margin: 0 0 36px; font-size: clamp(36px, 4vw, 56px); line-height: 1.04; letter-spacing: -0.04em; font-weight: 700;">From first call to running agent</h2>
 <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px;">
@@ -336,15 +366,21 @@ ferbert
 <footer style="border-top: 1px solid #ECEBE5;">
 <div class="nav" style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; gap: 16px 28px; justify-content: space-between; font-size: 15px; color: #5F5F68;">
 <span>© 2026 Ferbert, Valencia, Spain</span>
-<span style="display: flex; flex-wrap: wrap; gap: 22px;"><a href="#">LinkedIn</a><a href="https://github.com/ferbert-dev">GitHub</a><a href="#">Legal notice</a><a href="#">Privacy</a></span>
+<span style="display: flex; flex-wrap: wrap; gap: 22px;"><a href="#">LinkedIn</a><a href="https://github.com/ferbert-dev">GitHub</a><a href="B-Legal.dc.html">Impressum</a><a href="B-Legal.dc.html">Privacy</a></span>
 </div>
 </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6900}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7700}}'>
 class Component extends DCLogic {
-  constructor(props) { super(props); this.state = { q: 0, sc: -1, step: -1, answered: false }; this.timers = []; }
-  componentWillUnmount() { this.timers.forEach(function (t) { clearTimeout(t); }); }
+  constructor(props) { super(props); this.state = { q: 0, sc: -1, step: -1, answered: false, wf: 0, paused: false }; this.timers = []; }
+  componentDidMount() {
+    var self = this;
+    var reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { this.setState({ wf: 6, paused: true }); return; }
+    this.loop = setInterval(function () { if (!self.state.paused) { self.setState({ wf: (self.state.wf + 1) % 9 }); } }, 900);
+  }
+  componentWillUnmount() { clearInterval(this.loop); this.timers.forEach(function (t) { clearTimeout(t); }); }
   ask(i) {
     var self = this;
     this.timers.forEach(function (t) { clearTimeout(t); });
@@ -366,14 +402,24 @@ class Component extends DCLogic {
       { kind: 'Check', title: 'Human review if unsure', detail: 'Only unclear cases', icon: 'M9 2a3.2 3.2 0 110 6.4A3.2 3.2 0 019 2z M3 16c.8-3 3.2-4.6 6-4.6s5.2 1.6 6 4.6' },
       { kind: 'Action', title: 'Book in accounting', detail: 'Entered in your ERP', icon: 'M3 9.5l4 4 8-9' }
     ];
-    var nodes = nodeDefs.map(function (n, i) { n.color = palette[i][0]; n.halo = palette[i][1]; n.delay = (i * 1.5) + 's'; n.link = i < nodeDefs.length - 1; return n; });
-    var logs = [
+    var w = this.state.wf;
+    var nodes = nodeDefs.map(function (n, i) {
+      var done = w > i + 1 || w >= 6, active = w === i + 1;
+      n.color = palette[i][0]; n.halo = palette[i][1]; n.link = i < nodeDefs.length - 1;
+      n.border = done || active ? n.color : '#E3E2DC';
+      n.shadow = active ? '0 0 0 4px ' + n.halo + ', 0 10px 24px -12px rgba(24,24,31,.25)' : '0 1px 2px rgba(24,24,31,.04)';
+      n.checkBg = done ? '#2BB673' : '#EEEDE8';
+      n.lineColor = done ? n.color : '#E3E2DC';
+      return n;
+    });
+    var logDefs = [
       { t: '09:41:02', msg: 'Invoice from Müller GmbH received' },
-      { t: '09:41:04', msg: 'Read: 1.284,50 EUR, VAT 19 %, due 30 days' },
-      { t: '09:41:05', msg: 'Matched to order PO-20817' },
-      { t: '09:41:05', msg: 'Confident, no review needed' },
-      { t: '09:41:06', msg: 'Booked. Total time: 4 seconds' }
-    ].map(function (l, i) { l.delay = (i * 1.5 + 0.4) + 's'; return l; });
+      { t: '09:41:03', msg: 'Read: 1.284,50 EUR, VAT 19 %, due in 30 days' },
+      { t: '09:41:04', msg: 'Matched to purchase order PO-20817' },
+      { t: '09:41:04', msg: 'Confident match, no review needed' },
+      { t: '09:41:05', msg: 'Booked in accounting. Done in 3 seconds' }
+    ];
+    var logs = logDefs.filter(function (l, i) { return w > i + 1 || w >= 6; });
     var tools = ['Gmail', 'Outlook', 'Google Drive', 'SharePoint', 'Slack', 'WhatsApp', 'Shopify', 'HubSpot', 'Zendesk', 'DATEV', 'SAP', 'Holded'];
 
     var deliverables = [
@@ -397,9 +443,9 @@ class Component extends DCLogic {
       { title: 'Write the answer', tag: 'Language model', icon: 'M3 15l1-4 8-8 3 3-8 8z M10.5 4.5l3 3' }
     ];
     var scenarios = [
-      { ask: 'Where is my order?', details: ['“Where is my order?”', 'Intent: order status. Customer is logged in.', 'Found 2 articles: “Delivery times”, “Tracking your parcel”', 'Order #48213: shipped 6 Oct with DHL, arriving Thu 9 Oct', 'Order data may be shared with the logged-in customer', 'Answer written from 3 sources'], answer: 'Your order #48213 is on the way! It left our warehouse on 6 October with DHL and should arrive on Thursday, 9 October. Here is your tracking link: dhl.de/track/48213', sources: ['Order #48213', 'Tracking your parcel'] },
-      { ask: 'Can I return my shoes?', details: ['“Can I return my shoes?”', 'Intent: return request for order #48213.', 'Found: “Returns policy”, “Free return labels”', 'Order #48213 not delivered yet', 'No refund without the customer confirming', 'Answer written from 3 sources'], answer: 'Yes. You can return them free of charge within 30 days of delivery. Your order hasn’t arrived yet; once it has, I can create the return label for you right here.', sources: ['Returns policy', 'Order #48213'] },
-      { ask: 'I’d like to talk to a person', details: ['“I’d like to talk to a person”', 'Intent: human handover.', 'Not needed for this request', 'Ticket T-1182 created with the chat history', 'Support team online Mon–Fri, 9:00–18:00', 'Handover message written'], answer: 'Of course. I’ve passed our conversation to Laura from the support team, with everything you’ve told me. She’ll reply here in about 10 minutes.', sources: ['Ticket T-1182'] }
+      { ask: 'Where is my order?', rag: [{ title: 'Delivery times', score: '0.91', text: 'Germany and Austria: 2–3 working days with DHL after dispatch.' }, { title: 'Tracking your parcel', score: '0.87', text: 'The tracking link is in your shipping email and in your account.' }], dbTable: 'orders · #48213', db: [['Status', 'Shipped'], ['Carrier', 'DHL 00340434 48213'], ['Shipped', '6 Oct 2026'], ['Estimated delivery', 'Thu 9 Oct']], details: ['“Where is my order?”', 'Intent: order status. Customer is logged in.', 'Found 2 articles: “Delivery times”, “Tracking your parcel”', 'Order #48213: shipped 6 Oct with DHL, arriving Thu 9 Oct', 'Order data may be shared with the logged-in customer', 'Answer written from 3 sources'], answer: 'Your order #48213 is on the way! It left our warehouse on 6 October with DHL and should arrive on Thursday, 9 October. Here is your tracking link: dhl.de/track/48213', sources: ['Order #48213', 'Tracking your parcel'] },
+      { ask: 'Can I return my shoes?', rag: [{ title: 'Returns policy', score: '0.93', text: 'Return within 30 days of delivery. Returns are free in Germany and Austria.' }, { title: 'Free return labels', score: '0.84', text: 'Labels can be created in chat or in your account after delivery.' }], dbTable: 'orders · #48213', db: [['Items', 'Trail runner, size 42'], ['Status', 'Shipped, not delivered'], ['Return window', 'Starts on delivery']], details: ['“Can I return my shoes?”', 'Intent: return request for order #48213.', 'Found: “Returns policy”, “Free return labels”', 'Order #48213 not delivered yet', 'No refund without the customer confirming', 'Answer written from 3 sources'], answer: 'Yes. You can return them free of charge within 30 days of delivery. Your order hasn’t arrived yet; once it has, I can create the return label for you right here.', sources: ['Returns policy', 'Order #48213'] },
+      { ask: 'I’d like to talk to a person', rag: [], dbTable: 'tickets · new', db: [['Ticket', 'T-1182'], ['Assigned to', 'Laura, support team'], ['Includes', 'Full chat history']], details: ['“I’d like to talk to a person”', 'Intent: human handover.', 'Not needed for this request', 'Ticket T-1182 created with the chat history', 'Support team online Mon–Fri, 9:00–18:00', 'Handover message written'], answer: 'Of course. I’ve passed our conversation to Laura from the support team, with everything you’ve told me. She’ll reply here in about 10 minutes.', sources: ['Ticket T-1182'] }
     ];
     var sc = this.state.sc, st = this.state.step, busy = st >= 0 && !this.state.answered;
     var cur = sc >= 0 ? scenarios[sc] : null;
@@ -411,7 +457,9 @@ class Component extends DCLogic {
         tileBg: done ? '#ECEAFF' : (active ? '#5B4FF5' : '#fff'), tileFg: done ? '#5B4FF5' : (active ? '#fff' : '#75747C'), tileBorder: done || active ? '#5B4FF5' : '#E3E2DC',
         ringCls: active ? 'step-active' : '', titleColor: done || active ? '#18181F' : '#5F5F68',
         tagBg: done || active ? '#ECEAFF' : '#F0EFEA', tagFg: done || active ? '#4B3FE0' : '#5F5F68',
-        line: i < stepDefs.length - 1, lineColor: done ? '#8F86FF' : '#E3E2DC'
+        line: i < stepDefs.length - 1, lineColor: done ? '#8F86FF' : '#E3E2DC',
+        hasRag: !!(done && i === 2 && cur.rag.length), rag: cur ? cur.rag : [],
+        hasDb: !!(done && i === 3), db: cur ? cur.db.map(function (d) { return { k: d[0], v: d[1] }; }) : [], dbTable: cur ? cur.dbTable : ''
       };
     });
     var asks = scenarios.map(function (s, i) { return { text: s.ask, pick: function () { if (!busy) { self.ask(i); } } }; });
@@ -439,7 +487,19 @@ class Component extends DCLogic {
       { n: '4', title: 'Run and improve', body: 'Monitoring, cost tracking and monthly improvements.', color: '#2BB673', ink: '#1E6B45' }
     ];
     var prod = [['1','Find stories','RSS, GDELT, Reddit'],['2','Pick one','Ranked, no repeats'],['3','Verify claims','Independent sources'],['4','Write 200 words','Fixed editorial shape'],['5','Publish once','Even after restarts']].map(function (x) { return { n: x[0], t: x[1], d: x[2] }; });
+    var trust = [
+      { title: 'Your data stays in the EU', body: 'We build on EU-hosted infrastructure and EU-region AI models, and show you where each part runs.', icon: 'M10 2a8 8 0 100 16 8 8 0 000-16z M2 10h16 M10 2c2.2 2.4 3.2 5 3.2 8s-1 5.6-3.2 8c-2.2-2.4-3.2-5-3.2-8s1-5.6 3.2-8z', color: '#2F6BD6', halo: '#E3EEFF' },
+      { title: 'GDPR and a data processing agreement', body: 'We sign a data processing agreement before any personal data touches an agent.', icon: 'M5 2h7l4 4v12H5z M12 2v4h4 M8 11l2 2 3.5-3.5', color: '#6D45D9', halo: '#EFE9FF' },
+      { title: 'People approve what matters', body: 'Unclear or sensitive cases go to your team. Every agent action is logged and can be reviewed.', icon: 'M10 3a3.2 3.2 0 110 6.4A3.2 3.2 0 0110 3z M4 17c.8-3 3.2-4.6 6-4.6s5.2 1.6 6 4.6', color: '#8A5200', halo: '#FFF1D6' },
+      { title: 'You own everything', body: 'Code, prompts, data and accounts belong to you. No lock-in, and a clean handover if you take it in-house.', icon: 'M6 9V6a4 4 0 118 0v3 M4 9h12v9H4z M10 12.5v2', color: '#1E6B45', halo: '#D9F3E6' }
+    ];
     return {
+      trust: trust,
+      paused: this.state.paused, running: !this.state.paused, pausedStr: this.state.paused ? 'true' : 'false',
+      pauseLabel: this.state.paused ? 'Play' : 'Pause',
+      togglePause: function () { self.setState({ paused: !self.state.paused }); },
+      wfStatus: w >= 6 ? 'done, waiting for the next email' : (w === 0 ? 'new email arriving' : 'running'),
+      wfDot: w >= 6 ? '#2BB673' : '#5B4FF5', wfHalo: w >= 6 ? '#D9F3E6' : '#ECEAFF',
       prod: prod,
       nodes: nodes, logs: logs, tools: tools, deliverables: deliverables, report: report,
       steps: steps, asks: asks, busy: busy,
