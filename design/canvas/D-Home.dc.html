@@ -188,7 +188,7 @@ body{margin:0}
 <div style="flex: 1; min-width: 0; background: var(--p2); border: 1px solid {{n.border}}; box-shadow: {{n.shadow}}; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px; transition: border-color .35s cubic-bezier(.16,1,.3,1), box-shadow .35s cubic-bezier(.16,1,.3,1);">
 <div style="display: flex; justify-content: space-between; align-items: center;">
 <span style="width: 34px; height: 34px; border-radius: 9px; background: var(--p3); color: {{n.iconColor}}; display: grid; place-items: center; transition: color .3s;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{n.icon}}"></path></svg></span>
-<span style="width: 20px; height: 20px; border-radius: 50%; background: {{n.checkBg}}; display: grid; place-items: center; transition: background .3s;"><svg width="11" height="11" fill="none" stroke="var(--on-acc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.2 5.8l2.2 2.2L8.8 3.2"></path></svg></span>
+<span style="width: 20px; height: 20px; border-radius: 50%; background: {{n.checkBg}}; display: grid; place-items: center; transition: background .3s;"><svg width="11" height="11" fill="none" style="stroke: var(--on-acc);" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.2 5.8l2.2 2.2L8.8 3.2"></path></svg></span>
 </div>
 <div class="mono">{{n.kind}}</div>
 <div style="font-size: 16px; font-weight: 500; line-height: 1.25;">{{n.title}}</div>
@@ -335,7 +335,7 @@ body{margin:0}
 <div class="mono" style="margin-bottom: 4px;">Passages the agent found</div>
 <sc-for list="{{docs}}" as="d" hint-placeholder-count="3">
 <div style="padding: 12px 0 4px; border-top: 1px solid var(--ln);">
-<div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; margin-bottom: 8px;"><svg width="16" height="16" fill="none" stroke="var(--sub)" stroke-width="1.5" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z M9.5 1.5V5H13"></path></svg>{{d.name}}</div>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; margin-bottom: 8px;"><svg width="16" height="16" fill="none" style="stroke: var(--sub);" stroke-width="1.5" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z M9.5 1.5V5H13"></path></svg>{{d.name}}</div>
 <sc-for list="{{d.chunks}}" as="c" hint-placeholder-count="3">
 <sc-if value="{{c.hit}}" hint-placeholder-val="{{false}}"><div class="bub" style="font-size: 13px; line-height: 1.45; color: var(--tx); padding: 6px 8px; border-radius: 6px; margin-bottom: 4px; background: var(--acc-tint); outline: 1px solid var(--acc-bd);">{{c.text}}</div></sc-if>
 <sc-if value="{{c.miss}}" hint-placeholder-val="{{true}}"><div style="font-size: 13px; line-height: 1.45; color: var(--mut); padding: 6px 8px; margin-bottom: 4px;">{{c.text}}</div></sc-if>
@@ -437,7 +437,7 @@ body{margin:0}
 <h3 class="md" style="min-height: 3.6em;">{{o.title}}. <span class="sub">{{o.line}}</span></h3>
 <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; font-size: 15px;">
 <sc-for list="{{o.items}}" as="i" hint-placeholder-count="5">
-<li style="display: flex; gap: 10px; align-items: flex-start;"><span aria-hidden="true" style="flex: 0 0 18px; height: 18px; margin-top: 2px; border-radius: 50%; border: 1px solid var(--ln2); display: grid; place-items: center;"><svg width="9" height="9" fill="none" stroke="var(--acc-tx)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.8l2 2L7.5 2.4"></path></svg></span><span>{{i}}</span></li>
+<li style="display: flex; gap: 10px; align-items: flex-start;"><span aria-hidden="true" style="flex: 0 0 18px; height: 18px; margin-top: 2px; border-radius: 50%; border: 1px solid var(--ln2); display: grid; place-items: center;"><svg width="9" height="9" fill="none" style="stroke: var(--acc-tx);" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.8l2 2L7.5 2.4"></path></svg></span><span>{{i}}</span></li>
 </sc-for>
 </ul>
 <span class="mono" style="margin-top: auto;">{{o.when}}</span>
