@@ -59,6 +59,8 @@ A backend engineer with production experience (Java, Kotlin, Spring Boot, Kafka,
 
 Real projects (github.com/ferbert-dev):
 
+Owner decision, 2026-10-10: the website shows no real projects at all for now. Client automation work is confidential and is never named or shown without the client's permission; side projects (including the Telegram News Agent) are not shown because they are not client work. Proof on the site is the interactive demos, labelled as demos. Client logos may be added later, only with each client's permission. The projects below are background for the team, not website content.
+
 - **Telegram News Agent** — in production (v2.0.1): finds a story, corroborates it against independent sources, writes a 200-word article and publishes it to Telegram every three hours, unattended. TypeScript, NestJS, PostgreSQL, OpenAI, Gemini, Exa, Oracle Cloud. Live channel: t.me/HonestAINews.
 - **Live Sportsbook** — event-driven reference platform: Java 21, Spring Boot, Vert.x, Kafka, Redis, PostgreSQL, transactional outbox, idempotent settlement.
 - **Hop & Barley Store** — e-commerce monorepo: Next.js, NestJS, Prisma, PostgreSQL, OpenAPI client, Playwright tests, Docker.

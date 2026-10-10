@@ -1,0 +1,74 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "pulsing-dot",
+        "value": "*",
+        "files": [
+          "design/canvas/B-Home.dc.html"
+        ],
+        "createdAt": "2026-10-10T10:07:44.574Z",
+        "reason": "Claude: .td is the three-dot typing indicator in the support chat demo, rendered only while the agent is working; literal chat motion, not a decorative status dot"
+      },
+      {
+        "rule": "overused-font",
+        "value": "geist",
+        "createdAt": "2026-10-10T10:25:10.624Z",
+        "reason": "user confirmed: asked on 2026-10-10 for direction D to use the fonts of tbdstudio.framer.ai (Geist)"
+      },
+      {
+        "rule": "overused-font",
+        "value": "geist mono",
+        "createdAt": "2026-10-10T10:25:10.697Z",
+        "reason": "user confirmed: asked on 2026-10-10 for direction D to use the fonts of tbdstudio.framer.ai (Geist Mono)"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "design/canvas/D-Home.dc.html"
+        ],
+        "createdAt": "2026-10-10T10:25:10.813Z",
+        "reason": "user confirmed: asked on 2026-10-10 for animations similar to tbdstudio.framer.ai, which has a marquee band"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "design/canvas/D-Home.dc.html"
+        ],
+        "createdAt": "2026-10-10T10:25:10.876Z",
+        "reason": "Claude: tick ruler in hero rail and line-pattern step tiles are the reference look the user asked direction D to follow"
+      },
+      {
+        "rule": "tight-leading",
+        "value": "*",
+        "files": [
+          "design/canvas/D-Home.dc.html"
+        ],
+        "createdAt": "2026-10-10T10:25:10.931Z",
+        "reason": "Claude: 1.18 applies to .md, 24-34px display text; matches the reference (34px/40.8px) the user asked direction D to follow"
+      },
+      {
+        "rule": "pulsing-dot",
+        "value": "*",
+        "files": [
+          "design/canvas/D-Home.dc.html"
+        ],
+        "createdAt": "2026-10-10T10:25:10.960Z",
+        "reason": "Claude: .td is the three-dot typing indicator in the support chat demo, shown only while the agent works"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "design/canvas/D-Home.dc.html"
+        ],
+        "createdAt": "2026-10-10T10:25:11.065Z",
+        "reason": "Claude: checked in local renders at 1440 and 390 px; panels carry clamp() padding of 18-32px the detector does not resolve, rail and marquee band are edge-to-edge by design"
+      }
+    ]
+  }
+}

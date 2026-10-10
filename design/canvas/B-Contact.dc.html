@@ -92,7 +92,7 @@ class Component extends DCLogic {
       return { label: d[1], pressed: on ? 'true' : 'false', border: on ? d[2] : '#E3E2DC', bg: on ? '#FAFAFF' : '#fff', dot: d[2], toggle: function () { var n = Object.assign({}, self.state.on); n[d[0]] = !n[d[0]]; self.setState({ on: n }); } };
     });
     var channels = [
-      { name: 'Email', handle: '[hello@ferbert…]', href: 'mailto:ferbertigo@gmail.com', bg: '#EFEDFF', fg: '#5B4FF5', icon: 'M2 4h14v10H2z M2 4l7 6 7-6' },
+      { name: 'Email', handle: 'ferbertigo@gmail.com', href: 'mailto:ferbertigo@gmail.com', bg: '#EFEDFF', fg: '#5B4FF5', icon: 'M2 4h14v10H2z M2 4l7 6 7-6' },
       { name: 'LinkedIn', handle: '[LINKEDIN PAGE]', href: '#', bg: '#E3EEFF', fg: '#3B82F6', icon: 'M3 7v8M3 3.5v.5M7 15V7M7 10.5c0-2 1.5-3.5 3.5-3.5S14 8.5 14 10.5V15' },
       { name: 'WhatsApp', handle: '[NUMBER]', href: '#', bg: '#D9F3E6', fg: '#1E8E57', icon: 'M3 15l1-3.2A6.5 6.5 0 1 1 6.3 14z' },
       { name: 'Telegram', handle: '[HANDLE]', href: '#', bg: '#E3EEFF', fg: '#3B82F6', icon: 'M2 8.5L16 3l-2.5 12-4-3.2-2 2V10.5L14 5' },
