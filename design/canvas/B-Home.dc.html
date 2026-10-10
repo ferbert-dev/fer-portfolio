@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ferbert — Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FAFAF8}
+a{color:#4B3FE0}
+::selection{background:#5B4FF5;color:#fff}
+:focus-visible{outline:2px solid #5B4FF5;outline-offset:3px}
+.nav a:not(.btn){color:#3A3A44;text-decoration:none}.nav a:not(.btn):hover{color:#18181F}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border-radius:12px;font-weight:600;transition:transform .2s cubic-bezier(.16,1,.3,1),background .2s}
+.btn-pri{background:#18181F;color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px -6px rgba(24,24,31,.5)}
+.btn-pri:hover{transform:translateY(-1px);background:#2A2A33;color:#fff}
+.btn-sec{background:#fff;color:#18181F;border:1px solid #E3E2DC}
+.btn-sec:hover{border-color:#C9C7BF;color:#18181F}
+@keyframes nodeOn{0%,2%{border-color:#E3E2DC;box-shadow:0 1px 2px rgba(24,24,31,.04)}6%,88%{border-color:var(--c);box-shadow:0 0 0 4px var(--halo),0 10px 24px -12px rgba(24,24,31,.25)}96%,100%{border-color:#E3E2DC;box-shadow:0 1px 2px rgba(24,24,31,.04)}}
+@keyframes checkOn{0%,4%{opacity:0;transform:scale(.6)}8%,88%{opacity:1;transform:scale(1)}96%,100%{opacity:0}}
+@keyframes travel{0%{left:0;opacity:0}3%{opacity:1}12%{left:calc(100% - 8px);opacity:1}14%,100%{left:calc(100% - 8px);opacity:0}}
+@keyframes logIn{0%,3%{opacity:0;transform:translateY(4px)}7%,88%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes bubble{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes ring{0%,100%{box-shadow:0 0 0 3px #ECEAFF}50%{box-shadow:0 0 0 7px #ECEAFF}}
+@keyframes dots{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@keyframes type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes glowChunk{from{background:transparent}to{background:var(--hl)}}
+.bar{transform-origin:left center;animation:grow 1.2s cubic-bezier(.16,1,.3,1) both}
+.bub{animation:bubble .45s cubic-bezier(.16,1,.3,1) both}
+.step-active{animation:ring 1.1s ease-in-out infinite}
+.td{display:inline-block;width:7px;height:7px;border-radius:50%;background:#6B6B74;animation:dots 1.2s infinite}
+.typed{animation:type 1.2s steps(40,end) both}
+.chunk-hl{animation:glowChunk .5s .2s ease-out both}
+.qbtn{cursor:pointer;transition:background .15s,border-color .15s}
+.qbtn:hover{border-color:#B9B4F7}
+.qbtn:disabled{cursor:default;opacity:.55}
+section[id]{scroll-margin-top:84px}
+.mark{background:#ECEAFF;border-radius:.14em;padding:0 .12em;margin:0 -.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.mark-inv{background:#5B4FF5;color:#fff}
+.svc{transition:background .2s}
+.svc:hover{background:#fff}
+.faq summary{list-style:none;cursor:pointer}
+.faq summary::-webkit-details-marker{display:none}
+.faq .pm{transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.faq[open] .pm{transform:rotate(45deg)}
+@media (prefers-reduced-motion: reduce){.node,.check,.dot,.log,.bar,.bub,.step-active,.td,.typed,.chunk-hl{animation:none!important}.log,.check{opacity:1}.svc,.faq .pm{transition:none!important}}
+</style>
+</helmet>
+<div style="background: #FAFAF8; color: #18181F; font-family: 'Onest', system-ui, sans-serif; font-size: 18px; line-height: 1.55;">
+
+<header style="position: sticky; top: 0; z-index: 10; background: rgba(250,250,248,0.9); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid #ECEBE5;">
+<nav class="nav" aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+<a href="#" style="display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; letter-spacing: -0.03em;">
+<svg width="26" height="26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="7" fill="#18181F"></rect><circle cx="9" cy="13" r="3" fill="#7BE0B0"></circle><circle cx="17" cy="9" r="2.4" fill="#FFC44D"></circle><circle cx="17" cy="17" r="2.4" fill="#8F86FF"></circle><path d="M11.5 12L15 9.6M11.5 14L15 16.4" stroke="#fff" stroke-width="1.3"></path></svg>
+ferbert
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 16px; font-weight: 500;">
+<a href="#analysis">Process analysis</a><a href="#demos">Demos</a><a href="#services">What we automate</a><a href="B-Blog.dc.html">Blog</a><a href="#trust">Data protection</a>
+<span style="display: flex; gap: 6px; font-size: 14px;"><a href="#" aria-current="page" style="font-weight: 700;">EN</a><span aria-hidden="true" style="color: #6B6B74;">/</span><a href="#" lang="de">DE</a></span>
+<a href="B-Contact.dc.html" class="btn btn-pri" style="padding: 11px 18px; font-size: 15px;">Get a process analysis</a>
+</div>
+</nav>
+</header>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 32px; text-align: center;">
+<h1 style="margin: 0 auto; max-width: 15ch; font-size: clamp(46px, 6.2vw, 84px); line-height: 1.0; letter-spacing: -0.04em; font-weight: 700;">Find the work AI should do. Then let <span class="mark">agents</span> do it.</h1>
+<p style="margin: 22px auto 0; max-width: 58ch; font-size: 20px; color: #55555F;">Ferbert analyses how your company works, shows you which processes AI can take over and what that saves, then builds the agents that run them.</p>
+<div style="margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+<a href="B-Contact.dc.html" class="btn btn-pri" style="padding: 16px 24px; font-size: 17px;">Get a process analysis</a>
+<a href="#demos" class="btn btn-sec" style="padding: 16px 24px; font-size: 17px;">Watch an agent think</a>
+</div>
+</section>
+
+<section id="workflow" aria-label="Example automation, running" style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 24px;">
+<div style="position: relative; border: 1px solid #E3E2DC; border-radius: 24px; background-color: #FFFFFF; background-image: radial-gradient(#E4E3DD 1px, transparent 1px); background-size: 20px 20px; padding: 32px 40px 28px; box-shadow: 0 30px 80px -40px rgba(24,24,31,0.25);">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 28px;">
+<div style="display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{wfDot}}; box-shadow: 0 0 0 4px {{wfHalo}};"></span>Invoice intake <span style="font-weight: 400; color: #6B6B74;">{{wfStatus}}</span></div>
+<div style="display: flex; align-items: center; gap: 14px; font-size: 14px; color: #6B6B74;"><span>Example automation, runs on every new email</span>
+<button type="button" onClick="{{togglePause}}" aria-pressed="{{pausedStr}}" style="display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border-radius: 10px; border: 1px solid #E3E2DC; background: #fff; font: inherit; font-size: 14px; font-weight: 500; color: #3A3A44; cursor: pointer;">
+<sc-if value="{{paused}}" hint-placeholder-val="{{false}}"><svg width="12" height="12" fill="#3A3A44" aria-hidden="true"><path d="M2.5 1.5v9l8-4.5z"></path></svg></sc-if>
+<sc-if value="{{running}}" hint-placeholder-val="{{true}}"><svg width="12" height="12" fill="#3A3A44" aria-hidden="true"><rect x="2" y="1.5" width="3" height="9" rx="1"></rect><rect x="7" y="1.5" width="3" height="9" rx="1"></rect></svg></sc-if>
+{{pauseLabel}}</button></div>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: stretch;">
+<sc-for list="{{nodes}}" as="n" hint-placeholder-count="5">
+<li style="display: flex; align-items: stretch;">
+<div style="flex: 1; min-width: 0; background: #fff; border: 1.5px solid {{n.border}}; box-shadow: {{n.shadow}}; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; transition: border-color .35s cubic-bezier(.16,1,.3,1), box-shadow .35s cubic-bezier(.16,1,.3,1);">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<span style="width: 34px; height: 34px; border-radius: 10px; background: {{n.halo}}; color: {{n.color}}; display: grid; place-items: center;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{n.icon}}"></path></svg></span>
+<span style="width: 22px; height: 22px; border-radius: 50%; background: {{n.checkBg}}; display: grid; place-items: center; transition: background .3s;"><svg width="12" height="12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.4 2.4L9.8 3.6"></path></svg></span>
+</div>
+<div style="font-size: 13px; font-weight: 600; color: #5F5F68;">{{n.kind}}</div>
+<div style="font-size: 16px; font-weight: 600; line-height: 1.25;">{{n.title}}</div>
+<div style="font-size: 13px; color: #5F5F68; line-height: 1.4;">{{n.detail}}</div>
+</div>
+<sc-if value="{{n.link}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="align-self: center; flex: 0 0 24px; height: 2px; background: {{n.lineColor}}; transition: background .35s;"></span></sc-if>
+</li>
+</sc-for>
+</ol>
+<ol aria-live="polite" style="list-style: none; margin: 24px 0 0; padding: 16px 0 0; border-top: 1px solid #ECEBE5; display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #3A3A44; min-height: 150px;">
+<sc-for list="{{logs}}" as="l" hint-placeholder-count="5">
+<li class="bub" style="display: flex; gap: 12px;"><span style="color: #6B6B74; font-variant-numeric: tabular-nums;">{{l.t}}</span><span>{{l.msg}}</span></li>
+</sc-for>
+</ol>
+</div>
+<p style="margin: 14px 0 0; text-align: center; font-size: 14px; color: #6B6B74;">An example automation for illustration. Yours is designed around your process.</p>
+</section>
+
+<section aria-label="Tools" style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 0; text-align: center;">
+<p style="margin: 0 0 16px; font-size: 16px; color: #5F5F68;">We connect agents to the tools you already use, for example</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+<sc-for list="{{tools}}" as="t" hint-placeholder-count="10"><span style="padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid #ECEBE5; font-size: 15px; font-weight: 500; color: #3A3A44;">{{t}}</span></sc-for>
+</div>
+</section>
+
+<section id="analysis" aria-labelledby="analysis-title" style="max-width: 1200px; margin: 0 auto; padding: 120px 24px 40px;">
+<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center;">
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<h2 id="analysis-title" style="margin: 0; font-size: clamp(36px, 4vw, 56px); line-height: 1.04; letter-spacing: -0.04em; font-weight: 700; max-width: 14ch;">Start with an analysis, not a guess.</h2>
+<p style="margin: 0; max-width: 46ch; color: #55555F;">In two to three weeks we map how work moves through your company, measure every process in hours, and rank what AI can take over by savings and risk. You keep the report, whether or not we build anything.</p>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; font-size: 17px;">
+<sc-for list="{{deliverables}}" as="d" hint-placeholder-count="4">
+<li style="display: flex; gap: 12px; align-items: flex-start;"><span style="flex: 0 0 24px; height: 24px; margin-top: 2px; border-radius: 8px; background: {{d.halo}}; display: grid; place-items: center;"><svg width="12" height="12" fill="none" stroke="{{d.color}}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.4 2.4L9.8 3.6"></path></svg></span><span>{{d.text}}</span></li>
+</sc-for>
+</ul>
+<a href="B-Contact.dc.html" class="btn btn-pri" style="align-self: flex-start; padding: 16px 24px; font-size: 17px;">Get a process analysis</a>
+</div>
+<figure style="flex: 999 1 560px; min-width: 0; margin: 0; background: #fff; border: 1px solid #E3E2DC; border-radius: 24px; padding: 28px; box-shadow: 0 30px 80px -50px rgba(24,24,31,0.3);">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 20px;">
+<div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em;">Process analysis</div>
+<div style="font-size: 14px; color: #6B6B74;">Sample report, fictional company</div>
+</div>
+<table style="width: 100%; border-collapse: collapse; font-size: 15px;">
+<thead><tr style="text-align: left; color: #6B6B74; font-size: 13px;"><th scope="col" style="font-weight: 600; padding: 0 0 10px;">Process</th><th scope="col" style="font-weight: 600; padding: 0 0 10px; width: 46%;">Hours per week, today and with agents</th><th scope="col" style="font-weight: 600; padding: 0 0 10px; text-align: right;">Potential</th></tr></thead>
+<tbody>
+<sc-for list="{{report}}" as="r" hint-placeholder-count="5">
+<tr style="border-top: 1px solid #F0EFEA;">
+<th scope="row" style="text-align: left; font-weight: 500; padding: 14px 12px 14px 0;">{{r.name}}</th>
+<td style="padding: 14px 12px 14px 0;">
+<div style="display: flex; flex-direction: column; gap: 5px;">
+<div style="display: flex; align-items: center; gap: 8px;"><span class="bar" style="animation-delay: {{r.delay}}; height: 8px; width: {{r.before}}%; border-radius: 4px; background: #D9D7CF;"></span><span style="font-size: 13px; color: #5F5F68; font-variant-numeric: tabular-nums;">{{r.beforeH}} h</span></div>
+<div style="display: flex; align-items: center; gap: 8px;"><span class="bar" style="animation-delay: {{r.delay2}}; height: 8px; width: {{r.after}}%; border-radius: 4px; background: #5B4FF5;"></span><span style="font-size: 13px; color: #4B3FE0; font-weight: 600; font-variant-numeric: tabular-nums;">{{r.afterH}} h</span></div>
+</div>
+</td>
+<td style="padding: 14px 0; text-align: right;"><span style="font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: {{r.pbg}}; color: {{r.pfg}};">{{r.potential}}</span></td>
+</tr>
+</sc-for>
+</tbody>
+<tfoot><tr style="border-top: 1.5px solid #18181F;"><th scope="row" style="text-align: left; padding: 16px 12px 0 0; font-weight: 700;">Total</th><td style="padding: 16px 12px 0 0; font-weight: 700; font-variant-numeric: tabular-nums;">103 h → <span style="color: #4B3FE0;">23 h</span> per week</td><td style="padding: 16px 0 0; text-align: right; font-weight: 700; color: #1E6B45;">80 h saved</td></tr></tfoot>
+</table>
+</figure>
+</div>
+</section>
+
+<section id="demos" aria-labelledby="agent-title" style="max-width: 1200px; margin: 0 auto; padding: 120px 24px 40px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 36px;">
+<h2 id="agent-title" style="margin: 0; max-width: 16ch; font-size: clamp(36px, 4vw, 56px); line-height: 1.04; letter-spacing: -0.04em; font-weight: 700;">Watch a support agent think.</h2>
+<p style="margin: 0; max-width: 44ch; color: #55555F;">Ask the shop assistant a question. On the left you see every step it takes before it answers: understanding, searching your help centre, checking your order database, following your rules.</p>
+</div>
+<div style="border: 1px solid #E3E2DC; border-radius: 28px; background: #fff; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 30px 80px -50px rgba(24,24,31,0.3);">
+<div style="flex: 999 1 520px; min-width: 0; padding: 28px; background-color: #FAFAF8; background-image: radial-gradient(#E4E3DD 1px, transparent 1px); background-size: 20px 20px; border-right: 1px solid #ECEBE5;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<div style="font-weight: 600; font-size: 16px;">Inside the agent</div>
+<div style="font-size: 14px; color: #5F5F68; font-variant-numeric: tabular-nums;">{{timer}}</div>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0;">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="6">
+<li style="display: flex; gap: 14px;">
+<div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 40px;">
+<span class="{{s.ringCls}}" style="width: 40px; height: 40px; border-radius: 12px; background: {{s.tileBg}}; color: {{s.tileFg}}; border: 1.5px solid {{s.tileBorder}}; display: grid; place-items: center; transition: background .3s, color .3s, border-color .3s;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{s.icon}}"></path></svg></span>
+<sc-if value="{{s.line}}" hint-placeholder-val="{{true}}"><span style="width: 2px; flex: 1; min-height: 14px; background: {{s.lineColor}}; transition: background .3s;"></span></sc-if>
+</div>
+<div style="flex: 1; min-width: 0; padding: 8px 0 18px; display: flex; flex-direction: column; gap: 4px;">
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;"><span style="font-weight: 600; font-size: 16px; color: {{s.titleColor}};">{{s.title}}</span><span style="font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: {{s.tagBg}}; color: {{s.tagFg}};">{{s.tag}}</span></div>
+<div style="font-size: 14px; color: #5F5F68; min-height: 21px;">{{s.detail}}</div>
+<sc-if value="{{s.hasRag}}" hint-placeholder-val="{{false}}">
+<div class="bub" style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
+<sc-for list="{{s.rag}}" as="r" hint-placeholder-count="2"><div style="background: #fff; border: 1px solid #E3E2DC; border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.45;"><div style="font-weight: 600; margin-bottom: 2px; display: flex; justify-content: space-between; gap: 8px;"><span>{{r.title}}</span><span style="font-weight: 500; color: #4B3FE0;">{{r.score}}</span></div><div style="color: #3A3A44;">{{r.text}}</div></div></sc-for>
+</div>
+</sc-if>
+<sc-if value="{{s.hasDb}}" hint-placeholder-val="{{false}}">
+<div class="bub" style="margin-top: 4px; background: #fff; border: 1px solid #E3E2DC; border-radius: 12px; overflow: hidden;">
+<div style="padding: 6px 12px; font-size: 12px; font-weight: 600; color: #5F5F68; background: #F6F5F1; border-bottom: 1px solid #E3E2DC;">{{s.dbTable}}</div>
+<table style="width: 100%; border-collapse: collapse; font-size: 13px;"><tbody>
+<sc-for list="{{s.db}}" as="d" hint-placeholder-count="4"><tr><th scope="row" style="text-align: left; font-weight: 500; color: #5F5F68; padding: 5px 12px; width: 40%; border-top: 1px solid #F0EFEA;">{{d.k}}</th><td style="padding: 5px 12px; border-top: 1px solid #F0EFEA; font-variant-numeric: tabular-nums;">{{d.v}}</td></tr></sc-for>
+</tbody></table>
+</div>
+</sc-if>
+</div>
+</li>
+</sc-for>
+</ol>
+</div>
+
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; min-height: 560px;">
+<div style="display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #ECEBE5;">
+<span style="width: 40px; height: 40px; border-radius: 50%; background: #18181F; color: #fff; display: grid; place-items: center; font-weight: 700;">N</span>
+<div style="flex: 1;"><div style="font-weight: 600; font-size: 16px;">Nordwind Shop support</div><div style="font-size: 13px; color: #1E6B45; display: flex; align-items: center; gap: 6px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #2BB673;"></span>AI agent, online</div></div>
+<span style="font-size: 12px; color: #5F5F68; border: 1px solid #E3E2DC; padding: 3px 8px; border-radius: 999px;">Demo</span>
+</div>
+<div aria-live="polite" style="flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 10px; background: #FCFCFB;">
+<div class="bub" style="align-self: flex-start; max-width: 85%; padding: 10px 14px; border-radius: 16px 16px 16px 4px; background: #F1F0FF; font-size: 15px; line-height: 1.45;">Hi! I’m Nordwind’s assistant. Ask me about orders, returns or delivery.</div>
+<sc-if value="{{hasQuestion}}" hint-placeholder-val="{{true}}">
+<div class="bub" style="align-self: flex-end; max-width: 85%; padding: 10px 14px; border-radius: 16px 16px 4px 16px; background: #18181F; color: #fff; font-size: 15px; line-height: 1.45;">{{question}}</div>
+</sc-if>
+<sc-if value="{{thinking}}" hint-placeholder-val="{{false}}">
+<div class="bub" style="align-self: flex-start; padding: 12px 14px; border-radius: 16px 16px 16px 4px; background: #F1F0FF; display: flex; gap: 5px; align-items: center;" aria-label="Agent is thinking"><span class="td"></span><span class="td" style="animation-delay: .2s;"></span><span class="td" style="animation-delay: .4s;"></span></div>
+</sc-if>
+<sc-if value="{{answered}}" hint-placeholder-val="{{false}}">
+<div class="bub" style="align-self: flex-start; max-width: 88%; display: flex; flex-direction: column; gap: 8px;">
+<div style="padding: 10px 14px; border-radius: 16px 16px 16px 4px; background: #F1F0FF; font-size: 15px; line-height: 1.5;">{{answer}}</div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px;"><sc-for list="{{sources}}" as="src" hint-placeholder-count="2"><span style="font-size: 12px; padding: 3px 9px; border-radius: 999px; background: #fff; border: 1px solid #E3E2DC; color: #55555F;">{{src}}</span></sc-for></div>
+</div>
+</sc-if>
+</div>
+<div style="padding: 14px 20px 18px; border-top: 1px solid #ECEBE5; display: flex; flex-direction: column; gap: 10px;">
+<div role="group" aria-label="Choose a question" style="display: flex; flex-wrap: wrap; gap: 8px;">
+<sc-for list="{{asks}}" as="q" hint-placeholder-count="3">
+<button type="button" class="qbtn" onClick="{{q.pick}}" disabled="{{busy}}" style="min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1.5px solid #D9D6FF; background: #fff; font: inherit; font-size: 14px; font-weight: 500; color: #4B3FE0;">{{q.text}}</button>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; padding: 0 6px 0 14px; min-height: 46px; border-radius: 14px; border: 1px solid #E3E2DC; background: #fff; color: #6B6B74; font-size: 15px;"><span style="flex: 1;">Pick a question above. This demo uses sample data.</span><span style="width: 34px; height: 34px; border-radius: 10px; background: #ECEBE5; display: grid; place-items: center;"><svg width="16" height="16" fill="none" stroke="#6B6B74" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"></path></svg></span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="knowledge" aria-labelledby="rag-title" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px 40px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 36px;">
+<h2 id="rag-title" style="margin: 0; max-width: 18ch; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.06; letter-spacing: -0.035em; font-weight: 700;">Your team can ask the company’s documents too.</h2>
+<p style="margin: 0; max-width: 42ch; color: #55555F;">The same retrieval works internally. The agent finds the right passages first, then answers only from them, and shows where each fact came from.</p>
+</div>
+<div style="border: 1px solid #E3E2DC; border-radius: 24px; background: #fff; padding: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px;">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<div style="font-size: 13px; font-weight: 600; color: #6B6B74;">Ask a question</div>
+<sc-for list="{{questions}}" as="q" hint-placeholder-count="3">
+<button type="button" class="qbtn" onClick="{{q.pick}}" aria-pressed="{{q.pressed}}" style="text-align: left; min-height: 48px; padding: 12px 14px; border-radius: 12px; border: 1.5px solid {{q.border}}; background: {{q.bg}}; font: inherit; font-size: 15px; color: #18181F;">{{q.text}}</button>
+</sc-for>
+<span style="margin-top: auto; font-size: 13px; color: #6B6B74;">Demo with sample documents of a fictional company.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<div style="font-size: 13px; font-weight: 600; color: #6B6B74;">Passages the agent found</div>
+<sc-for list="{{docs}}" as="d" hint-placeholder-count="3">
+<div style="border-radius: 12px; padding: 12px; background: #FAFAF8;">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; margin-bottom: 8px;"><svg width="16" height="16" fill="none" stroke="#5F5F68" stroke-width="1.6" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z M9.5 1.5V5H13"></path></svg>{{d.name}}</div>
+<sc-for list="{{d.chunks}}" as="c" hint-placeholder-count="3">
+<sc-if value="{{c.hit}}" hint-placeholder-val="{{false}}"><div class="chunk-hl" style="--hl: #ECEAFF; font-size: 13px; line-height: 1.45; color: #18181F; padding: 6px 8px; border-radius: 6px; margin-bottom: 4px; outline: 1.5px solid #8F86FF;">{{c.text}}</div></sc-if>
+<sc-if value="{{c.miss}}" hint-placeholder-val="{{true}}"><div style="font-size: 13px; line-height: 1.45; color: #6B6B74; padding: 6px 8px; margin-bottom: 4px;">{{c.text}}</div></sc-if>
+</sc-for>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<div style="font-size: 13px; font-weight: 600; color: #6B6B74;">Answer, with sources</div>
+<sc-for list="{{answers}}" as="a" hint-placeholder-count="1">
+<sc-if value="{{a.on}}" hint-placeholder-val="{{true}}">
+<div style="border-radius: 16px; background: #18181F; color: #fff; padding: 18px; display: flex; flex-direction: column; gap: 12px;">
+<p class="typed" style="margin: 0; font-size: 16px; line-height: 1.55;">{{a.text}}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px;"><sc-for list="{{a.sources}}" as="s" hint-placeholder-count="2"><span style="font-size: 12px; padding: 4px 9px; border-radius: 999px; background: #2D2D38; color: #D9D8E2;">{{s}}</span></sc-for></div>
+</div>
+</sc-if>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="services" aria-labelledby="services-title" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px 40px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 36px;">
+<h2 id="services-title" style="margin: 0; max-width: 20ch; font-size: clamp(36px, 4vw, 56px); line-height: 1.04; letter-spacing: -0.04em; font-weight: 700;">What we automate</h2>
+<p style="margin: 0; max-width: 40ch; color: #55555F;">Five kinds of work. Where a demo on this page shows it, the row takes you there.</p>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; border-bottom: 1px solid #E3E2DC;">
+<sc-for list="{{services}}" as="s" hint-placeholder-count="5">
+<li class="svc" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 32px; padding: 28px 16px; border-top: 1px solid #E3E2DC;">
+<span aria-hidden="true" style="flex: 0 0 72px; font-size: clamp(26px, 2.6vw, 36px); font-weight: 600; letter-spacing: -0.04em; color: #6B6B74; font-variant-numeric: tabular-nums;">{{s.n}}</span>
+<h3 style="flex: 1 1 260px; min-width: 0; margin: 0; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 600;">{{s.title}}</h3>
+<div style="flex: 2 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+<p style="margin: 0; max-width: 52ch; color: #55555F;">{{s.body}}</p>
+<ul aria-label="Includes" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px;">
+<sc-for list="{{s.tags}}" as="t" hint-placeholder-count="4"><li style="padding: 5px 12px; border-radius: 999px; background: #fff; border: 1px solid #E3E2DC; font-size: 14px; font-weight: 500; color: #3A3A44;">{{t}}</li></sc-for>
+</ul>
+<sc-if value="{{s.hasLink}}" hint-placeholder-val="{{true}}"><a href="{{s.href}}" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; font-weight: 600; font-size: 16px;">{{s.linkText}}<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"></path></svg></a></sc-if>
+</div>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<section id="trust" aria-labelledby="trust-title" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px 40px;">
+<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<h2 id="trust-title" style="margin: 0; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.06; letter-spacing: -0.035em; font-weight: 700; max-width: 14ch;">Built for European data rules.</h2>
+<p style="margin: 0; max-width: 40ch; color: #55555F;">Automation only works if you know where your data goes. These are the rules every Ferbert project follows.</p>
+<a href="B-Legal.dc.html" style="font-weight: 600;">Read our privacy notice</a>
+</div>
+<ul style="flex: 999 1 560px; min-width: 0; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px;">
+<sc-for list="{{trust}}" as="t" hint-placeholder-count="4">
+<li style="border-radius: 20px; background: #fff; border: 1px solid #E3E2DC; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
+<span style="width: 40px; height: 40px; border-radius: 12px; background: {{t.halo}}; color: {{t.color}}; display: grid; place-items: center;"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.icon}}"></path></svg></span>
+<span style="font-weight: 600; font-size: 19px; letter-spacing: -0.01em;">{{t.title}}</span>
+<span style="color: #55555F; font-size: 16px;">{{t.body}}</span>
+</li>
+</sc-for>
+</ul>
+</div>
+</section>
+
+<section id="how" aria-labelledby="how-title" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px 40px;">
+<h2 id="how-title" style="margin: 0 0 28px; font-size: clamp(36px, 4vw, 56px); line-height: 1.04; letter-spacing: -0.04em; font-weight: 700;">From first call to running agent</h2>
+<dl style="margin: 0 0 48px; padding: 28px 0; border-top: 1px solid #E3E2DC; border-bottom: 1px solid #E3E2DC; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px clamp(16px, 3vw, 40px);">
+<sc-for list="{{cadence}}" as="c" hint-placeholder-count="3">
+<div style="display: flex; align-items: flex-start; gap: clamp(16px, 3vw, 40px);">
+<div style="display: flex; flex-direction: column-reverse; gap: 10px;">
+<dt style="font-size: 15px; font-weight: 500; color: #5F5F68;">{{c.label}}</dt>
+<dd style="margin: 0; font-size: clamp(34px, 4.4vw, 60px); line-height: 1; letter-spacing: -0.04em; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums;">{{c.value}}</dd>
+</div>
+<sc-if value="{{c.sep}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="font-size: clamp(34px, 4.4vw, 60px); line-height: 1; font-weight: 300; color: #C9C7BF;">/</span></sc-if>
+</div>
+</sc-for>
+</dl>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px;">
+<sc-for list="{{how}}" as="s" hint-placeholder-count="4">
+<li style="display: flex; flex-direction: column; gap: 10px; padding-top: 18px; border-top: 2px solid {{s.color}};">
+<span style="font-size: 14px; font-weight: 600; color: {{s.ink}};">Step {{s.n}}</span>
+<span style="font-size: 22px; font-weight: 600; letter-spacing: -0.02em;">{{s.title}}</span>
+<span style="color: #55555F; font-size: 16px;">{{s.body}}</span>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<section id="start" aria-labelledby="start-title" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px 40px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 36px;">
+<h2 id="start-title" style="margin: 0; max-width: 16ch; font-size: clamp(36px, 4vw, 56px); line-height: 1.04; letter-spacing: -0.04em; font-weight: 700;">Three ways to start</h2>
+<p style="margin: 0; max-width: 44ch; color: #55555F;">Pick the stage you are at. If you are not sure, begin with the analysis: it tells you whether building is worth it.</p>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px;">
+<sc-for list="{{offers}}" as="o" hint-placeholder-count="3">
+<li style="border-radius: 24px; background: {{o.bg}}; color: {{o.fg}}; border: 1px solid {{o.border}}; padding: 28px; display: flex; flex-direction: column; gap: 20px;">
+<div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px;">
+<h3 style="margin: 0; font-size: 28px; line-height: 1.1; letter-spacing: -0.03em;">{{o.title}}</h3>
+<span style="font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: {{o.pillBg}}; color: {{o.pillFg}};">{{o.time}}</span>
+</div>
+<p style="margin: 10px 0 0; font-size: 17px; color: {{o.sub}};">{{o.line}}</p>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 16px;">
+<sc-for list="{{o.items}}" as="i" hint-placeholder-count="5">
+<li style="display: flex; gap: 10px; align-items: flex-start;"><svg width="16" height="16" fill="none" stroke="{{i.c}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; margin-top: 5px;"><path d="M3 8.5l3 3 7-7.5"></path></svg><span>{{i.t}}</span></li>
+</sc-for>
+</ul>
+<p style="margin: auto 0 0; font-size: 14px; font-weight: 500; color: {{o.muted}};">{{o.when}}</p>
+<div style="padding-top: 20px; border-top: 1px solid {{o.rule}}; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;">
+<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em;">{{o.price}} <span style="font-size: 14px; font-weight: 500; letter-spacing: 0; color: {{o.muted}};">{{o.unit}}</span></span>
+<a href="B-Contact.dc.html" class="btn" style="padding: 13px 18px; font-size: 16px; background: #fff; color: #18181F; border: 1px solid {{o.btnBorder}};">{{o.cta}}</a>
+</div>
+</li>
+</sc-for>
+</ol>
+<p style="margin: 16px 0 0; font-size: 14px; color: #5F5F68;">[PRICING TERMS, for example: fixed scope and fixed price, agreed before work starts]</p>
+</section>
+
+<section id="company" aria-labelledby="company-title" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px 40px;">
+<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+<h2 id="company-title" style="flex: 1 1 360px; margin: 0; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.035em; font-weight: 700;">A new company, built on production engineering.</h2>
+<div style="flex: 999 1 520px; display: flex; flex-direction: column; gap: 16px; color: #3A3A44;">
+<p style="margin: 0;">Ferbert is an AI automation company from Valencia, working with companies across Europe. We’re starting small on purpose: every client works directly with senior engineers.</p>
+<p style="margin: 0;">Our background is backend engineering: Java, Kotlin, Kafka, cloud infrastructure. We build agents the same way, with retries, monitoring and human review.</p>
+</div>
+</div>
+</section>
+
+<section id="faq" aria-labelledby="faq-title" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px 40px;">
+<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<h2 id="faq-title" style="margin: 0; max-width: 12ch; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.06; letter-spacing: -0.035em; font-weight: 700;">Questions before the first call</h2>
+<p style="margin: 0; max-width: 36ch; color: #55555F;">The six things companies ask us first. Yours is not here? Ask it directly.</p>
+<a href="B-Contact.dc.html" style="font-weight: 600;">Ask us a question</a>
+</div>
+<div style="flex: 999 1 560px; min-width: 0;">
+<details class="faq" open style="border-top: 1px solid #E3E2DC;">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 8px 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.01em;">Do we need an AI strategy before we talk to you?<svg class="pm" width="18" height="18" fill="none" stroke="#3A3A44" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="flex: 0 0 18px;"><path d="M9 3v12M3 9h12"></path></svg></summary>
+<p style="margin: 0; padding: 0 44px 24px 4px; max-width: 64ch; color: #55555F;">No. You need one process that costs your team too many hours. The process analysis turns that into a ranked list of what to automate first, with cost and expected savings.</p>
+</details>
+<details class="faq" style="border-top: 1px solid #E3E2DC;">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 8px 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.01em;">How fast will we see something working?<svg class="pm" width="18" height="18" fill="none" stroke="#3A3A44" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="flex: 0 0 18px;"><path d="M9 3v12M3 9h12"></path></svg></summary>
+<p style="margin: 0; padding: 0 44px 24px 4px; max-width: 64ch; color: #55555F;">The process analysis takes two to three weeks. The first agent is live [N] weeks after that, depending on the process and the tools it connects to.</p>
+</details>
+<details class="faq" style="border-top: 1px solid #E3E2DC;">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 8px 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.01em;">Will agents replace people on our team?<svg class="pm" width="18" height="18" fill="none" stroke="#3A3A44" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="flex: 0 0 18px;"><path d="M9 3v12M3 9h12"></path></svg></summary>
+<p style="margin: 0; padding: 0 44px 24px 4px; max-width: 64ch; color: #55555F;">Agents take over the repetitive steps: reading, checking, entering data, answering routine questions. Unclear and sensitive cases go to your team, and people approve what matters.</p>
+</details>
+<details class="faq" style="border-top: 1px solid #E3E2DC;">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 8px 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.01em;">What happens to our data?<svg class="pm" width="18" height="18" fill="none" stroke="#3A3A44" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="flex: 0 0 18px;"><path d="M9 3v12M3 9h12"></path></svg></summary>
+<p style="margin: 0; padding: 0 44px 24px 4px; max-width: 64ch; color: #55555F;">We build on EU-hosted infrastructure and EU-region AI models, and show you where each part runs. We sign a data processing agreement before any personal data touches an agent. <a href="B-Legal.dc.html" style="font-weight: 600;">Read our privacy notice</a></p>
+</details>
+<details class="faq" style="border-top: 1px solid #E3E2DC;">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 8px 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.01em;">Are we locked in after the project?<svg class="pm" width="18" height="18" fill="none" stroke="#3A3A44" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="flex: 0 0 18px;"><path d="M9 3v12M3 9h12"></path></svg></summary>
+<p style="margin: 0; padding: 0 44px 24px 4px; max-width: 64ch; color: #55555F;">No. Code, prompts, data and accounts belong to you. If you take the agents in-house, we hand everything over cleanly.</p>
+</details>
+<details class="faq" style="border-top: 1px solid #E3E2DC; border-bottom: 1px solid #E3E2DC;">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 8px 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.01em;">What if an agent gets something wrong or stops?<svg class="pm" width="18" height="18" fill="none" stroke="#3A3A44" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="flex: 0 0 18px;"><path d="M9 3v12M3 9h12"></path></svg></summary>
+<p style="margin: 0; padding: 0 44px 24px 4px; max-width: 64ch; color: #55555F;">We build agents with retries, monitoring and human review for unclear cases, and every action is logged. With “Run and improve” we watch the agents and fix them when a tool or a model changes.</p>
+</details>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="cta-title" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px 100px;">
+<div style="border-radius: 32px; background: #18181F; color: #fff; padding: clamp(36px, 6vw, 80px); text-align: center; background-image: radial-gradient(#2C2C38 1px, transparent 1px); background-size: 20px 20px;">
+<h2 id="cta-title" style="margin: 0 auto; max-width: 18ch; font-size: clamp(36px, 4.6vw, 64px); line-height: 1.02; letter-spacing: -0.04em; font-weight: 700;">Which process should <span class="mark mark-inv">run itself</span> first?</h2>
+<p style="margin: 18px auto 0; max-width: 50ch; color: #C9C8D2;">It starts with a free 30-minute call. We’ll look at your processes together and tell you honestly what is worth automating.</p>
+<div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
+<a href="B-Contact.dc.html" class="btn" style="background: #fff; color: #18181F; padding: 16px 24px; font-size: 17px;">Get a process analysis</a>
+<a href="mailto:ferbertigo@gmail.com" class="btn" style="color: #fff; border: 1px solid #4A4A57; padding: 16px 24px; font-size: 17px;">Write to us</a>
+</div>
+</div>
+</section>
+
+<nav aria-label="Design version" style="position: fixed; right: 16px; bottom: 16px; z-index: 30; display: flex; align-items: center; gap: 4px; padding: 4px; border-radius: 999px; background: #fff; border: 1px solid #E3E2DC; box-shadow: 0 10px 30px -12px rgba(24,24,31,0.35); font-size: 14px; font-weight: 600;">
+<span style="padding: 0 8px 0 12px; color: #5F5F68; font-weight: 500;">Design</span>
+<span aria-current="page" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; background: #18181F; color: #fff;">B · Light</span>
+<a href="D-Home.dc.html" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; text-decoration: none; color: #18181F;">D · Dark</a>
+</nav>
+
+<footer style="border-top: 1px solid #ECEBE5;">
+<div class="nav" style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; gap: 16px 28px; justify-content: space-between; font-size: 15px; color: #5F5F68;">
+<span>© 2026 Ferbert, Valencia, Spain</span>
+<span style="display: flex; flex-wrap: wrap; gap: 22px;"><a href="#">LinkedIn</a><a href="https://github.com/ferbert-dev">GitHub</a><a href="B-Legal.dc.html">Impressum</a><a href="B-Legal.dc.html">Privacy</a></span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":9200}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { q: 0, sc: -1, step: -1, answered: false, wf: 0, paused: false }; this.timers = []; }
+  componentDidMount() {
+    var self = this;
+    var reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { this.setState({ wf: 6, paused: true }); return; }
+    this.loop = setInterval(function () { if (!self.state.paused) { self.setState({ wf: (self.state.wf + 1) % 9 }); } }, 900);
+  }
+  componentWillUnmount() { clearInterval(this.loop); this.timers.forEach(function (t) { clearTimeout(t); }); }
+  ask(i) {
+    var self = this;
+    this.timers.forEach(function (t) { clearTimeout(t); });
+    this.timers = [];
+    this.setState({ sc: i, step: 0, answered: false });
+    for (var k = 1; k <= 6; k++) {
+      (function (k) {
+        self.timers.push(setTimeout(function () { self.setState(k === 6 ? { step: 6, answered: true } : { step: k }); }, k * 850));
+      })(k);
+    }
+  }
+  renderVals() {
+    var self = this;
+    var palette = [['#3B82F6', '#E3EEFF'], ['#8B5CF6', '#EFE9FF'], ['#B86E00', '#FFF1D6'], ['#E5484D', '#FFE4E4'], ['#1E8E57', '#D9F3E6']];
+    var nodeDefs = [
+      { kind: 'Trigger', title: 'New email with invoice', detail: 'Inbox: invoices@', icon: 'M2 4h14v10H2z M2 4l7 6 7-6' },
+      { kind: 'AI step', title: 'Read the invoice', detail: 'Supplier, totals, VAT, due date', icon: 'M9 2l1.8 4.2L15 8l-4.2 1.8L9 14l-1.8-4.2L3 8l4.2-1.8z' },
+      { kind: 'Knowledge', title: 'Match to order', detail: 'Finds the purchase order', icon: 'M8 3a5 5 0 100 10 5 5 0 000-10z M12 12l4 4' },
+      { kind: 'Check', title: 'Human review if unsure', detail: 'Only unclear cases', icon: 'M9 2a3.2 3.2 0 110 6.4A3.2 3.2 0 019 2z M3 16c.8-3 3.2-4.6 6-4.6s5.2 1.6 6 4.6' },
+      { kind: 'Action', title: 'Book in accounting', detail: 'Entered in your ERP', icon: 'M3 9.5l4 4 8-9' }
+    ];
+    var w = this.state.wf;
+    var nodes = nodeDefs.map(function (n, i) {
+      var done = w > i + 1 || w >= 6, active = w === i + 1;
+      n.color = palette[i][0]; n.halo = palette[i][1]; n.link = i < nodeDefs.length - 1;
+      n.border = done || active ? n.color : '#E3E2DC';
+      n.shadow = active ? '0 0 0 4px ' + n.halo + ', 0 10px 24px -12px rgba(24,24,31,.25)' : '0 1px 2px rgba(24,24,31,.04)';
+      n.checkBg = done ? '#2BB673' : '#EEEDE8';
+      n.lineColor = done ? n.color : '#E3E2DC';
+      return n;
+    });
+    var logDefs = [
+      { t: '09:41:02', msg: 'Invoice from Müller GmbH received' },
+      { t: '09:41:03', msg: 'Read: 1.284,50 EUR, VAT 19 %, due in 30 days' },
+      { t: '09:41:04', msg: 'Matched to purchase order PO-20817' },
+      { t: '09:41:04', msg: 'Confident match, no review needed' },
+      { t: '09:41:05', msg: 'Booked in accounting. Done in 3 seconds' }
+    ];
+    var logs = logDefs.filter(function (l, i) { return w > i + 1 || w >= 6; });
+    var tools = ['Gmail', 'Outlook', 'Google Drive', 'SharePoint', 'Slack', 'WhatsApp', 'Shopify', 'HubSpot', 'Zendesk', 'DATEV', 'SAP', 'Holded'];
+
+    var deliverables = [
+      { text: 'A map of your key processes: who does what, in which tools, how often', color: '#3B82F6', halo: '#E3EEFF' },
+      { text: 'Hours per week for each process, measured with your team', color: '#8B5CF6', halo: '#EFE9FF' },
+      { text: 'What AI can take over, ranked by savings and risk', color: '#B86E00', halo: '#FFF1D6' },
+      { text: 'A build plan with cost, timeline and expected payback', color: '#1E8E57', halo: '#D9F3E6' }
+    ];
+    var rows = [['Invoice intake', 38, 3, 'High'], ['Customer emails', 25, 8, 'High'], ['Order entry', 18, 4, 'High'], ['Monthly reporting', 12, 2, 'Medium'], ['Quotes', 10, 6, 'Low']];
+    var report = rows.map(function (r, i) {
+      var pot = { High: ['#D9F3E6', '#1E6B45'], Medium: ['#FFF1D6', '#8A5200'], Low: ['#EEEEEA', '#55555F'] }[r[3]];
+      return { name: r[0], before: Math.round(r[1] / 38 * 100), after: Math.max(3, Math.round(r[2] / 38 * 100)), beforeH: r[1], afterH: r[2], potential: r[3], pbg: pot[0], pfg: pot[1], delay: (0.2 + i * 0.12) + 's', delay2: (0.5 + i * 0.12) + 's' };
+    });
+
+    var stepDefs = [
+      { title: 'Message received', tag: 'Chat', icon: 'M3 4h12v8H8l-3 3v-3H3z' },
+      { title: 'Understand the question', tag: 'Language model', icon: 'M9 2l1.8 4.2L15 8l-4.2 1.8L9 14l-1.8-4.2L3 8l4.2-1.8z' },
+      { title: 'Search the help centre', tag: 'RAG', icon: 'M8 3a5 5 0 100 10 5 5 0 000-10z M12 12l4 4' },
+      { title: 'Look up the customer’s order', tag: 'Database', icon: 'M3 4.5C3 3.1 5.7 2 9 2s6 1.1 6 2.5S12.3 7 9 7 3 5.9 3 4.5z M3 4.5v9C3 14.9 5.7 16 9 16s6-1.1 6-2.5v-9 M3 9c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5' },
+      { title: 'Check the rules', tag: 'Guardrails', icon: 'M9 2l6 2.5v4.5c0 3.5-2.6 6-6 7-3.4-1-6-3.5-6-7V4.5z M6.5 9l2 2 3.5-3.5' },
+      { title: 'Write the answer', tag: 'Language model', icon: 'M3 15l1-4 8-8 3 3-8 8z M10.5 4.5l3 3' }
+    ];
+    var scenarios = [
+      { ask: 'Where is my order?', rag: [{ title: 'Delivery times', score: '0.91', text: 'Germany and Austria: 2–3 working days with DHL after dispatch.' }, { title: 'Tracking your parcel', score: '0.87', text: 'The tracking link is in your shipping email and in your account.' }], dbTable: 'orders · #48213', db: [['Status', 'Shipped'], ['Carrier', 'DHL 00340434 48213'], ['Shipped', '6 Oct 2026'], ['Estimated delivery', 'Thu 9 Oct']], details: ['“Where is my order?”', 'Intent: order status. Customer is logged in.', 'Found 2 articles: “Delivery times”, “Tracking your parcel”', 'Order #48213: shipped 6 Oct with DHL, arriving Thu 9 Oct', 'Order data may be shared with the logged-in customer', 'Answer written from 3 sources'], answer: 'Your order #48213 is on the way! It left our warehouse on 6 October with DHL and should arrive on Thursday, 9 October. Here is your tracking link: dhl.de/track/48213', sources: ['Order #48213', 'Tracking your parcel'] },
+      { ask: 'Can I return my shoes?', rag: [{ title: 'Returns policy', score: '0.93', text: 'Return within 30 days of delivery. Returns are free in Germany and Austria.' }, { title: 'Free return labels', score: '0.84', text: 'Labels can be created in chat or in your account after delivery.' }], dbTable: 'orders · #48213', db: [['Items', 'Trail runner, size 42'], ['Status', 'Shipped, not delivered'], ['Return window', 'Starts on delivery']], details: ['“Can I return my shoes?”', 'Intent: return request for order #48213.', 'Found: “Returns policy”, “Free return labels”', 'Order #48213 not delivered yet', 'No refund without the customer confirming', 'Answer written from 3 sources'], answer: 'Yes. You can return them free of charge within 30 days of delivery. Your order hasn’t arrived yet; once it has, I can create the return label for you right here.', sources: ['Returns policy', 'Order #48213'] },
+      { ask: 'I’d like to talk to a person', rag: [], dbTable: 'tickets · new', db: [['Ticket', 'T-1182'], ['Assigned to', 'Laura, support team'], ['Includes', 'Full chat history']], details: ['“I’d like to talk to a person”', 'Intent: human handover.', 'Not needed for this request', 'Ticket T-1182 created with the chat history', 'Support team online Mon–Fri, 9:00–18:00', 'Handover message written'], answer: 'Of course. I’ve passed our conversation to Laura from the support team, with everything you’ve told me. She’ll reply here in about 10 minutes.', sources: ['Ticket T-1182'] }
+    ];
+    var sc = this.state.sc, st = this.state.step, busy = st >= 0 && !this.state.answered;
+    var cur = sc >= 0 ? scenarios[sc] : null;
+    var steps = stepDefs.map(function (s, i) {
+      var done = cur && st > i, active = cur && st === i && !self.state.answered;
+      return {
+        title: s.title, tag: s.tag, icon: s.icon,
+        detail: done ? cur.details[i] : (active ? 'Working…' : ''),
+        tileBg: done ? '#ECEAFF' : (active ? '#5B4FF5' : '#fff'), tileFg: done ? '#5B4FF5' : (active ? '#fff' : '#6B6B74'), tileBorder: done || active ? '#5B4FF5' : '#E3E2DC',
+        ringCls: active ? 'step-active' : '', titleColor: done || active ? '#18181F' : '#5F5F68',
+        tagBg: done || active ? '#ECEAFF' : '#F0EFEA', tagFg: done || active ? '#4B3FE0' : '#5F5F68',
+        line: i < stepDefs.length - 1, lineColor: done ? '#8F86FF' : '#E3E2DC',
+        hasRag: !!(done && i === 2 && cur.rag.length), rag: cur ? cur.rag : [],
+        hasDb: !!(done && i === 3), db: cur ? cur.db.map(function (d) { return { k: d[0], v: d[1] }; }) : [], dbTable: cur ? cur.dbTable : ''
+      };
+    });
+    var asks = scenarios.map(function (s, i) { return { text: s.ask, pick: function () { if (!busy) { self.ask(i); } } }; });
+
+    var Q = [
+      { text: 'Can a customer cancel the annual plan early?', hits: [[0, 1], [1, 0]], answer: 'Yes. Annual plans can be cancelled with 30 days’ notice, and the unused months are refunded minus a 10 % fee.', sources: ['Terms 2025, §7.2', 'Pricing.pdf, p. 2'] },
+      { text: 'What warranty do we give on repairs?', hits: [[2, 0]], answer: 'Repairs carry a 12-month warranty on parts and labour, extended to 24 months for business customers on a service contract.', sources: ['Service handbook, 4.1'] },
+      { text: 'Who approves discounts above 15 %?', hits: [[2, 2], [0, 2]], answer: 'Discounts above 15 % need approval from the sales lead; above 25 % the managing director must sign off.', sources: ['Service handbook, 6.3', 'Terms 2025, §3.4'] }
+    ];
+    var docText = [
+      { name: 'Terms 2025.pdf', chunks: ['§3 Prices may be adjusted once per year…', '§7.2 Annual plans: 30 days’ notice, unused months refunded minus 10 %.', '§3.4 Discounts over 25 % require managing director approval.'] },
+      { name: 'Pricing.pdf', chunks: ['Annual plan refunds are calculated per full month.', 'Monthly plans renew automatically…', 'Volume pricing from 50 seats…'] },
+      { name: 'Service handbook.docx', chunks: ['4.1 Warranty: 12 months parts and labour; 24 months on service contracts.', '5.2 Response times by priority…', '6.3 Discounts above 15 % need sales lead approval.'] }
+    ];
+    var curQ = Q[this.state.q], hitSet = {};
+    curQ.hits.forEach(function (h) { hitSet[h[0] + '-' + h[1]] = true; });
+    var docs = docText.map(function (d, di) { return { name: d.name, chunks: d.chunks.map(function (c, ci) { var hit = !!hitSet[di + '-' + ci]; return { text: c, hit: hit, miss: !hit }; }) }; });
+    var questions = Q.map(function (q, i) { var on = i === self.state.q; return { text: q.text, pressed: on ? 'true' : 'false', border: on ? '#8F86FF' : '#ECEBE5', bg: on ? '#F4F2FF' : '#fff', pick: function () { self.setState({ q: i }); } }; });
+    var answers = Q.map(function (q, i) { return { on: i === self.state.q, text: q.answer, sources: q.sources }; });
+
+    var how = [
+      { n: '1', title: 'Free call', body: 'We learn how your team works and where time goes.', color: '#3B82F6', ink: '#2F6BD6' },
+      { n: '2', title: 'Process analysis', body: 'Each process measured in hours, with a clear list of what to automate.', color: '#8B5CF6', ink: '#6D45D9' },
+      { n: '3', title: 'Build', body: 'We build the first agents, test them on your real cases, and train your team.', color: '#E8930C', ink: '#8A5200' },
+      { n: '4', title: 'Run and improve', body: 'Monitoring, cost tracking and monthly improvements.', color: '#2BB673', ink: '#1E6B45' }
+    ];
+    var trust = [
+      { title: 'Your data stays in the EU', body: 'We build on EU-hosted infrastructure and EU-region AI models, and show you where each part runs.', icon: 'M10 2a8 8 0 100 16 8 8 0 000-16z M2 10h16 M10 2c2.2 2.4 3.2 5 3.2 8s-1 5.6-3.2 8c-2.2-2.4-3.2-5-3.2-8s1-5.6 3.2-8z', color: '#2F6BD6', halo: '#E3EEFF' },
+      { title: 'GDPR and a data processing agreement', body: 'We sign a data processing agreement before any personal data touches an agent.', icon: 'M5 2h7l4 4v12H5z M12 2v4h4 M8 11l2 2 3.5-3.5', color: '#6D45D9', halo: '#EFE9FF' },
+      { title: 'People approve what matters', body: 'Unclear or sensitive cases go to your team. Every agent action is logged and can be reviewed.', icon: 'M10 3a3.2 3.2 0 110 6.4A3.2 3.2 0 0110 3z M4 17c.8-3 3.2-4.6 6-4.6s5.2 1.6 6 4.6', color: '#8A5200', halo: '#FFF1D6' },
+      { title: 'You own everything', body: 'Code, prompts, data and accounts belong to you. No lock-in, and a clean handover if you take it in-house.', icon: 'M6 9V6a4 4 0 118 0v3 M4 9h12v9H4z M10 12.5v2', color: '#1E6B45', halo: '#D9F3E6' }
+    ];
+    var services = [
+      { n: '01', title: 'Process analysis', body: 'The best place to start. We find the processes worth automating, estimate cost and savings, and plan the agents step by step.', tags: ['Process map', 'Hours measured', 'Ranked by savings', 'Build plan'], href: '#analysis', linkText: 'See a sample report' },
+      { n: '02', title: 'Customer support agents', body: 'Chat and email agents that answer from your help centre and order data, and hand over to your team when they should.', tags: ['Chat and email', 'Help centre answers', 'Order lookup', 'Human handover'], href: '#demos', linkText: 'Watch the support agent' },
+      { n: '03', title: 'Documents and email', body: 'Invoices, orders, contracts and requests read, checked and entered into your systems.', tags: ['Invoices', 'Orders', 'Contracts', 'Human review'], href: '#workflow', linkText: 'See the invoice workflow' },
+      { n: '04', title: 'Company knowledge', body: 'An assistant that answers your team from handbooks, products and past cases, with sources.', tags: ['Handbooks', 'Product data', 'Past cases', 'Sources shown'], href: '#knowledge', linkText: 'Try the documents demo' },
+      { n: '05', title: 'Integrations and software', body: 'When off-the-shelf tools don’t fit: connectors, backends and data pipelines built properly.', tags: ['Connectors', 'Backends', 'Data pipelines'], href: '', linkText: '' }
+    ].map(function (s) { s.hasLink = !!s.href; return s; });
+    var cadence = [
+      { value: '30 min', label: 'Free first call' },
+      { value: '2–3 weeks', label: 'Process analysis' },
+      { value: '[N] weeks', label: 'First agent live' }
+    ].map(function (c, i, all) { c.sep = i < all.length - 1; return c; });
+    var offers = [
+      { when: 'Recommended first step', title: 'Process analysis', time: '2–3 weeks', line: 'Know what to automate before you pay for building.', items: ['A map of your key processes', 'Hours per week, measured with your team', 'What AI can take over, ranked by savings and risk', 'A build plan with cost, timeline and payback', 'The report is yours to keep'], price: '[PRICE]', unit: '', cta: 'Get a process analysis', dark: true },
+      { when: 'Best if you already know the process', title: 'Agent build', time: '[N] weeks', line: 'Your first agents, built, tested and handed over.', items: ['The agents your analysis ranks highest', 'Connected to the tools you already use', 'Tested on your real cases', 'Human review where the agent is unsure', 'Training for your team'], price: '[PRICE]', unit: '', cta: 'Plan a build', dark: false },
+      { when: 'Best if agents are already running', title: 'Run and improve', time: 'Monthly', line: 'We keep your agents healthy and make them better.', items: ['Monitoring and alerts', 'Cost tracking for each agent', 'Fixes when a tool or a model changes', 'Monthly improvements'], price: '[PRICE]', unit: 'per month', cta: 'Discuss ongoing support', dark: false }
+    ].map(function (o) {
+      var d = o.dark, check = d ? '#7BE0B0' : '#1E8E57';
+      o.bg = d ? '#18181F' : '#fff'; o.fg = d ? '#fff' : '#18181F'; o.border = d ? '#18181F' : '#E3E2DC';
+      o.muted = d ? '#B9B8C2' : '#5F5F68'; o.sub = d ? '#C9C8D2' : '#55555F';
+      o.pillBg = d ? '#2D2D38' : '#F0EFEA'; o.pillFg = d ? '#fff' : '#3A3A44';
+      o.rule = d ? '#34343F' : '#ECEBE5'; o.btnBorder = d ? '#fff' : '#D9D7CF';
+      o.items = o.items.map(function (t) { return { t: t, c: check }; });
+      return o;
+    });
+    return {
+      trust: trust, services: services, cadence: cadence, offers: offers,
+      paused: this.state.paused, running: !this.state.paused, pausedStr: this.state.paused ? 'true' : 'false',
+      pauseLabel: this.state.paused ? 'Play' : 'Pause',
+      togglePause: function () { self.setState({ paused: !self.state.paused }); },
+      wfStatus: w >= 6 ? 'done, waiting for the next email' : (w === 0 ? 'new email arriving' : 'running'),
+      wfDot: w >= 6 ? '#2BB673' : '#5B4FF5', wfHalo: w >= 6 ? '#D9F3E6' : '#ECEAFF',
+      nodes: nodes, logs: logs, tools: tools, deliverables: deliverables, report: report,
+      steps: steps, asks: asks, busy: busy,
+      timer: cur ? (this.state.answered ? 'Answered in 5.1 s' : (st * 0.85).toFixed(1) + ' s') : 'Waiting for a question',
+      hasQuestion: !!cur, question: cur ? cur.ask : '', thinking: busy, answered: this.state.answered,
+      answer: cur ? cur.answer : '', sources: cur ? cur.sources : [],
+      questions: questions, docs: docs, answers: answers, how: how
+    };
+  }
+}
+</script>
+</body>
+</html>

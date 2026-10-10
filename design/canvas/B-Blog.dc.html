@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ferbert — Blog</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FAFAF8}
+a{color:#4B3FE0}
+::selection{background:#5B4FF5;color:#fff}
+:focus-visible{outline:2px solid #5B4FF5;outline-offset:3px}
+.nav a{color:#3A3A44;text-decoration:none}.nav a:hover{color:#18181F}
+.post{display:flex;flex-direction:column;gap:12px;text-decoration:none;color:#18181F}
+.post:hover h2{color:#4B3FE0}
+.tab{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid #E3E2DC;background:#fff;font:inherit;font-size:15px;cursor:pointer;color:#3A3A44}
+</style>
+</helmet>
+<div style="background: #FAFAF8; color: #18181F; font-family: 'Onest', system-ui, sans-serif; font-size: 18px; line-height: 1.55; min-height: 100vh;">
+<header style="border-bottom: 1px solid #ECEBE5;">
+<nav class="nav" aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+<a href="B-Home.dc.html" style="display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; letter-spacing: -0.03em; color: #18181F;">
+<svg width="26" height="26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="7" fill="#18181F"></rect><circle cx="9" cy="13" r="3" fill="#7BE0B0"></circle><circle cx="17" cy="9" r="2.4" fill="#FFC44D"></circle><circle cx="17" cy="17" r="2.4" fill="#8F86FF"></circle><path d="M11.5 12L15 9.6M11.5 14L15 16.4" stroke="#fff" stroke-width="1.3"></path></svg>ferbert</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 16px; font-weight: 500;">
+<a href="B-Home.dc.html">Demos</a><a href="B-Home.dc.html">What we automate</a><a href="B-Home.dc.html">How it works</a><a href="B-Blog.dc.html" aria-current="page" style="color: #18181F; font-weight: 600;">Blog</a><a href="B-Home.dc.html">Company</a>
+<a href="B-Contact.dc.html" style="padding: 11px 18px; border-radius: 12px; background: #18181F; color: #fff; font-weight: 600; font-size: 15px;">Book a free call</a>
+</div>
+</nav>
+</header>
+<main style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 100px;">
+<h1 style="margin: 0; font-size: clamp(42px, 5vw, 68px); line-height: 1.0; letter-spacing: -0.04em; font-weight: 700;">Blog</h1>
+<p style="margin: 16px 0 32px; max-width: 52ch; color: #55555F; font-size: 19px;">What we learn building agents for real companies: voice, RAG, automation, and the engineering that keeps it running.</p>
+<div role="group" aria-label="Filter by topic" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px;">
+<button type="button" class="tab" aria-pressed="true" style="background: #18181F; color: #fff; border-color: #18181F;">All</button><button type="button" class="tab" aria-pressed="false">Voice agents</button><button type="button" class="tab" aria-pressed="false">RAG</button><button type="button" class="tab" aria-pressed="false">Automation</button><button type="button" class="tab" aria-pressed="false">Engineering</button>
+</div>
+<a href="#" class="post" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 32px; align-items: center; margin-bottom: 56px;">
+<div style="aspect-ratio: 16 / 10; border-radius: 24px; background-color: #EFEDFF; background-image: radial-gradient(#D7D2FF 1px, transparent 1px); background-size: 18px 18px; display: grid; place-items: center; color: #5B4FF5; font-size: 15px;">[COVER IMAGE]</div>
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<span style="font-size: 14px; color: #6B6B74;">[DATE] · Voice agents · 8 min</span>
+<h2 style="margin: 0; font-size: clamp(30px, 3vw, 42px); line-height: 1.1; letter-spacing: -0.035em; font-weight: 700;">[POST TITLE: e.g. What we learned testing voice models on real phone calls]</h2>
+<p style="margin: 0; color: #55555F;">[TWO-SENTENCE SUMMARY OF THE POST]</p>
+</div>
+</a>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 40px 28px;">
+<sc-for list="{{posts}}" as="p" hint-placeholder-count="3">
+<a href="#" class="post">
+<div style="aspect-ratio: 16 / 10; border-radius: 18px; background: {{p.bg}}; display: grid; place-items: center; color: {{p.fg}}; font-size: 14px;">[COVER IMAGE]</div>
+<span style="font-size: 14px; color: #6B6B74;">[DATE] · {{p.tag}}</span>
+<h2 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.02em; font-weight: 600;">{{p.title}}</h2>
+</a>
+</sc-for>
+</div>
+</main>
+<footer style="border-top: 1px solid #ECEBE5;">
+<div class="nav" style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; gap: 16px 28px; justify-content: space-between; font-size: 15px; color: #6B6B74;">
+<span>© 2026 Ferbert, Valencia, Spain</span>
+<span style="display: flex; flex-wrap: wrap; gap: 22px;"><a href="B-Legal.dc.html">Impressum</a><a href="B-Legal.dc.html">Privacy</a></span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { posts: [
+      { tag: 'RAG', title: '[POST TITLE: e.g. Keeping RAG answers correct as your documents change]', bg: '#D9F3E6', fg: '#1E8E57' },
+      { tag: 'Automation', title: '[POST TITLE: e.g. What a process analysis found in one week of invoices]', bg: '#FFF1D6', fg: '#A0640A' },
+      { tag: 'Engineering', title: '[POST TITLE: e.g. Retries, idempotency and why demos break in production]', bg: '#E3EEFF', fg: '#2F6BD6' }
+    ] };
+  }
+}
+</script>
+</body>
+</html>
