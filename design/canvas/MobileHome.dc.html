@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ferbert — Mobile home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Barlow+Semi+Condensed:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.btn-red{background:#C2321C;color:#fff;text-decoration:none}
+@keyframes wipe{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+.wipe{animation:wipe 1s cubic-bezier(.16,1,.3,1) both}
+.d2{animation-delay:.9s}
+@media (prefers-reduced-motion: reduce){.wipe{animation:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; background: #F6F7F5; color: #15181C; font-family: 'Barlow', sans-serif; font-size: 17px; line-height: 1.5; display: flex; flex-direction: column;">
+<header style="display: flex; align-items: stretch; justify-content: space-between; border-bottom: 2px solid #15181C;">
+<span style="display: flex; align-items: center; gap: 10px; padding: 10px 16px; font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 600; font-size: 19px;"><svg width="24" height="24" fill="none" stroke="#15181C" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20"></rect><path d="M2 15h20M15 15v7" stroke="#C2321C"></path><circle cx="8.5" cy="8.5" r="3.4"></circle></svg>Ferbert</span>
+<button type="button" aria-label="Open menu" style="width: 56px; border: 0; border-left: 1px solid #15181C; background: transparent; display: grid; place-items: center;"><svg width="22" height="22" fill="none" stroke="#15181C" stroke-width="1.8"><path d="M3 6h16M3 11h16M3 16h16"></path></svg></button>
+</header>
+<div style="padding: 24px 16px 0; display: flex; flex-direction: column; gap: 12px;">
+<h1 style="margin: 0; font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 600; font-size: 44px; line-height: 0.98; letter-spacing: -0.025em;">Your process, redrawn with AI.</h1>
+<p style="margin: 0; color: #2E333A;">We find the work AI can do cheaper, measure it in hours, and build the agents that take it over.</p>
+</div>
+<figure aria-label="Invoice intake: 38 hours per week by hand, 3 hours per week with an agent" style="margin: 18px 16px 0; border: 2px solid #15181C; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); font-family: 'Barlow Semi Condensed', sans-serif; font-size: 14px; background-color: #F6F7F5; background-image: linear-gradient(#E6EAEC 1px, transparent 1px), linear-gradient(90deg, #E6EAEC 1px, transparent 1px); background-size: 24px 24px;">
+<div class="wipe" style="padding: 10px; border-right: 1px solid #15181C; display: flex; flex-direction: column; gap: 6px;">
+<div style="font-weight: 600;">View A, by hand</div>
+<div style="display: flex; justify-content: space-between; border: 1.5px solid #15181C; padding: 4px 6px; background: #F6F7F5;"><span>Read invoice</span><span>7 h</span></div>
+<div style="display: flex; justify-content: space-between; border: 1.5px solid #15181C; padding: 4px 6px; background: #F6F7F5;"><span>Type in</span><span>11 h</span></div>
+<div style="display: flex; justify-content: space-between; border: 1.5px solid #15181C; padding: 4px 6px; background: #F6F7F5;"><span>Match order</span><span>9 h</span></div>
+<div style="display: flex; justify-content: space-between; border: 1.5px solid #15181C; padding: 4px 6px; background: #F6F7F5;"><span>Check VAT</span><span>6 h</span></div>
+<div style="display: flex; justify-content: space-between; border: 1.5px solid #15181C; padding: 4px 6px; background: #F6F7F5;"><span>Book in ERP</span><span>5 h</span></div>
+<div style="border-top: 1px solid #15181C; padding-top: 4px; font-weight: 700; font-size: 16px;">38 h / week</div>
+</div>
+<div class="wipe d2" style="padding: 10px; display: flex; flex-direction: column; gap: 6px; color: #C2321C;">
+<div style="font-weight: 600;">View B, with AI</div>
+<div style="flex: 1; display: grid; place-items: center; border: 1.5px solid #C2321C; background-color: #F6F7F5; background-image: repeating-linear-gradient(135deg, transparent 0 7px, rgba(194,50,28,0.28) 7px 8px); text-align: center;"><span style="background: #F6F7F5; padding: 2px 6px; font-weight: 700; font-size: 16px;">Agent<br><span style="font-weight: 500; font-size: 13px; color: #15181C;">0 h staff time</span></span></div>
+<div style="display: flex; justify-content: space-between; border: 1.5px solid #15181C; padding: 4px 6px; background: #F6F7F5; color: #15181C;"><span>Review</span><span>2.5 h</span></div>
+<div style="display: flex; justify-content: space-between; border: 1.5px solid #15181C; padding: 4px 6px; background: #F6F7F5; color: #15181C;"><span>ERP, auto</span><span>0.5 h</span></div>
+<div style="border-top: 1px solid #C2321C; padding-top: 4px; font-weight: 700; font-size: 16px;">3 h / week</div>
+</div>
+</figure>
+<p style="margin: 6px 16px 0; font-family: 'Barlow Semi Condensed', sans-serif; font-size: 12px; color: #4A5058;">Illustrative example.</p>
+<form style="margin: 16px 16px 0; border: 2px solid #15181C; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+<label for="m-task" style="font-weight: 600;">Which task eats your team’s week?</label>
+<input id="m-task" type="text" placeholder="e.g. copying orders into our ERP" style="min-height: 44px; padding: 0 10px; border: 1px solid #15181C; background: #fff; font: inherit; border-radius: 0;">
+<a href="Contact.dc.html" class="btn-red" style="min-height: 48px; display: grid; place-items: center; font-family: 'Barlow Semi Condensed', sans-serif; font-size: 18px; font-weight: 600;">Map my process</a>
+</form>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

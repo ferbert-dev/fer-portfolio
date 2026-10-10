@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ferbert — Mobile home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+@keyframes nodeOn{0%,2%{border-color:#E3E2DC}6%,88%{border-color:var(--c);box-shadow:0 0 0 3px var(--halo)}96%,100%{border-color:#E3E2DC}}
+@keyframes checkOn{0%,4%{opacity:0}8%,88%{opacity:1}96%,100%{opacity:0}}
+.node{animation:nodeOn 9s cubic-bezier(.16,1,.3,1) infinite}
+.check{opacity:0;animation:checkOn 9s ease-out infinite}
+@media (prefers-reduced-motion: reduce){.node,.check{animation:none!important}.check{opacity:1}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; background: #FAFAF8; color: #18181F; font-family: 'Onest', sans-serif; font-size: 17px; line-height: 1.5;">
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #ECEBE5;">
+<span style="display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 21px; letter-spacing: -0.03em;"><svg width="24" height="24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#18181F"></rect><circle cx="8.3" cy="12" r="2.8" fill="#7BE0B0"></circle><circle cx="15.6" cy="8.3" r="2.2" fill="#FFC44D"></circle><circle cx="15.6" cy="15.7" r="2.2" fill="#8F86FF"></circle></svg>ferbert</span>
+<button type="button" aria-label="Open menu" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid #E3E2DC; background: #fff; display: grid; place-items: center;"><svg width="20" height="20" fill="none" stroke="#18181F" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14"></path></svg></button>
+</header>
+<div style="padding: 32px 16px 0; text-align: center;">
+<h1 style="margin: 0; font-size: 42px; line-height: 1.02; letter-spacing: -0.04em; font-weight: 700;">Find the work AI should do. Then let agents do it.</h1>
+<p style="margin: 14px 0 0; color: #55555F; font-size: 17px;">We analyse your processes, show what AI can take over, then build the agents.</p>
+<div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+<a href="B-Contact.dc.html" style="min-height: 52px; display: grid; place-items: center; border-radius: 12px; background: #18181F; color: #fff; font-weight: 600; text-decoration: none;">Get a process analysis</a>
+</div>
+</div>
+<div style="margin: 24px 16px 0; padding: 14px; border-radius: 20px; border: 1px solid #E3E2DC; background-color: #fff; background-image: radial-gradient(#E4E3DD 1px, transparent 1px); background-size: 16px 16px; display: flex; flex-direction: column; gap: 8px;">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2BB673;"></span>Invoice intake <span style="font-weight: 400; color: #6B6B74;">running</span></div>
+<sc-for list="{{nodes}}" as="n" hint-placeholder-count="4">
+<div class="node" style="--c: {{n.color}}; --halo: {{n.halo}}; animation-delay: {{n.delay}}; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; border: 1.5px solid #E3E2DC; background: #fff;">
+<span style="width: 10px; height: 10px; border-radius: 3px; background: {{n.color}};"></span>
+<span style="flex: 1; font-size: 15px; font-weight: 500;">{{n.title}}</span>
+<span class="check" style="animation-delay: {{n.delay}}; width: 18px; height: 18px; border-radius: 50%; background: #2BB673; display: grid; place-items: center;"><svg width="10" height="10" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M2 5.5l2 2L8.2 3"></path></svg></span>
+</div>
+</sc-for>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var defs = [['New email with invoice', '#3B82F6', '#E3EEFF'], ['Read the invoice', '#8B5CF6', '#EFE9FF'], ['Match to order', '#E8930C', '#FFF1D6'], ['Book in accounting', '#2BB673', '#D9F3E6']];
+    return { nodes: defs.map(function (d, i) { return { title: d[0], color: d[1], halo: d[2], delay: (i * 1.5) + 's' }; }) };
+  }
+}
+</script>
+</body>
+</html>
