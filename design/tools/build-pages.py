@@ -12,7 +12,7 @@ canvas = Path(sys.argv[1])
 home = (canvas / 'D-Home.dc.html').read_text()
 
 # Token block (dark default, light, auto) straight from the home page.
-tokens = '\n'.join(l for l in home.splitlines() if (l.startswith('.d{--') and '--bg:' in l) or l.startswith('.d.t-light') or l.startswith('@media (prefers-color-scheme: light){.d.t-auto'))
+tokens = '\n'.join(l for l in home.splitlines() if (l.startswith('.d{--') and '--bg:' in l) or l.startswith('.d.t-light{') or l.startswith('@media (prefers-color-scheme: light){.d.t-auto{'))
 assert tokens.count('--bg') == 3, 'token block not found'
 
 BASE = r"""
@@ -72,7 +72,7 @@ def header(current):
         f'<a class="navl" href="{h}"{" aria-current=\"page\"" if n == current else ""}>{n}</a>' for n, h in NAV)
     menu_links = ''.join(
         f'<a class="navl" href="{h}" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: \'Geist\', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;"{" aria-current=\"page\"" if n == current else ""}>{n}<span class="lnk-t">{ARROW}</span></a>'
-        for n, h in NAV + [('Contact', 'D-Contact.dc.html')]) + '<div class="mono" style="display: flex; gap: 14px; padding-top: 18px;"><a href="#" aria-current="page" style="color: var(--tx); text-decoration: none;">English</a><a href="#" lang="de" style="color: var(--sub); text-decoration: none;">Deutsch</a></div>'
+        for n, h in NAV + [('Contact', 'D-Contact.dc.html')]) + '<div class="mono" style="display: flex; gap: 14px; padding-top: 18px;"><a href="#" aria-current="page" style="color: var(--tx); text-decoration: none;">English</a><a href="#" lang="de" style="color: var(--sub); text-decoration: none;">Deutsch</a></div>' + '<a href="D-Contact.dc.html" class="btn" style="margin-top: 20px;"><span class="btn-l">Get a process analysis</span><span class="btn-t">' + ARROW + '</span></a>'
     contact_cur = ' aria-current="page"' if current == 'Contact' else ''
     return f'''<header style="position: sticky; top: 0; z-index: 20; background: var(--hdr); backdrop-filter: blur(14px); border-bottom: 1px solid var(--p3);">
 <nav class="wrap mono" aria-label="Main" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 56px; color: var(--tx);">
