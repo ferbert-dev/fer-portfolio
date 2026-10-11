@@ -8,7 +8,7 @@ The site is in the design phase. No production code is approved yet.
 |---|---|
 | [decisions.md](decisions.md) | Every decision the owner has made, with the date and what it changes |
 | [company-data.md](company-data.md) | Facts about Ferbert that the site may state, and facts it must not state |
-| [design-directions.md](design-directions.md) | The two home designs (B light, D dark), their sections, and how to compare them |
+| [design-directions.md](design-directions.md) | The design: pages, light and dark themes, sections |
 | [design-system.md](design-system.md) | Colours, type, shapes, components and motion values of both designs |
 | [pricing.md](pricing.md) | The pricing model and how each design presents it |
 | [open-data.md](open-data.md) | Every value the owner still has to supply, page by page |

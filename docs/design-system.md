@@ -1,70 +1,24 @@
 # Design system: values in use
 
-The concrete values in the two home designs, read from `design/canvas/B-Home.dc.html` and `design/canvas/D-Home.dc.html`. Use this when building the site so the code matches the designs. Last updated 2026-10-10.
+The concrete values in the design, read from `design/canvas/D-Home.dc.html`. Use this when building the site so the code matches the design. Last updated 2026-10-11.
 
-Neither direction is approved yet. Treat this as a record of what is drawn, not as a final system.
+The owner approved one design with light and dark themes (see [design-directions.md](design-directions.md)). The tokens in the `<style>` block of `D-Home.dc.html` are the source of truth; the tables below summarise them.
 
 ## Shared rules
 
 - Page container: content sits in a centred column with 24 px side padding.
-- One accent colour per direction. It marks what is active, done, or selected.
+- One accent colour (lime). It marks what is active, done, or selected.
 - One marked word per headline at most.
 - Touch targets should be at least 44 px. Several are smaller today; see [critique.md](critique.md).
 - Text contrast target: 4.5:1 for body text, 3:1 for large text.
 - Every animation has a reduced-motion fallback.
 - Demos are labelled "Demo" and use fictional companies.
 
-## Direction B: light
+## Colour
 
-### Colour
-| Role | Value |
-|---|---|
-| Page background | `#FAFAF8` |
-| Surface (cards, panels) | `#FFFFFF` |
-| Ink (text, dark buttons, dark panels) | `#18181F` |
-| Body text, secondary | `#55555F` |
-| Small text, muted | `#5F5F68`, `#6B6B74` |
-| Hairline borders | `#E3E2DC`, `#ECEBE5` |
-| Accent (iris) | `#5B4FF5` |
-| Accent text on white | `#4B3FE0` |
-| Accent tint (marker, active chips) | `#ECEAFF` |
-| Success | `#2BB673` fill, `#1E6B45` text |
+Dark is the default; light values apply with the Light theme, or with Auto when the system is light.
 
-Workflow step palette, used only for workflow nodes and step lists (colour, tint):
-blue `#3B82F6` / `#E3EEFF`, violet `#8B5CF6` / `#EFE9FF`, amber `#B86E00` / `#FFF1D6`, red `#E5484D` / `#FFE4E4`, green `#1E8E57` / `#D9F3E6`.
-
-### Type
-| Use | Value |
-|---|---|
-| Family | Onest, weights 400–800 |
-| Base | 18 px, line-height 1.55 |
-| Hero headline | `clamp(46px, 6.2vw, 84px)`, weight 700, line-height 1.0, letter-spacing −0.04em |
-| Section headline | `clamp(36px, 4vw, 56px)`, weight 700, line-height 1.04, letter-spacing −0.04em |
-| Second-level section headline | `clamp(32px, 3.4–3.6vw, 46–48px)`, letter-spacing −0.035em |
-| Card title | 24–28 px, letter-spacing −0.03em |
-| Small labels | 13–14 px, weight 600 |
-
-### Shape and depth
-- Container width 1200 px.
-- Radius: 12 px buttons, 16 px nodes and small cards, 20–28 px panels, 32 px closing panel, 999 px pills.
-- Borders: 1 px hairline; 1.5 px on interactive nodes and chips.
-- Shadow only on live panels: `0 30px 80px -40px rgba(24,24,31,0.25)`.
-- Workspace panels carry a dot grid: 1 px dots every 20 px.
-- Section spacing: 100–120 px above each section.
-
-### Buttons
-- Primary: ink background, white text, 12 px radius, lifts 1 px at hover.
-- Secondary: white background, hairline border.
-
-### Motion
-- Easing: `cubic-bezier(.16, 1, .3, 1)`.
-- Invoice workflow: one step every 900 ms, nine steps per loop, pause button.
-- Agent demo: one step every 850 ms.
-- Chat bubbles rise 8 px while fading in over 450 ms.
-
-## Direction D: dark
-
-### Colour
+### Dark
 | Role | Value |
 |---|---|
 | Page background | `#050505` |
@@ -82,7 +36,25 @@ blue `#3B82F6` / `#E3EEFF`, violet `#8B5CF6` / `#EFE9FF`, amber `#B86E00` / `#FF
 | Accent border on dark | `#5E8A32` |
 | "Medium" level in the report | `#F2CB5C` |
 
-The step palette of B is not used. Active and done states are lime.
+Active and done states use the accent.
+
+### Light
+| Role | Value |
+|---|---|
+| Page background | `#FAFAF8` |
+| Framed panels | `#F1F0EB` |
+| Panel, raised surfaces | `#FFFFFF`, `#F6F5F1`, `#EEEDE8` |
+| Text | `#111113` |
+| Secondary / muted text | `#55555F` / `#6B6B74` |
+| Hairlines / stronger borders | `#E3E2DC` / `#C9C7BF` |
+| Accent fill (marker, tiles, marquee) | `#B8F47A`, with `#050505` text |
+| Accent as text or thin line | `#3B7A0E` (lime fails contrast on light) |
+| Accent tint / border | `#E7F8D2` / `#93CE58` |
+| "Medium" level | `#8A5200` |
+| Card shadow | `0 1px 2px rgba(17,17,19,.05), 0 14px 34px -22px rgba(17,17,19,.22)` |
+| Panel shadow | `0 1px 2px rgba(17,17,19,.04), 0 34px 80px -46px rgba(17,17,19,.34)` |
+| Dark button shadow | `0 1px 0 rgba(255,255,255,.15) inset, 0 6px 18px -8px rgba(17,17,19,.45)` |
+
 
 ### Type
 | Use | Value |
@@ -100,7 +72,7 @@ Headlines are weight 400. Emphasis comes from size and the marker, not from bold
 ### Shape and depth
 - Container width 1392 px. Framed panels run almost edge to edge with 12 px outside.
 - Radius: 10 px buttons and tiles, 14 px inner cards and FAQ items, 20 px panels, 28 px framed panels, 999 px pills.
-- No shadows and no coloured glows. Depth comes from borders and slightly lighter surfaces.
+- Dark theme: no shadows; depth comes from borders and slightly lighter surfaces. Light theme: the soft shadows listed above.
 - Hero and closing panel: dot grid (1 px every 22 px), a soft radial highlight, and a grain overlay at 16 % opacity.
 - Section spacing: `clamp(84px, 10vw, 150px)` above each section.
 - Each section starts with a mono label, a 6 px lime square before it and a hairline under it.
@@ -109,7 +81,8 @@ Headlines are weight 400. Emphasis comes from size and the marker, not from bold
 - Primary button: two parts, 4 px apart. A white label block (46 px high, 10 px radius, 14 px text) and a lime square tile with an arrow drawn from small squares.
 - Hover: the label block fills from white to lime over 550 ms; the tile moves 3 px right; the label text scrambles.
 - Text link: mono label followed by a 26 px round tile that turns lime at hover.
-- Header: mono links; "Contact us" is an outlined pill.
+- Secondary button: outlined block, 46 px high, panel background.
+- Header: mono links, theme switch, EN / DE, "Get a process analysis" as a filled pill.
 
 ### Marker
 The marked word has a lime background and dark text. It wipes in from the left over 800 ms when its block enters view.
@@ -122,20 +95,20 @@ The marked word has a lime background and dark text. It wipes in from the left o
 | Section reveal | From 22 px lower, blurred 10 px, transparent; 900 ms |
 | Text scramble | 750 ms on entering view, 420 ms at hover |
 | Marquee | One loop in 36 s; pauses at hover |
-| Workflow and agent demo | Same timing as B |
+| Workflow | One step every 900 ms, nine steps per loop |
+| Agent demo | One step every 850 ms |
 
 Under reduced-motion settings: no loader, no reveal, no scramble, marquee static, workflow shown in its finished state.
 
-### Breakpoints in D
+### Breakpoints
 | Width | Change |
 |---|---|
 | up to 960 px | Agent demo stacks: chat first with fixed height 600 px, steps below |
-| up to 900 px | Header links, hero rail and decorative step tiles hidden; workflow nodes and steps in one column |
+| up to 900 px | Header links and EN / DE replaced by the Menu button; hero rail and decorative step tiles hidden; workflow nodes and steps in one column |
 | up to 520 px | Chat height 680 px; workflow log reserves 210 px |
 
-B has no explicit breakpoints; it relies on wrapping.
 
-## Components both directions share
+## Components
 
 | Component | Notes |
 |---|---|

@@ -38,6 +38,12 @@ In direction D the chat column shifted down while the agent's steps unfolded. Th
 ### 9. Approved additions from the reference study
 The owner approved six elements taken as structure from the reference site: FAQ, three ways to start, a case layout for the news agent (since removed with decision 1), numbered service rows, a cadence line, and a marker highlight on one headline word. Price placeholders were to be kept.
 
+### 10. One design with light and dark themes
+2026-10-10: instead of choosing between B and D, the owner asked for one design with an Auto / Light / Dark switch, based on D. Contact, blog, legal and a phone view were drawn in it.
+
+### 11. B's details carried over, B removed
+2026-10-11: the owner asked to bring B's strengths into the themed design: "What we automate" in B's row layout, two hero buttons, the EN / DE switch, soft shadows in light mode, and the highlighted first pricing card. A phone menu was added. The B artboards were deleted from the canvas and the repo (recoverable from commit `031451a`).
+
 ## Carried over from earlier sessions
 
 - Brand name is "Ferbert". The site speaks as "we", as a small company, not as a one-person freelancer.
@@ -48,9 +54,7 @@ The owner approved six elements taken as structure from the reference site: FAQ,
 
 ## Open, waiting on the owner
 
-1. Which direction continues: B, D, or a mix.
-2. Whether to fix the open critique items in D. The follow-up questions were dismissed, so nothing was fixed. See [critique.md](critique.md).
-3. Whether B gets the same pricing model as D. B still shows three `[PRICE]` placeholders.
-4. Whether to add a confidentiality statement to the site, for example: "Your project stays confidential. We never name clients or show their automations without permission." It would explain why the site has no client list.
-5. Whether the Telegram messenger entry stays on the contact page. It is a contact channel, not the news agent project.
-6. The values in [open-data.md](open-data.md).
+1. Whether to fix the open critique items in D. The follow-up questions were dismissed, so nothing was fixed. See [critique.md](critique.md).
+2. Whether to add a confidentiality statement to the site, for example: "Your project stays confidential. We never name clients or show their automations without permission." It would explain why the site has no client list.
+3. Whether the Telegram messenger entry stays on the contact page. It is a contact channel, not the news agent project.
+4. The values in [open-data.md](open-data.md).

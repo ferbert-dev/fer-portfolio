@@ -1,70 +1,67 @@
-# Design directions
+# Design
 
-Two home page designs exist. The owner has not chosen between them. Last updated 2026-10-10.
+One design with a light and a dark theme. Last updated 2026-10-11.
 
 - Canvas: https://claude.ai/artifact/Y6TFjZsTwU942rENtGrqqi
 - Files: `design/canvas/`
+- Shared page shell (tokens, header, footer, theme switch) for the subpages: `design/tools/build-pages.py`. Run `python3 ../tools/build-pages.py .` from `design/canvas/` after changing the home's tokens or the shell.
 
-## How to compare them
+## History
 
-Both home pages carry a small pill at the bottom right: "Design · B · Light | D · Dark". In Play mode on the canvas it jumps between the two artboards. The pill is a review aid and must be removed before release.
+Two directions were drawn: B, light "Workflow" (Onest, iris accent, after relay.app), and D, dark studio (Geist, lime accent, after tbdstudio.framer.ai). On 2026-10-10 the owner chose one design with light and dark themes, based on D. On 2026-10-11 the owner asked to carry B's details into it and to remove the B artboards. B is recoverable from git commit `031451a`.
 
-## Direction B: light "Workflow"
+## Artboards
 
-File: `B-Home.dc.html`. Also designed in B: `B-Contact`, `B-Blog`, `B-Legal`, `B-Mobile` (the mobile artboard is out of date and lacks the newer sections).
+| File | Page |
+|---|---|
+| `D-Home.dc.html` | Home |
+| `D-Contact.dc.html` | Contact: booking card, channels, form with topic chips and a sent state |
+| `D-Blog.dc.html` | Blog: topic filter (All, RAG, Automation, Engineering), featured post, three cards |
+| `D-Legal.dc.html` | Impressum and privacy, with a table of contents |
+| `D-Mobile.dc.html` | Home's first screen at 390 px, with the phone menu |
 
-**Look.** Warm off-white canvas (#FAFAF8), dark ink (#18181F), one iris accent (#5B4FF5), a five-colour step palette used only for workflow nodes. Onest throughout. Rounded 16–28 px surfaces, hairline borders, dot-grid panels. Owner's original reference: relay.app.
+## Themes
 
-**Sections, in order**
-1. Hero: "Find the work AI should do. Then let agents do it." with a marker on "agents".
-2. Live invoice workflow: five nodes, run log, pause button.
-3. Tools: twelve example tools as chips.
+- The header switch offers Auto (follows the system setting), Light and Dark. Up to 900 px it is one button that cycles through the three.
+- The choice is stored in `localStorage` under `ferbert-theme` and shared by all pages.
+- Every colour is a CSS custom property on `.d`. `.d.t-light`, and `.d.t-auto` under `prefers-color-scheme: light`, carry the light values.
+- Light mode has soft shadows on cards, panels and buttons. Dark mode stays flat.
+- `.flip` shows an element in the opposite theme. Used for the recommended pricing card.
+
+## Home sections, in order
+
+1. Hero: "Find the work AI should do. Then let agents do it." Two buttons: "Get a process analysis" and "Watch an agent think".
+2. Tools as a lime marquee band.
+3. "An invoice, handled end to end": live workflow with run log and pause.
 4. Process analysis: deliverables and a sample report.
-5. "Watch a support agent think": agent steps on the left, chat on the right.
-6. "Your team can ask the company's documents too": question picker, passages, answer.
-7. "What we automate": five numbered rows with tags and links to the matching demo.
+5. "Watch a support agent think": agent steps and chat.
+6. "Your team can ask the company's documents too".
+7. "What we automate": five rows, each with number, title, sentence, tags and a link to the matching demo (layout from B).
 8. "Built for European data rules": four commitments.
-9. "From first call to running agent": cadence band and four steps.
-10. "Three ways to start": three cards with price placeholders.
+9. "From first call to running agent": cadence line "30 min / 2–3 weeks / [N] weeks." and four steps.
+10. "Three ways to start": three offers; the first, Process analysis, is shown in the opposite theme with a "Recommended" badge. Then "How pricing works". See [pricing.md](pricing.md).
 11. Company.
-12. FAQ: six questions.
+12. FAQ.
 13. Closing panel: "Which process should run itself first?"
 
-**Status.** The owner likes it and said not to change it. See decision 4 in [decisions.md](decisions.md).
+## Header
 
-## Direction D: dark studio
+Logo, links (Analysis, Demos, What we automate, Pricing, FAQ; Blog on subpages), theme switch, EN / DE switch (DE is a placeholder until the German version exists), "Get a process analysis" button. Up to 900 px: logo, theme button and a Menu button that opens a full-width panel with the links, the language choice and the main button.
 
-File: `D-Home.dc.html`. Home only. Its links to contact, blog and legal point to the B pages.
+## Motion
 
-**Look.** Near-black canvas (#050505), white text, one lime accent (#B8F47A). Geist for text, Geist Mono for small uppercase labels. Framed hero with a side rail, hairline dividers, rounded dark panels. Modelled on tbdstudio.framer.ai at the owner's request; see [reference-tbdstudio.md](reference-tbdstudio.md).
-
-**Sections.** Same content as B, with these differences:
-- Tools run as a lime marquee band.
-- The cadence line "30 min / 2–3 weeks / [N] weeks." is its own centred section after the hero.
-- The invoice workflow has a heading: "An invoice, handled end to end."
-- Each section opens with a small mono label.
-- Pricing follows the hourly model and adds a "How pricing works" block. See [pricing.md](pricing.md).
-- The closing panel shows a logo tile plus a dashed "You" tile.
-
-**Motion**
 - Loader with a percent counter in the hero.
 - Text scramble on headlines when they enter view and on buttons at hover.
-- Lime marker wipes in behind the marked word.
-- Sections fade up from blur on scroll.
-- Marquee band; button fill from white to lime at hover; scroll progress line.
-- All of it is switched off under reduced-motion settings.
+- Sections fade up from blur on scroll. Fail-safe: content is visible unless script marked it `.pre`.
+- Marquee band; button fill from ink to lime at hover; scroll progress line.
+- All of it is off under reduced-motion settings.
 
-**Fixes made after the first version**
-- Agent demo: the panel reserves 800 px so the chat column does not move while steps unfold. Up to 960 px wide the chat comes first and has a fixed height; new messages sit at the bottom.
-- Invoice workflow: the run log reserves its height on phones, so the page below does not jump on every loop.
-- Scroll reveal is fail-safe: sections are visible by default and only script can hide them. An earlier version could leave the agent demo invisible after the canvas editor rewrote an element's classes.
+## Rules kept from earlier fixes
 
-## What is shared
-
-Both directions use the same copy, the same four demos and the same demo data. A change to wording or demo content has to be made in both files.
+- Agent demo: the panel reserves its height so the chat does not move while steps unfold. Up to 960 px the chat comes first with a fixed height.
+- The invoice run log reserves its height on phones.
 
 ## Not designed yet
 
-- Contact, blog, legal and mobile pages in direction D.
-- An up-to-date mobile artboard for B.
-- Navigation menu for phones in either direction.
+- German version.
+- Blog post page.
