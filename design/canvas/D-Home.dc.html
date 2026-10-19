@@ -518,7 +518,7 @@ body{margin:0}
 <div class="mono lab" data-rv>FAQ</div>
 <h2 id="faq-title" class="lg" data-rv style="padding: 56px 0 48px; text-align: center;">Pre-call <span class="nw"><span class="mk">questions</span>.</span></h2>
 <div style="max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px;">
-<sc-for list="{{faq}}" as="f" hint-placeholder-count="6">
+<sc-for list="{{faq}}" as="f" hint-placeholder-count="7">
 <details class="faq panel" data-rv style="border-radius: 14px;">
 <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 8px 10px 8px 22px; font-size: 18px; letter-spacing: -0.02em;">{{f.q}}<span class="pm" aria-hidden="true" style="flex: 0 0 44px; height: 44px; border-radius: 10px; border: 1px solid var(--ln3); display: grid; place-items: center;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 1v10M1 6h10"></path></svg></span></summary>
 <p class="sub" style="margin: 0; padding: 0 70px 24px 22px; max-width: 64ch;">{{f.a}}</p>
@@ -757,6 +757,7 @@ class Component extends DCLogic {
       { q: 'How fast will we see something working?', a: 'The process analysis takes two to three weeks. The first agent is live [N] weeks after that, depending on the process and the tools it connects to.' },
       { q: 'Will agents replace people on our team?', a: 'Agents take over the repetitive steps: reading, checking, entering data, answering routine questions. Unclear and sensitive cases go to your team, and people approve what matters.' },
       { q: 'What happens to our data?', a: 'We build on EU-hosted infrastructure and EU-region AI models, and show you where each part runs. We sign a data processing agreement before any personal data touches an agent.' },
+      { q: 'Will you show our project to other clients?', a: 'No. Your project stays confidential. We never name clients or show their automations without permission.' },
       { q: 'Are we locked in after the project?', a: 'No. Code, prompts, data and accounts belong to you. If you take the agents in-house, we hand everything over cleanly.' },
       { q: 'What if an agent gets something wrong or stops?', a: 'We build agents with retries, monitoring and human review for unclear cases, and every action is logged. With “Run and improve” we watch the agents and fix them when a tool or a model changes.' }
     ];
