@@ -30,6 +30,7 @@ State (updated 2026-10-10, end of local session):
 - Uncommitted-at-the-time build leftovers are now committed: `package.json`, `tsconfig.json`, `next.config.ts`, `src/content/` (English copy dictionary from a stopped build, partly out of date against the designs). Reuse or delete when the build starts.
 - Local render check: `design/tools/preview.mjs` renders an artboard with the canvas runtime (`artifact-type/dc-runtime.js`, read from the artifact) and Playwright. The canvas type's own instructions say not to verify unless the owner asks; the owner did ask for visual fixes, so renders were used.
 - Design detector exceptions for D and B are in `.impeccable/config.json`, each with its reason.
+- Handoff package for the Next.js build (2026-10-19): `design/handoff/` holds `README.md` (start here), `DESIGN.md` (guide and open questions), `COMPONENTS.md` (building blocks, states, per-size behaviour), `tokens.css` (generated from D-Home), `reference/` (24 screenshots: 4 pages × desktop/tablet/phone × dark/light). `src/content/en.ts` was rewritten word for word from the D pages; it typechecks. `design/tools/reference.mjs` regenerates the screenshots. The old `.impeccable/surfaces/` contract is marked superseded.
 - Next tasks:
-  1. Fill [SQUARE BRACKET] placeholders as the owner supplies them.
-  2. After design approval, build in Next.js (App Router, TypeScript), English first, test with Playwright (`webapp-testing` skill), deploy to Vercel.
+  1. Owner answers the open questions in `design/handoff/DESIGN.md` §7 (fifth header link, contact form delivery, blog at launch, German, placeholders).
+  2. Build in Next.js (App Router, TypeScript) from `design/handoff/`, English first, test with Playwright (`webapp-testing` skill), deploy to Vercel.
