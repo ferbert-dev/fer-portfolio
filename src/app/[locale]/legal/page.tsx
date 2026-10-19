@@ -25,7 +25,7 @@ export default async function LegalPage({ params }: PageProps<'/[locale]/legal'>
     <div className="wrap" style={{ paddingTop: 'clamp(56px, 7vw, 104px)', paddingBottom: 'clamp(56px, 7vw, 104px)' }}>
       <div className="mono lab">{l.label}</div>
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px 48px', padding: 'clamp(28px, 4vw, 56px) 0 clamp(36px, 4.5vw, 64px)' }}>
-        <h1 className="lg"><MarkedText text={l.title} /></h1>
+        <h1 className="lg"><MarkedText text={l.title} entrance="load" /></h1>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 440 }}>
           <span className="mono">{l.updated}</span>
           <p className="sub" style={{ margin: 0 }}>{l.binding}</p>

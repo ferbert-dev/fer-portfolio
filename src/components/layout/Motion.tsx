@@ -31,7 +31,7 @@ function scramble(el: HTMLElement & { __busy?: boolean }, dur: number) {
 }
 
 /**
- * Scroll reveal, text scramble and button hover scramble for blocks marked
+ * Scroll reveal and button hover scramble for blocks marked
  * data-rv / data-scr. Fail-safe: content is visible until this script hides
  * what it will reveal. On a page with the hero loader it waits for the
  * "ferbert:ready" event; reduced motion shows everything at once.
@@ -41,20 +41,12 @@ export function Motion() {
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const timers: number[] = [];
-    let io: IntersectionObserver | null = null;
+        let io: IntersectionObserver | null = null;
     const targets = Array.from(document.querySelectorAll<HTMLElement>('main [data-rv]'));
     const below = targets.filter((el) => el.getBoundingClientRect().top > window.innerHeight * 0.92 || document.querySelector('[data-loader]'));
     below.forEach((el) => el.classList.add('pre'));
 
-    const reveal = (el: HTMLElement) => {
-      el.classList.remove('pre');
-      // The hero has its own calm entrance; scrambling there reads as glitchy.
-      if (el.closest('.hero')) return;
-      el.querySelectorAll<HTMLElement>('[data-scr]').forEach((s, i) => {
-        timers.push(window.setTimeout(() => scramble(s, 750), i * 90));
-      });
-    };
+    const reveal = (el: HTMLElement) => el.classList.remove('pre');
 
     const start = () => {
       if (!('IntersectionObserver' in window)) {
@@ -87,7 +79,6 @@ export function Motion() {
     else start();
 
     return () => {
-      timers.forEach(clearTimeout);
       io?.disconnect();
       window.removeEventListener('ferbert:ready', start);
       buttons.forEach((b) => b.removeEventListener('mouseenter', onEnter));

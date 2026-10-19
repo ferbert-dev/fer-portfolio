@@ -201,7 +201,7 @@ export function Faq({ faq, write }: { faq: Home['faq']; write: string }) {
 export function Closing({ closing, cta, write, contactHref }: { closing: Home['closing']; cta: string; write: string; contactHref: string }) {
   return (
     <section aria-labelledby="cta-title" className="sec" style={{ paddingLeft: 12, paddingRight: 12 }}>
-      <div style={{ position: 'relative', overflow: 'hidden', border: '1px solid var(--ln2)', borderRadius: 28, padding: 'clamp(48px, 7vw, 110px) 24px clamp(44px, 6vw, 90px)', textAlign: 'center', backgroundColor: 'var(--frame)', backgroundImage: 'radial-gradient(70% 90% at 50% 0%, var(--glow) 0%, transparent 65%), radial-gradient(var(--dot) 1px, transparent 1px)', backgroundSize: 'auto, 22px 22px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
+      <div style={{ position: 'relative', overflow: 'hidden', border: '1px solid var(--ln2)', borderRadius: 28, padding: 'clamp(48px, 7vw, 110px) 24px clamp(44px, 6vw, 90px)', textAlign: 'center', ['--cover' as string]: 'var(--frame)', backgroundColor: 'var(--frame)', backgroundImage: 'radial-gradient(70% 90% at 50% 0%, var(--glow) 0%, transparent 65%), radial-gradient(var(--dot) 1px, transparent 1px)', backgroundSize: 'auto, 22px 22px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
         <span className="mono" data-rv="">{closing.label}</span>
         <h2 id="cta-title" className="xl" data-rv="" style={{ maxWidth: '14ch' }}><MarkedText text={closing.title} /></h2>
         <span aria-hidden="true" style={{ width: 1, height: 56, background: 'var(--ln2)' }} />
