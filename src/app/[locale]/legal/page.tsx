@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDictionary, site } from '@/content';
 import { isLocale } from '@/lib/i18n';
-import { MarkedText } from '@/components/ui/Heading';
-import { Chevron } from '@/components/ui/icons';
+import { ArrowTile } from '@/components/ui/Button';
+import { Page, PageHeader } from '@/components/ui/Layout';
 
 export async function generateMetadata({ params }: PageProps<'/[locale]/legal'>): Promise<Metadata> {
   const { locale } = await params;
@@ -22,21 +22,19 @@ export default async function LegalPage({ params }: PageProps<'/[locale]/legal'>
     ['rights', l.rights.title],
   ];
   return (
-    <div className="wrap" style={{ paddingTop: 'clamp(56px, 7vw, 104px)', paddingBottom: 'clamp(56px, 7vw, 104px)' }}>
-      <div className="mono lab">{l.label}</div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px 48px', padding: 'clamp(28px, 4vw, 56px) 0 clamp(36px, 4.5vw, 64px)' }}>
-        <h1 className="lg"><MarkedText text={l.title} entrance="load" /></h1>
+    <Page>
+      <PageHeader label={l.label} title={l.title} size="lg">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 440 }}>
           <span className="mono">{l.updated}</span>
           <p className="sub" style={{ margin: 0 }}>{l.binding}</p>
           <p className="mono" style={{ margin: 0, padding: '10px 12px', border: '1px dashed var(--warn-bd)', borderRadius: 10, color: 'var(--warn-tx)', lineHeight: 1.5 }}>{l.draft}</p>
         </div>
-      </div>
+      </PageHeader>
       <div className="lg-grid">
         <nav className="toc mono" aria-label={l.toc}>
           <span style={{ paddingBottom: 14 }}>{l.toc}</span>
           {toc.map(([id, title]) => (
-            <a key={id} href={`#${id}`}>{title}<span className="lnk-t"><Chevron /></span></a>
+            <a key={id} href={`#${id}`}>{title}<ArrowTile /></a>
           ))}
         </nav>
         <article className="art">
@@ -78,6 +76,6 @@ export default async function LegalPage({ params }: PageProps<'/[locale]/legal'>
           </section>
         </article>
       </div>
-    </div>
+    </Page>
   );
 }

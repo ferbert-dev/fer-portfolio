@@ -16,6 +16,31 @@ src/styles/tokens.css              copy of design/handoff/tokens.css
 
 Server components by default. Only the parts marked **client** need `"use client"`.
 
+## Where to change what (the built site)
+
+Every repeated element is built once in `src/components/ui/` and styled once in `src/app/globals.css` (block "Shared components"). Change it there and it changes on every page. Colours, type and motion values come from `src/styles/tokens.css`.
+
+| To change | Edit | Used by |
+|---|---|---|
+| Any marked heading: size, line length, word-by-word entrance, marker | `Heading`, `MarkedText` in `ui/Heading.tsx`; `.xl` `.lg` `.mk` `.wd` in CSS | every section, the closing panel, page titles |
+| Paragraph beside a heading | `Lead` in `ui/Heading.tsx` | sections, closing panel |
+| Mono label row with the lime square | `SectionLabel` in `ui/Heading.tsx`; `.lab` | every section and page |
+| Home section frame (width, rhythm) | `Section` in `ui/Layout.tsx`; `.wrap` `.sec` | all home sections |
+| Label + heading + lead row | `SectionHead` in `ui/Layout.tsx`; `.head-row` | workflow, agent demo, documents demo, services, pricing |
+| Inner page frame and header | `Page`, `PageHeader`, `PageLead` in `ui/Layout.tsx`; `.page` `.page-head` `.page-lead` | Contact, Blog, Legal, 404 |
+| Framed panel with dot grid and glow | `FramePanel` in `ui/Layout.tsx`; `.frame` | hero, closing panel |
+| Dot grid on a panel | `.dots` | workflow panel, agent steps, contact booking card |
+| Primary button (label block + lime arrow tile) | `ButtonFace`, `PrimaryButton`, `SubmitButton` in `ui/Button.tsx`; `.btn` `.btn-l` `.btn-t` | hero, analysis, pricing, closing, contact, mobile menu |
+| Outline button | `OutlineButton`; `.btn-o` | hero |
+| Text link with round arrow tile | `ArrowLink`, `ArrowTile` in `ui/Button.tsx`; `.lnk` `.lnk-t` | services, trust, FAQ, closing, contact channels, blog, legal, 404, mobile menu |
+| Toggle buttons (pressed state) | `ToggleChip` in `ui/Controls.tsx`; `.chip-segment` `.chip-filter` `.chip-topic` `.chip-choice` | theme switch, blog filters, contact topics, document questions |
+| Pause / Play | `PlayPauseButton` in `ui/Controls.tsx`; `.ctl` | tool marquee, invoice workflow |
+| Small rounded labels | `Pill` in `ui/Controls.tsx`; `.pill` and tones `.t-acc` `.t-tint` `.t-on-acc` `.t-good` `.t-warn` `.t-muted` | "Recommended", potential levels, sources, blog tags, "Demo" |
+| Form field (label, control, error, hint) | `Field` in `ui/Controls.tsx`; `.fld` `.inp` `.fld-err` `.fld-hint` | contact form |
+| Icons | `ui/icons.tsx`, and `home/icons.ts` for the demo icon paths | everywhere |
+
+Two looks are kept as drawn and chosen by a prop: the primary button's arrow (`icon="pixel"` on the home page, `icon="chevron"` on Contact and in the mobile menu), and the arrow tile (pixel arrow in `ArrowLink`, chevron in `ArrowTile`). Pick one each and set it as the default to make them match.
+
 ## Shared
 
 ### ThemeSwitch (client)

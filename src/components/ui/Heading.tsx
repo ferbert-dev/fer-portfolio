@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 export type Marked = { before: string; mark: string; after: string };
 
@@ -33,7 +33,38 @@ export function MarkedText({ text, entrance = 'scroll' }: { text: Marked; entran
   );
 }
 
+type HeadingProps = {
+  text: Marked;
+  as?: 'h1' | 'h2';
+  /** Type scale from DESIGN.md: xl for page titles and the closing panel, lg for sections. */
+  size?: 'xl' | 'lg';
+  id?: string;
+  /** Line length in ch, so the heading breaks into deliberate lines. */
+  width?: string;
+  /** "scroll" reveals with the page; "load" plays once when the page opens. */
+  entrance?: 'scroll' | 'load';
+  style?: CSSProperties;
+};
+
+/** Every marked heading on the site: one place for its size, line length and entrance. */
+export function Heading({ text, as: Tag = 'h2', size = 'lg', id, width, entrance = 'scroll', style }: HeadingProps) {
+  return (
+    <Tag id={id} className={size} {...(entrance === 'scroll' ? { 'data-rv': '' } : {})} style={{ ...(width ? { maxWidth: width } : {}), ...style }}>
+      <MarkedText text={text} entrance={entrance} />
+    </Tag>
+  );
+}
+
+/** Secondary paragraph that sits beside or below a heading. */
+export function Lead({ children, width, reveal = true, style }: { children: ReactNode; width?: string | number; reveal?: boolean; style?: CSSProperties }) {
+  return (
+    <p className="sub" {...(reveal ? { 'data-rv': '' } : {})} style={{ margin: 0, ...(width ? { maxWidth: width } : {}), ...style }}>
+      {children}
+    </p>
+  );
+}
+
 /** Mono label row with the small lime square and a hairline below. */
-export function SectionLabel({ children }: { children: ReactNode }) {
-  return <div className="mono lab" data-rv="">{children}</div>;
+export function SectionLabel({ children, reveal = true }: { children: ReactNode; reveal?: boolean }) {
+  return <div className="mono lab" {...(reveal ? { 'data-rv': '' } : {})}>{children}</div>;
 }

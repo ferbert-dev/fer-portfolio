@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { useState, type FormEvent } from 'react';
 import type { Dictionary } from '@/content';
 import { site } from '@/content';
-import { Chevron } from '@/components/ui/icons';
+import { ArrowTile, SubmitButton } from '@/components/ui/Button';
+import { Field, ToggleChip } from '@/components/ui/Controls';
 import { sendContact } from '@/lib/contact';
 
 type Props = { form: Dictionary['contact']['form']; sent: Dictionary['contact']['sent']; privacyHref: string };
@@ -67,28 +68,25 @@ export function ContactForm({ form, sent, privacyHref }: Props) {
         <p className="sub" style={{ margin: 0, maxWidth: 460 }}>{sent.body}</p>
         <button type="button" className="lnk mono" onClick={() => setDone(false)} style={{ border: 0, background: 'none', padding: 0, cursor: 'pointer' }}>
           {sent.again}
-          <span className="lnk-t"><Chevron /></span>
+          <ArrowTile />
         </button>
       </div>
     );
   }
 
-  const err = (k: keyof Errors) =>
-    errors[k] ? <span id={`${k}-err`} className="sub" style={{ fontSize: 13, color: 'var(--warn-tx)' }}>{errors[k]}</span> : null;
   const aria = (k: keyof Errors) => (errors[k] ? { 'aria-invalid': true, 'aria-describedby': `${k}-err` } : {});
 
   return (
     <form id="contact-form" onSubmit={submit} noValidate aria-label={form.label} style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
       <div className="f2">
-        <div className="fld"><label className="mono" htmlFor="n">{form.name}</label><input className="inp" id="n" name="name" type="text" autoComplete="name" required {...aria('name')} />{err('name')}</div>
-        <div className="fld"><label className="mono" htmlFor="e">{form.email}</label><input className="inp" id="e" name="email" type="email" autoComplete="email" required {...aria('email')} />{err('email')}</div>
-        <div className="fld"><label className="mono" htmlFor="co">{form.company}</label><input className="inp" id="co" name="company" type="text" autoComplete="organization" /></div>
-        <div className="fld">
-          <label className="mono" htmlFor="sz">{form.size}</label>
+        <Field htmlFor="n" label={form.name} error={errors.name} errorId="name-err"><input className="inp" id="n" name="name" type="text" autoComplete="name" required {...aria('name')} /></Field>
+        <Field htmlFor="e" label={form.email} error={errors.email} errorId="email-err"><input className="inp" id="e" name="email" type="email" autoComplete="email" required {...aria('email')} /></Field>
+        <Field htmlFor="co" label={form.company}><input className="inp" id="co" name="company" type="text" autoComplete="organization" /></Field>
+        <Field htmlFor="sz" label={form.size}>
           <select className="inp" id="sz" name="size" defaultValue={form.sizeDefault}>
             {form.sizes.map((s) => <option key={s}>{s}</option>)}
           </select>
-        </div>
+        </Field>
       </div>
       <div aria-hidden="true" style={{ position: 'absolute', left: -9999, width: 1, height: 1, overflow: 'hidden' }}>
         <label htmlFor="website">Website</label><input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
@@ -97,25 +95,16 @@ export function ContactForm({ form, sent, privacyHref }: Props) {
         <legend className="mono" style={{ padding: '0 0 12px' }}>{form.topics}</legend>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
           {form.topicList.map((label, i) => (
-            <button key={label} type="button" className="tp" aria-pressed={on[i]} onClick={() => setOn((v) => v.map((x, j) => (j === i ? !x : x)))} style={{ border: `1px solid ${on[i] ? 'var(--acc-bd)' : 'var(--ln2)'}`, background: on[i] ? 'var(--acc-tint)' : 'transparent', color: 'var(--tx)' }}>
-              <span aria-hidden="true" style={{ width: 8, height: 8, borderRadius: 2, background: on[i] ? 'var(--acc-tx)' : 'var(--ln4)' }} />
-              {label}
-            </button>
+            <ToggleChip key={label} variant="topic" pressed={on[i]} onClick={() => setOn((v) => v.map((x, j) => (j === i ? !x : x)))}>{label}</ToggleChip>
           ))}
         </div>
       </fieldset>
-      <div className="fld">
-        <label className="mono" htmlFor="msg">{form.message}</label>
+      <Field htmlFor="msg" label={form.message} error={errors.message} errorId="message-err" hint={form.hint}>
         <textarea className="inp" id="msg" name="message" rows={6} placeholder={form.placeholder} style={{ resize: 'vertical', lineHeight: 1.5 }} {...aria('message')} />
-        {err('message')}
-        <span className="sub" style={{ fontSize: 13 }}>{form.hint}</span>
-      </div>
+      </Field>
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16, paddingTop: 20, borderTop: '1px solid var(--ln)' }}>
         <span className="sub" style={{ fontSize: 13 }}>{form.privacy} <Link href={privacyHref} style={{ color: 'var(--tx)' }}>{form.privacyLink}</Link></span>
-        <button type="submit" className="btn" disabled={busy}>
-          <span className="btn-l">{busy ? form.sending : form.submit}</span>
-          <span className="btn-t"><Chevron /></span>
-        </button>
+        <SubmitButton label={busy ? form.sending : form.submit} disabled={busy} />
       </div>
       {note ? <p role="status" className="sub" style={{ margin: 0, fontSize: 14 }}>{note}</p> : null}
     </form>

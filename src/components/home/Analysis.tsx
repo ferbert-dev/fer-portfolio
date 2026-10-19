@@ -1,25 +1,23 @@
 import type { Dictionary } from '@/content';
 import { PrimaryButton } from '@/components/ui/Button';
-import { MarkedText, SectionLabel } from '@/components/ui/Heading';
+import { Pill } from '@/components/ui/Controls';
+import { Heading, Lead, SectionLabel } from '@/components/ui/Heading';
+import { Section } from '@/components/ui/Layout';
 
 const pad = (i: number) => String(i + 1).padStart(2, '0');
-const levelStyle = {
-  high: { borderColor: 'var(--acc-bd)', color: 'var(--acc-tx)' },
-  medium: { borderColor: 'var(--warn-bd)', color: 'var(--warn-tx)' },
-  low: { borderColor: 'var(--ln2)', color: 'var(--sub)' },
-} as const;
+const levelTone = { high: 'good', medium: 'warn', low: 'muted' } as const;
 
 export function Analysis({ analysis, cta, contactHref }: { analysis: Dictionary['home']['analysis']; cta: string; contactHref: string }) {
   const r = analysis.report;
   const max = Math.max(...r.rows.map((row) => row.before));
   const mono = { letterSpacing: 0, textTransform: 'none' as const };
   return (
-    <section id="analysis" aria-labelledby="an-title" className="wrap sec">
+    <Section id="analysis" titleId="an-title">
       <SectionLabel>{analysis.label}</SectionLabel>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '48px 24px', paddingTop: 40, alignItems: 'flex-start' }}>
         <div style={{ flex: '1 1 420px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <h2 id="an-title" className="lg" data-rv="" style={{ maxWidth: '11ch' }}><MarkedText text={analysis.title} /></h2>
-          <p className="sub" data-rv="" style={{ margin: 0, maxWidth: '46ch' }}>{analysis.lead}</p>
+          <Heading id="an-title" text={analysis.title} width="11ch" />
+          <Lead width="46ch">{analysis.lead}</Lead>
           <ul data-rv="" style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', maxWidth: '52ch' }}>
             {analysis.deliverables.map((d, i) => (
               <li key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start', padding: '14px 0', borderTop: '1px solid var(--ln)' }}>
@@ -61,7 +59,7 @@ export function Analysis({ analysis, cta, contactHref }: { analysis: Dictionary[
                       </div>
                     </td>
                     <td style={{ padding: '14px 0', textAlign: 'right' }}>
-                      <span className="mono pill" style={levelStyle[row.potential as keyof typeof levelStyle]}>{r.levels[row.potential as keyof typeof r.levels]}</span>
+                      <Pill tone={levelTone[row.potential as keyof typeof levelTone]}>{r.levels[row.potential as keyof typeof r.levels]}</Pill>
                     </td>
                   </tr>
                 ))}
@@ -79,6 +77,6 @@ export function Analysis({ analysis, cta, contactHref }: { analysis: Dictionary[
           </div>
         </figure>
       </div>
-    </section>
+    </Section>
   );
 }

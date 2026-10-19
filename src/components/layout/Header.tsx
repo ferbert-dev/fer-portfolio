@@ -5,7 +5,9 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import type { Dictionary, Locale } from '@/content';
 import { localeHref, stripLocale } from '@/lib/i18n';
-import { Chevron, LogoMark } from '@/components/ui/icons';
+import { ArrowTile, ButtonFace } from '@/components/ui/Button';
+import { ToggleChip } from '@/components/ui/Controls';
+import { LogoMark } from '@/components/ui/icons';
 import { THEME_KEY, type ThemeMode } from './theme';
 
 const ORDER: ThemeMode[] = ['auto', 'light', 'dark'];
@@ -78,14 +80,9 @@ export function Header({ locale, header, nav, cta }: Props) {
             ))}
           </div>
           <div className="th-seg" role="group" aria-label={header.theme.label} style={{ display: 'flex', alignItems: 'center', gap: 2, padding: 2, border: '1px solid var(--ln2)', borderRadius: 999 }}>
-            {ORDER.map((m) => {
-              const on = m === theme;
-              return (
-                <button key={m} type="button" className="mono th" onClick={() => setTheme(m)} aria-pressed={on} style={{ minHeight: 28, padding: '0 11px', border: 0, borderRadius: 999, cursor: 'pointer', background: on ? 'var(--inv)' : 'transparent', color: on ? 'var(--on-inv)' : 'var(--sub)' }}>
-                  {names[m]}
-                </button>
-              );
-            })}
+            {ORDER.map((m) => (
+              <ToggleChip key={m} variant="segment" mono pressed={m === theme} onClick={() => setTheme(m)}>{names[m]}</ToggleChip>
+            ))}
           </div>
           <button type="button" className="mono th th-one" onClick={() => setTheme(ORDER[(ORDER.indexOf(theme) + 1) % 3])} aria-label={`${header.theme.label}: ${names[theme]}. ${header.theme.change}`} style={{ display: 'none', alignItems: 'center', gap: 6, minHeight: 44, padding: '0 12px', border: '1px solid var(--ln2)', borderRadius: 999, background: 'transparent', color: 'var(--tx)', cursor: 'pointer' }}>
             <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" strokeWidth="1.4" /><path d="M6 1a5 5 0 010 10z" fill="currentColor" /></svg>
@@ -108,7 +105,7 @@ export function Header({ locale, header, nav, cta }: Props) {
             {nav.map((n) => (
               <Link key={n.href} className="navl" href={h(n.href)} onClick={() => setMenu(false)} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minHeight: 52, padding: 0, borderBottom: '1px solid var(--ln)', fontFamily: 'var(--font-sans)', fontSize: 26, letterSpacing: '-0.03em', textTransform: 'none' }}>
                 {n.label}
-                <span className="lnk-t"><Chevron /></span>
+                <ArrowTile />
               </Link>
             ))}
           </nav>
@@ -117,8 +114,7 @@ export function Header({ locale, header, nav, cta }: Props) {
             <Link href={localeHref('de', path)} hrefLang="de" lang="de" aria-current={locale === 'de' ? 'page' : undefined} style={{ color: locale === 'de' ? 'var(--tx)' : 'var(--sub)', textDecoration: 'none', padding: '12px 0' }}>{header.languages.de}</Link>
           </div>
           <Link href={localeHref(locale, '/contact')} className="btn" onClick={() => setMenu(false)} style={{ marginTop: 20, textTransform: 'none', letterSpacing: '-0.01em', fontFamily: 'var(--font-sans)' }}>
-            <span className="btn-l">{cta}</span>
-            <span className="btn-t"><Chevron /></span>
+            <ButtonFace label={cta} icon="chevron" />
           </Link>
         </div>
       ) : null}

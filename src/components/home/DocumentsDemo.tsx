@@ -2,28 +2,22 @@
 
 import { useState } from 'react';
 import type { Dictionary } from '@/content';
-import { MarkedText, SectionLabel } from '@/components/ui/Heading';
+import { Pill, ToggleChip } from '@/components/ui/Controls';
+import { Section, SectionHead } from '@/components/ui/Layout';
 
 export function DocumentsDemo({ knowledge }: { knowledge: Dictionary['home']['knowledge'] }) {
   const [q, setQ] = useState(0);
   const cur = knowledge.questions[q];
   const hits = new Set(cur.hits.map(([d, c]) => `${d}-${c}`));
   return (
-    <section id="knowledge" aria-labelledby="rag-title" className="wrap sec">
-      <SectionLabel>{knowledge.label}</SectionLabel>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, padding: '40px 0 36px' }}>
-        <h2 id="rag-title" className="lg" data-rv="" style={{ maxWidth: '15ch', fontSize: 'clamp(34px, 4.2vw, 60px)' }}><MarkedText text={knowledge.title} /></h2>
-        <p className="sub" data-rv="" style={{ margin: 0, maxWidth: '42ch' }}>{knowledge.lead}</p>
-      </div>
+    <Section id="knowledge" titleId="rag-title">
+      <SectionHead label={knowledge.label} title={knowledge.title} titleId="rag-title" width="15ch" titleStyle={{ fontSize: 'clamp(34px, 4.2vw, 60px)' }} lead={knowledge.lead} leadWidth="42ch" />
       <div className="panel lift kb" data-rv="" style={{ padding: 'clamp(18px, 2.2vw, 28px)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 28 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <div className="mono" style={{ marginBottom: 4 }}>{knowledge.ask}</div>
-          {knowledge.questions.map((item, i) => {
-            const on = i === q;
-            return (
-              <button key={item.text} type="button" className="qb" onClick={() => setQ(i)} aria-pressed={on} style={{ textAlign: 'left', minHeight: 52, padding: '12px 14px', borderRadius: 12, border: `1px solid ${on ? 'var(--acc-tx)' : 'var(--ln3)'}`, background: on ? 'var(--acc-tint)' : 'transparent', font: 'inherit', fontSize: 15, color: 'var(--tx)' }}>{item.text}</button>
-            );
-          })}
+          {knowledge.questions.map((item, i) => (
+            <ToggleChip key={item.text} variant="choice" pressed={i === q} onClick={() => setQ(i)}>{item.text}</ToggleChip>
+          ))}
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <div className="mono" style={{ marginBottom: 4 }}>{knowledge.found}</div>
@@ -47,11 +41,11 @@ export function DocumentsDemo({ knowledge }: { knowledge: Dictionary['home']['kn
           <div className="mono" style={{ marginBottom: 4 }}>{knowledge.answer}</div>
           <div key={q} className="bub" aria-live="polite" style={{ borderRadius: 14, background: 'var(--acc)', color: 'var(--on-acc)', padding: 18, display: 'flex', flexDirection: 'column', gap: 14 }}>
             <p style={{ margin: 0, fontSize: 17, lineHeight: 1.45, letterSpacing: '-0.015em' }}>{cur.answer}</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>{cur.sources.map((s) => <span key={s} className="mono pill" style={{ fontSize: 11, color: 'var(--on-acc)', borderColor: 'var(--on-acc)' }}>{s}</span>)}</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>{cur.sources.map((s) => <Pill key={s} tone="onAccent">{s}</Pill>)}</div>
           </div>
           <span className="mono" style={{ marginTop: 'auto', letterSpacing: '.04em' }}>{knowledge.note}</span>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
