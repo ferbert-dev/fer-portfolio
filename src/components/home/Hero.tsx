@@ -79,7 +79,7 @@ export function Hero({ hero, workflow, common, contactHref }: Props) {
 
   return (
     <section aria-label={hero.label} style={{ padding: '12px 12px 0' }}>
-      <div className="hero" style={{ position: 'relative', overflow: 'hidden', display: 'flex', minHeight: 700, border: '1px solid var(--ln2)', borderRadius: 28, boxShadow: 'var(--sh2)', backgroundColor: 'var(--frame)', backgroundImage: 'radial-gradient(80% 90% at 78% 30%, var(--glow) 0%, transparent 62%), radial-gradient(var(--dot) 1px, transparent 1px)', backgroundSize: 'auto, 22px 22px' }}>
+      <div className="hero" style={{ position: 'relative', overflow: 'hidden', display: 'flex', minHeight: 'min(700px, calc(100svh - 80px))', border: '1px solid var(--ln2)', borderRadius: 28, boxShadow: 'var(--sh2)', backgroundColor: 'var(--frame)', backgroundImage: 'radial-gradient(80% 90% at 78% 30%, var(--glow) 0%, transparent 62%), radial-gradient(var(--dot) 1px, transparent 1px)', backgroundSize: 'auto, 22px 22px' }}>
         <svg aria-hidden="true" width="100%" height="100%" style={{ position: 'absolute', inset: 0, opacity: 'var(--grain)' as unknown as number, pointerEvents: 'none' }}>
           <filter id="d-grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves={2} stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
           <rect width="100%" height="100%" filter="url(#d-grain)" />
