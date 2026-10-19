@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import type { Dictionary } from '@/content';
-import { Chevron } from '@/components/ui/icons';
+import { ArrowTile } from '@/components/ui/Button';
+import { Pill, ToggleChip } from '@/components/ui/Controls';
 
 /**
  * Posts are placeholders until the owner supplies real ones, so cards are not
@@ -15,30 +16,25 @@ export function BlogList({ blog }: { blog: Dictionary['blog'] }) {
   const [featured, ...rest] = blog.posts;
   const showFeat = all || featured.topic === topic;
   const posts = rest.filter((p) => all || p.topic === topic);
-  const tile = (
-    <span className="lnk-t"><Chevron /></span>
-  );
+  const tile = <ArrowTile />;
 
   return (
     <>
       <div className="mono" role="group" aria-label={blog.filterLabel} style={{ display: 'flex', flexWrap: 'wrap', gap: 6, paddingBottom: 24 }}>
-        {blog.filters.map((f, i) => {
-          const on = i === tag;
-          return (
-            <button key={f} type="button" className="mono fl" onClick={() => setTag(i)} aria-pressed={on} style={{ border: `1px solid ${on ? 'var(--inv)' : 'var(--ln2)'}`, background: on ? 'var(--inv)' : 'transparent', color: on ? 'var(--on-inv)' : 'var(--tx)' }}>{f}</button>
-          );
-        })}
+        {blog.filters.map((f, i) => (
+          <ToggleChip key={f} variant="filter" mono pressed={i === tag} onClick={() => setTag(i)}>{f}</ToggleChip>
+        ))}
       </div>
       {showFeat ? (
         <article className="panel lift feat">
-          <div className="cover" style={{ minHeight: 380 }}><span className="mono pill" style={{ background: 'var(--p1)' }}>{blog.cover}</span></div>
+          <div className="cover" style={{ minHeight: 380 }}><Pill style={{ background: 'var(--p1)' }}>{blog.cover}</Pill></div>
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 32, padding: 'clamp(12px, 2vw, 28px)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
               <span className="mono" style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                <span className="pill" style={{ borderColor: 'var(--acc-bd)', background: 'var(--acc-tint)', color: 'var(--acc-tx)' }}>{blog.featured}</span>
-                <span className="pill">{featured.topic}</span>
-                <span className="pill">{blog.date}</span>
-                {featured.minutes ? <span className="pill">{featured.minutes}</span> : null}
+                <Pill tone="tint" mono={false}>{blog.featured}</Pill>
+                <Pill mono={false}>{featured.topic}</Pill>
+                <Pill mono={false}>{blog.date}</Pill>
+                {featured.minutes ? <Pill mono={false}>{featured.minutes}</Pill> : null}
               </span>
               <h2 className="md" style={{ fontSize: 'clamp(26px, 2.8vw, 40px)', lineHeight: 1.08, letterSpacing: '-0.03em' }}>{featured.title}</h2>
               {featured.summary ? <p className="sub" style={{ margin: 0 }}>{featured.summary}</p> : null}
@@ -50,8 +46,8 @@ export function BlogList({ blog }: { blog: Dictionary['blog'] }) {
       <div className="posts" style={{ marginTop: 12 }}>
         {posts.map((p) => (
           <article key={p.title} className="panel post">
-            <div className="cover" style={{ aspectRatio: 1.5 }}><span className="mono pill" style={{ background: 'var(--p1)' }}>{blog.cover}</span></div>
-            <span className="mono" style={{ display: 'flex', gap: 6, padding: '0 8px' }}><span className="pill">{p.topic}</span><span className="pill">{blog.date}</span></span>
+            <div className="cover" style={{ aspectRatio: 1.5 }}><Pill style={{ background: 'var(--p1)' }}>{blog.cover}</Pill></div>
+            <span className="mono" style={{ display: 'flex', gap: 6, padding: '0 8px' }}><Pill mono={false}>{p.topic}</Pill><Pill mono={false}>{blog.date}</Pill></span>
             <h2 style={{ margin: 0, padding: '0 8px', fontSize: 22, lineHeight: 1.2, fontWeight: 400, letterSpacing: '-0.02em' }}>{p.title}</h2>
             <span className="lnk mono" style={{ padding: '0 8px', marginTop: 'auto' }}>{blog.read}{tile}</span>
           </article>

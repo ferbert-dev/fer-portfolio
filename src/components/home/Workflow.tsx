@@ -1,8 +1,9 @@
 'use client';
 
 import type { Dictionary } from '@/content';
-import { MarkedText, SectionLabel } from '@/components/ui/Heading';
-import { PauseIcon, PlayIcon, StrokeIcon } from '@/components/ui/icons';
+import { PlayPauseButton } from '@/components/ui/Controls';
+import { StrokeIcon } from '@/components/ui/icons';
+import { Section, SectionHead } from '@/components/ui/Layout';
 import { workflowIcons } from './icons';
 import { nodeState, useWorkflow } from './WorkflowState';
 
@@ -12,22 +13,15 @@ export function Workflow({ workflow, common }: { workflow: Dictionary['home']['w
   const logs = workflow.logs.filter((_, i) => wf > i + 1 || wf >= 6);
 
   return (
-    <section id="workflow" aria-labelledby="wf-title" className="wrap sec">
-      <SectionLabel>{workflow.label}</SectionLabel>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, padding: '40px 0 36px' }}>
-        <h2 id="wf-title" className="lg" data-rv="" style={{ maxWidth: '13ch' }}><MarkedText text={workflow.title} /></h2>
-        <p className="sub" data-rv="" style={{ margin: 0, maxWidth: '40ch' }}>{workflow.lead}</p>
-      </div>
-      <div className="panel lift" data-rv="" style={{ padding: 'clamp(18px, 2.4vw, 32px)', backgroundImage: 'radial-gradient(var(--dot) 1px, transparent 1px)', backgroundSize: '22px 22px' }}>
+    <Section id="workflow" titleId="wf-title">
+      <SectionHead label={workflow.label} title={workflow.title} titleId="wf-title" width="13ch" lead={workflow.lead} leadWidth="40ch" />
+      <div className="panel lift dots" data-rv="" style={{ padding: 'clamp(18px, 2.4vw, 32px)' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 12, marginBottom: 24 }}>
           <div className="mono" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--tx)' }}>
             <span style={{ width: 8, height: 8, borderRadius: '50%', background: wf >= 6 ? 'var(--mut)' : 'var(--acc-tx)' }} />
             {workflow.name} <span style={{ color: 'var(--sub)' }}>{status}</span>
           </div>
-          <button type="button" className="mono qb" onClick={toggle} aria-pressed={paused} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, minHeight: 44, padding: '0 14px', borderRadius: 999, border: '1px solid var(--ln2)', background: 'transparent', color: 'var(--tx)' }}>
-            {paused ? <PlayIcon /> : <PauseIcon />}
-            {paused ? common.play : common.pause}
-          </button>
+          <PlayPauseButton paused={paused} onToggle={toggle} pressed={paused} label={paused ? common.play : common.pause} />
         </div>
         <ol className="wf-grid">
           {workflow.nodes.map((n, i) => {
@@ -57,6 +51,6 @@ export function Workflow({ workflow, common }: { workflow: Dictionary['home']['w
           ))}
         </ol>
       </div>
-    </section>
+    </Section>
   );
 }

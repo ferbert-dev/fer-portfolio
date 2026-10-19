@@ -2,22 +2,19 @@
 import type { Dictionary } from '@/content';
 import { site } from '@/content';
 import { ArrowLink, PrimaryButton } from '@/components/ui/Button';
-import { MarkedText, SectionLabel } from '@/components/ui/Heading';
+import { Pill } from '@/components/ui/Controls';
+import { Heading, Lead, SectionLabel } from '@/components/ui/Heading';
+import { FramePanel, Section, SectionHead } from '@/components/ui/Layout';
 import { LogoMark, StrokeIcon } from '@/components/ui/icons';
 import { trustIcons } from './icons';
 
 type Home = Dictionary['home'];
 const pad = (i: number) => String(i + 1).padStart(2, '0');
-const headRow = { display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24 } as const;
 
 export function Services({ services }: { services: Home['services'] }) {
   return (
-    <section id="services" aria-labelledby="sv-title" className="wrap sec">
-      <SectionLabel>{services.label}</SectionLabel>
-      <div style={{ ...headRow, padding: '40px 0 48px' }}>
-        <h2 id="sv-title" className="lg" data-rv="" style={{ maxWidth: '14ch' }}><MarkedText text={services.title} /></h2>
-        <p className="sub" data-rv="" style={{ margin: 0, maxWidth: '40ch' }}>{services.lead}</p>
-      </div>
+    <Section id="services" titleId="sv-title">
+      <SectionHead label={services.label} title={services.title} titleId="sv-title" width="14ch" lead={services.lead} leadWidth="40ch" below={48} />
       <ol style={{ listStyle: 'none', margin: 0, padding: 0, borderBottom: '1px solid var(--ln)' }}>
         {services.rows.map((s, i) => (
           <li key={s.title} className="svc row" data-rv="">
@@ -35,18 +32,18 @@ export function Services({ services }: { services: Home['services'] }) {
           </li>
         ))}
       </ol>
-    </section>
+    </Section>
   );
 }
 
 export function Trust({ trust, legalHref }: { trust: Home['trust']; legalHref: string }) {
   return (
-    <section id="trust" aria-labelledby="tr-title" className="wrap sec">
+    <Section id="trust" titleId="tr-title">
       <SectionLabel>{trust.label}</SectionLabel>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px 24px', paddingTop: 40, alignItems: 'flex-start' }}>
         <div style={{ flex: '1 1 360px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 20 }}>
-          <h2 id="tr-title" className="lg" data-rv="" style={{ maxWidth: '10ch' }}><MarkedText text={trust.title} /></h2>
-          <p className="sub" data-rv="" style={{ margin: 0, maxWidth: '40ch' }}>{trust.lead}</p>
+          <Heading id="tr-title" text={trust.title} width="10ch" />
+          <Lead width="40ch">{trust.lead}</Lead>
           <ArrowLink href={legalHref} reveal style={{ alignSelf: 'flex-start' }}>{trust.link}</ArrowLink>
         </div>
         <ul style={{ flex: '1 1 560px', minWidth: 0, listStyle: 'none', margin: 0, padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 8 }}>
@@ -59,7 +56,7 @@ export function Trust({ trust, legalHref }: { trust: Home['trust']; legalHref: s
           ))}
         </ul>
       </div>
-    </section>
+    </Section>
   );
 }
 
@@ -77,12 +74,12 @@ export function HowWeWork({ how }: { how: Home['how'] }) {
   const [a, b, c] = how.cadence;
   const slash = <span className="sub" aria-hidden="true">/</span>;
   return (
-    <section id="how" aria-labelledby="how-title" className="wrap sec">
+    <Section id="how" titleId="how-title">
       <SectionLabel>{how.label}</SectionLabel>
-      <h2 id="how-title" className="lg" data-rv="" style={{ padding: '40px 0', maxWidth: '14ch' }}><MarkedText text={how.title} /></h2>
+      <Heading id="how-title" text={how.title} width="14ch" style={{ padding: '40px 0' }} />
       <div data-rv="" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '20px 40px', padding: '28px 0', marginBottom: 64, borderTop: '1px solid var(--ln)', borderBottom: '1px solid var(--ln)' }}>
         <h3 className="lg" aria-label={how.cadenceLabel} style={{ fontSize: 'clamp(32px, 4.6vw, 68px)' }}>
-          <span className="nw" data-scr="">{a}</span>&nbsp;{slash} <span className="nw" data-scr="">{b}</span>&nbsp;{slash} <span className="nw" data-scr="">{c}</span>
+          <span className="nw">{a}</span>&nbsp;{slash} <span className="nw">{b}</span>&nbsp;{slash} <span className="nw">{c}</span>
         </h3>
         <p className="sub" style={{ margin: 0, maxWidth: '38ch' }}>{how.cadenceLead}</p>
       </div>
@@ -100,18 +97,14 @@ export function HowWeWork({ how }: { how: Home['how'] }) {
         </li>
         <HowStep i={3} step={how.steps[3]} delay=".16s" />
       </ol>
-    </section>
+    </Section>
   );
 }
 
 export function Pricing({ pricing, cta, contactHref }: { pricing: Home['pricing']; cta: string; contactHref: string }) {
   return (
-    <section id="start" aria-labelledby="st-title" className="wrap sec">
-      <SectionLabel>{pricing.label}</SectionLabel>
-      <div style={{ ...headRow, padding: '40px 0 36px' }}>
-        <h2 id="st-title" className="lg" data-rv=""><MarkedText text={pricing.title} /></h2>
-        <p className="sub" data-rv="" style={{ margin: 0, maxWidth: '42ch' }}>{pricing.lead}</p>
-      </div>
+    <Section id="start" titleId="st-title">
+      <SectionHead label={pricing.label} title={pricing.title} titleId="st-title" lead={pricing.lead} leadWidth="42ch" />
       <ol className="offers" style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 8 }}>
         {pricing.offers.map((o, i) => (
           <li key={o.title} className={`panel${o.recommended ? ' invert' : ''}`} data-rv="" style={{ ['--dl' as string]: `${i * 0.08}s`, padding: 8, display: 'flex', flexDirection: 'column', background: 'var(--chat)' }}>
@@ -119,7 +112,7 @@ export function Pricing({ pricing, cta, contactHref }: { pricing: Home['pricing'
               <div className="mono" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   {pad(i)}
-                  {o.recommended ? <span className="pill" style={{ minHeight: 22, borderColor: 'var(--acc-bd)', background: 'var(--acc)', color: 'var(--on-acc)' }}>{pricing.recommended}</span> : null}
+                  {o.recommended ? <Pill tone="accent" mono={false} style={{ minHeight: 22 }}>{pricing.recommended}</Pill> : null}
                 </span>
                 <span>{pricing.timeline}: <span style={{ color: 'var(--tx)' }}>{o.time}</span></span>
               </div>
@@ -154,29 +147,29 @@ export function Pricing({ pricing, cta, contactHref }: { pricing: Home['pricing'
           ))}
         </ol>
       </div>
-    </section>
+    </Section>
   );
 }
 
 export function Company({ company }: { company: Home['company'] }) {
   return (
-    <section id="company" aria-labelledby="co-title" className="wrap sec">
+    <Section id="company" titleId="co-title">
       <SectionLabel>{company.label}</SectionLabel>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px 24px', paddingTop: 40 }}>
-        <h2 id="co-title" className="lg" data-rv="" style={{ flex: '1 1 420px', minWidth: 0, maxWidth: '11ch' }}><MarkedText text={company.title} /></h2>
+        <Heading id="co-title" text={company.title} width="11ch" style={{ flex: '1 1 420px', minWidth: 0 }} />
         <div style={{ flex: '1 1 420px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 28 }}>
           <p className="md co-p" data-rv="" style={{ maxWidth: '30ch' }}>{company.lead} <span className="sub">{company.body}</span></p>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
 
 export function Faq({ faq, write }: { faq: Home['faq']; write: string }) {
   return (
-    <section id="faq" aria-labelledby="faq-title" className="wrap sec">
+    <Section id="faq" titleId="faq-title">
       <SectionLabel>{faq.label}</SectionLabel>
-      <h2 id="faq-title" className="lg" data-rv="" style={{ padding: '56px 0 48px', textAlign: 'center' }}><MarkedText text={faq.title} /></h2>
+      <Heading id="faq-title" text={faq.title} style={{ padding: '56px 0 48px', textAlign: 'center' }} />
       <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 8 }}>
         {faq.items.map((f) => (
           <details key={f.q} className="faq panel" data-rv="" style={{ borderRadius: 14 }}>
@@ -194,18 +187,18 @@ export function Faq({ faq, write }: { faq: Home['faq']; write: string }) {
         <span className="mono" style={{ color: 'var(--tx)' }}>{faq.notHere}</span>
         <ArrowLink href={`mailto:${site.email}`}>{write}</ArrowLink>
       </div>
-    </section>
+    </Section>
   );
 }
 
 export function Closing({ closing, cta, write, contactHref }: { closing: Home['closing']; cta: string; write: string; contactHref: string }) {
   return (
     <section aria-labelledby="cta-title" className="sec" style={{ paddingLeft: 12, paddingRight: 12 }}>
-      <div style={{ position: 'relative', overflow: 'hidden', border: '1px solid var(--ln2)', borderRadius: 28, padding: 'clamp(48px, 7vw, 110px) 24px clamp(44px, 6vw, 90px)', textAlign: 'center', ['--cover' as string]: 'var(--frame)', backgroundColor: 'var(--frame)', backgroundImage: 'radial-gradient(70% 90% at 50% 0%, var(--glow) 0%, transparent 65%), radial-gradient(var(--dot) 1px, transparent 1px)', backgroundSize: 'auto, 22px 22px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
+      <FramePanel glow="radial-gradient(70% 90% at 50% 0%, var(--glow) 0%, transparent 65%)" style={{ borderRadius: 28, padding: 'clamp(48px, 7vw, 110px) 24px clamp(44px, 6vw, 90px)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
         <span className="mono" data-rv="">{closing.label}</span>
-        <h2 id="cta-title" className="xl" data-rv="" style={{ maxWidth: '14ch' }}><MarkedText text={closing.title} /></h2>
+        <Heading id="cta-title" text={closing.title} size="xl" width="14ch" />
         <span aria-hidden="true" style={{ width: 1, height: 56, background: 'var(--ln2)' }} />
-        <p className="sub" data-rv="" style={{ margin: 0, maxWidth: '46ch' }}>{closing.lead}</p>
+        <Lead width="46ch">{closing.lead}</Lead>
         <div data-rv="" aria-hidden="true" style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
           <span style={{ width: 96, height: 96, borderRadius: 14, background: 'var(--inv)', color: 'var(--on-inv)', display: 'grid', placeItems: 'center' }}><LogoMark size={34} /></span>
           <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M8 0v16M0 8h16" /></svg>
@@ -215,7 +208,7 @@ export function Closing({ closing, cta, write, contactHref }: { closing: Home['c
           <PrimaryButton href={contactHref} label={cta} />
           <ArrowLink href={`mailto:${site.email}`}>{write}</ArrowLink>
         </div>
-      </div>
+      </FramePanel>
     </section>
   );
 }

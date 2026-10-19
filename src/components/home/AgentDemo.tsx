@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Dictionary } from '@/content';
-import { MarkedText, SectionLabel } from '@/components/ui/Heading';
+import { Pill } from '@/components/ui/Controls';
+import { Section, SectionHead } from '@/components/ui/Layout';
 import { StrokeIcon } from '@/components/ui/icons';
 import { agentIcons } from './icons';
 
@@ -52,14 +53,10 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
   const timer = cur ? (answered ? agent.answeredIn : `${(step * 0.85).toFixed(1)} s`) : agent.waiting;
 
   return (
-    <section id="demos" aria-labelledby="ag-title" className="wrap sec">
-      <SectionLabel>{agent.label}</SectionLabel>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, padding: '40px 0 36px' }}>
-        <h2 id="ag-title" className="lg" data-rv="" style={{ maxWidth: '12ch' }}><MarkedText text={agent.title} /></h2>
-        <p className="sub" data-rv="" style={{ margin: 0, maxWidth: '44ch' }}>{agent.lead}</p>
-      </div>
+    <Section id="demos" titleId="ag-title">
+      <SectionHead label={agent.label} title={agent.title} titleId="ag-title" width="12ch" lead={agent.lead} leadWidth="44ch" />
       <div className="panel lift ag-panel" data-rv="" style={{ overflow: 'hidden', display: 'flex', flexWrap: 'wrap' }}>
-        <div ref={stepsBox} className="ag-steps" style={{ flex: '999 1 520px', minWidth: 0, padding: 'clamp(18px, 2.2vw, 28px)', backgroundImage: 'radial-gradient(var(--dot) 1px, transparent 1px)', backgroundSize: '22px 22px', borderRight: '1px solid var(--ln)' }}>
+        <div ref={stepsBox} className="ag-steps dots" style={{ flex: '999 1 520px', minWidth: 0, padding: 'clamp(18px, 2.2vw, 28px)', borderRight: '1px solid var(--ln)' }}>
           <div className="mono" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 }}>
             <span style={{ color: 'var(--tx)' }}>{agent.inside}</span>
             <span style={{ fontVariantNumeric: 'tabular-nums' }}>{timer}</span>
@@ -121,7 +118,7 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
               <div style={{ fontWeight: 500 }}>{agent.shop}</div>
               <div className="mono" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--acc-tx)' }}><span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--acc-tx)' }} />{agent.online}</div>
             </div>
-            <span className="mono pill">{demo}</span>
+            <Pill>{demo}</Pill>
           </div>
           <div className="ag-msgs" aria-live="polite" style={{ flex: 1, padding: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
             <div className="bub" style={{ alignSelf: 'flex-start', maxWidth: '85%', padding: '10px 14px', borderRadius: '14px 14px 14px 4px', background: 'var(--p3)', fontSize: 15, lineHeight: 1.45 }}>{agent.greeting}</div>
@@ -136,7 +133,7 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
             {answered && cur ? (
               <div key={`a${sc}`} className="bub" style={{ alignSelf: 'flex-start', maxWidth: '88%', display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <div style={{ padding: '10px 14px', borderRadius: '14px 14px 14px 4px', background: 'var(--p3)', fontSize: 15, lineHeight: 1.5 }}>{cur.answer}</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>{cur.sources.map((s) => <span key={s} className="mono pill" style={{ fontSize: 11 }}>{s}</span>)}</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>{cur.sources.map((s) => <Pill key={s}>{s}</Pill>)}</div>
               </div>
             ) : null}
           </div>
@@ -150,6 +147,6 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

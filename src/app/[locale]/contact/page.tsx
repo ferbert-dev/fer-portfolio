@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDictionary, site } from '@/content';
 import { isLocale, localeHref } from '@/lib/i18n';
-import { MarkedText } from '@/components/ui/Heading';
-import { Chevron } from '@/components/ui/icons';
+import { ArrowTile, ButtonFace } from '@/components/ui/Button';
+import { Page, PageHeader, PageLead } from '@/components/ui/Layout';
 import { ContactForm } from '@/components/contact/ContactForm';
 
 export async function generateMetadata({ params }: PageProps<'/[locale]/contact'>): Promise<Metadata> {
@@ -33,24 +33,22 @@ export default async function ContactPage({ params }: PageProps<'/[locale]/conta
         <span className="md">{b.title}</span>
         <span className="sub">{b.body}</span>
       </span>
-      <span className="btn" style={{ alignSelf: 'flex-start' }}><span className="btn-l">{getDictionary(locale).common.cta}</span><span className="btn-t"><Chevron /></span></span>
+      <span className="btn" style={{ alignSelf: 'flex-start' }}><ButtonFace label={getDictionary(locale).common.cta} icon="chevron" /></span>
     </>
   );
-  const bookingStyle = { display: 'flex', flexDirection: 'column' as const, gap: 28, padding: 'clamp(20px, 2.4vw, 32px)', textDecoration: 'none', backgroundImage: 'radial-gradient(var(--dot) 1px, transparent 1px)', backgroundSize: '22px 22px' };
+  const bookingStyle = { display: 'flex', flexDirection: 'column' as const, gap: 28, padding: 'clamp(20px, 2.4vw, 32px)', textDecoration: 'none' };
 
   return (
-    <div className="wrap" style={{ paddingTop: 'clamp(56px, 7vw, 104px)', paddingBottom: 'clamp(56px, 7vw, 104px)' }}>
-      <div className="mono lab">{c.label}</div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px 48px', padding: 'clamp(28px, 4vw, 56px) 0 clamp(36px, 4.5vw, 64px)' }}>
-        <h1 className="xl" style={{ maxWidth: '11ch' }}><MarkedText text={c.title} entrance="load" /></h1>
-        <p className="sub" style={{ margin: 0, maxWidth: 420, fontSize: 17 }}>{c.lead}</p>
-      </div>
+    <Page>
+      <PageHeader label={c.label} title={c.title} width="11ch">
+        <PageLead>{c.lead}</PageLead>
+      </PageHeader>
       <div className="ct-grid">
         <div className="ct-left" style={{ display: 'flex', flexDirection: 'column', gap: 24, minWidth: 0 }}>
           {site.bookingUrl ? (
-            <a href={site.bookingUrl} className="panel" style={bookingStyle}>{bookingInner}</a>
+            <a href={site.bookingUrl} className="panel dots" style={bookingStyle}>{bookingInner}</a>
           ) : (
-            <a href="#contact-form" className="panel" style={bookingStyle}>{bookingInner}</a>
+            <a href="#contact-form" className="panel dots" style={bookingStyle}>{bookingInner}</a>
           )}
           <div className="panel ct-ch" style={{ padding: 'clamp(20px, 2.4vw, 32px)' }}>
             <div className="mono" style={{ paddingBottom: 14 }}>{c.other}</div>
@@ -60,7 +58,7 @@ export default async function ContactPage({ params }: PageProps<'/[locale]/conta
                 <>
                   <span className="mono" style={{ flex: '0 0 96px', color: 'var(--tx)' }}>{ch.name}</span>
                   <span className="sub" style={{ flex: 1, minWidth: 0, overflowWrap: 'anywhere' }}>{ch.handle}</span>
-                  {href ? <span className="lnk-t"><Chevron /></span> : null}
+                  {href ? <ArrowTile /> : null}
                 </>
               );
               return href ? <a key={ch.key} className="ch" href={href}>{content}</a> : <div key={ch.key} className="ch">{content}</div>;
@@ -71,6 +69,6 @@ export default async function ContactPage({ params }: PageProps<'/[locale]/conta
           <ContactForm form={c.form} sent={c.sent} privacyHref={localeHref(locale, '/legal#privacy')} />
         </div>
       </div>
-    </div>
+    </Page>
   );
 }

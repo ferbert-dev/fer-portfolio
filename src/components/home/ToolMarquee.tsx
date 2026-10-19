@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import type { Dictionary } from '@/content';
-import { PauseIcon, PlayIcon } from '@/components/ui/icons';
+import { PlayPauseButton } from '@/components/ui/Controls';
 
 export function ToolMarquee({ tools, common }: { tools: Dictionary['home']['tools']; common: Dictionary['common'] }) {
   const [paused, setPaused] = useState(false);
@@ -11,10 +11,7 @@ export function ToolMarquee({ tools, common }: { tools: Dictionary['home']['tool
     <section aria-label={tools.label} style={{ paddingTop: 28 }}>
       <div className="wrap" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, marginBottom: 8 }}>
         <p className="mono" data-rv="" style={{ margin: 0 }}>{tools.lead}</p>
-        <button type="button" className="mono qb mq-ctl" onClick={() => setPaused((p) => !p)} aria-label={paused ? tools.playLabel : tools.pauseLabel} style={{ flex: 'none', display: 'inline-flex', alignItems: 'center', gap: 8, minHeight: 44, padding: '0 14px', borderRadius: 999, border: '1px solid var(--ln2)', background: 'transparent', color: 'var(--tx)' }}>
-          {paused ? <PlayIcon /> : <PauseIcon />}
-          {paused ? common.play : common.pause}
-        </button>
+        <PlayPauseButton className="mq-ctl" paused={paused} onToggle={() => setPaused((p) => !p)} ariaLabel={paused ? tools.playLabel : tools.pauseLabel} label={paused ? common.play : common.pause} />
       </div>
       <div className="mq-box" data-rv="" style={{ overflow: 'hidden', background: 'var(--acc)' }}>
         <div className={`mq mono${paused ? ' stop' : ''}`} style={{ color: 'var(--on-acc)', padding: '14px 0' }}>
