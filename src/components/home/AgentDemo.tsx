@@ -13,8 +13,21 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
   const [step, setStep] = useState(-1);
   const [answered, setAnswered] = useState(false);
   const timers = useRef<number[]>([]);
+  const stepsBox = useRef<HTMLDivElement>(null);
 
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
+
+  // When the steps are taller than the panel (short screens), keep the running step in view
+  // by scrolling the steps column only, never the page.
+  useEffect(() => {
+    const box = stepsBox.current;
+    if (!box || box.scrollHeight <= box.clientHeight) return;
+    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = box.querySelectorAll('.ag-list > li');
+    const target = step <= 0 ? null : (items[Math.min(step, items.length - 1)] as HTMLElement | undefined);
+    const top = target ? target.getBoundingClientRect().bottom - box.getBoundingClientRect().top + box.scrollTop - box.clientHeight + 24 : 0;
+    box.scrollTo({ top: Math.max(0, top), behavior: smooth ? 'smooth' : 'auto' });
+  }, [step]);
 
   const busy = step >= 0 && !answered;
   const cur = sc >= 0 ? agent.scenarios[sc] : null;
@@ -46,12 +59,12 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
         <p className="sub" data-rv="" style={{ margin: 0, maxWidth: '44ch' }}>{agent.lead}</p>
       </div>
       <div className="panel lift ag-panel" data-rv="" style={{ overflow: 'hidden', display: 'flex', flexWrap: 'wrap' }}>
-        <div className="ag-steps" style={{ flex: '999 1 520px', minWidth: 0, padding: 'clamp(18px, 2.2vw, 28px)', backgroundImage: 'radial-gradient(var(--dot) 1px, transparent 1px)', backgroundSize: '22px 22px', borderRight: '1px solid var(--ln)' }}>
+        <div ref={stepsBox} className="ag-steps" style={{ flex: '999 1 520px', minWidth: 0, padding: 'clamp(18px, 2.2vw, 28px)', backgroundImage: 'radial-gradient(var(--dot) 1px, transparent 1px)', backgroundSize: '22px 22px', borderRight: '1px solid var(--ln)' }}>
           <div className="mono" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 }}>
             <span style={{ color: 'var(--tx)' }}>{agent.inside}</span>
             <span style={{ fontVariantNumeric: 'tabular-nums' }}>{timer}</span>
           </div>
-          <ol style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column' }}>
+          <ol className="ag-list" style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column' }}>
             {agent.steps.map((s, i) => {
               const done = !!cur && step > i;
               const active = !!cur && step === i && !answered;
@@ -59,14 +72,14 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
               return (
                 <li key={i} style={{ display: 'flex', gap: 14 }}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: '0 0 38px' }}>
-                    <span className={active ? 'act' : ''} style={{ width: 38, height: 38, borderRadius: 10, background: done ? 'var(--acc-tint)' : active ? 'var(--acc)' : 'var(--p2)', color: done ? 'var(--acc-tx)' : active ? 'var(--on-acc)' : 'var(--mut)', border: `1px solid ${done ? 'var(--acc-bd)' : active ? 'var(--acc)' : 'var(--ln3)'}`, display: 'grid', placeItems: 'center', transition: 'background .3s, color .3s, border-color .3s' }}>
+                    <span className={`ag-ico${active ? ' act' : ''}`} style={{ width: 38, height: 38, borderRadius: 10, background: done ? 'var(--acc-tint)' : active ? 'var(--acc)' : 'var(--p2)', color: done ? 'var(--acc-tx)' : active ? 'var(--on-acc)' : 'var(--mut)', border: `1px solid ${done ? 'var(--acc-bd)' : active ? 'var(--acc)' : 'var(--ln3)'}`, display: 'grid', placeItems: 'center', transition: 'background .3s, color .3s, border-color .3s' }}>
                       <StrokeIcon d={agentIcons[i]} />
                     </span>
                     {i < agent.steps.length - 1 ? <span style={{ width: 1, flex: 1, minHeight: 14, background: done ? 'var(--acc-bd)' : 'var(--ln3)', transition: 'background .3s' }} /> : null}
                   </div>
                   <div style={{ flex: 1, minWidth: 0, padding: '7px 0 12px', display: 'flex', flexDirection: 'column', gap: 4 }}>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
-                      <span style={{ fontWeight: 500, fontSize: 16, color: on ? 'var(--tx)' : 'var(--sub)' }}>{s.title}</span>
+                      <span className="ag-t" style={{ fontWeight: 500, fontSize: 16, color: on ? 'var(--tx)' : 'var(--sub)' }}>{s.title}</span>
                       <span className="mono" style={{ fontSize: 11, padding: '2px 8px', borderRadius: 999, background: on ? 'var(--acc-tint)' : 'var(--p3)', color: on ? 'var(--acc-tx)' : 'var(--sub)' }}>{s.tag}</span>
                     </div>
                     <div className="sub" style={{ fontSize: 14, minHeight: 20 }}>{done && cur ? cur.details[i] : active ? agent.working : ''}</div>
@@ -75,7 +88,7 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
                         {cur.rag.map((r) => (
                           <div key={r.title} style={{ background: 'var(--p2)', border: '1px solid var(--ln3)', borderRadius: 10, padding: '10px 12px', fontSize: 13, lineHeight: 1.45 }}>
                             <div style={{ fontWeight: 500, marginBottom: 2, display: 'flex', justifyContent: 'space-between', gap: 8 }}><span>{r.title}</span><span className="mono" style={{ color: 'var(--acc-tx)' }}>{r.score}</span></div>
-                            <div className="sub">{r.text}</div>
+                            <div className="sub ag-rag-t">{r.text}</div>
                           </div>
                         ))}
                       </div>
@@ -83,7 +96,7 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
                     {done && cur && i === 3 ? (
                       <div className="bub" style={{ marginTop: 4, background: 'var(--p2)', border: '1px solid var(--ln3)', borderRadius: 10, overflow: 'hidden' }}>
                         <div className="mono" style={{ padding: '7px 12px', background: 'var(--p3)', borderBottom: '1px solid var(--ln3)' }}>{cur.dbTable}</div>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+                        <table className="ag-db" style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
                           <tbody>
                             {cur.db.map(([k, v]) => (
                               <tr key={k}>
@@ -101,7 +114,7 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
             })}
           </ol>
         </div>
-        <div className="ag-chat" style={{ flex: '1 1 380px', minWidth: 0, display: 'flex', flexDirection: 'column', minHeight: 560, background: 'var(--chat)' }}>
+        <div className="ag-chat" style={{ flex: '1 1 380px', minWidth: 0, display: 'flex', flexDirection: 'column', background: 'var(--chat)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px', borderBottom: '1px solid var(--ln)' }}>
             <span style={{ width: 38, height: 38, borderRadius: '50%', background: 'var(--inv)', color: 'var(--on-inv)', display: 'grid', placeItems: 'center', fontWeight: 600 }}>{agent.avatar}</span>
             <div style={{ flex: 1, minWidth: 0 }}>

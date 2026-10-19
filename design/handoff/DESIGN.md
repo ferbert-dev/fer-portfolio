@@ -57,7 +57,7 @@ One word or short phrase per heading is highlighted with a lime block (`--acc` b
 
 The marked phrase and the punctuation that follows it stay on the same line. Wrap both in a `white-space: nowrap` span; the content file stores headings as `{ before, mark, after }` for this.
 
-On scroll the marker wipes in from right to left (`--dur-marker`, delay .25s). With reduced motion it is simply shown.
+On scroll the marker wipes in from right to left once the heading's words have risen into place (see §4). Its cover uses `--cover`, set to the frame colour inside the hero and the closing panel. With reduced motion it is simply shown.
 
 ### Layout
 
@@ -83,9 +83,10 @@ All motion uses `cubic-bezier(.16, 1, .3, 1)`.
 
 | Effect | Where | Behaviour | Reduced motion |
 |---|---|---|---|
-| Loader | Over the hero on first load | Counter 0–100% with a lime bar, about 1s, then fades out | Skipped |
-| Scroll reveal | Blocks marked `data-rv` | Fade in, rise 22px, unblur 10px, .9s, staggered by `--dl` | Shown at once |
-| Text scramble | Hero headline, cadence numbers, button labels | Characters resolve left to right, 750ms on reveal, 420ms on button hover | Off |
+| Loader | Over the hero on first load | Counter eases 0–100% (slow start, slow finish) with a lime bar over 1.3s, holds .25s, then fades and lifts away in .7s | Skipped |
+| Scroll reveal | Blocks marked `data-rv` | Fade in, rise 22px, unblur 10px, .9s, staggered by `--dl`. Hero blocks take 1.2s and follow the headline: lead .95s, buttons 1.15s, note 1.3s, mini card 1.55s | Shown at once |
+| Heading entrance | Every heading with a lime marker, including the hero | Each word rises from its own mask (1.2s, 70–80ms apart); the marker sweeps in after the last word. Section headings play on scroll; Contact, Blog and Legal titles on page load (CSS only) | Shown at once |
+| Text scramble | Button labels on hover only | Characters resolve left to right in 420ms. Never on reveal: it reflows headlines and reads as a glitch | Off |
 | Button sweep | Primary button | Fill sweeps from `--inv` to lime, arrow tile nudges 3px right | Off |
 | Marquee | Tool list | Scrolls 36s per loop; pauses on hover, keyboard focus or the Pause button | Static list that wraps; no button |
 | Scroll progress | Top edge of the header | 2px lime bar showing page progress | Off in the design; may stay, it does not move content |
