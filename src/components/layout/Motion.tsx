@@ -49,6 +49,8 @@ export function Motion() {
 
     const reveal = (el: HTMLElement) => {
       el.classList.remove('pre');
+      // The hero has its own calm entrance; scrambling there reads as glitchy.
+      if (el.closest('.hero')) return;
       el.querySelectorAll<HTMLElement>('[data-scr]').forEach((s, i) => {
         timers.push(window.setTimeout(() => scramble(s, 750), i * 90));
       });
