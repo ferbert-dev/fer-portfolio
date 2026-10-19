@@ -11,126 +11,199 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#050505}
-.d{--lime:#B8F47A;--p1:#0D0D0E;--p2:#151516;--ln:#242426;--ln2:#3A3A3D;--sub:#A6A6A6;--mut:#8C8C8C;background:#050505;color:#fff;font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.45;letter-spacing:-.01em;overflow-x:clip}
+body{margin:0}
+.d{--sh1:0 0 0 0 transparent;--sh2:0 0 0 0 transparent;--sh-btn:0 0 0 0 transparent;--bg:#050505;--frame:#0B0B0C;--p1:#0D0D0E;--p2:#121213;--p3:#1A1A1C;--chat:#0A0A0B;--tx:#FFFFFF;--sub:#A6A6A6;--mut:#8C8C8C;--log:#D6D6D6;--ln:#242426;--ln2:#3A3A3D;--ln3:#2C2C2F;--ln4:#5A5A5E;--dot:#1E1E20;--ring:#262628;--glow:#25272B;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#B8F47A;--acc-tint:#1E2A14;--acc-bd:#5E8A32;--inv:#FFFFFF;--on-inv:#050505;--hdr:rgba(5,5,5,.82);--card:rgba(8,8,9,.78);--warn-tx:#F2CB5C;--warn-bd:#6B5A1E;--bar:#4A4A4E;--grain:.16;color-scheme:dark}
+.d.t-light{--sh1:0 1px 2px rgba(17,17,19,.05),0 14px 34px -22px rgba(17,17,19,.22);--sh2:0 1px 2px rgba(17,17,19,.04),0 34px 80px -46px rgba(17,17,19,.34);--sh-btn:0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px -8px rgba(17,17,19,.45);--bg:#FAFAF8;--frame:#F1F0EB;--p1:#FFFFFF;--p2:#F6F5F1;--p3:#EEEDE8;--chat:#FCFCFB;--tx:#111113;--sub:#55555F;--mut:#6B6B74;--log:#3A3A44;--ln:#E3E2DC;--ln2:#C9C7BF;--ln3:#DEDCD5;--ln4:#A9A7A0;--dot:#E2E1DB;--ring:#E6E5DF;--glow:#FFFFFF;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#3B7A0E;--acc-tint:#E7F8D2;--acc-bd:#93CE58;--inv:#111113;--on-inv:#FFFFFF;--hdr:rgba(250,250,248,.86);--card:rgba(255,255,255,.84);--warn-tx:#8A5200;--warn-bd:#E3C16A;--bar:#C9C7BF;--grain:.07;color-scheme:light}
+@media (prefers-color-scheme: light){.d.t-auto{--sh1:0 1px 2px rgba(17,17,19,.05),0 14px 34px -22px rgba(17,17,19,.22);--sh2:0 1px 2px rgba(17,17,19,.04),0 34px 80px -46px rgba(17,17,19,.34);--sh-btn:0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px -8px rgba(17,17,19,.45);--bg:#FAFAF8;--frame:#F1F0EB;--p1:#FFFFFF;--p2:#F6F5F1;--p3:#EEEDE8;--chat:#FCFCFB;--tx:#111113;--sub:#55555F;--mut:#6B6B74;--log:#3A3A44;--ln:#E3E2DC;--ln2:#C9C7BF;--ln3:#DEDCD5;--ln4:#A9A7A0;--dot:#E2E1DB;--ring:#E6E5DF;--glow:#FFFFFF;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#3B7A0E;--acc-tint:#E7F8D2;--acc-bd:#93CE58;--inv:#111113;--on-inv:#FFFFFF;--hdr:rgba(250,250,248,.86);--card:rgba(255,255,255,.84);--warn-tx:#8A5200;--warn-bd:#E3C16A;--bar:#C9C7BF;--grain:.07;color-scheme:light}}
+.flip{--sh1:0 1px 2px rgba(17,17,19,.05),0 14px 34px -22px rgba(17,17,19,.22);--sh2:0 1px 2px rgba(17,17,19,.04),0 34px 80px -46px rgba(17,17,19,.34);--sh-btn:0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px -8px rgba(17,17,19,.45);--bg:#FAFAF8;--frame:#F1F0EB;--p1:#FFFFFF;--p2:#F6F5F1;--p3:#EEEDE8;--chat:#FCFCFB;--tx:#111113;--sub:#55555F;--mut:#6B6B74;--log:#3A3A44;--ln:#E3E2DC;--ln2:#C9C7BF;--ln3:#DEDCD5;--ln4:#A9A7A0;--dot:#E2E1DB;--ring:#E6E5DF;--glow:#FFFFFF;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#3B7A0E;--acc-tint:#E7F8D2;--acc-bd:#93CE58;--inv:#111113;--on-inv:#FFFFFF;--hdr:rgba(250,250,248,.86);--card:rgba(255,255,255,.84);--warn-tx:#8A5200;--warn-bd:#E3C16A;--bar:#C9C7BF;--grain:.07;color-scheme:light;color:var(--tx)}
+.d.t-light .flip{--sh1:0 0 0 0 transparent;--sh2:0 0 0 0 transparent;--sh-btn:0 0 0 0 transparent;--bg:#050505;--frame:#0B0B0C;--p1:#0D0D0E;--p2:#121213;--p3:#1A1A1C;--chat:#0A0A0B;--tx:#FFFFFF;--sub:#A6A6A6;--mut:#8C8C8C;--log:#D6D6D6;--ln:#242426;--ln2:#3A3A3D;--ln3:#2C2C2F;--ln4:#5A5A5E;--dot:#1E1E20;--ring:#262628;--glow:#25272B;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#B8F47A;--acc-tint:#1E2A14;--acc-bd:#5E8A32;--inv:#FFFFFF;--on-inv:#050505;--hdr:rgba(5,5,5,.82);--card:rgba(8,8,9,.78);--warn-tx:#F2CB5C;--warn-bd:#6B5A1E;--bar:#4A4A4E;--grain:.16;color-scheme:dark}
+@media (prefers-color-scheme: light){.d.t-auto .flip{--sh1:0 0 0 0 transparent;--sh2:0 0 0 0 transparent;--sh-btn:0 0 0 0 transparent;--bg:#050505;--frame:#0B0B0C;--p1:#0D0D0E;--p2:#121213;--p3:#1A1A1C;--chat:#0A0A0B;--tx:#FFFFFF;--sub:#A6A6A6;--mut:#8C8C8C;--log:#D6D6D6;--ln:#242426;--ln2:#3A3A3D;--ln3:#2C2C2F;--ln4:#5A5A5E;--dot:#1E1E20;--ring:#262628;--glow:#25272B;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#B8F47A;--acc-tint:#1E2A14;--acc-bd:#5E8A32;--inv:#FFFFFF;--on-inv:#050505;--hdr:rgba(5,5,5,.82);--card:rgba(8,8,9,.78);--warn-tx:#F2CB5C;--warn-bd:#6B5A1E;--bar:#4A4A4E;--grain:.16;color-scheme:dark}}
+.d{background:var(--bg);color:var(--tx);min-height:100vh;font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.45;letter-spacing:-.01em;overflow-x:clip}
 .d a{color:inherit}
-.d ::selection{background:#B8F47A;color:#050505}
-.d :focus-visible{outline:2px solid #B8F47A;outline-offset:3px;border-radius:4px}
+.d ::selection{background:var(--acc);color:var(--on-acc)}
+.d :focus-visible{outline:2px solid var(--acc-tx);outline-offset:3px;border-radius:4px}
 .d section[id]{scroll-margin-top:72px}
 .wrap{max-width:1392px;margin:0 auto;padding-left:24px;padding-right:24px}
 .sec{padding-top:clamp(84px,10vw,150px)}
-.mono{font-family:'Geist Mono',ui-monospace,monospace;font-size:11px;line-height:1.3;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#A6A6A6}
-.lab{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid #242426}
-.lab::before{content:"";width:6px;height:6px;background:#B8F47A}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-size:11px;line-height:1.3;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--sub)}
+.lab{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--ln)}
+.lab::before{content:"";width:6px;height:6px;background:var(--acc-tx)}
 .xl{margin:0;font-size:clamp(42px,6.25vw,90px);line-height:.93;letter-spacing:-.04em;font-weight:400;text-wrap:balance}
 .lg{margin:0;font-size:clamp(38px,5vw,72px);line-height:.97;letter-spacing:-.04em;font-weight:400;text-wrap:balance}
 .md{margin:0;font-size:clamp(24px,2.4vw,34px);line-height:1.18;letter-spacing:-.02em;font-weight:400}
-.sub{color:#A6A6A6}
-.panel{background:#0D0D0E;border:1px solid #242426;border-radius:20px}
-.pill{display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border:1px solid #3A3A3D;border-radius:999px}
-.mk{display:inline-block;padding:0 .09em;color:#050505;background:#B8F47A linear-gradient(#050505,#050505) no-repeat right center;background-size:0 100%;transition:background-size .8s cubic-bezier(.16,1,.3,1) .25s,color .3s .3s}
+.sub{color:var(--sub)}
+.panel{background:var(--p1);border:1px solid var(--ln);border-radius:20px;box-shadow:var(--sh1)}
+.lift{box-shadow:var(--sh2)}
+.pill{display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border:1px solid var(--ln2);border-radius:999px}
+.mk{display:inline-block;padding:0 .09em;color:var(--on-acc);background:var(--acc) linear-gradient(var(--bg),var(--bg)) no-repeat right center;background-size:0 100%;transition:background-size .8s cubic-bezier(.16,1,.3,1) .25s,color .3s .3s}
 .btn{display:inline-flex;align-items:stretch;gap:4px;text-decoration:none}
-.btn-l{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:10px;background:linear-gradient(90deg,#fff 0,#fff 50%,#B8F47A 100%);background-size:200% 100%;background-position:0 0;color:#050505;font-size:14px;font-weight:500;letter-spacing:-.01em;white-space:nowrap;transition:background-position .55s cubic-bezier(.16,1,.3,1)}
-.btn-t{flex:0 0 46px;border-radius:10px;background:#B8F47A;color:#050505;display:grid;place-items:center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
-.btn:hover .btn-l{background-position:100% 0}
+.btn-l{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:10px;background:linear-gradient(90deg,var(--inv) 0,var(--inv) 50%,var(--acc) 100%);background-size:200% 100%;background-position:0 0;color:var(--on-inv);font-size:14px;font-weight:500;letter-spacing:-.01em;white-space:nowrap;box-shadow:var(--sh-btn);transition:background-position .55s cubic-bezier(.16,1,.3,1),color .3s}
+.btn-t{flex:0 0 46px;border-radius:10px;background:var(--acc);color:var(--on-acc);display:grid;place-items:center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.btn:hover .btn-l{background-position:100% 0;color:var(--on-acc)}
 .btn:hover .btn-t{transform:translateX(3px)}
-.lnk{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:#fff}
-.lnk-t{flex:0 0 26px;height:26px;border-radius:50%;background:#1E2A14;color:#B8F47A;display:grid;place-items:center;transition:background .3s,color .3s,transform .45s cubic-bezier(.16,1,.3,1)}
-.lnk:hover .lnk-t{background:#B8F47A;color:#050505;transform:translateX(3px)}
-.navl{text-decoration:none;color:#fff;padding:14px 0;transition:color .2s}
-.navl:hover{color:#B8F47A}
+.btn-o{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:10px;border:1px solid var(--ln2);background:var(--p1);color:var(--tx);font-size:14px;font-weight:500;letter-spacing:-.01em;white-space:nowrap;text-decoration:none;box-shadow:var(--sh1);transition:border-color .25s,color .25s}
+.btn-o:hover{border-color:var(--acc-tx)}
+.lang a{text-decoration:none;color:var(--sub);padding:12px 2px}.lang a[aria-current]{color:var(--tx)}.lang a:hover{color:var(--acc-tx)}
+.cta-s{display:none}
+.menu-btn{display:none}
+.svc{display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1.6fr);gap:12px 32px;align-items:baseline;padding:32px 16px 36px;border-top:1px solid var(--ln)}
+.lnk{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:var(--tx)}
+.lnk-t{flex:0 0 26px;height:26px;border-radius:50%;background:var(--acc-tint);color:var(--acc-tx);display:grid;place-items:center;transition:background .3s,color .3s,transform .45s cubic-bezier(.16,1,.3,1)}
+.lnk:hover .lnk-t{background:var(--acc);color:var(--on-acc);transform:translateX(3px)}
+.navl{white-space:nowrap;text-decoration:none;color:var(--tx);padding:14px 0;transition:color .2s}
+.navl:hover{color:var(--acc-tx)}
+.th{transition:background .25s,color .25s}
 .row{transition:background .3s}
-.row:hover{background:#0D0D0E}
+.row:hover{background:var(--p1)}
 .qb{cursor:pointer;transition:border-color .2s,color .2s}
-.qb:hover{border-color:#B8F47A}
+.qb:hover{border-color:var(--acc-tx)}
 .qb:disabled{cursor:default;opacity:.5}
 .faq summary{list-style:none;cursor:pointer}
 .faq summary::-webkit-details-marker{display:none}
-.faq .pm{transition:transform .35s cubic-bezier(.16,1,.3,1),background .3s,color .3s}
-.faq[open] .pm{transform:rotate(45deg);background:#B8F47A;color:#050505}
+.faq .pm{color:var(--tx);transition:transform .35s cubic-bezier(.16,1,.3,1),background .3s,color .3s}
+.faq[open] .pm{transform:rotate(45deg);background:var(--acc);color:var(--on-acc)}
 .wf-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
 .how{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:56px 24px}
 .ag-steps{min-height:800px;box-sizing:border-box}
-.tile{aspect-ratio:1.3;border-radius:20px;border:1px solid #242426;background-color:#0D0D0E;background-image:repeating-radial-gradient(circle at 18% 118%,transparent 0,transparent 9px,#262628 9px,#262628 10px);display:grid;place-items:center}
+.tile{aspect-ratio:1.3;border-radius:20px;border:1px solid var(--ln);background-color:var(--p1);background-image:repeating-radial-gradient(circle at 18% 118%,transparent 0,transparent 9px,var(--ring) 9px,var(--ring) 10px);display:grid;place-items:center}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes bub{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes dots{0%,80%,100%{opacity:.25}40%{opacity:1}}
-@keyframes ring{0%,100%{box-shadow:0 0 0 3px #1E2A14}50%{box-shadow:0 0 0 7px #1E2A14}}
+@keyframes ring{0%,100%{box-shadow:0 0 0 3px var(--acc-tint)}50%{box-shadow:0 0 0 7px var(--acc-tint)}}
 @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 .mq{display:flex;width:max-content;animation:mq 36s linear infinite}
 .mq-box:hover .mq{animation-play-state:paused}
 .bub{animation:bub .45s cubic-bezier(.16,1,.3,1) both}
-.td{display:inline-block;width:6px;height:6px;border-radius:50%;background:#A6A6A6;animation:dots 1.2s infinite}
+.td{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--sub);animation:dots 1.2s infinite}
 .act{animation:ring 1.1s ease-in-out infinite}
 .bar{transform-origin:left center;animation:grow 1.2s cubic-bezier(.16,1,.3,1) both}
 .live{animation:blink 1.6s ease-in-out infinite}
 [data-rv]{transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1),filter .9s cubic-bezier(.16,1,.3,1);transition-delay:var(--dl,0s)}
 .pre{opacity:0;transform:translateY(22px);filter:blur(10px);transition:none!important}
-.pre .mk{color:#fff;background-size:100% 100%;transition:none!important}
+.pre .mk{color:var(--tx);background-size:100% 100%;transition:none!important}
 @media (max-width:900px){
-.wf-grid{grid-template-columns:minmax(0,1fr);gap:8px}
-.wf-link,.nav-links,.rail,.how-x{display:none!important}
-.how{grid-template-columns:minmax(0,1fr);gap:36px}
+.wf-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.hero{min-height:0!important}
+.hero-card{margin-top:12px!important}
+.wf-link,.nav-links,.rail,.how-x,.th-seg{display:none!important}
+.th-one{display:inline-flex!important}
+.lang,.cta-l,.hdr-cta{display:none!important}
+.menu-btn{display:inline-flex!important}
+.cta-s{display:inline!important}
+.svc{grid-template-columns:48px minmax(0,1fr);padding:28px 0 32px}.svc>div{grid-column:1/-1}
+.how{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px}
+}
+@media (min-width:561px) and (max-width:1023px){
+.kb{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:auto 1fr;align-items:start}
+.kb>:nth-child(1){grid-column:1;grid-row:1}
+.kb>:nth-child(2){grid-column:2;grid-row:1/span 2}
+.kb>:nth-child(3){grid-column:1;grid-row:2}
+.offers{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.offers>li:first-child{grid-column:1/-1}
 }
 @media (max-width:960px){
 .ag-panel{flex-direction:column;flex-wrap:nowrap!important}
-.ag-chat{order:-1;flex:0 0 auto!important;height:600px;min-height:0!important}
+.ag-chat{order:-1;flex:0 0 auto!important;height:470px;min-height:0!important}
 .ag-msgs{min-height:0;overflow:hidden;justify-content:flex-end}
-.ag-steps{flex:0 0 auto!important;min-height:0;border-right:0!important;border-top:1px solid #242426}
+.ag-steps{flex:0 0 auto!important;min-height:0;border-right:0!important;border-top:1px solid var(--ln)}
 }
-@media (max-width:520px){.ag-chat{height:680px}.wf-log{min-height:210px!important}}
-@media (prefers-reduced-motion: reduce){.mq,.bub,.td,.act,.bar,.live{animation:none!important}[data-rv],.mk,.btn-l,.btn-t,.lnk-t,.faq .pm{transition:none!important}}
+@media (max-width:520px){.ag-chat{height:620px}.wf-log{min-height:210px!important}}
+@media (max-width:1279px){.tagl{display:none!important}}
+.nw{white-space:nowrap}.nw .mk{white-space:normal}
+.hrs{flex:none;white-space:nowrap}
+.mq.stop,.mq-box:focus-within .mq{animation-play-state:paused}
+.rep-key{display:none}
+@media (max-width:560px){
+.rep table,.rep tbody,.rep tfoot{display:block;min-width:0!important}
+.rep thead{display:none}
+.rep-key{display:block;margin-bottom:4px}
+.rep tr{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:12px}
+.rep tbody tr{padding:14px 0}
+.rep tfoot tr{padding-top:16px}
+.rep tr>*{padding:0!important}
+.rep tr>:nth-child(2){grid-column:1/-1;grid-row:2;margin-top:10px}
+.rep tr>:nth-child(3){grid-column:2;grid-row:1}
+.wf-grid{grid-template-columns:minmax(0,1fr)}
+.wf-card{display:grid!important;grid-template-columns:34px minmax(0,1fr) 20px;column-gap:12px!important;row-gap:2px!important;align-items:center;padding:12px 14px!important}
+.wf-top{display:contents!important}
+.wf-top>:first-child{grid-column:1;grid-row:1/4;align-self:start}
+.wf-top>:last-child{grid-column:3;grid-row:1}
+.wf-card>:nth-child(2){grid-column:2;grid-row:1}
+.wf-card>:nth-child(3){grid-column:2;grid-row:2}
+.wf-card>:nth-child(4){grid-column:2;grid-row:3}
+.kb>:nth-child(1){order:0}.kb>:nth-child(3){order:1}.kb>:nth-child(2){order:2}
+.tc{min-height:0!important}
+.how{grid-template-columns:minmax(0,1fr);gap:36px}
+.co-p{font-size:21px}
+}
+@media (prefers-reduced-motion: reduce){.mq,.bub,.td,.act,.bar,.live{animation:none!important}[data-rv],.mk,.btn-l,.btn-t,.lnk-t,.faq .pm{transition:none!important}.mq{width:auto;flex-wrap:wrap;row-gap:10px}.mq-dup,.mq-ctl{display:none!important}}
 </style>
 </helmet>
-<div class="d">
+<div class="d {{themeCls}}">
 
-<header style="position: sticky; top: 0; z-index: 20; background: rgba(5,5,5,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid #1A1A1C;">
-<div id="d-progress" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 100%; height: 2px; background: #B8F47A; transform: scaleX(0); transform-origin: left center;"></div>
-<nav class="wrap mono" aria-label="Main" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 56px; color: #fff;">
+<header style="position: sticky; top: 0; z-index: 20; background: var(--hdr); backdrop-filter: blur(14px); border-bottom: 1px solid var(--p3);">
+<div id="d-progress" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 100%; height: 2px; background: var(--acc-tx); transform: scaleX(0); transform-origin: left center;"></div>
+<nav class="wrap mono" aria-label="Main" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 56px; color: var(--tx);">
 <a href="#" aria-label="Ferbert, home" style="display: flex; align-items: center; gap: 14px; text-decoration: none;">
-<span style="display: flex; align-items: center; gap: 8px; font-family: 'Geist', sans-serif; font-size: 19px; font-weight: 500; letter-spacing: -0.03em; text-transform: none;"><svg width="14" height="14" viewBox="0 0 14 14" fill="#fff" aria-hidden="true"><path d="M1 1h4v4H1zM1 9h4v4H1zM9 5h4v4H9z"></path></svg>ferbert</span>
-<span class="nav-links" aria-hidden="true" style="width: 1px; height: 18px; background: #3A3A3D;"></span>
-<span class="nav-links" style="color: #A6A6A6;">AI automation company</span>
+<span style="display: flex; align-items: center; gap: 8px; font-family: 'Geist', sans-serif; font-size: 19px; font-weight: 500; letter-spacing: -0.03em; text-transform: none;"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M1 1h4v4H1zM1 9h4v4H1zM9 5h4v4H9z"></path></svg>ferbert</span>
+<span class="nav-links tagl" aria-hidden="true" style="width: 1px; height: 18px; background: var(--ln2);"></span>
+<span class="nav-links tagl" style="color: var(--sub);">AI automation company</span>
 </a>
 <div style="display: flex; align-items: center; gap: clamp(16px, 3vw, 44px);">
 <div class="nav-links" style="display: flex; align-items: center; gap: clamp(16px, 3vw, 44px);">
-<a class="navl" href="#analysis">Analysis</a><a class="navl" href="#demos">Demos</a><a class="navl" href="#services">Services</a><a class="navl" href="#start">Pricing</a><a class="navl" href="#faq">FAQ</a>
+<a class="navl" href="#analysis">Analysis</a><a class="navl" href="#demos">Demos</a><a class="navl" href="#services">What we automate</a><a class="navl" href="#start">Pricing</a><a class="navl" href="#faq">FAQ</a>
 </div>
-<a href="B-Contact.dc.html" class="navl" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid #fff; border-radius: 999px; white-space: nowrap;">Contact us</a>
+<div class="th-seg" role="group" aria-label="Colour theme" style="display: flex; align-items: center; gap: 2px; padding: 2px; border: 1px solid var(--ln2); border-radius: 999px;">
+<sc-for list="{{themes}}" as="t" hint-placeholder-count="3"><button type="button" class="mono th" onClick="{{t.pick}}" aria-pressed="{{t.pressed}}" style="min-height: 28px; padding: 0 11px; border: 0; border-radius: 999px; cursor: pointer; background: {{t.bg}}; color: {{t.fg}};">{{t.label}}</button></sc-for>
+</div>
+<button type="button" class="mono th th-one" onClick="{{cycleTheme}}" aria-label="{{themeAria}}" style="display: none; align-items: center; gap: 6px; min-height: 44px; padding: 0 12px; border: 1px solid var(--ln2); border-radius: 999px; background: transparent; color: var(--tx); cursor: pointer;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.4"></circle><path d="M6 1a5 5 0 010 10z" fill="currentColor"></path></svg>{{themeLabel}}</button>
+<span class="lang" style="display: flex; align-items: center; gap: 6px;"><a href="#" aria-current="page" aria-label="English">EN</a><span aria-hidden="true" style="color: var(--ln4);">/</span><a href="#" lang="de" aria-label="Deutsch">DE</a></span>
+<a href="D-Contact.dc.html" class="hdr-cta" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px; background: var(--inv); color: var(--on-inv); text-decoration: none; white-space: nowrap; box-shadow: var(--sh-btn);">Book a free call</a>
+<button type="button" class="mono menu-btn" onClick="{{toggleMenu}}" aria-expanded="{{menuStr}}" aria-controls="d-menu" style="align-items: center; min-height: 44px; padding: 0 12px; border: 1px solid var(--tx); border-radius: 999px; background: transparent; color: var(--tx); cursor: pointer;">{{menuLabel}}</button>
 </div>
 </nav>
+<sc-if value="{{menu}}" hint-placeholder-val="{{false}}">
+<div id="d-menu" class="wrap" style="padding-top: 8px; padding-bottom: 24px; border-top: 1px solid var(--ln); background: var(--bg);">
+<nav aria-label="Mobile" style="display: flex; flex-direction: column;">
+<a class="navl" href="#analysis" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">Analysis<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><a class="navl" href="#demos" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">Demos<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><a class="navl" href="#services" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">What we automate<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><a class="navl" href="#start" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">Pricing<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><a class="navl" href="#faq" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">FAQ<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><a class="navl" href="D-Blog.dc.html" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">Blog<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><a class="navl" href="D-Contact.dc.html" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">Contact<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a>
+</nav>
+<div class="mono" style="display: flex; gap: 14px; padding-top: 18px;"><a href="#" aria-current="page" style="color: var(--tx); text-decoration: none;">English</a><a href="#" lang="de" style="color: var(--sub); text-decoration: none;">Deutsch</a></div>
+<a href="D-Contact.dc.html" class="btn" style="margin-top: 20px; text-transform: none; letter-spacing: -0.01em; font-family: 'Geist', sans-serif;"><span class="btn-l">Book a free call</span><span class="btn-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a>
+</div>
+</sc-if>
 </header>
 
 <section aria-label="Introduction" style="padding: 12px 12px 0;">
-<div style="position: relative; overflow: hidden; display: flex; min-height: 700px; border: 1px solid #3A3A3D; border-radius: 28px; background-color: #0B0B0C; background-image: radial-gradient(80% 90% at 78% 30%, #24262A 0%, rgba(11,11,12,0) 62%), radial-gradient(#1F1F21 1px, transparent 1px); background-size: auto, 22px 22px;">
-<svg aria-hidden="true" width="100%" height="100%" style="position: absolute; inset: 0; opacity: 0.16; pointer-events: none;"><filter id="d-grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#d-grain)"></rect></svg>
+<div class="hero" style="position: relative; overflow: hidden; display: flex; min-height: 700px; border: 1px solid var(--ln2); border-radius: 28px; box-shadow: var(--sh2); background-color: var(--frame); background-image: radial-gradient(80% 90% at 78% 30%, var(--glow) 0%, transparent 62%), radial-gradient(var(--dot) 1px, transparent 1px); background-size: auto, 22px 22px;">
+<svg aria-hidden="true" width="100%" height="100%" style="position: absolute; inset: 0; opacity: var(--grain); pointer-events: none;"><filter id="d-grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#d-grain)"></rect></svg>
 
-<div class="rail mono" aria-hidden="true" style="position: relative; flex: 0 0 56px; border-right: 1px solid #242426; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 28px 0;">
-<span style="width: 14px; height: 64px; background-image: repeating-linear-gradient(180deg, #fff 0, #fff 1px, transparent 1px, transparent 4px);"></span>
-<span style="writing-mode: vertical-rl; transform: rotate(180deg); display: flex; gap: 8px; align-items: center;">Status: <span style="color: #B8F47A;">{{railStatus}}</span></span>
+<div class="rail mono" aria-hidden="true" style="position: relative; flex: 0 0 56px; border-right: 1px solid var(--ln); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 28px 0;">
+<span style="width: 14px; height: 64px; background-image: repeating-linear-gradient(180deg, var(--tx) 0, var(--tx) 1px, transparent 1px, transparent 4px);"></span>
+<span style="writing-mode: vertical-rl; transform: rotate(180deg); display: flex; gap: 8px; align-items: center;">Status: <span style="color: var(--acc-tx);">{{railStatus}}</span></span>
 <span style="writing-mode: vertical-rl; transform: rotate(180deg);">Valencia · Europe</span>
 </div>
 
 <div style="position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 28px; padding: clamp(28px, 4vw, 56px) clamp(20px, 3vw, 44px) clamp(20px, 2.4vw, 32px);">
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
 <span class="mono" data-rv>Process analysis first · then agents</span>
-<span aria-hidden="true" style="display: flex; gap: 5px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #5A5A5E;"></span><span style="width: 5px; height: 5px; border-radius: 50%; background: #5A5A5E;"></span><span style="width: 5px; height: 5px; border-radius: 50%; background: #fff;"></span></span>
+<span aria-hidden="true" style="display: flex; gap: 5px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: var(--ln4);"></span><span style="width: 5px; height: 5px; border-radius: 50%; background: var(--ln4);"></span><span style="width: 5px; height: 5px; border-radius: 50%; background: var(--tx);"></span></span>
 </div>
 <h1 class="xl" data-rv aria-label="Find the work AI should do. Then let agents do it." style="max-width: 15.5ch;"><span data-scr>Find the work AI should do.</span> <span data-scr>Then let</span> <span class="mk" data-scr>agents</span> <span data-scr>do it.</span></h1>
 <p class="sub" data-rv style="--dl: .12s; margin: 0; max-width: 50ch; font-size: 17px;">Ferbert analyses how your company works, shows you which processes AI can take over and what that saves, then builds the agents that run them.</p>
 <div data-rv style="--dl: .2s; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 36px;">
-<a href="B-Contact.dc.html" class="btn" aria-label="Get a process analysis"><span class="btn-l" data-scr>Get a process analysis</span><span class="btn-t" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
-<a href="#demos" class="lnk mono" aria-label="Watch an agent think"><span data-scr>Watch an agent think</span><span class="lnk-t" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
+<a href="D-Contact.dc.html" class="btn" aria-label="Book a free call"><span class="btn-l" data-scr>Book a free call</span><span class="btn-t" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
+<a href="#demos" class="btn-o">Watch an agent think</a>
 </div>
+<p class="mono" data-rv style="--dl: .26s; margin: -14px 0 0;">Free · 30 minutes · An honest view of what is worth automating</p>
 
-<div data-rv style="--dl: .32s; margin-top: auto; align-self: flex-end; width: min(100%, 440px); display: flex; border: 1px solid #3A3A3D; border-radius: 16px; background: rgba(8,8,9,0.78); backdrop-filter: blur(8px); overflow: hidden;">
+<div class="hero-card" data-rv style="--dl: .32s; margin-top: auto; align-self: flex-end; width: min(100%, 440px); display: flex; border: 1px solid var(--ln2); border-radius: 16px; background: var(--card); backdrop-filter: blur(8px); overflow: hidden; box-shadow: var(--sh2);">
 <div style="flex: 1; min-width: 0; padding: 16px; display: flex; flex-direction: column; gap: 18px;">
-<span style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 500; letter-spacing: -0.03em;"><svg width="11" height="11" viewBox="0 0 14 14" fill="#fff" aria-hidden="true"><path d="M1 1h4v4H1zM1 9h4v4H1zM9 5h4v4H9z"></path></svg>ferbert</span>
-<span class="mono" style="color: #fff; line-height: 1.5;">An automation company that starts with an analysis, not a guess.</span>
-<span class="mono" style="display: flex; align-items: center; gap: 8px;"><span class="live" style="width: 6px; height: 6px; border-radius: 50%; background: #B8F47A;"></span>Invoice intake · {{wfShort}}</span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 500; letter-spacing: -0.03em;"><svg width="11" height="11" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M1 1h4v4H1zM1 9h4v4H1zM9 5h4v4H9z"></path></svg>ferbert</span>
+<span class="mono" style="color: var(--tx); line-height: 1.5;">An automation company that starts with an analysis, not a guess.</span>
+<span class="mono" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px;"><span class="nw" style="display: inline-flex; align-items: center; gap: 8px;"><span class="live" style="width: 6px; height: 6px; border-radius: 50%; background: var(--acc-tx);"></span>Invoice intake ·</span><span class="nw">{{wfShort}}</span></span>
 </div>
-<ol aria-hidden="true" style="list-style: none; margin: 0; padding: 14px; flex: 0 0 150px; border-left: 1px solid #242426; display: flex; flex-direction: column; justify-content: space-between; gap: 6px;">
+<ol aria-hidden="true" style="list-style: none; margin: 0; padding: 14px; flex: 0 0 150px; border-left: 1px solid var(--ln); display: flex; flex-direction: column; justify-content: space-between; gap: 6px;">
 <sc-for list="{{nodes}}" as="n" hint-placeholder-count="5">
 <li class="mono" style="display: flex; align-items: center; gap: 8px; font-size: 11px; color: {{n.miniColor}}; transition: color .3s;"><span style="flex: 0 0 8px; height: 8px; border-radius: 2px; background: {{n.miniDot}}; transition: background .3s;"></span>{{n.short}}</li>
 </sc-for>
@@ -139,10 +212,10 @@ body{margin:0;background:#050505}
 </div>
 
 <sc-if value="{{loading}}" hint-placeholder-val="{{false}}">
-<div aria-hidden="true" style="position: absolute; inset: 0; z-index: 5; background: #0B0B0C; display: grid; place-items: center;">
+<div aria-hidden="true" style="position: absolute; inset: 0; z-index: 5; background: var(--frame); display: grid; place-items: center;">
 <div style="width: 220px; display: flex; flex-direction: column; gap: 12px;">
 <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 17px; font-weight: 500; letter-spacing: -0.03em;">ferbert</span><span class="mono" style="font-variant-numeric: tabular-nums;">{{pct}}%</span></div>
-<div style="height: 2px; background: #242426;"><div style="height: 2px; width: {{pct}}%; background: #B8F47A;"></div></div>
+<div style="height: 2px; background: var(--ln);"><div style="height: 2px; width: {{pct}}%; background: var(--acc-tx);"></div></div>
 </div>
 </div>
 </sc-if>
@@ -150,31 +223,31 @@ body{margin:0;background:#050505}
 </section>
 
 <section aria-label="Tools we connect" class="wrap" style="padding-top: 28px;">
-<p class="mono" data-rv style="margin: 0 0 12px;">We connect agents to the tools you already use, for example</p>
-<div class="mq-box" data-rv style="overflow: hidden; border-radius: 10px; background: #B8F47A;">
-<div class="mq mono" style="color: #050505; padding: 14px 0;">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 0 0 8px;">
+<p class="mono" data-rv style="margin: 0;">We connect agents to the tools you already use, for example</p>
+<button type="button" class="mono qb mq-ctl" onClick="{{toggleMq}}" aria-label="{{mqAria}}" style="flex: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--ln2); background: transparent; color: var(--tx);">
+<sc-if value="{{mqPaused}}" hint-placeholder-val="{{false}}"><svg width="10" height="10" fill="currentColor" aria-hidden="true"><path d="M2 1v8l7-4z"></path></svg></sc-if>
+<sc-if value="{{mqRunning}}" hint-placeholder-val="{{true}}"><svg width="10" height="10" fill="currentColor" aria-hidden="true"><rect x="1.5" y="1" width="2.6" height="8"></rect><rect x="6" y="1" width="2.6" height="8"></rect></svg></sc-if>
+{{mqLabel}}</button>
+</div>
+<div class="mq-box" data-rv style="overflow: hidden; border-radius: 10px; background: var(--acc);">
+<div class="mq mono {{mqCls}}" style="color: var(--on-acc); padding: 14px 0;">
 <sc-for list="{{tools}}" as="t" hint-placeholder-count="12"><span style="padding: 0 clamp(28px, 4vw, 64px);">{{t}}</span></sc-for>
-<sc-for list="{{tools}}" as="t" hint-placeholder-count="12"><span aria-hidden="true" style="padding: 0 clamp(28px, 4vw, 64px);">{{t}}</span></sc-for>
+<sc-for list="{{tools}}" as="t" hint-placeholder-count="12"><span class="mq-dup" aria-hidden="true" style="padding: 0 clamp(28px, 4vw, 64px);">{{t}}</span></sc-for>
 </div>
 </div>
-</section>
-
-<section aria-labelledby="cad-title" class="wrap sec" style="text-align: center;">
-<h2 id="cad-title" class="lg" data-rv aria-label="30 minutes, 2 to 3 weeks, N weeks" style="font-size: clamp(36px, 5.6vw, 84px);"><span data-scr>30 min</span> <span class="sub" aria-hidden="true">/</span> <span data-scr>2–3 weeks</span> <span class="sub" aria-hidden="true">/</span> <span data-scr>[N] weeks.</span></h2>
-<span aria-hidden="true" style="display: block; width: 1px; height: 64px; margin: 28px auto; background: #3A3A3D;"></span>
-<p class="sub" data-rv style="margin: 0 auto; max-width: 44ch;">A free first call. A process analysis in two to three weeks. Then your first agent, tested on your real cases before it goes live.</p>
 </section>
 
 <section id="workflow" aria-labelledby="wf-title" class="wrap sec">
 <div class="mono lab" data-rv>Live example</div>
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; padding: 40px 0 36px;">
-<h2 id="wf-title" class="lg" data-rv style="max-width: 13ch;">An invoice, handled <span class="mk">end to end</span>.</h2>
+<h2 id="wf-title" class="lg" data-rv style="max-width: 13ch;">An invoice, handled <span class="nw"><span class="mk">end to end</span>.</span></h2>
 <p class="sub" data-rv style="margin: 0; max-width: 40ch;">An example automation for illustration. It runs on every new email. Yours is designed around your process.</p>
 </div>
-<div class="panel" data-rv style="padding: clamp(18px, 2.4vw, 32px); background-image: radial-gradient(#1C1C1E 1px, transparent 1px); background-size: 22px 22px;">
+<div class="panel lift" data-rv style="padding: clamp(18px, 2.4vw, 32px); background-image: radial-gradient(var(--dot) 1px, transparent 1px); background-size: 22px 22px;">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 24px;">
-<div class="mono" style="display: flex; align-items: center; gap: 10px; color: #fff;"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{wfDot}};"></span>Invoice intake <span style="color: #A6A6A6;">{{wfStatus}}</span></div>
-<button type="button" class="mono qb" onClick="{{togglePause}}" aria-pressed="{{pausedStr}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #3A3A3D; background: transparent; color: #fff;">
+<div class="mono" style="display: flex; align-items: center; gap: 10px; color: var(--tx);"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{wfDot}};"></span>Invoice intake <span style="color: var(--sub);">{{wfStatus}}</span></div>
+<button type="button" class="mono qb" onClick="{{togglePause}}" aria-pressed="{{pausedStr}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--ln2); background: transparent; color: var(--tx);">
 <sc-if value="{{paused}}" hint-placeholder-val="{{false}}"><svg width="10" height="10" fill="currentColor" aria-hidden="true"><path d="M2 1v8l7-4z"></path></svg></sc-if>
 <sc-if value="{{running}}" hint-placeholder-val="{{true}}"><svg width="10" height="10" fill="currentColor" aria-hidden="true"><rect x="1.5" y="1" width="2.6" height="8"></rect><rect x="6" y="1" width="2.6" height="8"></rect></svg></sc-if>
 {{pauseLabel}}</button>
@@ -182,10 +255,10 @@ body{margin:0;background:#050505}
 <ol class="wf-grid">
 <sc-for list="{{nodes}}" as="n" hint-placeholder-count="5">
 <li style="display: flex; align-items: stretch;">
-<div style="flex: 1; min-width: 0; background: #111112; border: 1px solid {{n.border}}; box-shadow: {{n.shadow}}; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px; transition: border-color .35s cubic-bezier(.16,1,.3,1), box-shadow .35s cubic-bezier(.16,1,.3,1);">
-<div style="display: flex; justify-content: space-between; align-items: center;">
-<span style="width: 34px; height: 34px; border-radius: 9px; background: #1A1A1C; color: {{n.iconColor}}; display: grid; place-items: center; transition: color .3s;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{n.icon}}"></path></svg></span>
-<span style="width: 20px; height: 20px; border-radius: 50%; background: {{n.checkBg}}; display: grid; place-items: center; transition: background .3s;"><svg width="11" height="11" fill="none" stroke="#050505" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.2 5.8l2.2 2.2L8.8 3.2"></path></svg></span>
+<div class="wf-card" style="flex: 1; min-width: 0; background: var(--p2); border: 1px solid {{n.border}}; box-shadow: {{n.shadow}}; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px; transition: border-color .35s cubic-bezier(.16,1,.3,1), box-shadow .35s cubic-bezier(.16,1,.3,1);">
+<div class="wf-top" style="display: flex; justify-content: space-between; align-items: center;">
+<span style="width: 34px; height: 34px; border-radius: 9px; background: var(--p3); color: {{n.iconColor}}; display: grid; place-items: center; transition: color .3s;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{n.icon}}"></path></svg></span>
+<span style="width: 20px; height: 20px; border-radius: 50%; background: {{n.checkBg}}; display: grid; place-items: center; transition: background .3s;"><svg width="11" height="11" fill="none" style="stroke: var(--on-acc);" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.2 5.8l2.2 2.2L8.8 3.2"></path></svg></span>
 </div>
 <div class="mono">{{n.kind}}</div>
 <div style="font-size: 16px; font-weight: 500; line-height: 1.25;">{{n.title}}</div>
@@ -195,9 +268,9 @@ body{margin:0;background:#050505}
 </li>
 </sc-for>
 </ol>
-<ol class="mono wf-log" aria-label="Run log" style="list-style: none; margin: 24px 0 0; padding: 16px 0 0; border-top: 1px solid #242426; display: flex; flex-direction: column; gap: 8px; min-height: 124px; text-transform: none; letter-spacing: 0; font-size: 12px; color: #D6D6D6;">
+<ol class="mono wf-log" aria-label="Run log" style="list-style: none; margin: 24px 0 0; padding: 16px 0 0; border-top: 1px solid var(--ln); display: flex; flex-direction: column; gap: 8px; min-height: 124px; text-transform: none; letter-spacing: 0; font-size: 12px; color: var(--log);">
 <sc-for list="{{logs}}" as="l" hint-placeholder-count="5">
-<li class="bub" style="display: flex; gap: 14px;"><span style="color: #8C8C8C;">{{l.t}}</span><span>{{l.msg}}</span></li>
+<li class="bub" style="display: flex; gap: 14px;"><span style="color: var(--mut);">{{l.t}}</span><span>{{l.msg}}</span></li>
 </sc-for>
 </ol>
 </div>
@@ -207,38 +280,39 @@ body{margin:0;background:#050505}
 <div class="mono lab" data-rv>Process analysis</div>
 <div style="display: flex; flex-wrap: wrap; gap: 48px 24px; padding-top: 40px; align-items: flex-start;">
 <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
-<h2 id="an-title" class="lg" data-rv style="max-width: 11ch;">Start with an <span class="mk">analysis</span>, not a guess.</h2>
+<h2 id="an-title" class="lg" data-rv style="max-width: 11ch;">Start with an <span class="nw"><span class="mk">analysis</span>,</span> not a guess.</h2>
 <p class="sub" data-rv style="margin: 0; max-width: 46ch;">In two to three weeks we map how work moves through your company, measure every process in hours, and rank what AI can take over by savings and risk. You keep the report, whether or not we build anything.</p>
 <ul data-rv style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; max-width: 52ch;">
 <sc-for list="{{deliverables}}" as="d" hint-placeholder-count="4">
-<li style="display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-top: 1px solid #242426;"><span class="mono" style="flex: 0 0 22px; color: #B8F47A; padding-top: 3px;">{{d.n}}</span><span>{{d.text}}</span></li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-top: 1px solid var(--ln);"><span class="mono" style="flex: 0 0 22px; color: var(--acc-tx); padding-top: 3px;">{{d.n}}</span><span>{{d.text}}</span></li>
 </sc-for>
 </ul>
-<a href="B-Contact.dc.html" class="btn" data-rv aria-label="Get a process analysis" style="align-self: flex-start;"><span class="btn-l" data-scr>Get a process analysis</span><span class="btn-t" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
+<a href="D-Contact.dc.html" class="btn" data-rv aria-label="Book a free call" style="align-self: flex-start;"><span class="btn-l" data-scr>Book a free call</span><span class="btn-t" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
 </div>
-<figure class="panel" data-rv style="--dl: .1s; flex: 1 1 520px; min-width: 0; margin: 0; padding: clamp(18px, 2.2vw, 28px);">
+<figure class="panel lift" data-rv style="--dl: .1s; flex: 1 1 520px; min-width: 0; margin: 0; padding: clamp(18px, 2.2vw, 28px);">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 22px;">
 <div style="font-size: 20px; font-weight: 500; letter-spacing: -0.02em;">Process analysis</div>
 <div class="mono">Sample report · fictional company</div>
 </div>
-<div style="overflow-x: auto;">
+<div class="rep" style="overflow-x: auto;">
+<div class="mono rep-key">Hours per week: today, then with agents</div>
 <table style="width: 100%; min-width: 440px; border-collapse: collapse; font-size: 15px;">
 <thead><tr class="mono" style="text-align: left;"><th scope="col" style="font-weight: 500; padding: 0 0 12px;">Process</th><th scope="col" style="font-weight: 500; padding: 0 0 12px; width: 46%;">Hours per week, today and with agents</th><th scope="col" style="font-weight: 500; padding: 0 0 12px; text-align: right;">Potential</th></tr></thead>
 <tbody>
 <sc-for list="{{report}}" as="r" hint-placeholder-count="5">
-<tr style="border-top: 1px solid #242426;">
+<tr style="border-top: 1px solid var(--ln);">
 <th scope="row" style="text-align: left; font-weight: 400; padding: 14px 12px 14px 0;">{{r.name}}</th>
 <td style="padding: 14px 12px 14px 0;">
 <div style="display: flex; flex-direction: column; gap: 6px;">
-<div style="display: flex; align-items: center; gap: 8px;"><span class="bar" style="animation-delay: {{r.delay}}; height: 6px; width: {{r.before}}%; background: #4A4A4E;"></span><span class="mono" style="letter-spacing: 0; text-transform: none;">{{r.beforeH}} h</span></div>
-<div style="display: flex; align-items: center; gap: 8px;"><span class="bar" style="animation-delay: {{r.delay2}}; height: 6px; width: {{r.after}}%; background: #B8F47A;"></span><span class="mono" style="letter-spacing: 0; text-transform: none; color: #B8F47A;">{{r.afterH}} h</span></div>
+<div style="display: flex; align-items: center; gap: 8px;"><span class="bar" style="animation-delay: {{r.delay}}; height: 6px; width: {{r.before}}%; background: var(--bar);"></span><span class="mono hrs" style="letter-spacing: 0; text-transform: none;">{{r.beforeH}} h</span></div>
+<div style="display: flex; align-items: center; gap: 8px;"><span class="bar" style="animation-delay: {{r.delay2}}; height: 6px; width: {{r.after}}%; background: var(--acc-tx);"></span><span class="mono hrs" style="letter-spacing: 0; text-transform: none; color: var(--acc-tx);">{{r.afterH}} h</span></div>
 </div>
 </td>
 <td style="padding: 14px 0; text-align: right;"><span class="mono pill" style="border-color: {{r.pbd}}; color: {{r.pfg}};">{{r.potential}}</span></td>
 </tr>
 </sc-for>
 </tbody>
-<tfoot><tr style="border-top: 1px solid #fff;"><th scope="row" style="text-align: left; padding: 16px 12px 0 0; font-weight: 500;">Total</th><td style="padding: 16px 12px 0 0; font-weight: 500; font-variant-numeric: tabular-nums;">103 h → <span style="color: #B8F47A;">23 h</span> per week</td><td style="padding: 16px 0 0; text-align: right; font-weight: 500; color: #B8F47A;">80 h saved</td></tr></tfoot>
+<tfoot><tr style="border-top: 1px solid var(--tx);"><th scope="row" style="text-align: left; padding: 16px 12px 0 0; font-weight: 500;">Total</th><td style="padding: 16px 12px 0 0; font-weight: 500; font-variant-numeric: tabular-nums;">103 h → <span style="color: var(--acc-tx);">23 h</span> per week</td><td style="padding: 16px 0 0; text-align: right; font-weight: 500; color: var(--acc-tx);">80 h saved</td></tr></tfoot>
 </table>
 </div>
 </figure>
@@ -248,12 +322,12 @@ body{margin:0;background:#050505}
 <section id="demos" aria-labelledby="ag-title" class="wrap sec">
 <div class="mono lab" data-rv>Demo · sample data</div>
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; padding: 40px 0 36px;">
-<h2 id="ag-title" class="lg" data-rv style="max-width: 12ch;">Watch a support agent <span class="mk">think</span>.</h2>
-<p class="sub" data-rv style="margin: 0; max-width: 44ch;">Ask the shop assistant a question. On the left you see every step it takes before it answers: understanding, searching your help centre, checking your order database, following your rules.</p>
+<h2 id="ag-title" class="lg" data-rv style="max-width: 12ch;">Watch a support agent <span class="nw"><span class="mk">think</span>.</span></h2>
+<p class="sub" data-rv style="margin: 0; max-width: 44ch;">Ask the shop assistant a question. Alongside the chat you see every step it takes before it answers: understanding, searching your help centre, checking your order database, following your rules.</p>
 </div>
-<div class="panel ag-panel" data-rv style="overflow: hidden; display: flex; flex-wrap: wrap;">
-<div class="ag-steps" style="flex: 999 1 520px; min-width: 0; padding: clamp(18px, 2.2vw, 28px); background-image: radial-gradient(#1C1C1E 1px, transparent 1px); background-size: 22px 22px; border-right: 1px solid #242426;">
-<div class="mono" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px;"><span style="color: #fff;">Inside the agent</span><span style="font-variant-numeric: tabular-nums;">{{timer}}</span></div>
+<div class="panel lift ag-panel" data-rv style="overflow: hidden; display: flex; flex-wrap: wrap;">
+<div class="ag-steps" style="flex: 999 1 520px; min-width: 0; padding: clamp(18px, 2.2vw, 28px); background-image: radial-gradient(var(--dot) 1px, transparent 1px); background-size: 22px 22px; border-right: 1px solid var(--ln);">
+<div class="mono" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px;"><span style="color: var(--tx);">Inside the agent</span><span style="font-variant-numeric: tabular-nums;">{{timer}}</span></div>
 <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;">
 <sc-for list="{{steps}}" as="s" hint-placeholder-count="6">
 <li style="display: flex; gap: 14px;">
@@ -266,14 +340,14 @@ body{margin:0;background:#050505}
 <div class="sub" style="font-size: 14px; min-height: 20px;">{{s.detail}}</div>
 <sc-if value="{{s.hasRag}}" hint-placeholder-val="{{false}}">
 <div class="bub" style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
-<sc-for list="{{s.rag}}" as="r" hint-placeholder-count="2"><div style="background: #111112; border: 1px solid #2A2A2C; border-radius: 10px; padding: 10px 12px; font-size: 13px; line-height: 1.45;"><div style="font-weight: 500; margin-bottom: 2px; display: flex; justify-content: space-between; gap: 8px;"><span>{{r.title}}</span><span class="mono" style="color: #B8F47A;">{{r.score}}</span></div><div class="sub">{{r.text}}</div></div></sc-for>
+<sc-for list="{{s.rag}}" as="r" hint-placeholder-count="2"><div style="background: var(--p2); border: 1px solid var(--ln3); border-radius: 10px; padding: 10px 12px; font-size: 13px; line-height: 1.45;"><div style="font-weight: 500; margin-bottom: 2px; display: flex; justify-content: space-between; gap: 8px;"><span>{{r.title}}</span><span class="mono" style="color: var(--acc-tx);">{{r.score}}</span></div><div class="sub">{{r.text}}</div></div></sc-for>
 </div>
 </sc-if>
 <sc-if value="{{s.hasDb}}" hint-placeholder-val="{{false}}">
-<div class="bub" style="margin-top: 4px; background: #111112; border: 1px solid #2A2A2C; border-radius: 10px; overflow: hidden;">
-<div class="mono" style="padding: 7px 12px; background: #19191B; border-bottom: 1px solid #2A2A2C;">{{s.dbTable}}</div>
+<div class="bub" style="margin-top: 4px; background: var(--p2); border: 1px solid var(--ln3); border-radius: 10px; overflow: hidden;">
+<div class="mono" style="padding: 7px 12px; background: var(--p3); border-bottom: 1px solid var(--ln3);">{{s.dbTable}}</div>
 <table style="width: 100%; border-collapse: collapse; font-size: 13px;"><tbody>
-<sc-for list="{{s.db}}" as="d" hint-placeholder-count="4"><tr><th scope="row" class="sub" style="text-align: left; font-weight: 400; padding: 6px 12px; width: 40%; border-top: 1px solid #232325;">{{d.k}}</th><td style="padding: 6px 12px; border-top: 1px solid #232325; font-variant-numeric: tabular-nums;">{{d.v}}</td></tr></sc-for>
+<sc-for list="{{s.db}}" as="d" hint-placeholder-count="4"><tr><th scope="row" class="sub" style="text-align: left; font-weight: 400; padding: 6px 12px; width: 40%; border-top: 1px solid var(--ln);">{{d.k}}</th><td style="padding: 6px 12px; border-top: 1px solid var(--ln); font-variant-numeric: tabular-nums;">{{d.v}}</td></tr></sc-for>
 </tbody></table>
 </div>
 </sc-if>
@@ -282,31 +356,31 @@ body{margin:0;background:#050505}
 </sc-for>
 </ol>
 </div>
-<div class="ag-chat" style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; min-height: 560px; background: #0A0A0B;">
-<div style="display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #242426;">
-<span style="width: 38px; height: 38px; border-radius: 50%; background: #fff; color: #050505; display: grid; place-items: center; font-weight: 600;">N</span>
-<div style="flex: 1; min-width: 0;"><div style="font-weight: 500;">Nordwind Shop support</div><div class="mono" style="display: flex; align-items: center; gap: 6px; color: #B8F47A;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #B8F47A;"></span>AI agent, online</div></div>
+<div class="ag-chat" style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; min-height: 560px; background: var(--chat);">
+<div style="display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--ln);">
+<span style="width: 38px; height: 38px; border-radius: 50%; background: var(--inv); color: var(--on-inv); display: grid; place-items: center; font-weight: 600;">N</span>
+<div style="flex: 1; min-width: 0;"><div style="font-weight: 500;">Nordwind Shop support</div><div class="mono" style="display: flex; align-items: center; gap: 6px; color: var(--acc-tx);"><span style="width: 6px; height: 6px; border-radius: 50%; background: var(--acc-tx);"></span>AI agent, online</div></div>
 <span class="mono pill">Demo</span>
 </div>
 <div class="ag-msgs" aria-live="polite" style="flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
-<div class="bub" style="align-self: flex-start; max-width: 85%; padding: 10px 14px; border-radius: 14px 14px 14px 4px; background: #1A1A1C; font-size: 15px; line-height: 1.45;">Hi! I’m Nordwind’s assistant. Ask me about orders, returns or delivery.</div>
+<div class="bub" style="align-self: flex-start; max-width: 85%; padding: 10px 14px; border-radius: 14px 14px 14px 4px; background: var(--p3); font-size: 15px; line-height: 1.45;">Hi! I’m Nordwind’s assistant. Ask me about orders, returns or delivery.</div>
 <sc-if value="{{hasQuestion}}" hint-placeholder-val="{{true}}">
-<div class="bub" style="align-self: flex-end; max-width: 85%; padding: 10px 14px; border-radius: 14px 14px 4px 14px; background: #fff; color: #050505; font-size: 15px; line-height: 1.45;">{{question}}</div>
+<div class="bub" style="align-self: flex-end; max-width: 85%; padding: 10px 14px; border-radius: 14px 14px 4px 14px; background: var(--inv); color: var(--on-inv); font-size: 15px; line-height: 1.45;">{{question}}</div>
 </sc-if>
 <sc-if value="{{thinking}}" hint-placeholder-val="{{false}}">
-<div class="bub" style="align-self: flex-start; padding: 13px 14px; border-radius: 14px 14px 14px 4px; background: #1A1A1C; display: flex; gap: 5px; align-items: center;" aria-label="Agent is thinking"><span class="td"></span><span class="td" style="animation-delay: .2s;"></span><span class="td" style="animation-delay: .4s;"></span></div>
+<div class="bub" style="align-self: flex-start; padding: 13px 14px; border-radius: 14px 14px 14px 4px; background: var(--p3); display: flex; gap: 5px; align-items: center;" aria-label="Agent is thinking"><span class="td"></span><span class="td" style="animation-delay: .2s;"></span><span class="td" style="animation-delay: .4s;"></span></div>
 </sc-if>
 <sc-if value="{{answered}}" hint-placeholder-val="{{false}}">
 <div class="bub" style="align-self: flex-start; max-width: 88%; display: flex; flex-direction: column; gap: 8px;">
-<div style="padding: 10px 14px; border-radius: 14px 14px 14px 4px; background: #1A1A1C; font-size: 15px; line-height: 1.5;">{{answer}}</div>
+<div style="padding: 10px 14px; border-radius: 14px 14px 14px 4px; background: var(--p3); font-size: 15px; line-height: 1.5;">{{answer}}</div>
 <div style="display: flex; flex-wrap: wrap; gap: 6px;"><sc-for list="{{sources}}" as="src" hint-placeholder-count="2"><span class="mono pill" style="font-size: 11px;">{{src}}</span></sc-for></div>
 </div>
 </sc-if>
 </div>
-<div style="padding: 14px 20px 18px; border-top: 1px solid #242426; display: flex; flex-direction: column; gap: 10px;">
+<div style="padding: 14px 20px 18px; border-top: 1px solid var(--ln); display: flex; flex-direction: column; gap: 10px;">
 <div role="group" aria-label="Choose a question" style="display: flex; flex-wrap: wrap; gap: 8px;">
 <sc-for list="{{asks}}" as="q" hint-placeholder-count="3">
-<button type="button" class="qb" onClick="{{q.pick}}" disabled="{{busy}}" style="min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid #3A3A3D; background: transparent; font: inherit; font-size: 14px; color: #fff;">{{q.text}}</button>
+<button type="button" class="qb" onClick="{{q.pick}}" disabled="{{busy}}" style="min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--ln2); background: transparent; font: inherit; font-size: 14px; color: var(--tx);">{{q.text}}</button>
 </sc-for>
 </div>
 <div class="mono" style="letter-spacing: .04em;">Pick a question above. This demo uses sample data.</div>
@@ -321,21 +395,21 @@ body{margin:0;background:#050505}
 <h2 id="rag-title" class="lg" data-rv style="max-width: 15ch; font-size: clamp(34px, 4.2vw, 60px);">Your team can ask the company’s <span class="mk">documents</span> too.</h2>
 <p class="sub" data-rv style="margin: 0; max-width: 42ch;">The same retrieval works internally. The agent finds the right passages first, then answers only from them, and shows where each fact came from.</p>
 </div>
-<div class="panel" data-rv style="padding: clamp(18px, 2.2vw, 28px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 28px;">
+<div class="panel lift kb" data-rv style="padding: clamp(18px, 2.2vw, 28px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 28px;">
 <div style="display: flex; flex-direction: column; gap: 10px;">
 <div class="mono" style="margin-bottom: 4px;">Ask a question</div>
 <sc-for list="{{questions}}" as="q" hint-placeholder-count="3">
-<button type="button" class="qb" onClick="{{q.pick}}" aria-pressed="{{q.pressed}}" style="text-align: left; min-height: 52px; padding: 12px 14px; border-radius: 12px; border: 1px solid {{q.border}}; background: {{q.bg}}; font: inherit; font-size: 15px; color: #fff;">{{q.text}}</button>
+<button type="button" class="qb" onClick="{{q.pick}}" aria-pressed="{{q.pressed}}" style="text-align: left; min-height: 52px; padding: 12px 14px; border-radius: 12px; border: 1px solid {{q.border}}; background: {{q.bg}}; font: inherit; font-size: 15px; color: var(--tx);">{{q.text}}</button>
 </sc-for>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px;">
 <div class="mono" style="margin-bottom: 4px;">Passages the agent found</div>
 <sc-for list="{{docs}}" as="d" hint-placeholder-count="3">
-<div style="padding: 12px 0 4px; border-top: 1px solid #242426;">
-<div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; margin-bottom: 8px;"><svg width="16" height="16" fill="none" stroke="#A6A6A6" stroke-width="1.5" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z M9.5 1.5V5H13"></path></svg>{{d.name}}</div>
+<div style="padding: 12px 0 4px; border-top: 1px solid var(--ln);">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; margin-bottom: 8px;"><svg width="16" height="16" fill="none" style="stroke: var(--sub);" stroke-width="1.5" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z M9.5 1.5V5H13"></path></svg>{{d.name}}</div>
 <sc-for list="{{d.chunks}}" as="c" hint-placeholder-count="3">
-<sc-if value="{{c.hit}}" hint-placeholder-val="{{false}}"><div class="bub" style="font-size: 13px; line-height: 1.45; color: #fff; padding: 6px 8px; border-radius: 6px; margin-bottom: 4px; background: #1E2A14; outline: 1px solid #5E8A32;">{{c.text}}</div></sc-if>
-<sc-if value="{{c.miss}}" hint-placeholder-val="{{true}}"><div style="font-size: 13px; line-height: 1.45; color: #8C8C8C; padding: 6px 8px; margin-bottom: 4px;">{{c.text}}</div></sc-if>
+<sc-if value="{{c.hit}}" hint-placeholder-val="{{false}}"><div class="bub" style="font-size: 13px; line-height: 1.45; color: var(--tx); padding: 6px 8px; border-radius: 6px; margin-bottom: 4px; background: var(--acc-tint); outline: 1px solid var(--acc-bd);">{{c.text}}</div></sc-if>
+<sc-if value="{{c.miss}}" hint-placeholder-val="{{true}}"><div style="font-size: 13px; line-height: 1.45; color: var(--mut); padding: 6px 8px; margin-bottom: 4px;">{{c.text}}</div></sc-if>
 </sc-for>
 </div>
 </sc-for>
@@ -344,9 +418,9 @@ body{margin:0;background:#050505}
 <div class="mono" style="margin-bottom: 4px;">Answer, with sources</div>
 <sc-for list="{{answers}}" as="a" hint-placeholder-count="1">
 <sc-if value="{{a.on}}" hint-placeholder-val="{{true}}">
-<div class="bub" aria-live="polite" style="border-radius: 14px; background: #B8F47A; color: #050505; padding: 18px; display: flex; flex-direction: column; gap: 14px;">
+<div class="bub" aria-live="polite" style="border-radius: 14px; background: var(--acc); color: var(--on-acc); padding: 18px; display: flex; flex-direction: column; gap: 14px;">
 <p style="margin: 0; font-size: 17px; line-height: 1.45; letter-spacing: -0.015em;">{{a.text}}</p>
-<div style="display: flex; flex-wrap: wrap; gap: 6px;"><sc-for list="{{a.sources}}" as="s" hint-placeholder-count="2"><span class="mono pill" style="font-size: 11px; color: #050505; border-color: #050505;">{{s}}</span></sc-for></div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px;"><sc-for list="{{a.sources}}" as="s" hint-placeholder-count="2"><span class="mono pill" style="font-size: 11px; color: var(--on-acc); border-color: var(--on-acc);">{{s}}</span></sc-for></div>
 </div>
 </sc-if>
 </sc-for>
@@ -357,22 +431,19 @@ body{margin:0;background:#050505}
 
 <section id="services" aria-labelledby="sv-title" class="wrap sec">
 <div class="mono lab" data-rv>What we automate</div>
-<div style="display: flex; flex-wrap: wrap; gap: 24px; padding: 40px 0 48px;">
-<div class="how-x" style="flex: 1 1 320px;"></div>
-<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
-<h2 id="sv-title" class="lg" data-rv>Our <span class="mk">services</span>.</h2>
-<p class="sub" data-rv style="margin: 0; max-width: 36ch;">Five kinds of work, one team. Where a demo on this page shows it, the row takes you there.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; padding: 40px 0 48px;">
+<h2 id="sv-title" class="lg" data-rv style="max-width: 14ch;">What we <span class="nw"><span class="mk">automate</span>.</span></h2>
+<p class="sub" data-rv style="margin: 0; max-width: 40ch;">Five kinds of work. Where a demo on this page shows it, the row takes you there.</p>
 </div>
-</div>
-<ol style="list-style: none; margin: 0; padding: 0; border-bottom: 1px solid #242426;">
+<ol style="list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--ln);">
 <sc-for list="{{services}}" as="s" hint-placeholder-count="5">
-<li class="row" data-rv style="display: flex; flex-wrap: wrap; gap: 16px 24px; padding: 32px 0 36px; border-top: 1px solid #242426;">
-<span aria-hidden="true" style="flex: 1 1 320px; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums;">/{{s.n}}</span>
-<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
-<h3 class="md">{{s.title}}.</h3>
-<p class="sub" style="margin: 0; max-width: 46ch;">{{s.body}}</p>
-<ul aria-label="Includes" style="list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px;">
-<sc-for list="{{s.tags}}" as="t" hint-placeholder-count="4"><li class="mono pill" style="color: #fff; border-color: #2E2E31; background: #121213;">{{t}}</li></sc-for>
+<li class="svc row" data-rv>
+<span aria-hidden="true" style="font-size: clamp(26px, 2.6vw, 36px); line-height: 1; letter-spacing: -0.04em; color: var(--mut); font-variant-numeric: tabular-nums;">{{s.n}}</span>
+<h3 class="md" style="font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -0.03em;">{{s.title}}</h3>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+<p class="sub" style="margin: 0; max-width: 52ch;">{{s.body}}</p>
+<ul aria-label="Includes" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px;">
+<sc-for list="{{s.tags}}" as="t" hint-placeholder-count="4"><li style="padding: 5px 12px; border-radius: 999px; background: var(--p1); border: 1px solid var(--ln); box-shadow: var(--sh1); font-size: 14px; font-weight: 500; color: var(--log);">{{t}}</li></sc-for>
 </ul>
 <sc-if value="{{s.hasLink}}" hint-placeholder-val="{{true}}"><a href="{{s.href}}" class="lnk mono" style="align-self: flex-start;">{{s.linkText}}<span class="lnk-t" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a></sc-if>
 </div>
@@ -387,12 +458,12 @@ body{margin:0;background:#050505}
 <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
 <h2 id="tr-title" class="lg" data-rv style="max-width: 10ch;">Built for <span class="mk">European</span> data rules.</h2>
 <p class="sub" data-rv style="margin: 0; max-width: 40ch;">Automation only works if you know where your data goes. These are the rules every Ferbert project follows.</p>
-<a href="B-Legal.dc.html" class="lnk mono" data-rv style="align-self: flex-start;">Read our privacy notice<span class="lnk-t" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
+<a href="D-Legal.dc.html" class="lnk mono" data-rv style="align-self: flex-start;">Read our privacy notice<span class="lnk-t" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
 </div>
 <ul style="flex: 1 1 560px; min-width: 0; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 8px;">
 <sc-for list="{{trust}}" as="t" hint-placeholder-count="4">
-<li class="panel" data-rv style="--dl: {{t.delay}}; padding: 24px; display: flex; flex-direction: column; gap: 12px; min-height: 220px;">
-<span style="width: 40px; height: 40px; border-radius: 10px; border: 1px solid #3A3A3D; color: #B8F47A; display: grid; place-items: center;"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.icon}}"></path></svg></span>
+<li class="panel tc" data-rv style="--dl: {{t.delay}}; padding: 24px; display: flex; flex-direction: column; gap: 12px; min-height: 220px;">
+<span style="width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--ln2); color: var(--acc-tx); display: grid; place-items: center;"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.icon}}"></path></svg></span>
 <span style="margin-top: auto; font-size: 21px; line-height: 1.2; letter-spacing: -0.02em;">{{t.title}}</span>
 <span class="sub" style="font-size: 15px;">{{t.body}}</span>
 </li>
@@ -403,15 +474,19 @@ body{margin:0;background:#050505}
 
 <section id="how" aria-labelledby="how-title" class="wrap sec">
 <div class="mono lab" data-rv>How we work</div>
-<h2 id="how-title" class="lg" data-rv style="padding: 40px 0 64px; max-width: 14ch;">From first call to <span class="mk">running agent</span>.</h2>
+<h2 id="how-title" class="lg" data-rv style="padding: 40px 0 40px; max-width: 14ch;">From first call to <span class="nw"><span class="mk">running agent</span>.</span></h2>
+<div data-rv style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px 40px; padding: 28px 0; margin-bottom: 64px; border-top: 1px solid var(--ln); border-bottom: 1px solid var(--ln);">
+<h3 class="lg" aria-label="30 minutes, 2 to 3 weeks, N weeks" style="font-size: clamp(32px, 4.6vw, 68px);"><span class="nw" data-scr>30 min</span>&nbsp;<span class="sub" aria-hidden="true">/</span> <span class="nw" data-scr>2–3 weeks</span>&nbsp;<span class="sub" aria-hidden="true">/</span> <span class="nw" data-scr>[N] weeks.</span></h3>
+<p class="sub" style="margin: 0; max-width: 38ch;">A free first call. A process analysis in two to three weeks. Then your first agent, tested on your real cases before it goes live.</p>
+</div>
 <ol class="how">
 <li data-rv style="display: flex; flex-direction: column; gap: 14px;"><span class="mono">01.</span><h3 class="md">Free call.</h3><p class="sub" style="margin: 0; max-width: 30ch;">We learn how your team works and where time goes.</p></li>
-<li class="how-x" aria-hidden="true" data-rv style="--dl: .08s;"><div class="tile"><svg width="34" height="34" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 5v24M5 17h24M9 9l16 16M25 9L9 25"></path></svg></div></li>
+<li class="how-x" aria-hidden="true" data-rv style="--dl: .08s;"><div class="tile"><svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 5v24M5 17h24M9 9l16 16M25 9L9 25"></path></svg></div></li>
 <li data-rv style="--dl: .16s; display: flex; flex-direction: column; gap: 14px;"><span class="mono">02.</span><h3 class="md">Process analysis.</h3><p class="sub" style="margin: 0; max-width: 30ch;">Each process measured in hours, with a clear list of what to automate.</p></li>
 <li class="how-x" aria-hidden="true"></li>
 <li class="how-x" aria-hidden="true"></li>
 <li data-rv style="display: flex; flex-direction: column; gap: 14px;"><span class="mono">03.</span><h3 class="md">Build.</h3><p class="sub" style="margin: 0; max-width: 30ch;">We build the first agents, test them on your real cases, and train your team.</p></li>
-<li class="how-x" aria-hidden="true" data-rv style="--dl: .08s;"><div class="tile"><svg width="38" height="30" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8 12 8-12 8 12 8-12"></path></svg></div></li>
+<li class="how-x" aria-hidden="true" data-rv style="--dl: .08s;"><div class="tile"><svg width="38" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8 12 8-12 8 12 8-12"></path></svg></div></li>
 <li data-rv style="--dl: .16s; display: flex; flex-direction: column; gap: 14px;"><span class="mono">04.</span><h3 class="md">Run and improve.</h3><p class="sub" style="margin: 0; max-width: 30ch;">Monitoring, cost tracking and monthly improvements.</p></li>
 </ol>
 </section>
@@ -419,24 +494,24 @@ body{margin:0;background:#050505}
 <section id="start" aria-labelledby="st-title" class="wrap sec">
 <div class="mono lab" data-rv>Pricing</div>
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; padding: 40px 0 36px;">
-<h2 id="st-title" class="lg" data-rv>Three ways to <span class="mk">start</span>.</h2>
+<h2 id="st-title" class="lg" data-rv>Three ways to <span class="nw"><span class="mk">start</span>.</span></h2>
 <p class="sub" data-rv style="margin: 0; max-width: 42ch;">Pick the stage you are at. If you are not sure, begin with the analysis: it tells you whether building is worth it.</p>
 </div>
-<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 8px;">
+<ol class="offers" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 8px;">
 <sc-for list="{{offers}}" as="o" hint-placeholder-count="3">
-<li class="panel" data-rv style="--dl: {{o.delay}}; padding: 8px; display: flex; flex-direction: column; background: #0A0A0B;">
-<div style="flex: 1; border-radius: 14px; background: #121213; padding: 24px; display: flex; flex-direction: column; gap: 22px;">
-<div class="mono" style="display: flex; justify-content: space-between; gap: 12px;"><span>{{o.n}}</span><span>Timeline: <span style="color: #fff;">{{o.time}}</span></span></div>
+<li class="panel {{o.flip}}" data-rv style="--dl: {{o.delay}}; padding: 8px; display: flex; flex-direction: column; background: var(--chat);">
+<div style="flex: 1; border-radius: 14px; background: var(--p2); padding: 24px; display: flex; flex-direction: column; gap: 22px;">
+<div class="mono" style="display: flex; justify-content: space-between; align-items: center; gap: 12px;"><span style="display: flex; align-items: center; gap: 8px;">{{o.n}}<sc-if value="{{o.rec}}" hint-placeholder-val="{{false}}"><span class="pill" style="min-height: 22px; border-color: var(--acc-bd); background: var(--acc); color: var(--on-acc);">Recommended</span></sc-if></span><span>Timeline: <span style="color: var(--tx);">{{o.time}}</span></span></div>
 <h3 class="md" style="min-height: 3.6em;">{{o.title}}. <span class="sub">{{o.line}}</span></h3>
 <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; font-size: 15px;">
 <sc-for list="{{o.items}}" as="i" hint-placeholder-count="5">
-<li style="display: flex; gap: 10px; align-items: flex-start;"><span aria-hidden="true" style="flex: 0 0 18px; height: 18px; margin-top: 2px; border-radius: 50%; border: 1px solid #3A3A3D; display: grid; place-items: center;"><svg width="9" height="9" fill="none" stroke="#B8F47A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.8l2 2L7.5 2.4"></path></svg></span><span>{{i}}</span></li>
+<li style="display: flex; gap: 10px; align-items: flex-start;"><span aria-hidden="true" style="flex: 0 0 18px; height: 18px; margin-top: 2px; border-radius: 50%; border: 1px solid var(--ln2); display: grid; place-items: center;"><svg width="9" height="9" fill="none" style="stroke: var(--acc-tx);" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.8l2 2L7.5 2.4"></path></svg></span><span>{{i}}</span></li>
 </sc-for>
 </ul>
 <span class="mono" style="margin-top: auto;">{{o.when}}</span>
 </div>
 <div style="padding: 16px 16px 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
-<a href="B-Contact.dc.html" class="btn" aria-label="{{o.cta}}"><span class="btn-l">{{o.cta}}</span><span class="btn-t" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
+<sc-if value="{{o.rec}}" hint-placeholder-val="{{true}}"><a href="D-Contact.dc.html" class="btn" aria-label="Book a free call"><span class="btn-l">Book a free call</span><span class="btn-t" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a></sc-if>
 <span style="font-size: 26px; letter-spacing: -0.03em;">{{o.price}} <span class="mono">{{o.unit}}</span></span>
 </div>
 </li>
@@ -445,9 +520,9 @@ body{margin:0;background:#050505}
 <div class="panel" data-rv style="margin-top: 8px; padding: clamp(20px, 2.4vw, 32px); display: flex; flex-wrap: wrap; gap: 20px 24px; align-items: flex-start;">
 <h3 class="md" style="flex: 1 1 320px; min-width: 0;">How pricing works.</h3>
 <ol style="flex: 2 1 520px; min-width: 0; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 20px 24px;">
-<li style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid #3A3A3D;"><span class="mono" style="color: #B8F47A;">01 · Fixed price</span><span>The analysis costs a fixed amount, agreed before we start.</span></li>
-<li style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid #3A3A3D;"><span class="mono" style="color: #B8F47A;">02 · Written estimate</span><span>What comes next depends on what we automate. You get an estimate in hours at our hourly rate.</span></li>
-<li style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid #3A3A3D;"><span class="mono" style="color: #B8F47A;">03 · You approve</span><span>We build only after you approve the estimate. You pay for the hours worked.</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid var(--ln2);"><span class="mono" style="color: var(--acc-tx);">01 · Fixed price</span><span>The analysis costs a fixed amount, agreed before we start.</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid var(--ln2);"><span class="mono" style="color: var(--acc-tx);">02 · Written estimate</span><span>What comes next depends on what we automate. You get an estimate in hours at our hourly rate.</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid var(--ln2);"><span class="mono" style="color: var(--acc-tx);">03 · You approve</span><span>We build only after you approve the estimate. You pay for the hours worked.</span></li>
 </ol>
 </div>
 </section>
@@ -457,78 +532,73 @@ body{margin:0;background:#050505}
 <div style="display: flex; flex-wrap: wrap; gap: 32px 24px; padding-top: 40px;">
 <h2 id="co-title" class="lg" data-rv style="flex: 1 1 420px; min-width: 0; max-width: 11ch;">A new company, built on <span class="mk">production</span> engineering.</h2>
 <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
-<p class="md" data-rv style="max-width: 30ch;">Ferbert is an AI automation company from Valencia, working with companies across Europe. <span class="sub">We’re starting small on purpose: every client works directly with senior engineers. Our background is backend engineering: Java, Kotlin, Kafka, cloud infrastructure. We build agents the same way, with retries, monitoring and human review.</span></p>
+<p class="md co-p" data-rv style="max-width: 30ch;">Ferbert is an AI automation company from Valencia, working with companies across Europe. <span class="sub">We’re starting small on purpose: every client works directly with senior engineers. Our background is backend engineering: Java, Kotlin, Kafka, cloud infrastructure. We build agents the same way, with retries, monitoring and human review.</span></p>
 </div>
 </div>
 </section>
 
 <section id="faq" aria-labelledby="faq-title" class="wrap sec">
 <div class="mono lab" data-rv>FAQ</div>
-<h2 id="faq-title" class="lg" data-rv style="padding: 56px 0 48px; text-align: center;">Pre-call <span class="mk">questions</span>.</h2>
+<h2 id="faq-title" class="lg" data-rv style="padding: 56px 0 48px; text-align: center;">Pre-call <span class="nw"><span class="mk">questions</span>.</span></h2>
 <div style="max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px;">
-<sc-for list="{{faq}}" as="f" hint-placeholder-count="6">
+<sc-for list="{{faq}}" as="f" hint-placeholder-count="7">
 <details class="faq panel" data-rv style="border-radius: 14px;">
-<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 8px 10px 8px 22px; font-size: 18px; letter-spacing: -0.02em;">{{f.q}}<span class="pm" aria-hidden="true" style="flex: 0 0 44px; height: 44px; border-radius: 10px; border: 1px solid #2E2E31; display: grid; place-items: center; color: #fff;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 1v10M1 6h10"></path></svg></span></summary>
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 8px 10px 8px 22px; font-size: 18px; letter-spacing: -0.02em;">{{f.q}}<span class="pm" aria-hidden="true" style="flex: 0 0 44px; height: 44px; border-radius: 10px; border: 1px solid var(--ln3); display: grid; place-items: center;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 1v10M1 6h10"></path></svg></span></summary>
 <p class="sub" style="margin: 0; padding: 0 70px 24px 22px; max-width: 64ch;">{{f.a}}</p>
 </details>
 </sc-for>
 </div>
-<div data-rv style="max-width: 820px; margin: 40px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding-top: 20px; border-top: 1px solid #242426;">
-<span class="mono" style="color: #fff;">Your question is not here?</span>
-<a href="B-Contact.dc.html" class="lnk mono">Ask us directly<span class="lnk-t" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
+<div data-rv style="max-width: 820px; margin: 40px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding-top: 20px; border-top: 1px solid var(--ln);">
+<span class="mono" style="color: var(--tx);">Your question is not here?</span>
+<a href="mailto:ferbertigo@gmail.com" class="lnk mono">Write to us<span class="lnk-t" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
 </div>
 </section>
 
 <section aria-labelledby="cta-title" class="sec" style="padding-left: 12px; padding-right: 12px;">
-<div style="position: relative; overflow: hidden; border: 1px solid #3A3A3D; border-radius: 28px; padding: clamp(48px, 7vw, 110px) 24px clamp(44px, 6vw, 90px); text-align: center; background-color: #0B0B0C; background-image: radial-gradient(70% 90% at 50% 0%, #25272B 0%, rgba(11,11,12,0) 65%), radial-gradient(#1F1F21 1px, transparent 1px); background-size: auto, 22px 22px; display: flex; flex-direction: column; align-items: center; gap: 28px;">
+<div style="position: relative; overflow: hidden; border: 1px solid var(--ln2); border-radius: 28px; padding: clamp(48px, 7vw, 110px) 24px clamp(44px, 6vw, 90px); text-align: center; background-color: var(--frame); background-image: radial-gradient(70% 90% at 50% 0%, var(--glow) 0%, transparent 65%), radial-gradient(var(--dot) 1px, transparent 1px); background-size: auto, 22px 22px; display: flex; flex-direction: column; align-items: center; gap: 28px;">
 <span class="mono" data-rv>One process is enough to start</span>
 <h2 id="cta-title" class="xl" data-rv style="max-width: 14ch;">Which process should <span class="mk">run itself</span> first?</h2>
-<span aria-hidden="true" style="width: 1px; height: 56px; background: #3A3A3D;"></span>
+<span aria-hidden="true" style="width: 1px; height: 56px; background: var(--ln2);"></span>
 <p class="sub" data-rv style="margin: 0; max-width: 46ch;">It starts with a free 30-minute call. We’ll look at your processes together and tell you honestly what is worth automating.</p>
 <div data-rv aria-hidden="true" style="display: flex; align-items: center; gap: 28px;">
-<span style="width: 96px; height: 96px; border-radius: 14px; background: #fff; display: grid; place-items: center;"><svg width="34" height="34" viewBox="0 0 14 14" fill="#050505"><path d="M1 1h4v4H1zM1 9h4v4H1zM9 5h4v4H9z"></path></svg></span>
-<svg width="16" height="16" fill="none" stroke="#fff" stroke-width="1.2"><path d="M8 0v16M0 8h16"></path></svg>
-<span class="mono" style="width: 96px; height: 96px; border-radius: 14px; border: 1px dashed #5A5A5E; display: grid; place-items: center; color: #fff;">You</span>
+<span style="width: 96px; height: 96px; border-radius: 14px; background: var(--inv); color: var(--on-inv); display: grid; place-items: center;"><svg width="34" height="34" viewBox="0 0 14 14" fill="currentColor"><path d="M1 1h4v4H1zM1 9h4v4H1zM9 5h4v4H9z"></path></svg></span>
+<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 0v16M0 8h16"></path></svg>
+<span class="mono" style="width: 96px; height: 96px; border-radius: 14px; border: 1px dashed var(--ln4); display: grid; place-items: center; color: var(--tx);">You</span>
 </div>
 <div data-rv style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 32px;">
-<a href="B-Contact.dc.html" class="btn" aria-label="Get a process analysis"><span class="btn-l" data-scr>Get a process analysis</span><span class="btn-t" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
+<a href="D-Contact.dc.html" class="btn" aria-label="Book a free call"><span class="btn-l" data-scr>Book a free call</span><span class="btn-t" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
 <a href="mailto:ferbertigo@gmail.com" class="lnk mono">Write to us<span class="lnk-t" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1h2v2H3zM5 3h2v2H5zM7 5h2v2H7zM9 6h2v2H9zM5 9h2v2H5zM3 11h2v2H3zM7 7h2v2H7z"></path></svg></span></a>
 </div>
 </div>
 </section>
-
-<nav aria-label="Design version" class="mono" style="position: fixed; right: 16px; bottom: 16px; z-index: 30; display: flex; align-items: center; gap: 4px; padding: 4px; border-radius: 999px; background: #151516; border: 1px solid #3A3A3D;">
-<span style="padding: 0 8px 0 10px;">Design</span>
-<a href="B-Home.dc.html" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; text-decoration: none; color: #fff;">B · Light</a>
-<span aria-current="page" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; background: #B8F47A; color: #050505;">D · Dark</span>
-</nav>
 
 <footer style="padding: 12px 12px 12px;">
 <div class="panel" style="border-radius: 28px; padding: clamp(24px, 3vw, 44px); display: flex; flex-wrap: wrap; gap: 40px 24px; justify-content: space-between; align-items: flex-end;">
 <div style="display: flex; flex-direction: column; gap: 22px; min-width: 0;">
 <a href="mailto:ferbertigo@gmail.com" style="font-size: clamp(24px, 3vw, 44px); letter-spacing: -0.03em; text-decoration: none; overflow-wrap: anywhere;">ferbertigo@gmail.com</a>
 <div class="mono" style="display: flex; flex-wrap: wrap; gap: 6px;">
-<a class="pill navl" href="#analysis" style="padding: 0 12px; min-height: 32px;">Analysis</a><a class="pill navl" href="#demos" style="padding: 0 12px; min-height: 32px;">Demos</a><a class="pill navl" href="#services" style="padding: 0 12px; min-height: 32px;">Services</a><a class="pill navl" href="B-Blog.dc.html" style="padding: 0 12px; min-height: 32px;">Blog</a><a class="pill navl" href="B-Contact.dc.html" style="padding: 0 12px; min-height: 32px;">Contact</a>
+<a class="pill navl" href="#analysis" style="padding: 0 12px; min-height: 32px;">Analysis</a><a class="pill navl" href="#demos" style="padding: 0 12px; min-height: 32px;">Demos</a><a class="pill navl" href="#services" style="padding: 0 12px; min-height: 32px;">What we automate</a><a class="pill navl" href="D-Blog.dc.html" style="padding: 0 12px; min-height: 32px;">Blog</a><a class="pill navl" href="D-Contact.dc.html" style="padding: 0 12px; min-height: 32px;">Contact</a>
 </div>
 </div>
 <div class="mono" style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
-<span style="display: flex; flex-wrap: wrap; gap: 8px 22px;"><a class="navl" href="https://github.com/ferbert-dev" style="padding: 0;">GitHub</a><a class="navl" href="B-Legal.dc.html" style="padding: 0;">Impressum</a><a class="navl" href="B-Legal.dc.html" style="padding: 0;">Privacy</a></span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px 22px;"><a class="navl" href="https://github.com/ferbert-dev" style="padding: 0;">GitHub</a><a class="navl" href="D-Legal.dc.html" style="padding: 0;">Impressum</a><a class="navl" href="D-Legal.dc.html" style="padding: 0;">Privacy</a></span>
 <span>© 2026 Ferbert, Valencia, Spain</span>
 </div>
 </div>
 </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":12050}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":11900}}'>
 class Component extends DCLogic {
-  constructor(props) { super(props); this.state = { q: 0, sc: -1, step: -1, answered: false, wf: 0, paused: false, loading: true, pct: 0 }; this.timers = []; }
+  constructor(props) { super(props); this.state = { q: 0, sc: -1, step: -1, answered: false, wf: 0, paused: false, mqPaused: false, loading: true, pct: 0, theme: 'auto', menu: false }; this.timers = []; }
   componentDidMount() {
     var self = this;
+    try { var saved = window.localStorage.getItem('ferbert-theme'); if (saved === 'light' || saved === 'dark') { this.setState({ theme: saved }); } } catch (e) {}
     var reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.loop = setInterval(function () { if (!self.state.paused) { self.setState({ wf: (self.state.wf + 1) % 9 }); } }, 900);
     if (reduce) { this.setState({ wf: 6, paused: true, loading: false, pct: 100 }); return; }
     this.hidden = Array.prototype.slice.call(document.querySelectorAll('[data-rv]'));
     this.hidden.forEach(function (el) { el.classList.add('pre'); });
-    this.loop = setInterval(function () { if (!self.state.paused) { self.setState({ wf: (self.state.wf + 1) % 9 }); } }, 900);
     this.pre = setInterval(function () {
       var next = Math.min(100, self.state.pct + 3 + Math.floor(Math.random() * 7));
       if (next >= 100) { clearInterval(self.pre); self.setState({ pct: 100 }); self.timers.push(setTimeout(function () { self.setState({ loading: false }); self.startMotion(); }, 220)); }
@@ -580,6 +650,10 @@ class Component extends DCLogic {
     };
     window.addEventListener('scroll', this.onScroll, { passive: true });
   }
+  setTheme(mode) {
+    this.setState({ theme: mode });
+    try { window.localStorage.setItem('ferbert-theme', mode); } catch (e) {}
+  }
   ask(i) {
     var self = this;
     this.setState({ sc: i, step: 0, answered: false });
@@ -591,7 +665,7 @@ class Component extends DCLogic {
   }
   renderVals() {
     var self = this;
-    var LIME = '#B8F47A';
+    var LIME = 'var(--acc-tx)', ACC = 'var(--acc)';
     var nodeDefs = [
       { kind: 'Trigger', short: 'New email', title: 'New email with invoice', detail: 'Inbox: invoices@', icon: 'M2 4h14v10H2z M2 4l7 6 7-6' },
       { kind: 'AI step', short: 'Read invoice', title: 'Read the invoice', detail: 'Supplier, totals, VAT, due date', icon: 'M9 2l1.8 4.2L15 8l-4.2 1.8L9 14l-1.8-4.2L3 8l4.2-1.8z' },
@@ -603,13 +677,13 @@ class Component extends DCLogic {
     var nodes = nodeDefs.map(function (n, i) {
       var done = w > i + 1 || w >= 6, active = w === i + 1, lit = done || active;
       n.link = i < nodeDefs.length - 1;
-      n.border = lit ? LIME : '#2A2A2C';
-      n.shadow = active ? '0 0 0 4px #1E2A14' : '0 0 0 0 #1E2A14';
-      n.iconColor = lit ? LIME : '#8C8C8C';
-      n.checkBg = done ? LIME : '#232325';
-      n.lineColor = done ? LIME : '#2A2A2C';
-      n.miniColor = lit ? '#fff' : '#8C8C8C';
-      n.miniDot = lit ? LIME : '#3A3A3D';
+      n.border = lit ? LIME : 'var(--ln3)';
+      n.shadow = active ? '0 0 0 4px var(--acc-tint), var(--sh1)' : '0 0 0 0 var(--acc-tint), var(--sh1)';
+      n.iconColor = lit ? LIME : 'var(--mut)';
+      n.checkBg = done ? ACC : 'var(--p3)';
+      n.lineColor = done ? LIME : 'var(--ln3)';
+      n.miniColor = lit ? 'var(--tx)' : 'var(--mut)';
+      n.miniDot = lit ? LIME : 'var(--ln2)';
       return n;
     });
     var logDefs = [
@@ -630,7 +704,7 @@ class Component extends DCLogic {
     ].map(function (t, i) { return { n: '0' + (i + 1), text: t }; });
     var rows = [['Invoice intake', 38, 3, 'High'], ['Customer emails', 25, 8, 'High'], ['Order entry', 18, 4, 'High'], ['Monthly reporting', 12, 2, 'Medium'], ['Quotes', 10, 6, 'Low']];
     var report = rows.map(function (r, i) {
-      var pot = { High: ['#5E8A32', LIME], Medium: ['#6B5A1E', '#F2CB5C'], Low: ['#3A3A3D', '#A6A6A6'] }[r[3]];
+      var pot = { High: ['var(--acc-bd)', LIME], Medium: ['var(--warn-bd)', 'var(--warn-tx)'], Low: ['var(--ln2)', 'var(--sub)'] }[r[3]];
       return { name: r[0], before: Math.round(r[1] / 38 * 100), after: Math.max(3, Math.round(r[2] / 38 * 100)), beforeH: r[1], afterH: r[2], potential: r[3], pbd: pot[0], pfg: pot[1], delay: (0.2 + i * 0.12) + 's', delay2: (0.5 + i * 0.12) + 's' };
     });
 
@@ -643,7 +717,7 @@ class Component extends DCLogic {
       { title: 'Write the answer', tag: 'Language model', icon: 'M3 15l1-4 8-8 3 3-8 8z M10.5 4.5l3 3' }
     ];
     var scenarios = [
-      { ask: 'Where is my order?', rag: [{ title: 'Delivery times', score: '0.91', text: 'Germany and Austria: 2–3 working days with DHL after dispatch.' }, { title: 'Tracking your parcel', score: '0.87', text: 'The tracking link is in your shipping email and in your account.' }], dbTable: 'orders · #48213', db: [['Status', 'Shipped'], ['Carrier', 'DHL 00340434 48213'], ['Shipped', '6 Oct 2026'], ['Estimated delivery', 'Thu 9 Oct']], details: ['“Where is my order?”', 'Intent: order status. Customer is logged in.', 'Found 2 articles: “Delivery times”, “Tracking your parcel”', 'Order #48213: shipped 6 Oct with DHL, arriving Thu 9 Oct', 'Order data may be shared with the logged-in customer', 'Answer written from 3 sources'], answer: 'Your order #48213 is on the way! It left our warehouse on 6 October with DHL and should arrive on Thursday, 9 October. Here is your tracking link: dhl.de/track/48213', sources: ['Order #48213', 'Tracking your parcel'] },
+      { ask: 'Where is my order?', rag: [{ title: 'Delivery times', score: '0.91', text: 'Germany and Austria: 2–3 working days with DHL after dispatch.' }, { title: 'Tracking your parcel', score: '0.87', text: 'The tracking link is in your shipping email and in your account.' }], dbTable: 'orders · #48213', db: [['Status', 'Shipped'], ['Carrier', 'DHL 00340434 48213'], ['Shipped', '6 Oct 2026'], ['Estimated delivery', 'Fri 9 Oct']], details: ['“Where is my order?”', 'Intent: order status. Customer is logged in.', 'Found 2 articles: “Delivery times”, “Tracking your parcel”', 'Order #48213: shipped 6 Oct with DHL, arriving Fri 9 Oct', 'Order data may be shared with the logged-in customer', 'Answer written from 3 sources'], answer: 'Your order #48213 is on the way! It left our warehouse on 6 October with DHL and should arrive on Friday, 9 October. Here is your tracking link: dhl.de/track/48213', sources: ['Order #48213', 'Tracking your parcel'] },
       { ask: 'Can I return my shoes?', rag: [{ title: 'Returns policy', score: '0.93', text: 'Return within 30 days of delivery. Returns are free in Germany and Austria.' }, { title: 'Free return labels', score: '0.84', text: 'Labels can be created in chat or in your account after delivery.' }], dbTable: 'orders · #48213', db: [['Items', 'Trail runner, size 42'], ['Status', 'Shipped, not delivered'], ['Return window', 'Starts on delivery']], details: ['“Can I return my shoes?”', 'Intent: return request for order #48213.', 'Found: “Returns policy”, “Free return labels”', 'Order #48213 not delivered yet', 'No refund without the customer confirming', 'Answer written from 3 sources'], answer: 'Yes. You can return them free of charge within 30 days of delivery. Your order hasn’t arrived yet; once it has, I can create the return label for you right here.', sources: ['Returns policy', 'Order #48213'] },
       { ask: 'I’d like to talk to a person', rag: [], dbTable: 'tickets · new', db: [['Ticket', 'T-1182'], ['Assigned to', 'Laura, support team'], ['Includes', 'Full chat history']], details: ['“I’d like to talk to a person”', 'Intent: human handover.', 'Not needed for this request', 'Ticket T-1182 created with the chat history', 'Support team online Mon–Fri, 9:00–18:00', 'Handover message written'], answer: 'Of course. I’ve passed our conversation to Laura from the support team, with everything you’ve told me. She’ll reply here in about 10 minutes.', sources: ['Ticket T-1182'] }
     ];
@@ -654,10 +728,10 @@ class Component extends DCLogic {
       return {
         title: s.title, tag: s.tag, icon: s.icon,
         detail: done ? cur.details[i] : (active ? 'Working…' : ''),
-        tileBg: done ? '#1E2A14' : (active ? LIME : '#111112'), tileFg: done ? LIME : (active ? '#050505' : '#8C8C8C'), tileBorder: done ? '#5E8A32' : (active ? LIME : '#2A2A2C'),
-        ringCls: active ? 'act' : '', titleColor: done || active ? '#fff' : '#A6A6A6',
-        tagBg: done || active ? '#1E2A14' : '#19191B', tagFg: done || active ? LIME : '#A6A6A6',
-        line: i < stepDefs.length - 1, lineColor: done ? '#5E8A32' : '#2A2A2C',
+        tileBg: done ? 'var(--acc-tint)' : (active ? ACC : 'var(--p2)'), tileFg: done ? LIME : (active ? 'var(--on-acc)' : 'var(--mut)'), tileBorder: done ? 'var(--acc-bd)' : (active ? ACC : 'var(--ln3)'),
+        ringCls: active ? 'act' : '', titleColor: done || active ? 'var(--tx)' : 'var(--sub)',
+        tagBg: done || active ? 'var(--acc-tint)' : 'var(--p3)', tagFg: done || active ? LIME : 'var(--sub)',
+        line: i < stepDefs.length - 1, lineColor: done ? 'var(--acc-bd)' : 'var(--ln3)',
         hasRag: !!(done && i === 2 && cur.rag.length), rag: cur ? cur.rag : [],
         hasDb: !!(done && i === 3), db: cur ? cur.db.map(function (d) { return { k: d[0], v: d[1] }; }) : [], dbTable: cur ? cur.dbTable : ''
       };
@@ -677,7 +751,7 @@ class Component extends DCLogic {
     var curQ = Q[this.state.q], hitSet = {};
     curQ.hits.forEach(function (h) { hitSet[h[0] + '-' + h[1]] = true; });
     var docs = docText.map(function (d, di) { return { name: d.name, chunks: d.chunks.map(function (c, ci) { var hit = !!hitSet[di + '-' + ci]; return { text: c, hit: hit, miss: !hit }; }) }; });
-    var questions = Q.map(function (q, i) { var on = i === self.state.q; return { text: q.text, pressed: on ? 'true' : 'false', border: on ? LIME : '#2E2E31', bg: on ? '#1E2A14' : 'transparent', pick: function () { self.setState({ q: i }); } }; });
+    var questions = Q.map(function (q, i) { var on = i === self.state.q; return { text: q.text, pressed: on ? 'true' : 'false', border: on ? LIME : 'var(--ln3)', bg: on ? 'var(--acc-tint)' : 'transparent', pick: function () { self.setState({ q: i }); } }; });
     var answers = Q.map(function (q, i) { return { on: i === self.state.q, text: q.answer, sources: q.sources }; });
 
     var services = [
@@ -696,29 +770,40 @@ class Component extends DCLogic {
     ].map(function (t, i) { t.delay = (i * 0.07) + 's'; return t; });
 
     var offers = [
-      { title: 'Process analysis', time: '2–3 weeks', line: 'Know what to automate before you pay for building.', when: 'Recommended first step', items: ['A map of your key processes', 'Hours per week, measured with your team', 'What AI can take over, ranked by savings and risk', 'A build plan with cost, timeline and payback', 'The report is yours to keep'], price: '[PRICE]', unit: 'fixed', cta: 'Get a process analysis' },
-      { title: 'Agent build', time: '[N] weeks', line: 'Your first agents, built, tested and handed over.', when: 'Best if you already know the process', items: ['The agents your analysis ranks highest', 'Connected to the tools you already use', 'Tested on your real cases', 'Human review where the agent is unsure', 'Training for your team'], price: 'By estimate', unit: '', cta: 'Plan a build' },
-      { title: 'Run and improve', time: 'Ongoing', line: 'We keep your agents healthy and make them better.', when: 'Best if agents are already running', items: ['Monitoring and alerts', 'Cost tracking for each agent', 'Fixes when a tool or a model changes', 'Monthly improvements'], price: '[RATE]', unit: '/ hour', cta: 'Discuss ongoing support' }
-    ].map(function (o, i) { o.n = '0' + (i + 1); o.delay = (i * 0.08) + 's'; return o; });
+      { title: 'Process analysis', time: '2–3 weeks', line: 'Know what to automate before you pay for building.', when: 'Recommended first step', items: ['A map of your key processes', 'Hours per week, measured with your team', 'What AI can take over, ranked by savings and risk', 'A build plan with cost, timeline and payback', 'The report is yours to keep'], price: '[PRICE]', unit: 'fixed' },
+      { title: 'Agent build', time: '[N] weeks', line: 'Your first agents, built, tested and handed over.', when: 'Best if you already know the process', items: ['The agents your analysis ranks highest', 'Connected to the tools you already use', 'Tested on your real cases', 'Human review where the agent is unsure', 'Training for your team'], price: 'By estimate', unit: '' },
+      { title: 'Run and improve', time: 'Ongoing', line: 'We keep your agents healthy and make them better.', when: 'Best if agents are already running', items: ['Monitoring and alerts', 'Cost tracking for each agent', 'Fixes when a tool or a model changes', 'Monthly improvements'], price: '[RATE]', unit: '/ hour' }
+    ].map(function (o, i) { o.n = '0' + (i + 1); o.delay = (i * 0.08) + 's'; o.rec = i === 0; o.flip = i === 0 ? 'flip' : ''; return o; });
 
     var faq = [
       { q: 'Do we need an AI strategy before we talk to you?', a: 'No. You need one process that costs your team too many hours. The process analysis turns that into a ranked list of what to automate first, with cost and expected savings.' },
       { q: 'How fast will we see something working?', a: 'The process analysis takes two to three weeks. The first agent is live [N] weeks after that, depending on the process and the tools it connects to.' },
       { q: 'Will agents replace people on our team?', a: 'Agents take over the repetitive steps: reading, checking, entering data, answering routine questions. Unclear and sensitive cases go to your team, and people approve what matters.' },
       { q: 'What happens to our data?', a: 'We build on EU-hosted infrastructure and EU-region AI models, and show you where each part runs. We sign a data processing agreement before any personal data touches an agent.' },
+      { q: 'Will you show our project to other clients?', a: 'No. Your project stays confidential. We never name clients or show their automations without permission.' },
       { q: 'Are we locked in after the project?', a: 'No. Code, prompts, data and accounts belong to you. If you take the agents in-house, we hand everything over cleanly.' },
       { q: 'What if an agent gets something wrong or stops?', a: 'We build agents with retries, monitoring and human review for unclear cases, and every action is logged. With “Run and improve” we watch the agents and fix them when a tool or a model changes.' }
     ];
 
+    var mode = this.state.theme, order = ['auto', 'light', 'dark'], names = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+    var themes = order.map(function (m) { var on = m === mode; return { label: names[m], pressed: on ? 'true' : 'false', bg: on ? 'var(--inv)' : 'transparent', fg: on ? 'var(--on-inv)' : 'var(--sub)', pick: function () { self.setTheme(m); } }; });
     return {
+      themeCls: 't-' + mode, themes: themes, themeLabel: names[mode],
+      themeAria: 'Colour theme: ' + names[mode] + '. Change theme',
+      cycleTheme: function () { self.setTheme(order[(order.indexOf(mode) + 1) % 3]); },
+      menu: !!this.state.menu, menuStr: this.state.menu ? 'true' : 'false', menuLabel: this.state.menu ? 'Close' : 'Menu',
+      toggleMenu: function () { self.setState({ menu: !self.state.menu }); }, closeMenu: function () { self.setState({ menu: false }); },
       loading: this.state.loading, pct: this.state.pct,
       railStatus: w >= 6 ? 'idle' : 'running',
       paused: this.state.paused, running: !this.state.paused, pausedStr: this.state.paused ? 'true' : 'false',
       pauseLabel: this.state.paused ? 'Play' : 'Pause',
       togglePause: function () { self.setState({ paused: !self.state.paused }); },
+      mqPaused: this.state.mqPaused, mqRunning: !this.state.mqPaused, mqCls: this.state.mqPaused ? 'stop' : '',
+      mqLabel: this.state.mqPaused ? 'Play' : 'Pause', mqAria: this.state.mqPaused ? 'Play the scrolling tool list' : 'Pause the scrolling tool list',
+      toggleMq: function () { self.setState({ mqPaused: !self.state.mqPaused }); },
       wfStatus: w >= 6 ? 'done, waiting for the next email' : (w === 0 ? 'new email arriving' : 'running'),
       wfShort: w >= 6 ? 'done' : (w === 0 ? 'new email' : 'running'),
-      wfDot: w >= 6 ? '#8C8C8C' : LIME,
+      wfDot: w >= 6 ? 'var(--mut)' : LIME,
       nodes: nodes, logs: logs, tools: tools, deliverables: deliverables, report: report,
       steps: steps, asks: asks, busy: busy,
       timer: cur ? (this.state.answered ? 'Answered in 5.1 s' : (st * 0.85).toFixed(1) + ' s') : 'Waiting for a question',
