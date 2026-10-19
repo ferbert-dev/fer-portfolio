@@ -1,0 +1,281 @@
+/*
+ * Ferbert design tokens, direction D.
+ * Generated from design/canvas/D-Home.dc.html; that file is the source of truth.
+ * Set data-theme on <html>: "dark", "light" or "auto". Auto (and no attribute)
+ * is dark unless the system prefers light.
+ * The theme switch writes "auto" | "light" | "dark" to localStorage key "ferbert-theme".
+ */
+
+:root, [data-theme="dark"] {
+  --sh1: 0 0 0 0 transparent; /* small shadow (none in dark) */
+  --sh2: 0 0 0 0 transparent; /* large shadow (none in dark) */
+  --sh-btn: 0 0 0 0 transparent; /* button shadow (none in dark) */
+  --bg: #050505; /* page background */
+  --frame: #0B0B0C; /* framed hero and closing panel */
+  --p1: #0D0D0E; /* panel surface */
+  --p2: #121213; /* inner card surface */
+  --p3: #1A1A1C; /* raised chips, header border, chat bubbles */
+  --chat: #0A0A0B; /* chat column and pricing card shell */
+  --tx: #FFFFFF; /* primary text */
+  --sub: #A6A6A6; /* secondary text */
+  --mut: #8C8C8C; /* muted text, idle icons */
+  --log: #D6D6D6; /* run log and tag text */
+  --ln: #242426; /* hairline borders */
+  --ln2: #3A3A3D; /* control borders */
+  --ln3: #2C2C2F; /* card borders inside panels */
+  --ln4: #5A5A5E; /* strong dashed or idle dots */
+  --dot: #1E1E20; /* dot-grid pattern */
+  --ring: #262628; /* decorative ring pattern */
+  --glow: #25272B; /* radial glow in framed panels */
+  --acc: #B8F47A; /* lime fill (marker, button tail, answer card) */
+  --on-acc: #050505; /* text on lime */
+  --acc-tx: #B8F47A; /* lime used as text or icon (darker in light theme for contrast) */
+  --acc-tint: #1E2A14; /* lime tint background */
+  --acc-bd: #5E8A32; /* lime border */
+  --inv: #FFFFFF; /* inverted fill (primary button, active pill) */
+  --on-inv: #050505; /* text on inverted fill */
+  --hdr: rgba(5,5,5,.82); /* sticky header background (blurred) */
+  --card: rgba(8,8,9,.78); /* translucent card over the hero */
+  --warn-tx: #F2CB5C; /* medium potential text */
+  --warn-bd: #6B5A1E; /* medium potential border */
+  --bar: #4A4A4E; /* "today" bar in the report */
+  --grain: .16; /* opacity of the hero grain overlay */
+  color-scheme: dark; /* native form controls */
+}
+
+[data-theme="light"] {
+  --sh1: 0 1px 2px rgba(17,17,19,.05),0 14px 34px -22px rgba(17,17,19,.22);
+  --sh2: 0 1px 2px rgba(17,17,19,.04),0 34px 80px -46px rgba(17,17,19,.34);
+  --sh-btn: 0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px -8px rgba(17,17,19,.45);
+  --bg: #FAFAF8;
+  --frame: #F1F0EB;
+  --p1: #FFFFFF;
+  --p2: #F6F5F1;
+  --p3: #EEEDE8;
+  --chat: #FCFCFB;
+  --tx: #111113;
+  --sub: #55555F;
+  --mut: #6B6B74;
+  --log: #3A3A44;
+  --ln: #E3E2DC;
+  --ln2: #C9C7BF;
+  --ln3: #DEDCD5;
+  --ln4: #A9A7A0;
+  --dot: #E2E1DB;
+  --ring: #E6E5DF;
+  --glow: #FFFFFF;
+  --acc: #B8F47A;
+  --on-acc: #050505;
+  --acc-tx: #3B7A0E;
+  --acc-tint: #E7F8D2;
+  --acc-bd: #93CE58;
+  --inv: #111113;
+  --on-inv: #FFFFFF;
+  --hdr: rgba(250,250,248,.86);
+  --card: rgba(255,255,255,.84);
+  --warn-tx: #8A5200;
+  --warn-bd: #E3C16A;
+  --bar: #C9C7BF;
+  --grain: .07;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --sh1: 0 1px 2px rgba(17,17,19,.05),0 14px 34px -22px rgba(17,17,19,.22);
+    --sh2: 0 1px 2px rgba(17,17,19,.04),0 34px 80px -46px rgba(17,17,19,.34);
+    --sh-btn: 0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px -8px rgba(17,17,19,.45);
+    --bg: #FAFAF8;
+    --frame: #F1F0EB;
+    --p1: #FFFFFF;
+    --p2: #F6F5F1;
+    --p3: #EEEDE8;
+    --chat: #FCFCFB;
+    --tx: #111113;
+    --sub: #55555F;
+    --mut: #6B6B74;
+    --log: #3A3A44;
+    --ln: #E3E2DC;
+    --ln2: #C9C7BF;
+    --ln3: #DEDCD5;
+    --ln4: #A9A7A0;
+    --dot: #E2E1DB;
+    --ring: #E6E5DF;
+    --glow: #FFFFFF;
+    --acc: #B8F47A;
+    --on-acc: #050505;
+    --acc-tx: #3B7A0E;
+    --acc-tint: #E7F8D2;
+    --acc-bd: #93CE58;
+    --inv: #111113;
+    --on-inv: #FFFFFF;
+    --hdr: rgba(250,250,248,.86);
+    --card: rgba(255,255,255,.84);
+    --warn-tx: #8A5200;
+    --warn-bd: #E3C16A;
+    --bar: #C9C7BF;
+    --grain: .07;
+    color-scheme: light;
+}
+}
+
+/* Inverted section: the recommended pricing card always uses the opposite theme.
+ * Auto (or no attribute) follows the system, so its inverse does too. */
+[data-theme="dark"] .invert, :root:not([data-theme="light"]):not([data-theme="dark"]) .invert {
+  --sh1: 0 1px 2px rgba(17,17,19,.05),0 14px 34px -22px rgba(17,17,19,.22);
+  --sh2: 0 1px 2px rgba(17,17,19,.04),0 34px 80px -46px rgba(17,17,19,.34);
+  --sh-btn: 0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px -8px rgba(17,17,19,.45);
+  --bg: #FAFAF8;
+  --frame: #F1F0EB;
+  --p1: #FFFFFF;
+  --p2: #F6F5F1;
+  --p3: #EEEDE8;
+  --chat: #FCFCFB;
+  --tx: #111113;
+  --sub: #55555F;
+  --mut: #6B6B74;
+  --log: #3A3A44;
+  --ln: #E3E2DC;
+  --ln2: #C9C7BF;
+  --ln3: #DEDCD5;
+  --ln4: #A9A7A0;
+  --dot: #E2E1DB;
+  --ring: #E6E5DF;
+  --glow: #FFFFFF;
+  --acc: #B8F47A;
+  --on-acc: #050505;
+  --acc-tx: #3B7A0E;
+  --acc-tint: #E7F8D2;
+  --acc-bd: #93CE58;
+  --inv: #111113;
+  --on-inv: #FFFFFF;
+  --hdr: rgba(250,250,248,.86);
+  --card: rgba(255,255,255,.84);
+  --warn-tx: #8A5200;
+  --warn-bd: #E3C16A;
+  --bar: #C9C7BF;
+  --grain: .07;
+  color-scheme: light;
+}
+
+[data-theme="light"] .invert {
+  --sh1: 0 0 0 0 transparent;
+  --sh2: 0 0 0 0 transparent;
+  --sh-btn: 0 0 0 0 transparent;
+  --bg: #050505;
+  --frame: #0B0B0C;
+  --p1: #0D0D0E;
+  --p2: #121213;
+  --p3: #1A1A1C;
+  --chat: #0A0A0B;
+  --tx: #FFFFFF;
+  --sub: #A6A6A6;
+  --mut: #8C8C8C;
+  --log: #D6D6D6;
+  --ln: #242426;
+  --ln2: #3A3A3D;
+  --ln3: #2C2C2F;
+  --ln4: #5A5A5E;
+  --dot: #1E1E20;
+  --ring: #262628;
+  --glow: #25272B;
+  --acc: #B8F47A;
+  --on-acc: #050505;
+  --acc-tx: #B8F47A;
+  --acc-tint: #1E2A14;
+  --acc-bd: #5E8A32;
+  --inv: #FFFFFF;
+  --on-inv: #050505;
+  --hdr: rgba(5,5,5,.82);
+  --card: rgba(8,8,9,.78);
+  --warn-tx: #F2CB5C;
+  --warn-bd: #6B5A1E;
+  --bar: #4A4A4E;
+  --grain: .16;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) .invert {
+    --sh1: 0 0 0 0 transparent;
+    --sh2: 0 0 0 0 transparent;
+    --sh-btn: 0 0 0 0 transparent;
+    --bg: #050505;
+    --frame: #0B0B0C;
+    --p1: #0D0D0E;
+    --p2: #121213;
+    --p3: #1A1A1C;
+    --chat: #0A0A0B;
+    --tx: #FFFFFF;
+    --sub: #A6A6A6;
+    --mut: #8C8C8C;
+    --log: #D6D6D6;
+    --ln: #242426;
+    --ln2: #3A3A3D;
+    --ln3: #2C2C2F;
+    --ln4: #5A5A5E;
+    --dot: #1E1E20;
+    --ring: #262628;
+    --glow: #25272B;
+    --acc: #B8F47A;
+    --on-acc: #050505;
+    --acc-tx: #B8F47A;
+    --acc-tint: #1E2A14;
+    --acc-bd: #5E8A32;
+    --inv: #FFFFFF;
+    --on-inv: #050505;
+    --hdr: rgba(5,5,5,.82);
+    --card: rgba(8,8,9,.78);
+    --warn-tx: #F2CB5C;
+    --warn-bd: #6B5A1E;
+    --bar: #4A4A4E;
+    --grain: .16;
+    color-scheme: dark;
+  }
+}
+
+:root {
+  /* Type */
+  --font-sans: "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --text-body: 16px;            /* line-height 1.45, letter-spacing -0.01em */
+  --text-xl: clamp(42px, 6.25vw, 90px);  /* h1 and closing headline; lh .93, ls -.04em, weight 400 */
+  --text-lg: clamp(38px, 5vw, 72px);     /* section h2; lh .97, ls -.04em, weight 400 */
+  --text-md: clamp(24px, 2.4vw, 34px);   /* h3, lead paragraphs; lh 1.18, ls -.02em */
+  --text-mono: 11px;            /* labels; lh 1.3, weight 500, ls .06em, uppercase */
+
+  /* Layout */
+  --wrap-max: 1392px;
+  --gutter: 24px;               /* side padding at every width */
+  --section-gap: clamp(84px, 10vw, 150px);
+  --grid-gap: 8px;              /* between cards in a grid */
+  --header-h: 56px;
+
+  /* Radii */
+  --r-frame: 28px;              /* hero, closing panel, footer */
+  --r-panel: 20px;
+  --r-card: 14px;
+  --r-control: 10px;            /* buttons, inputs */
+  --r-pill: 999px;
+
+  /* Touch */
+  --tap-min: 44px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --dur-reveal: .9s;            /* fade, rise 22px, unblur 10px */
+  --dur-button: .55s;           /* button fill sweep */
+  --dur-marker: .8s;            /* lime marker wipe, delay .25s */
+  --dur-marquee: 36s;
+}
+
+/* Breakpoints (use in media queries; CSS variables cannot be used there):
+ *   phone   max-width: 560px
+ *   tablet  561px to 1023px   (nav collapses to the menu button at 900px)
+ *   desktop min-width: 1024px (header tagline from 1280px)
+ *   the support-agent demo stacks with the chat first at 960px
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-reveal: 0s; --dur-button: 0s; --dur-marker: 0s; }
+}

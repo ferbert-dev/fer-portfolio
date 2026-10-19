@@ -5,6 +5,8 @@ primary_target: "src/app/[locale]/page.tsx"
 related_targets: []
 ---
 
+> **Superseded on 2026-10-19.** This contract describes direction B (light) and lists the Telegram agent as proof. The owner chose direction D (dark and light themes) and decided not to show any real projects. Build from `design/handoff/` instead.
+
 # Home page (/, /de)
 
 Scope: the home page of the Ferbert agency site, plus the shared chrome (nav, footer) that contact, blog and later pages inherit. Visitor mode: Persuade.
