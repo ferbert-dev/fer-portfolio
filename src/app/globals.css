@@ -132,8 +132,21 @@ section[id]{scroll-margin-top:72px}
 @media (prefers-reduced-motion: reduce){.mq,.bub,.td,.act,.bar,.live{animation:none!important}[data-rv],.mk,.btn-l,.btn-t,.lnk-t,.faq .pm{transition:none!important}.mq{width:auto;flex-wrap:wrap;row-gap:10px}.mq-dup,.mq-ctl{display:none!important}}
 /* Hero loader: fades out by itself even without script; script only drives the counter. */
 @keyframes ldr-out{to{opacity:0;visibility:hidden}}
-.loader{animation:ldr-out .3s ease-out 1.4s forwards}
+.loader{animation:ldr-out .6s ease-out 2.4s forwards;transition:opacity .7s cubic-bezier(.16,1,.3,1)}
+.loader>div{transition:transform .7s cubic-bezier(.16,1,.3,1),opacity .5s}
+.loader.out{opacity:0;pointer-events:none}
+.loader.out>div{transform:translateY(-14px);opacity:0}
 @media (prefers-reduced-motion: reduce){.loader{display:none!important}}
+/* Hero entrance: words rise from behind a mask one after another, then the marker sweeps in.
+   Script adds .intro only once it runs, so the headline is visible without it. */
+.hero-h .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
+.hero-h .w>span{display:inline-block}
+.hero-h.intro .w>span{transform:translateY(112%)}
+.hero-h.intro.go .w>span{transform:none;transition:transform 1.2s cubic-bezier(.16,1,.3,1) calc(.15s + var(--i) * .08s)}
+.hero-h .mk{background-image:linear-gradient(var(--frame),var(--frame))}
+.hero-h.intro .mk{color:var(--tx);background-size:100% 100%;transition:none}
+.hero-h.intro.go .mk{color:var(--on-acc);background-size:0 100%;transition:background-size 1.1s cubic-bezier(.16,1,.3,1) calc(.55s + var(--words) * .08s),color .5s ease calc(.75s + var(--words) * .08s)}
+.hero [data-rv]{transition-duration:1.2s}
 
 /* Contact (design/canvas/D-Contact.dc.html) */
 .fld{display:flex;flex-direction:column;gap:8px;min-width:0}

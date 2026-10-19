@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import type React from 'react';
 import type { Dictionary } from '@/content';
 import { PrimaryButton } from '@/components/ui/Button';
 import { LogoMark } from '@/components/ui/icons';
@@ -14,44 +15,67 @@ type Props = {
   contactHref: string;
 };
 
-/** Splits "Find the work AI should do. Then let " into sentence-sized pieces for the scramble. */
-function pieces(text: string) {
-  return text.split(/(?<=\.)\s+/).map((s) => s.trim()).filter(Boolean);
+/** Splits text into words; the word list drives the masked, word-by-word headline entrance. */
+function words(text: string) {
+  return text.split(/\s+/).filter(Boolean);
 }
+
+/** Eases the loader counter so it starts and settles softly instead of jumping. */
+const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const LOAD_MS = 1300;
+const LEAVE_MS = 700;
 
 export function Hero({ hero, workflow, common, contactHref }: Props) {
   const { wf } = useWorkflow();
-  const [loading, setLoading] = useState(true);
+  const [loader, setLoader] = useState<'on' | 'leaving' | 'off'>('on');
   const [pct, setPct] = useState(0);
+  const [intro, setIntro] = useState<'idle' | 'set' | 'go'>('idle');
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setLoading(false);
+      setLoader('off');
       window.dispatchEvent(new Event('ferbert:ready'));
       return;
     }
-    let p = 0;
-    let done: number | undefined;
-    const id = window.setInterval(() => {
-      p = Math.min(100, p + 3 + Math.floor(Math.random() * 7));
-      setPct(p);
-      if (p >= 100) {
-        window.clearInterval(id);
-        done = window.setTimeout(() => {
-          setLoading(false);
-          window.dispatchEvent(new Event('ferbert:ready'));
-        }, 220);
+    // Hide the headline words only now that script runs, so the page still reads without it.
+    setIntro('set');
+    const timers: number[] = [];
+    let raf = 0;
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - t0) / LOAD_MS);
+      setPct(Math.round(ease(p) * 100));
+      if (p < 1) {
+        raf = requestAnimationFrame(tick);
+        return;
       }
-    }, 40);
+      timers.push(window.setTimeout(() => {
+        setLoader('leaving');
+        setIntro('go');
+        window.dispatchEvent(new Event('ferbert:ready'));
+        timers.push(window.setTimeout(() => setLoader('off'), LEAVE_MS));
+      }, 250));
+    };
+    raf = requestAnimationFrame(tick);
     return () => {
-      window.clearInterval(id);
-      if (done) window.clearTimeout(done);
+      cancelAnimationFrame(raf);
+      timers.forEach(clearTimeout);
     };
   }, []);
 
   const short = wf >= 6 ? workflow.short.done : wf === 0 ? workflow.short.arriving : workflow.short.running;
   const t = hero.title;
   const full = `${t.before}${t.mark}${t.after}`;
+  // Punctuation directly after the marked word stays with it on one line.
+  const after = t.after.match(/^(\S*)\s*(.*)$/s)!;
+  const head = words(t.before);
+  const tail = words(after[2]);
+  let n = 0;
+  const word = (content: React.ReactNode, key: string) => (
+    <span key={key}>
+      <span className="w"><span style={{ ['--i' as string]: n++ }}>{content}</span></span>{' '}
+    </span>
+  );
 
   return (
     <section aria-label={hero.label} style={{ padding: '12px 12px 0' }}>
@@ -71,27 +95,28 @@ export function Hero({ hero, workflow, common, contactHref }: Props) {
 
         <div style={{ position: 'relative', flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 28, padding: 'clamp(28px, 4vw, 56px) clamp(20px, 3vw, 44px) clamp(20px, 2.4vw, 32px)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16 }}>
-            <span className="mono" data-rv="">{hero.label}</span>
+            <span className="mono" data-rv="" style={{ ['--dl' as string]: '.05s' }}>{hero.label}</span>
             <span aria-hidden="true" style={{ display: 'flex', gap: 5 }}>
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--ln4)' }} />
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--ln4)' }} />
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--tx)' }} />
             </span>
           </div>
-          <h1 className="xl" data-rv="" aria-label={full} style={{ maxWidth: '15.5ch' }}>
-            {pieces(t.before).map((p, i) => (
-              <span key={i}><span data-scr="">{p}</span> </span>
-            ))}
-            <span className="mk" data-scr="">{t.mark}</span> <span data-scr="">{t.after.trim()}</span>
+          <h1 className={`xl hero-h${intro === 'set' ? ' intro' : ''}${intro === 'go' ? ' intro go' : ''}`} aria-label={full} style={{ maxWidth: '15.5ch', ['--words' as string]: head.length + 1 + tail.length }}>
+            <span aria-hidden="true">
+              {head.map((w, i) => word(w, `h${i}`))}
+              {word(<span className="nw"><span className="mk">{t.mark}</span>{after[1]}</span>, 'mark')}
+              {tail.map((w, i) => word(w, `t${i}`))}
+            </span>
           </h1>
-          <p className="sub" data-rv="" style={{ ['--dl' as string]: '.12s', margin: 0, maxWidth: '50ch', fontSize: 17 }}>{hero.lead}</p>
-          <div data-rv="" style={{ ['--dl' as string]: '.2s', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px 36px' }}>
+          <p className="sub" data-rv="" style={{ ['--dl' as string]: '.95s', margin: 0, maxWidth: '50ch', fontSize: 17 }}>{hero.lead}</p>
+          <div data-rv="" style={{ ['--dl' as string]: '1.15s', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px 36px' }}>
             <PrimaryButton href={contactHref} label={common.cta} />
             <Link href="#demos" className="btn-o">{hero.secondary}</Link>
           </div>
-          <p className="mono" data-rv="" style={{ ['--dl' as string]: '.26s', margin: '-14px 0 0' }}>{common.ctaNote}</p>
+          <p className="mono" data-rv="" style={{ ['--dl' as string]: '1.3s', margin: '-14px 0 0' }}>{common.ctaNote}</p>
 
-          <div className="hero-card" data-rv="" style={{ ['--dl' as string]: '.32s', marginTop: 'auto', alignSelf: 'flex-end', width: 'min(100%, 440px)', display: 'flex', border: '1px solid var(--ln2)', borderRadius: 16, background: 'var(--card)', backdropFilter: 'blur(8px)', overflow: 'hidden', boxShadow: 'var(--sh2)' }}>
+          <div className="hero-card" data-rv="" style={{ ['--dl' as string]: '1.55s', marginTop: 'auto', alignSelf: 'flex-end', width: 'min(100%, 440px)', display: 'flex', border: '1px solid var(--ln2)', borderRadius: 16, background: 'var(--card)', backdropFilter: 'blur(8px)', overflow: 'hidden', boxShadow: 'var(--sh2)' }}>
             <div style={{ flex: 1, minWidth: 0, padding: 16, display: 'flex', flexDirection: 'column', gap: 18 }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 16, fontWeight: 500, letterSpacing: '-0.03em' }}><LogoMark size={11} />ferbert</span>
               <span className="mono" style={{ color: 'var(--tx)', lineHeight: 1.5 }}>{hero.card}</span>
@@ -115,8 +140,8 @@ export function Hero({ hero, workflow, common, contactHref }: Props) {
           </div>
         </div>
 
-        {loading ? (
-          <div data-loader="" className="loader" aria-hidden="true" style={{ position: 'absolute', inset: 0, zIndex: 5, background: 'var(--frame)', display: 'grid', placeItems: 'center' }}>
+        {loader !== 'off' ? (
+          <div data-loader="" className={`loader${loader === 'leaving' ? ' out' : ''}`} aria-hidden="true" style={{ position: 'absolute', inset: 0, zIndex: 5, background: 'var(--frame)', display: 'grid', placeItems: 'center' }}>
             <div style={{ width: 220, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                 <span style={{ fontSize: 17, fontWeight: 500, letterSpacing: '-0.03em' }}>ferbert</span>
