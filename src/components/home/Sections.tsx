@@ -77,11 +77,16 @@ export function HowWeWork({ how }: { how: Home['how'] }) {
     <Section id="how" titleId="how-title">
       <SectionLabel>{how.label}</SectionLabel>
       <Heading id="how-title" text={how.title} width="14ch" style={{ padding: '40px 0' }} />
-      <div data-rv="" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '20px 40px', padding: '28px 0', marginBottom: 64, borderTop: '1px solid var(--ln)', borderBottom: '1px solid var(--ln)' }}>
-        <h3 className="lg" aria-label={how.cadenceLabel} style={{ fontSize: 'clamp(32px, 4.6vw, 68px)' }}>
-          <span className="nw">{a}</span>&nbsp;{slash} <span className="nw">{b}</span>&nbsp;{slash} <span className="nw">{c}</span>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '20px 40px', padding: '28px 0', marginBottom: 64, borderTop: '1px solid var(--ln)', borderBottom: '1px solid var(--ln)' }}>
+        {/* Each value rises from its own mask, like the headings; the slash stays with the value before it. */}
+        <h3 className="lg" data-rv="" aria-label={how.cadenceLabel} style={{ fontSize: 'clamp(32px, 4.6vw, 68px)' }}>
+          <span className="wd" style={{ ['--words' as string]: 3 }}>
+            <span className="w"><span style={{ ['--i' as string]: 0 }}><span className="nw">{a}</span>&nbsp;{slash}</span></span>{' '}
+            <span className="w"><span style={{ ['--i' as string]: 1 }}><span className="nw">{b}</span>&nbsp;{slash}</span></span>{' '}
+            <span className="w"><span style={{ ['--i' as string]: 2 }}><span className="nw">{c}</span></span></span>
+          </span>
         </h3>
-        <p className="sub" style={{ margin: 0, maxWidth: '38ch' }}>{how.cadenceLead}</p>
+        <Lead width="38ch" style={{ ['--dl' as string]: '.35s' }}>{how.cadenceLead}</Lead>
       </div>
       <ol className="how">
         <HowStep i={0} step={how.steps[0]} />
