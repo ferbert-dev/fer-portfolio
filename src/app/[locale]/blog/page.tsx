@@ -19,7 +19,7 @@ export default async function BlogPage({ params }: PageProps<'/[locale]/blog'>) 
     <div className="wrap" style={{ paddingTop: 'clamp(56px, 7vw, 104px)', paddingBottom: 'clamp(56px, 7vw, 104px)' }}>
       <div className="mono lab">{blog.label}</div>
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px 48px', padding: 'clamp(28px, 4vw, 56px) 0 clamp(36px, 4.5vw, 56px)' }}>
-        <h1 className="xl" style={{ maxWidth: '12ch' }}><MarkedText text={blog.title} /></h1>
+        <h1 className="xl" style={{ maxWidth: '12ch' }}><MarkedText text={blog.title} entrance="load" /></h1>
         <p className="sub" style={{ margin: 0, maxWidth: 420, fontSize: 17 }}>{blog.lead}</p>
       </div>
       <BlogList blog={blog} />
