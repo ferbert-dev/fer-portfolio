@@ -4,6 +4,9 @@ Decisions made by the owner, Igor Ferbert. Dated 2026-10-10 unless noted. Decisi
 
 ## In force
 
+### 16. German switch works now, with placeholder text
+2026-10-19: the EN / DE switch is live on every page from the first build. German copy lives in `src/content/de.ts` with the same structure as English; untranslated texts show as `[DE] ` + English until the owner translates them. This replaces decision 3's "no working language switch".
+
 ### 12. Direction D is the design; B is retired
 2026-10-19: one design, D, with Auto / Light / Dark themes. B is retired: its artboards were removed from the canvas and from `design/canvas/` (recoverable from commit `e413cee`). Decisions 4 and 5 below are history.
 

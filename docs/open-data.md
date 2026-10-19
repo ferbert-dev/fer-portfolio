@@ -60,3 +60,7 @@ The blog design still names "Voice agents" as a filter and in one example title.
 
 - A domain email address in place of the Gmail address.
 - A portrait of the founder, if the owner wants a face on the site. The closing panel of D has a slot that could take it.
+
+## German
+
+- All German copy: translate the `[DE] ` texts in `src/content/de.ts` (run `npm run check:content` to see how many remain).
