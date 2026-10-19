@@ -55,7 +55,7 @@ body{margin:0}
 .th-one,.menu-btn{display:inline-flex!important}
 }
 @media (prefers-reduced-motion: reduce){.btn-l,.btn-t,.lnk-t{transition:none!important}}
-.fl{min-height:36px;padding:0 14px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.fl{min-height:44px;padding:0 14px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
 .fl:hover{border-color:var(--acc-tx)!important}
 .cover{border-radius:14px;border:1px solid var(--ln);background-color:var(--p2);background-image:repeating-radial-gradient(circle at 18% 118%,transparent 0,transparent 9px,var(--ring) 9px,var(--ring) 10px);display:grid;place-items:center}
 .post{display:flex;flex-direction:column;gap:18px;padding:12px 12px 24px;text-decoration:none;transition:border-color .3s}
@@ -64,7 +64,9 @@ body{margin:0}
 .feat{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:12px;padding:12px;text-decoration:none}
 .feat:hover .lnk-t{background:var(--acc);color:var(--on-acc);transform:translateX(3px)}
 .posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-@media (max-width:900px){.feat,.posts{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){.posts{grid-template-columns:minmax(0,1fr)}.feat .cover{min-height:280px!important}}
+@media (min-width:561px) and (max-width:900px){.post{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);column-gap:20px;row-gap:12px;align-content:center;padding:12px}.post>.cover{grid-column:1;grid-row:1/span 3}.post>:not(.cover){grid-column:2}.post>.lnk{margin-top:0!important}}
+@media (max-width:560px){.feat{grid-template-columns:minmax(0,1fr)}.feat .cover{min-height:0!important;aspect-ratio:16/10}}
 </style>
 </helmet>
 <div class="d {{themeCls}}">

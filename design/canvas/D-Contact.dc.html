@@ -60,13 +60,14 @@ body{margin:0}
 .inp:hover{border-color:var(--ln4)}
 .inp:focus{outline:none;border-color:var(--acc-tx);box-shadow:0 0 0 3px var(--acc-tint)}
 .inp::placeholder{color:var(--mut)}
-.tp{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer;transition:border-color .2s,background .2s}
+.tp{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer;transition:border-color .2s,background .2s}
 .tp:hover{border-color:var(--acc-tx)!important}
 .ch{display:flex;align-items:center;gap:16px;min-height:60px;padding:0 4px;border-top:1px solid var(--ln);text-decoration:none}
 .ch:hover .lnk-t{background:var(--acc);color:var(--on-acc);transform:translateX(3px)}
 .ct-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:start}
 .f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-@media (max-width:900px){.ct-grid,.f2{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){.ct-grid{grid-template-columns:minmax(0,1fr)}.ct-left{display:contents!important}.ct-ch{order:2}}
+@media (max-width:560px){.f2{grid-template-columns:minmax(0,1fr)}.ch{gap:12px}.ch>.mono{flex-basis:72px!important}.ch>.sub{overflow-wrap:break-word!important}}
 </style>
 </helmet>
 <div class="d {{themeCls}}">
@@ -105,7 +106,7 @@ body{margin:0}
 <p class="sub" style="margin: 0; max-width: 420px; font-size: 17px;">Describe one process. We reply within [2 WORKING DAYS] with where AI fits, what it would take, and whether it’s worth it. In English, German or Spanish.</p>
 </div>
 <div class="ct-grid">
-<div style="display: flex; flex-direction: column; gap: 24px; min-width: 0;">
+<div class="ct-left" style="display: flex; flex-direction: column; gap: 24px; min-width: 0;">
 <a href="[BOOKING URL]" class="panel" style="display: flex; flex-direction: column; gap: 28px; padding: clamp(20px, 2.4vw, 32px); text-decoration: none; background-image: radial-gradient(var(--dot) 1px, transparent 1px); background-size: 22px 22px;">
 <span class="mono" style="display: flex; justify-content: space-between; align-items: center;"><span style="color: var(--tx);">Free call · 30 min</span><span>Video</span></span>
 <span style="display: flex; flex-direction: column; gap: 10px;">
@@ -114,7 +115,7 @@ body{margin:0}
 </span>
 <span class="btn" style="align-self: flex-start;"><span class="btn-l">Book a free call</span><span class="btn-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></span>
 </a>
-<div class="panel" style="padding: clamp(20px, 2.4vw, 32px);">
+<div class="panel ct-ch" style="padding: clamp(20px, 2.4vw, 32px);">
 <div class="mono" style="padding-bottom: 14px;">Other ways to reach us</div>
 <sc-for list="{{channels}}" as="c" hint-placeholder-count="6">
 <a class="ch" href="{{c.href}}">
