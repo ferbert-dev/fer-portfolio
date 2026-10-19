@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ferbert — Blog</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+.d{--sh1:0 0 0 0 transparent;--sh2:0 0 0 0 transparent;--sh-btn:0 0 0 0 transparent;--bg:#050505;--frame:#0B0B0C;--p1:#0D0D0E;--p2:#121213;--p3:#1A1A1C;--chat:#0A0A0B;--tx:#FFFFFF;--sub:#A6A6A6;--mut:#8C8C8C;--log:#D6D6D6;--ln:#242426;--ln2:#3A3A3D;--ln3:#2C2C2F;--ln4:#5A5A5E;--dot:#1E1E20;--ring:#262628;--glow:#25272B;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#B8F47A;--acc-tint:#1E2A14;--acc-bd:#5E8A32;--inv:#FFFFFF;--on-inv:#050505;--hdr:rgba(5,5,5,.82);--card:rgba(8,8,9,.78);--warn-tx:#F2CB5C;--warn-bd:#6B5A1E;--bar:#4A4A4E;--grain:.16;color-scheme:dark}
+.d.t-light{--sh1:0 1px 2px rgba(17,17,19,.05),0 14px 34px -22px rgba(17,17,19,.22);--sh2:0 1px 2px rgba(17,17,19,.04),0 34px 80px -46px rgba(17,17,19,.34);--sh-btn:0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px -8px rgba(17,17,19,.45);--bg:#FAFAF8;--frame:#F1F0EB;--p1:#FFFFFF;--p2:#F6F5F1;--p3:#EEEDE8;--chat:#FCFCFB;--tx:#111113;--sub:#55555F;--mut:#6B6B74;--log:#3A3A44;--ln:#E3E2DC;--ln2:#C9C7BF;--ln3:#DEDCD5;--ln4:#A9A7A0;--dot:#E2E1DB;--ring:#E6E5DF;--glow:#FFFFFF;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#3B7A0E;--acc-tint:#E7F8D2;--acc-bd:#93CE58;--inv:#111113;--on-inv:#FFFFFF;--hdr:rgba(250,250,248,.86);--card:rgba(255,255,255,.84);--warn-tx:#8A5200;--warn-bd:#E3C16A;--bar:#C9C7BF;--grain:.07;color-scheme:light}
+@media (prefers-color-scheme: light){.d.t-auto{--sh1:0 1px 2px rgba(17,17,19,.05),0 14px 34px -22px rgba(17,17,19,.22);--sh2:0 1px 2px rgba(17,17,19,.04),0 34px 80px -46px rgba(17,17,19,.34);--sh-btn:0 1px 0 rgba(255,255,255,.15) inset,0 6px 18px -8px rgba(17,17,19,.45);--bg:#FAFAF8;--frame:#F1F0EB;--p1:#FFFFFF;--p2:#F6F5F1;--p3:#EEEDE8;--chat:#FCFCFB;--tx:#111113;--sub:#55555F;--mut:#6B6B74;--log:#3A3A44;--ln:#E3E2DC;--ln2:#C9C7BF;--ln3:#DEDCD5;--ln4:#A9A7A0;--dot:#E2E1DB;--ring:#E6E5DF;--glow:#FFFFFF;--acc:#B8F47A;--on-acc:#050505;--acc-tx:#3B7A0E;--acc-tint:#E7F8D2;--acc-bd:#93CE58;--inv:#111113;--on-inv:#FFFFFF;--hdr:rgba(250,250,248,.86);--card:rgba(255,255,255,.84);--warn-tx:#8A5200;--warn-bd:#E3C16A;--bar:#C9C7BF;--grain:.07;color-scheme:light}}
+body{margin:0}
+.d{background:var(--bg);color:var(--tx);min-height:100vh;font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.45;letter-spacing:-.01em;overflow-x:clip}
+.d a{color:inherit}
+.d ::selection{background:var(--acc);color:var(--on-acc)}
+.d :focus-visible{outline:2px solid var(--acc-tx);outline-offset:3px;border-radius:4px}
+.d [id]{scroll-margin-top:72px}
+.wrap{max-width:1392px;margin:0 auto;padding-left:24px;padding-right:24px}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-size:11px;line-height:1.3;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--sub)}
+.lab{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--ln)}
+.lab::before{content:"";width:6px;height:6px;background:var(--acc-tx)}
+.xl{margin:0;font-size:clamp(42px,6.25vw,90px);line-height:.93;letter-spacing:-.04em;font-weight:400;text-wrap:balance}
+.lg{margin:0;font-size:clamp(38px,5vw,72px);line-height:.97;letter-spacing:-.04em;font-weight:400;text-wrap:balance}
+.md{margin:0;font-size:clamp(24px,2.4vw,34px);line-height:1.18;letter-spacing:-.02em;font-weight:400}
+.sub{color:var(--sub)}
+.panel{background:var(--p1);border:1px solid var(--ln);border-radius:20px;box-shadow:var(--sh1)}
+.lift{box-shadow:var(--sh2)}
+.pill{display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border:1px solid var(--ln2);border-radius:999px}
+.mk{display:inline-block;padding:0 .09em;color:var(--on-acc);background:var(--acc)}
+.btn{display:inline-flex;align-items:stretch;gap:4px;text-decoration:none;border:0;padding:0;background:none;font:inherit;cursor:pointer}
+.btn-l{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:10px;background:linear-gradient(90deg,var(--inv) 0,var(--inv) 50%,var(--acc) 100%);background-size:200% 100%;background-position:0 0;color:var(--on-inv);font-size:14px;font-weight:500;letter-spacing:-.01em;white-space:nowrap;box-shadow:var(--sh-btn);transition:background-position .55s cubic-bezier(.16,1,.3,1),color .3s}
+.btn-t{flex:0 0 46px;border-radius:10px;background:var(--acc);color:var(--on-acc);display:grid;place-items:center;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.btn:hover .btn-l{background-position:100% 0;color:var(--on-acc)}
+.btn:hover .btn-t{transform:translateX(3px)}
+.lnk{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:var(--tx)}
+.lnk-t{flex:0 0 26px;height:26px;border-radius:50%;background:var(--acc-tint);color:var(--acc-tx);display:grid;place-items:center;transition:background .3s,color .3s,transform .45s cubic-bezier(.16,1,.3,1)}
+.lnk:hover .lnk-t{background:var(--acc);color:var(--on-acc);transform:translateX(3px)}
+.navl{text-decoration:none;color:var(--tx);padding:14px 0;transition:color .2s}
+.navl:hover{color:var(--acc-tx)}
+.navl[aria-current="page"]{color:var(--acc-tx)}
+.th{transition:background .25s,color .25s}
+.row{transition:background .3s}
+.row:hover{background:var(--p1)}
+.menu-btn{display:none}
+.lang a{text-decoration:none;color:var(--sub);padding:12px 2px}.lang a[aria-current]{color:var(--tx)}.lang a:hover{color:var(--acc-tx)}
+.cta-s{display:none}
+@media (max-width:900px){
+.nav-links,.th-seg,.hide-s,.lang,.cta-l{display:none!important}
+.cta-s{display:inline!important}
+.th-one,.menu-btn{display:inline-flex!important}
+}
+@media (prefers-reduced-motion: reduce){.btn-l,.btn-t,.lnk-t{transition:none!important}}
+.fl{min-height:36px;padding:0 14px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.fl:hover{border-color:var(--acc-tx)!important}
+.cover{border-radius:14px;border:1px solid var(--ln);background-color:var(--p2);background-image:repeating-radial-gradient(circle at 18% 118%,transparent 0,transparent 9px,var(--ring) 9px,var(--ring) 10px);display:grid;place-items:center}
+.post{display:flex;flex-direction:column;gap:18px;padding:12px 12px 24px;text-decoration:none;transition:border-color .3s}
+.post:hover{border-color:var(--ln2)}
+.post:hover .lnk-t{background:var(--acc);color:var(--on-acc);transform:translateX(3px)}
+.feat{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:12px;padding:12px;text-decoration:none}
+.feat:hover .lnk-t{background:var(--acc);color:var(--on-acc);transform:translateX(3px)}
+.posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.feat,.posts{grid-template-columns:minmax(0,1fr)}}
+</style>
+</helmet>
+<div class="d {{themeCls}}">
+<header style="position: sticky; top: 0; z-index: 20; background: var(--hdr); backdrop-filter: blur(14px); border-bottom: 1px solid var(--p3);">
+<nav class="wrap mono" aria-label="Main" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 56px; color: var(--tx);">
+<a href="D-Home.dc.html" aria-label="Ferbert, home" style="display: flex; align-items: center; gap: 14px; text-decoration: none;">
+<span style="display: flex; align-items: center; gap: 8px; font-family: 'Geist', sans-serif; font-size: 19px; font-weight: 500; letter-spacing: -0.03em; text-transform: none;"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M1 1h4v4H1zM1 9h4v4H1zM9 5h4v4H9z"></path></svg>ferbert</span>
+<span class="nav-links" aria-hidden="true" style="width: 1px; height: 18px; background: var(--ln2);"></span>
+<span class="nav-links" style="color: var(--sub);">AI automation company</span>
+</a>
+<div style="display: flex; align-items: center; gap: clamp(8px, 3vw, 44px);">
+<div class="nav-links" style="display: flex; align-items: center; gap: clamp(16px, 3vw, 44px);">
+<a class="navl" href="D-Home.dc.html#analysis">Analysis</a><a class="navl" href="D-Home.dc.html#demos">Demos</a><a class="navl" href="D-Home.dc.html#services">What we automate</a><a class="navl" href="D-Home.dc.html#start">Pricing</a><a class="navl" href="D-Blog.dc.html" aria-current="page">Blog</a>
+</div>
+<div class="th-seg" role="group" aria-label="Colour theme" style="display: flex; align-items: center; gap: 2px; padding: 2px; border: 1px solid var(--ln2); border-radius: 999px;">
+<sc-for list="{{themes}}" as="t" hint-placeholder-count="3"><button type="button" class="mono th" onClick="{{t.pick}}" aria-pressed="{{t.pressed}}" style="min-height: 28px; padding: 0 11px; border: 0; border-radius: 999px; cursor: pointer; background: {{t.bg}}; color: {{t.fg}};">{{t.label}}</button></sc-for>
+</div>
+<button type="button" class="mono th th-one" onClick="{{cycleTheme}}" aria-label="{{themeAria}}" style="display: none; align-items: center; gap: 6px; min-height: 44px; padding: 0 12px; border: 1px solid var(--ln2); border-radius: 999px; background: transparent; color: var(--tx); cursor: pointer;"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.4"></circle><path d="M6 1a5 5 0 010 10z" fill="currentColor"></path></svg>{{themeLabel}}</button>
+<span class="lang" style="display: flex; align-items: center; gap: 6px;"><a href="#" aria-current="page" aria-label="English">EN</a><span aria-hidden="true" style="color: var(--ln4);">/</span><a href="#" lang="de" aria-label="Deutsch">DE</a></span>
+<a href="D-Contact.dc.html" class="nav-links" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px; background: var(--inv); color: var(--on-inv); text-decoration: none; white-space: nowrap; box-shadow: var(--sh-btn);">Book a free call</a>
+<button type="button" class="mono menu-btn" onClick="{{toggleMenu}}" aria-expanded="{{menuStr}}" aria-controls="d-menu" style="align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; border: 1px solid var(--tx); border-radius: 999px; background: transparent; color: var(--tx); cursor: pointer;">{{menuLabel}}</button>
+</div>
+</nav>
+<sc-if value="{{menu}}" hint-placeholder-val="{{false}}">
+<div id="d-menu" class="wrap" style="padding-top: 8px; padding-bottom: 24px; border-top: 1px solid var(--ln); background: var(--bg);">
+<nav aria-label="Mobile" style="display: flex; flex-direction: column;">
+<a class="navl" href="D-Home.dc.html#analysis" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">Analysis<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><a class="navl" href="D-Home.dc.html#demos" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">Demos<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><a class="navl" href="D-Home.dc.html#services" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">What we automate<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><a class="navl" href="D-Home.dc.html#start" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">Pricing<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><a class="navl" href="D-Blog.dc.html" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;" aria-current="page">Blog<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><a class="navl" href="D-Contact.dc.html" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0; border-bottom: 1px solid var(--ln); font-family: 'Geist', sans-serif; font-size: 26px; letter-spacing: -0.03em; text-transform: none;">Contact<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a><div class="mono" style="display: flex; gap: 14px; padding-top: 18px;"><a href="#" aria-current="page" style="color: var(--tx); text-decoration: none;">English</a><a href="#" lang="de" style="color: var(--sub); text-decoration: none;">Deutsch</a></div><a href="D-Contact.dc.html" class="btn" style="margin-top: 20px;"><span class="btn-l">Book a free call</span><span class="btn-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></a>
+</nav>
+</div>
+</sc-if>
+</header>
+<main class="wrap" style="padding-top: clamp(56px, 7vw, 104px); padding-bottom: clamp(56px, 7vw, 104px);">
+<div class="mono lab">Blog</div>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px; padding: clamp(28px, 4vw, 56px) 0 clamp(36px, 4.5vw, 56px);">
+<h1 class="xl" style="max-width: 12ch;">What we learn building <span class="mk">agents</span>.</h1>
+<p class="sub" style="margin: 0; max-width: 420px; font-size: 17px;">Notes from real projects: RAG, automation, and the engineering that keeps agents running.</p>
+</div>
+<div class="mono" role="group" aria-label="Filter by topic" style="display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 24px;">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="4"><button type="button" class="mono fl" onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="border: 1px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}};">{{f.label}}</button></sc-for>
+</div>
+<sc-if value="{{showFeat}}" hint-placeholder-val="{{true}}">
+<a href="#" class="panel lift feat">
+<div class="cover" style="min-height: 380px;"><span class="mono pill" style="background: var(--p1);">[COVER IMAGE]</span></div>
+<div style="display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding: clamp(12px, 2vw, 28px);">
+<div style="display: flex; flex-direction: column; gap: 18px;">
+<span class="mono" style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="pill" style="border-color: var(--acc-bd); background: var(--acc-tint); color: var(--acc-tx);">Featured</span><span class="pill">Automation</span><span class="pill">[DATE]</span><span class="pill">8 min</span></span>
+<h2 class="md" style="font-size: clamp(26px, 2.8vw, 40px); line-height: 1.08; letter-spacing: -0.03em;">[POST TITLE: e.g. How we measure a process in hours before we automate it]</h2>
+<p class="sub" style="margin: 0;">[TWO-SENTENCE SUMMARY OF THE POST]</p>
+</div>
+<span class="lnk mono">Read the post<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></span>
+</div>
+</a>
+</sc-if>
+<div class="posts" style="margin-top: 12px;">
+<sc-for list="{{posts}}" as="p" hint-placeholder-count="3">
+<a href="#" class="panel post">
+<div class="cover" style="aspect-ratio: 1.5;"><span class="mono pill" style="background: var(--p1);">[COVER IMAGE]</span></div>
+<span class="mono" style="display: flex; gap: 6px; padding: 0 8px;"><span class="pill">{{p.tag}}</span><span class="pill">[DATE]</span></span>
+<h2 style="margin: 0; padding: 0 8px; font-size: 22px; line-height: 1.2; font-weight: 400; letter-spacing: -0.02em;">{{p.title}}</h2>
+<span class="lnk mono" style="padding: 0 8px; margin-top: auto;">Read<span class="lnk-t"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"></path></svg></span></span>
+</a>
+</sc-for>
+</div>
+<sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+<p class="sub" style="margin: 24px 0 0;">No posts on this topic yet.</p>
+</sc-if>
+</main>
+<footer style="padding: 12px;">
+<div class="panel" style="border-radius: 28px; padding: clamp(24px, 3vw, 44px); display: flex; flex-wrap: wrap; gap: 40px 24px; justify-content: space-between; align-items: flex-end;">
+<div style="display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+<a href="mailto:ferbertigo@gmail.com" style="font-size: clamp(24px, 3vw, 44px); letter-spacing: -0.03em; text-decoration: none; overflow-wrap: anywhere;">ferbertigo@gmail.com</a>
+<div class="mono" style="display: flex; flex-wrap: wrap; gap: 6px;">
+<a class="pill navl" href="D-Home.dc.html#analysis" style="padding: 0 12px; min-height: 32px;">Analysis</a><a class="pill navl" href="D-Home.dc.html#demos" style="padding: 0 12px; min-height: 32px;">Demos</a><a class="pill navl" href="D-Home.dc.html#services" style="padding: 0 12px; min-height: 32px;">What we automate</a><a class="pill navl" href="D-Blog.dc.html" style="padding: 0 12px; min-height: 32px;">Blog</a><a class="pill navl" href="D-Contact.dc.html" style="padding: 0 12px; min-height: 32px;">Contact</a>
+</div>
+</div>
+<div class="mono" style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+<span style="display: flex; flex-wrap: wrap; gap: 8px 22px;"><a class="navl" href="https://github.com/ferbert-dev" style="padding: 0;">GitHub</a><a class="navl" href="D-Legal.dc.html" style="padding: 0;">Impressum</a><a class="navl" href="D-Legal.dc.html" style="padding: 0;">Privacy</a></span>
+<span>© 2026 Ferbert, Valencia, Spain</span>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = Object.assign({ theme: 'auto', menu: false }, { tag: 'All' }); }
+  componentDidMount() {
+    try { var saved = window.localStorage.getItem('ferbert-theme'); if (saved === 'light' || saved === 'dark') { this.setState({ theme: saved }); } } catch (e) {}
+  }
+  setTheme(mode) {
+    this.setState({ theme: mode });
+    try { window.localStorage.setItem('ferbert-theme', mode); } catch (e) {}
+  }
+  shell() {
+    var self = this, mode = this.state.theme, order = ['auto', 'light', 'dark'], names = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+    return {
+      themeCls: 't-' + mode, themeLabel: names[mode],
+      themes: order.map(function (m) { var on = m === mode; return { label: names[m], pressed: on ? 'true' : 'false', bg: on ? 'var(--inv)' : 'transparent', fg: on ? 'var(--on-inv)' : 'var(--sub)', pick: function () { self.setTheme(m); } }; }),
+      themeAria: 'Colour theme: ' + names[mode] + '. Change theme',
+      cycleTheme: function () { self.setTheme(order[(order.indexOf(mode) + 1) % 3]); },
+      menu: !!this.state.menu, menuStr: this.state.menu ? 'true' : 'false', menuLabel: this.state.menu ? 'Close' : 'Menu',
+      toggleMenu: function () { self.setState({ menu: !self.state.menu }); }
+    };
+  }
+  renderVals() {
+    var self = this;
+    return Object.assign(this.shell(), {
+      filters: ['All', 'RAG', 'Automation', 'Engineering'].map(function (f) {
+        var on = self.state.tag === f;
+        return { label: f, pressed: on ? 'true' : 'false', bg: on ? 'var(--inv)' : 'transparent', fg: on ? 'var(--on-inv)' : 'var(--tx)', border: on ? 'var(--inv)' : 'var(--ln2)', pick: function () { self.setState({ tag: f }); } };
+      }),
+      showFeat: self.state.tag === 'All' || self.state.tag === 'Automation',
+      posts: [
+        { tag: 'RAG', title: '[POST TITLE: e.g. Keeping RAG answers correct as your documents change]' },
+        { tag: 'Automation', title: '[POST TITLE: e.g. What a process analysis found in one week of invoices]' },
+        { tag: 'Engineering', title: '[POST TITLE: e.g. Retries, idempotency and why demos break in production]' }
+      ].filter(function (p) { return self.state.tag === 'All' || p.tag === self.state.tag; }),
+      empty: false
+    });
+  }
+}
+</script>
+</body>
+</html>
