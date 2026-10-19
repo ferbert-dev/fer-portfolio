@@ -11,6 +11,7 @@
     "check:content": "node --experimental-strip-types --no-warnings scripts/check-content.mjs"
   },
   "dependencies": {
+    "geist": "^1.8.1",
     "next": "^16.4.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"

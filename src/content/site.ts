@@ -18,5 +18,5 @@ export const site = {
 
 /** Languages of the site. English is the default; German is a placeholder until translated (see de.ts). */
 export const locales = ['en', 'de'] as const;
-export const defaultLocale = 'en';
+export const defaultLocale: Locale = 'en';
 export type Locale = (typeof locales)[number];

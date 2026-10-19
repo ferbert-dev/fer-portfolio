@@ -503,6 +503,10 @@ export const en = {
         email: 'Enter a work email address, for example anna@company.com.',
         message: 'Describe the process in a sentence or two.',
       },
+      /** Not drawn: shown when the site has no email service configured and the visitor's mail app is opened instead. */
+      mailFallback: 'Your email app has opened with the message filled in. Press send there to reach us.',
+      sendError: 'The message could not be sent. Please try again, or write to us directly.',
+      sending: 'Sending…',
     },
     sent: {
       title: 'Thanks. Your message is with us.',

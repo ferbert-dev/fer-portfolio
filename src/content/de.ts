@@ -891,7 +891,10 @@ export const de: Dictionary = {
         "name": "[DE] Enter your name so we know who to reply to.",
         "email": "[DE] Enter a work email address, for example anna@company.com.",
         "message": "[DE] Describe the process in a sentence or two."
-      }
+      },
+      "mailFallback": "[DE] Your email app has opened with the message filled in. Press send there to reach us.",
+      "sendError": "[DE] The message could not be sent. Please try again, or write to us directly.",
+      "sending": "[DE] Sending…"
     },
     "sent": {
       "title": "[DE] Thanks. Your message is with us.",
