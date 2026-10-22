@@ -34,7 +34,8 @@ Every repeated element is built once in `src/components/ui/` and styled once in 
 | Outline button | `OutlineButton`; `.btn-o` | hero |
 | Text link with round arrow tile | `ArrowLink`, `ArrowTile` in `ui/Button.tsx`; `.lnk` `.lnk-t` | services, trust, FAQ, closing, contact channels, blog, legal, 404, mobile menu |
 | Toggle buttons (pressed state) | `ToggleChip` in `ui/Controls.tsx`; `.chip-segment` `.chip-filter` `.chip-topic` `.chip-choice` | theme switch, blog filters, contact topics, document questions |
-| Pause / Play | `PlayPauseButton` in `ui/Controls.tsx`; `.ctl` | tool marquee, invoice workflow |
+| Pause / Play | `PlayPauseButton` in `ui/Controls.tsx`; `.ctl` (`.ctl-sm` on the hero card) | tool marquee, invoice workflow, hero mini card |
+| Border colour of every control | `--ctl-bd` in `src/styles/tokens.css` | inputs, chips, filters, pause, outline button, header theme switch, agent questions |
 | Small rounded labels | `Pill` in `ui/Controls.tsx`; `.pill` and tones `.t-acc` `.t-tint` `.t-on-acc` `.t-good` `.t-warn` `.t-muted` | "Recommended", potential levels, sources, blog tags, "Demo" |
 | Form field (label, control, error, hint) | `Field` in `ui/Controls.tsx`; `.fld` `.inp` `.fld-err` `.fld-hint` | contact form |
 | Icons | `ui/icons.tsx`, and `home/icons.ts` for the demo icon paths | everywhere |
@@ -87,6 +88,7 @@ Two looks are kept as drawn and chosen by a prop: the primary button's arrow (`i
 ### Hero (client: loader, scramble)
 - Content: `home.hero`, `home.workflow.nodes[].short`, `common`.
 - The mini card mirrors the invoice workflow state (`home.workflow.short`) and lights its five steps in lime as they finish.
+- The mini card has its own small Pause / Play control (`PlayPauseButton`, `.ctl-sm`). It pauses the shared loop, so the workflow section pauses too, and the live dot stops blinking (WCAG 2.2.2).
 - Loader: see DESIGN.md §4. It is `aria-hidden`; the hero content is in the DOM underneath.
 
 ### ToolMarquee (client)

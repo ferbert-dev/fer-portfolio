@@ -17,6 +17,17 @@ The live URL is blocked from the audit environment, so this audits a local produ
   - the accessibility tree
 - No real screen reader was run. The "Screen Reader" section reads from Chromium's accessibility tree.
 
+### Status
+All 8 findings and the footer link targets were fixed in the follow-up PR. axe now reports 0 violations in all 30 scans, the 404 page included.
+- **#1, #2:** new `--ctl-bd` token for control borders: 3.25–3.78:1 on every surface.
+- **#3:** the topic marker uses `--ctl-bd`.
+- **#4:** the agent questions use `aria-disabled`, so focus stays on them.
+- **#5:** the steps column is a focusable labelled region.
+- **#6:** the hero card has its own Pause / Play, and the live dot stops while paused.
+- **#7:** Escape closes the mobile menu and returns focus to the Menu button.
+- **#8:** `app/global-not-found.tsx` gives unmatched URLs a branded 404 with `lang="en"`. It needs `experimental.globalNotFound` in `next.config.ts`.
+- **Targets:** footer text links, the email link, the logo and the mobile-menu language links got 44 px hit areas without moving anything. The footer pills stay at 34 px (above WCAG 2.2's 24 px).
+
 ### Summary
 **Issues found:** 8 | **Critical:** 0 | **Major:** 4 | **Minor:** 4
 

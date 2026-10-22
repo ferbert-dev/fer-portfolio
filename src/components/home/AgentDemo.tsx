@@ -56,7 +56,8 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
     <Section id="demos" titleId="ag-title">
       <SectionHead label={agent.label} title={agent.title} titleId="ag-title" width="12ch" lead={agent.lead} leadWidth="44ch" />
       <div className="panel lift ag-panel" data-rv="" style={{ overflow: 'hidden', display: 'flex', flexWrap: 'wrap' }}>
-        <div ref={stepsBox} className="ag-steps dots" style={{ flex: '999 1 520px', minWidth: 0, padding: 'clamp(18px, 2.2vw, 28px)', borderRight: '1px solid var(--ln)' }}>
+        {/* Focusable so keyboard users can scroll it when a run is taller than the panel. Question buttons use aria-disabled, not disabled, so focus stays on them during a run. */}
+        <div ref={stepsBox} className="ag-steps dots" tabIndex={0} role="region" aria-label={agent.inside} style={{ flex: '999 1 520px', minWidth: 0, padding: 'clamp(18px, 2.2vw, 28px)', borderRight: '1px solid var(--ln)' }}>
           <div className="mono" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 }}>
             <span style={{ color: 'var(--tx)' }}>{agent.inside}</span>
             <span style={{ fontVariantNumeric: 'tabular-nums' }}>{timer}</span>
@@ -140,7 +141,7 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
           <div style={{ padding: '14px 20px 18px', borderTop: '1px solid var(--ln)', display: 'flex', flexDirection: 'column', gap: 10 }}>
             <div role="group" aria-label={agent.choose} style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {agent.scenarios.map((s, i) => (
-                <button key={s.ask} type="button" className="qb" onClick={() => ask(i)} disabled={busy} style={{ minHeight: 44, padding: '0 14px', borderRadius: 999, border: '1px solid var(--ln2)', background: 'transparent', font: 'inherit', fontSize: 14, color: 'var(--tx)' }}>{s.ask}</button>
+                <button key={s.ask} type="button" className="qb" onClick={() => ask(i)} aria-disabled={busy} style={{ minHeight: 44, padding: '0 14px', borderRadius: 999, border: '1px solid var(--ctl-bd)', background: 'transparent', font: 'inherit', fontSize: 14, color: 'var(--tx)' }}>{s.ask}</button>
               ))}
             </div>
             <div className="mono" style={{ letterSpacing: '.04em' }}>{agent.hint}</div>
