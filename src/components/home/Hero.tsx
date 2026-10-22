@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import type React from 'react';
 import type { Dictionary } from '@/content';
 import { OutlineButton, PrimaryButton } from '@/components/ui/Button';
+import { PlayPauseButton } from '@/components/ui/Controls';
 import { FramePanel } from '@/components/ui/Layout';
 import { LogoMark } from '@/components/ui/icons';
 import { nodeState, useWorkflow } from './WorkflowState';
@@ -26,7 +27,7 @@ const LOAD_MS = 1300;
 const LEAVE_MS = 700;
 
 export function Hero({ hero, workflow, common, contactHref }: Props) {
-  const { wf } = useWorkflow();
+  const { wf, paused, toggle } = useWorkflow();
   const [loader, setLoader] = useState<'on' | 'leaving' | 'off'>('on');
   const [pct, setPct] = useState(0);
   const [intro, setIntro] = useState<'idle' | 'set' | 'go'>('idle');
@@ -118,10 +119,14 @@ export function Hero({ hero, workflow, common, contactHref }: Props) {
 
           <div className="hero-card" data-rv="" style={{ ['--dl' as string]: '1.55s', marginTop: 'auto', alignSelf: 'flex-end', width: 'min(100%, 440px)', display: 'flex', border: '1px solid var(--ln2)', borderRadius: 16, background: 'var(--card)', backdropFilter: 'blur(8px)', overflow: 'hidden', boxShadow: 'var(--sh2)' }}>
             <div style={{ flex: 1, minWidth: 0, padding: 16, display: 'flex', flexDirection: 'column', gap: 18 }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 16, fontWeight: 500, letterSpacing: '-0.03em' }}><LogoMark size={11} />ferbert</span>
+              {/* The card loops with the invoice workflow; this pauses both (WCAG 2.2.2). */}
+              <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 16, fontWeight: 500, letterSpacing: '-0.03em' }}><LogoMark size={11} />ferbert</span>
+                <PlayPauseButton className="ctl-sm" paused={paused} onToggle={toggle} pressed={paused} label={paused ? common.play : common.pause} />
+              </span>
               <span className="mono" style={{ color: 'var(--tx)', lineHeight: 1.5 }}>{hero.card}</span>
               <span className="mono" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4px 8px' }}>
-                <span className="nw" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}><span className="live" style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--acc-tx)' }} />{workflow.name} ·</span>
+                <span className="nw" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}><span className={paused ? undefined : 'live'} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--acc-tx)' }} />{workflow.name} ·</span>
                 <span className="nw">{short}</span>
               </span>
             </div>

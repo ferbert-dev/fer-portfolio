@@ -26,6 +26,7 @@ All values are in `tokens.css`. Use the variables, not raw colours.
 | Panel / inner card / chip | `--p1` `--p2` `--p3` | #0D0D0E / #121213 / #1A1A1C | #FFFFFF / #F6F5F1 / #EEEDE8 |
 | Text / secondary / muted | `--tx` `--sub` `--mut` | #FFFFFF / #A6A6A6 / #8C8C8C | #111113 / #55555F / #6B6B74 |
 | Lines | `--ln` → `--ln4` | hairline to strong | hairline to strong |
+| Control borders (inputs, chips, filters, pause, outline button) | `--ctl-bd` | #6A6A6E | #8A8880 |
 | Lime fill | `--acc` | #B8F47A | #B8F47A |
 | Lime as text or icon | `--acc-tx` | #B8F47A | #3B7A0E |
 | Text on lime | `--on-acc` | #050505 | #050505 |
@@ -34,6 +35,7 @@ All values are in `tokens.css`. Use the variables, not raw colours.
 Rules:
 - **Lime means "active, done, or with agents".** Use it for the heading marker, the button arrow tile, done states in demos, the "with agents" bars and the answer card. Do not use it as decoration elsewhere.
 - **Lime text uses `--acc-tx`, never `--acc`.** On the light ground `#B8F47A` text fails contrast; `--acc-tx` is darkened for that.
+- **Controls use `--ctl-bd` for their outline,** never `--ln2`. It is at least 3:1 against every surface (WCAG 1.4.11). `--ln2` stays for frames, panels, pills and separators.
 - **Shadows exist only in the light theme.** In dark, `--sh1`, `--sh2` and `--sh-btn` are transparent and borders carry the edges.
 - **The recommended pricing card is inverted:** dark card in the light theme, light card in the dark theme (`.invert` in `tokens.css`).
 

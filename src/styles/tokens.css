@@ -21,7 +21,8 @@
   --mut: #8C8C8C; /* muted text, idle icons */
   --log: #D6D6D6; /* run log and tag text */
   --ln: #242426; /* hairline borders */
-  --ln2: #3A3A3D; /* control borders */
+  --ln2: #3A3A3D; /* panel, frame and pill borders */
+  --ctl-bd: #6A6A6E; /* borders that outline a control: 3:1 or more */
   --ln3: #2C2C2F; /* card borders inside panels */
   --ln4: #5A5A5E; /* strong dashed or idle dots */
   --dot: #1E1E20; /* dot-grid pattern */
@@ -59,6 +60,7 @@
   --log: #3A3A44;
   --ln: #E3E2DC;
   --ln2: #C9C7BF;
+  --ctl-bd: #8A8880;
   --ln3: #DEDCD5;
   --ln4: #A9A7A0;
   --dot: #E2E1DB;
@@ -97,6 +99,7 @@
     --log: #3A3A44;
     --ln: #E3E2DC;
     --ln2: #C9C7BF;
+    --ctl-bd: #8A8880;
     --ln3: #DEDCD5;
     --ln4: #A9A7A0;
     --dot: #E2E1DB;
@@ -137,6 +140,7 @@
   --log: #3A3A44;
   --ln: #E3E2DC;
   --ln2: #C9C7BF;
+  --ctl-bd: #8A8880;
   --ln3: #DEDCD5;
   --ln4: #A9A7A0;
   --dot: #E2E1DB;
@@ -174,6 +178,7 @@
   --log: #D6D6D6;
   --ln: #242426;
   --ln2: #3A3A3D;
+  --ctl-bd: #6A6A6E;
   --ln3: #2C2C2F;
   --ln4: #5A5A5E;
   --dot: #1E1E20;
@@ -212,6 +217,7 @@
     --log: #D6D6D6;
     --ln: #242426;
     --ln2: #3A3A3D;
+    --ctl-bd: #6A6A6E;
     --ln3: #2C2C2F;
     --ln4: #5A5A5E;
     --dot: #1E1E20;
