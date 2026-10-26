@@ -6,6 +6,12 @@ Paste the prompt below into a new Claude Code session on this repository, branch
 
 Continue the Ferbert agency website. Current state (2026-10-26): direction D is final and built in Next.js; decision 17 in `docs/decisions.md` set four header links, hid Blog and the German switch, and made the contact form open the visitor's email app; read `docs/decisions.md` (every owner decision), `design/handoff/README.md` (build package), then `PRODUCT.md`, `.impeccable/surfaces/src-app-locale-page-tsx.md` (direction contract) and the latest file in `.impeccable/critique/` first.
 
+In progress (2026-10-26, branch `fix/fit-sections`), from the critique `.impeccable/critique/2026-10-26T16-11-32Z__src-app-locale-page-tsx.md`:
+- Prices and timelines (decision 18): analysis €500 fixed in 1 week; agent build 2–6 weeks by estimate; run and improve "from €65 / hour". Already applied in `src/content/en.ts` and `de.ts`, not yet merged.
+- Screens, next: demo sections (support agent, documents) must show label, heading and panel together in one window on desktop (MacBook 14" 1512×860 and 16" 1728×980). Plan: a `fit` option on `Section` that sizes the section to `100svh` minus the header and lets the panel fill the rest; smaller top spacing on those sections. Also on phones: the hero mini card's Pause control collides with the step list at 390 px.
+- Hero loader: cut from ~2.3 s to ~400 ms (owner's choice: shorten, not remove).
+- Code: one file per home section (split `src/components/home/Sections.tsx`), and shared `List` / `CardGrid` / `CheckList` pieces instead of repeated inline styles. The look must not change except the fixes above.
+
 State (updated 2026-10-10, end of local session):
 - Brand: "Ferbert", an AI automation company (voice "we"). Main offer: process analysis (find what AI can automate), then building agents. Voice agents are out of scope for now.
 - Live canvas: https://claude.ai/artifact/Y6TFjZsTwU942rENtGrqqi. Files in `design/canvas/` mirror it. Directions A and C are deleted.

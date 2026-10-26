@@ -74,17 +74,17 @@ export function ContactForm({ form, sent, privacyHref }: Props) {
 
   if (mailto) {
     return (
-      <div role="status" style={{ display: 'flex', flexDirection: 'column', gap: 20, minHeight: 520, justifyContent: 'center', alignItems: 'flex-start' }}>
-        <span style={{ width: 48, height: 48, borderRadius: '50%', background: 'var(--acc)', color: 'var(--on-acc)', display: 'grid', placeItems: 'center' }}>
+      <div role="status" className="sent">
+        <span className="sent-ico">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 5h14v10H3z M3 5l7 6 7-6" /></svg>
         </span>
         <h2 className="md">{sent.title}</h2>
-        <p className="sub" style={{ margin: 0, maxWidth: 460 }}>{sent.body}</p>
-        <p className="sub" style={{ margin: 0, maxWidth: 460 }}>
-          {sent.fallbackBefore} <a href={mailto} style={{ color: 'var(--tx)' }}>{sent.fallbackLink}</a> {sent.fallbackAfter}{' '}
-          <a href={`mailto:${site.email}`} style={{ color: 'var(--tx)' }}>{site.email}</a>.
+        <p className="sub">{sent.body}</p>
+        <p className="sub">
+          {sent.fallbackBefore} <a href={mailto} className="c-tx">{sent.fallbackLink}</a> {sent.fallbackAfter}{' '}
+          <a href={`mailto:${site.email}`} className="c-tx">{site.email}</a>.
         </p>
-        <button type="button" className="lnk mono" onClick={() => setMailto(null)} style={{ border: 0, background: 'none', padding: 0, cursor: 'pointer' }}>
+        <button type="button" className="lnk mono btn-plain" onClick={() => setMailto(null)}>
           {sent.back}
           <ArrowTile />
         </button>
@@ -95,7 +95,7 @@ export function ContactForm({ form, sent, privacyHref }: Props) {
   const aria = (k: keyof Errors) => (errors[k] ? { 'aria-invalid': true, 'aria-describedby': `${k}-err` } : {});
 
   return (
-    <form id="contact-form" onSubmit={submit} noValidate aria-label={form.label} style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+    <form id="contact-form" onSubmit={submit} noValidate aria-label={form.label} className="cform">
       <div className="f2">
         <Field htmlFor="n" label={form.name} error={errors.name} errorId="name-err"><input className="inp" id="n" name="name" type="text" autoComplete="name" required defaultValue={values?.name} {...aria('name')} /></Field>
         <Field htmlFor="e" label={form.email} error={errors.email} errorId="email-err"><input className="inp" id="e" name="email" type="email" autoComplete="email" required defaultValue={values?.email} {...aria('email')} /></Field>
@@ -106,19 +106,19 @@ export function ContactForm({ form, sent, privacyHref }: Props) {
           </select>
         </Field>
       </div>
-      <fieldset style={{ margin: 0, padding: 0, border: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <legend className="mono" style={{ padding: '0 0 12px' }}>{form.topics}</legend>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+      <fieldset className="cf-topics">
+        <legend className="mono">{form.topics}</legend>
+        <div className="cf-chips">
           {form.topicList.map((label, i) => (
             <ToggleChip key={label} variant="topic" pressed={on[i]} onClick={() => setOn((v) => v.map((x, j) => (j === i ? !x : x)))}>{label}</ToggleChip>
           ))}
         </div>
       </fieldset>
       <Field htmlFor="msg" label={form.message} error={errors.message} errorId="message-err" hint={form.hint}>
-        <textarea className="inp" id="msg" name="message" rows={6} placeholder={form.placeholder} defaultValue={values?.message} style={{ resize: 'vertical', lineHeight: 1.5 }} {...aria('message')} />
+        <textarea className="inp" id="msg" name="message" rows={6} placeholder={form.placeholder} defaultValue={values?.message} {...aria('message')} />
       </Field>
-      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16, paddingTop: 20, borderTop: '1px solid var(--ln)' }}>
-        <span className="sub" style={{ fontSize: 13 }}>{form.opensMail} {form.privacy} <Link href={privacyHref} style={{ color: 'var(--tx)' }}>{form.privacyLink}</Link></span>
+      <div className="cf-foot">
+        <span className="sub cf-note">{form.opensMail} {form.privacy} <Link href={privacyHref} className="c-tx">{form.privacyLink}</Link></span>
         <SubmitButton label={form.submit} />
       </div>
     </form>

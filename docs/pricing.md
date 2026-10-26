@@ -16,19 +16,19 @@ The owner charges by the hour and cannot quote build work before knowing what wi
 
 | Card | Timeline | Price shown |
 |---|---|---|
-| Process analysis | 2–3 weeks | `[PRICE]` fixed |
-| Agent build | `[N]` weeks | By estimate |
-| Run and improve | Ongoing | `[RATE]` / hour |
+| Process analysis | 1 week | €500 fixed |
+| Agent build | 2–6 weeks | By estimate |
+| Run and improve | Ongoing | from €65 / hour |
 
 Below the cards a "How pricing works" block states the three steps above.
 
 **Direction B** has not been updated. It shows `[PRICE]` on all three cards and a `[PRICING TERMS]` placeholder line. The owner has not said whether to copy the model into B.
 
-## Still needed from the owner
+## Values (decision 18, 2026-10-26)
 
-- The fixed price of the process analysis.
-- The hourly rate, or the instruction to show "hourly" without a number.
-- Weeks from the end of the analysis to the first live agent (`[N]`).
+- Process analysis: €500 fixed, one week (a couple of meetings plus a full day of analysis).
+- Hourly rate: from €65.
+- From the end of the analysis to the first live agent: 2–6 weeks.
 
 ## A point raised in the critique
 

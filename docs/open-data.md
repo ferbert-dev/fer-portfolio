@@ -8,9 +8,9 @@ For each item the owner can give the value, or say "hide" to remove the element.
 
 | # | Needed | Placeholder | Where |
 |---|---|---|---|
-| 1 | Fixed price of the process analysis | `[PRICE]` | B and D, pricing card 1 |
-| 2 | Hourly rate | `[RATE]` | D, pricing card 3 |
-| 3 | Weeks from analysis to first live agent | `[N]` | B and D: cadence line, pricing card 2, FAQ answer 2 |
+| 1 | ~~Fixed price of the process analysis~~ | Done: €500 (decision 18) | |
+| 2 | ~~Hourly rate~~ | Done: from €65 (decision 18) | |
+| 3 | ~~Weeks from analysis to first live agent~~ | Done: 2–6 weeks (decision 18) | |
 | 4 | Prices for agent build and for run and improve | `[PRICE]` | B only, cards 2 and 3. Not needed if B takes the hourly model |
 | 5 | Pricing terms sentence | `[PRICING TERMS…]` | B only. Not needed if B takes the hourly model |
 

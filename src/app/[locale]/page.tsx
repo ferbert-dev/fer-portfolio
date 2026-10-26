@@ -8,7 +8,13 @@ import { WorkflowProvider } from '@/components/home/WorkflowState';
 import { Analysis } from '@/components/home/Analysis';
 import { AgentDemo } from '@/components/home/AgentDemo';
 import { DocumentsDemo } from '@/components/home/DocumentsDemo';
-import { Closing, Company, Faq, HowWeWork, Pricing, Services, Trust } from '@/components/home/Sections';
+import { Services } from '@/components/home/Services';
+import { Trust } from '@/components/home/Trust';
+import { HowWeWork } from '@/components/home/HowWeWork';
+import { Pricing } from '@/components/home/Pricing';
+import { Company } from '@/components/home/Company';
+import { Faq } from '@/components/home/Faq';
+import { Closing } from '@/components/home/Closing';
 
 export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   const { locale } = await params;

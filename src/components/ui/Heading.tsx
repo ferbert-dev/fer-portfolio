@@ -43,22 +43,23 @@ type HeadingProps = {
   width?: string;
   /** "scroll" reveals with the page; "load" plays once when the page opens. */
   entrance?: 'scroll' | 'load';
+  className?: string;
   style?: CSSProperties;
 };
 
 /** Every marked heading on the site: one place for its size, line length and entrance. */
-export function Heading({ text, as: Tag = 'h2', size = 'lg', id, width, entrance = 'scroll', style }: HeadingProps) {
+export function Heading({ text, as: Tag = 'h2', size = 'lg', id, width, entrance = 'scroll', className, style }: HeadingProps) {
   return (
-    <Tag id={id} className={size} {...(entrance === 'scroll' ? { 'data-rv': '' } : {})} style={{ ...(width ? { maxWidth: width } : {}), ...style }}>
+    <Tag id={id} className={className ? `${size} ${className}` : size} {...(entrance === 'scroll' ? { 'data-rv': '' } : {})} style={{ ...(width ? { maxWidth: width } : {}), ...style }}>
       <MarkedText text={text} entrance={entrance} />
     </Tag>
   );
 }
 
 /** Secondary paragraph that sits beside or below a heading. */
-export function Lead({ children, width, reveal = true, style }: { children: ReactNode; width?: string | number; reveal?: boolean; style?: CSSProperties }) {
+export function Lead({ children, width, reveal = true, className, style }: { children: ReactNode; width?: string | number; reveal?: boolean; className?: string; style?: CSSProperties }) {
   return (
-    <p className="sub" {...(reveal ? { 'data-rv': '' } : {})} style={{ margin: 0, ...(width ? { maxWidth: width } : {}), ...style }}>
+    <p className={className ? `sub ${className}` : 'sub'} {...(reveal ? { 'data-rv': '' } : {})} style={{ margin: 0, ...(width ? { maxWidth: width } : {}), ...style }}>
       {children}
     </p>
   );

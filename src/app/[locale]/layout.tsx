@@ -9,6 +9,9 @@ import { Footer } from '@/components/layout/Footer';
 import { Motion } from '@/components/layout/Motion';
 import { themeScript } from '@/components/layout/theme';
 import '../globals.css';
+import '@/styles/chrome.css';
+import '@/styles/home.css';
+import '@/styles/pages.css';
 
 export const dynamicParams = false;
 
@@ -51,7 +54,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
       <body>
         <a className="skip" href="#main">{t.common.skip}</a>
         <Header locale={locale} header={t.header} nav={t.nav} cta={t.common.cta} />
-        <main id="main" tabIndex={-1} style={{ outline: 'none' }}>{children}</main>
+        <main id="main" tabIndex={-1}>{children}</main>
         <Footer locale={locale} footer={t.footer} />
         <Motion />
       </body>

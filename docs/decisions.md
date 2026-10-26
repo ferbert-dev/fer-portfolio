@@ -1,8 +1,14 @@
 # Decisions
 
-Decisions made by the owner, Igor Ferbert. Dated 2026-10-10 unless noted. Decisions 12–15 (2026-10-19) override older ones where they differ; decision 17 (2026-10-26) overrides 16.
+Decisions made by the owner, Igor Ferbert. Dated 2026-10-10 unless noted. Decisions 12–15 (2026-10-19) override older ones where they differ; decision 17 (2026-10-26) overrides 16; decision 18 (2026-10-26) sets the prices and timelines.
 
 ## In force
+
+### 18. Prices and timelines shown on the site
+2026-10-26, the owner's values for the pricing placeholders:
+- **Process analysis:** €500, fixed. Takes one week (a couple of meetings plus a full day of analysis), replacing "2–3 weeks" everywhere.
+- **Hourly rate:** "from €65 / hour", shown on the Run and improve card ("from" leaves room to charge more for complex work). Agent builds stay "By estimate", in hours at this rate.
+- **First live agent:** 2–6 weeks after the analysis (cadence line, Agent build card, FAQ).
 
 ### 17. Four header links, Blog and German hidden, contact by email app
 2026-10-26, the owner's answers to the open questions in `design/handoff/DESIGN.md` §7:
