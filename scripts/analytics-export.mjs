@@ -77,7 +77,10 @@ async function query(dataset, by, filter) {
 }
 
 const cell = (v) => {
-  const s = v === null || v === undefined ? '' : typeof v === 'object' ? JSON.stringify(v) : String(v);
+  let s = v === null || v === undefined ? '' : typeof v === 'object' ? JSON.stringify(v) : String(v);
+  // Paths, referrers and event labels come from visitors. A leading = + - @ would make Excel
+  // run the cell as a formula, so text cells that start with one are prefixed with '.
+  if (typeof v !== 'number' && /^[=+\-@\t\r]/.test(s)) s = `'${s}`;
   return /["\n\r;,]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 };
 
