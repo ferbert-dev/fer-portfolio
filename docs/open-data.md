@@ -39,7 +39,7 @@ Already filled: email (ferbertigo@gmail.com) and GitHub (ferbert-dev).
 | 17 | How long enquiries are kept | `[RETENTION PERIOD]` |
 | 18 | Analytics used, or none | `[ANALYTICS…]` |
 | 19 | AI providers and regions used for client work | `[PROVIDERS AND REGIONS]` |
-| 20 | Hosting provider and region | `[HOSTING PROVIDER, REGION]` |
+| 20 | Hosting region (provider is Vercel; analytics is Vercel Web Analytics, see docs/analytics.md) | `[REGION]` |
 | 21 | Date of last update | `[DATE]` |
 
 Already filled: represented by Igor Ferbert; contact and privacy email ferbertigo@gmail.com.

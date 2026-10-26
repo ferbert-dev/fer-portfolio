@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { CSSProperties, ReactNode } from 'react';
+import type { TrackTag } from '@/lib/analytics';
 import { Chevron, PixelArrow } from './icons';
 
 type ArrowIcon = 'pixel' | 'chevron';
@@ -20,9 +21,9 @@ export function ButtonFace({ label, icon = 'pixel', scramble = false }: { label:
 }
 
 /** Primary action: inverted label block plus a lime arrow tile. Hover sweeps to lime. */
-export function PrimaryButton({ href, label, className, style, scramble = true, reveal = false, icon = 'pixel', onClick }: { href: string; label: string; className?: string; style?: CSSProperties; scramble?: boolean; reveal?: boolean; icon?: ArrowIcon; onClick?: () => void }) {
+export function PrimaryButton({ href, label, className, style, scramble = true, reveal = false, icon = 'pixel', onClick, track }: { href: string; label: string; className?: string; style?: CSSProperties; track?: TrackTag; scramble?: boolean; reveal?: boolean; icon?: ArrowIcon; onClick?: () => void }) {
   return (
-    <Link href={href} className={className ? `btn ${className}` : 'btn'} aria-label={label} style={style} onClick={onClick} {...(reveal ? { 'data-rv': '' } : {})}>
+    <Link href={href} className={className ? `btn ${className}` : 'btn'} aria-label={label} style={style} onClick={onClick} {...track} {...(reveal ? { 'data-rv': '' } : {})}>
       <ButtonFace label={label} icon={icon} scramble={scramble} />
     </Link>
   );
@@ -38,8 +39,8 @@ export function SubmitButton({ label, disabled }: { label: ReactNode; disabled?:
 }
 
 /** Outline button for a secondary action next to a primary one ("Watch an agent think"). */
-export function OutlineButton({ href, children }: { href: string; children: ReactNode }) {
-  return <Link href={href} className="btn-o">{children}</Link>;
+export function OutlineButton({ href, children, track }: { href: string; children: ReactNode; track?: TrackTag }) {
+  return <Link href={href} className="btn-o" {...track}>{children}</Link>;
 }
 
 /** The small round lime tile with an arrow, used by text links, cards and list rows. */
@@ -48,14 +49,14 @@ export function ArrowTile({ icon = 'chevron' }: { icon?: ArrowIcon }) {
 }
 
 /** Mono text link with a round lime tile ("Write to us", "See a sample report"). */
-export function ArrowLink({ href, children, className, style, reveal = false }: { href: string; children: ReactNode; className?: string; style?: CSSProperties; reveal?: boolean }) {
+export function ArrowLink({ href, children, className, style, reveal = false, track }: { href: string; children: ReactNode; className?: string; style?: CSSProperties; reveal?: boolean; track?: TrackTag }) {
   const inner = (
     <>
       {children}
       <span className="lnk-t" aria-hidden="true"><PixelArrow size={10} /></span>
     </>
   );
-  const props = { className: className ? `lnk mono ${className}` : 'lnk mono', style, ...(reveal ? { 'data-rv': '' } : {}) };
+  const props = { className: className ? `lnk mono ${className}` : 'lnk mono', style, ...track, ...(reveal ? { 'data-rv': '' } : {}) };
   if (href.startsWith('/')) return <Link href={href} {...props}>{inner}</Link>;
   return <a href={href} {...props}>{inner}</a>;
 }

@@ -3,6 +3,7 @@ import { site } from '@/content';
 import { ArrowLink } from '@/components/ui/Button';
 import { Heading, SectionLabel } from '@/components/ui/Heading';
 import { Section } from '@/components/ui/Layout';
+import { tag } from '@/lib/analytics';
 
 type Home = Dictionary['home'];
 
@@ -26,7 +27,7 @@ export function Faq({ faq, write }: { faq: Home['faq']; write: string }) {
       </div>
       <div className="faq-more" data-rv="">
         <span className="mono c-tx">{faq.notHere}</span>
-        <ArrowLink href={`mailto:${site.email}`}>{write}</ArrowLink>
+        <ArrowLink href={`mailto:${site.email}`} track={tag('email_click', 'faq')}>{write}</ArrowLink>
       </div>
     </Section>
   );

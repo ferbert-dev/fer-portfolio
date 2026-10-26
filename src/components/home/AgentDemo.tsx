@@ -6,6 +6,7 @@ import { Pill } from '@/components/ui/Controls';
 import { Section, SectionHead } from '@/components/ui/Layout';
 import { StrokeIcon } from '@/components/ui/icons';
 import { agentIcons } from './icons';
+import { tag } from '@/lib/analytics';
 
 const STEP_MS = 850;
 
@@ -138,7 +139,7 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
           <div className="ag-foot">
             <div className="ag-qs" role="group" aria-label={agent.choose}>
               {agent.scenarios.map((s, i) => (
-                <button key={s.ask} type="button" className="qb ag-q" onClick={() => ask(i)} aria-disabled={busy}>{s.ask}</button>
+                <button key={s.ask} type="button" className="qb ag-q" onClick={() => ask(i)} aria-disabled={busy} {...tag('demo_question', 'support', s.ask)}>{s.ask}</button>
               ))}
             </div>
             <div className="mono hint">{agent.hint}</div>

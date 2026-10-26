@@ -4,6 +4,8 @@ import { GeistMono } from 'geist/font/mono';
 import { getDictionary } from '@/content';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { Tracker } from '@/components/layout/Tracker';
+import { Analytics } from '@vercel/analytics/next';
 import { themeScript } from '@/components/layout/theme';
 import NotFound from './[locale]/not-found';
 import './globals.css';
@@ -31,6 +33,8 @@ export default function GlobalNotFound() {
         <Header locale="en" header={t.header} nav={t.nav} cta={t.common.cta} />
         <main id="main" tabIndex={-1}><NotFound /></main>
         <Footer locale="en" footer={t.footer} />
+        <Analytics />
+        <Tracker />
       </body>
     </html>
   );

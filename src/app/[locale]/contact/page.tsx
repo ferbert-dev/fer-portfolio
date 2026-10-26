@@ -5,6 +5,7 @@ import { isLocale, localeHref } from '@/lib/i18n';
 import { ArrowTile, ButtonFace } from '@/components/ui/Button';
 import { Page, PageHeader, PageLead } from '@/components/ui/Layout';
 import { ContactForm } from '@/components/contact/ContactForm';
+import { tag } from '@/lib/analytics';
 
 export async function generateMetadata({ params }: PageProps<'/[locale]/contact'>): Promise<Metadata> {
   const { locale } = await params;
@@ -45,9 +46,9 @@ export default async function ContactPage({ params }: PageProps<'/[locale]/conta
       <div className="ct-grid">
         <div className="ct-left">
           {site.bookingUrl ? (
-            <a href={site.bookingUrl} className="panel dots bk">{bookingInner}</a>
+            <a href={site.bookingUrl} className="panel dots bk" {...tag('cta_click', 'contact', 'booking')}>{bookingInner}</a>
           ) : (
-            <a href="#contact-form" className="panel dots bk">{bookingInner}</a>
+            <a href="#contact-form" className="panel dots bk" {...tag('cta_click', 'contact', 'booking')}>{bookingInner}</a>
           )}
           <div className="panel ct-ch">
             <div className="mono ct-ch-h">{c.other}</div>
@@ -60,7 +61,7 @@ export default async function ContactPage({ params }: PageProps<'/[locale]/conta
                   {href ? <ArrowTile /> : null}
                 </>
               );
-              return href ? <a key={ch.key} className="ch" href={href}>{content}</a> : <div key={ch.key} className="ch">{content}</div>;
+              return href ? <a key={ch.key} className="ch" href={href} {...tag('contact_channel', 'contact', ch.key)}>{content}</a> : <div key={ch.key} className="ch">{content}</div>;
             })}
           </div>
         </div>

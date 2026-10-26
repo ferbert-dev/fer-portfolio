@@ -999,7 +999,7 @@ export const de: Dictionary = {
       "title": "[DE] Privacy notice",
       "paragraphs": [
         "[DE] We only collect what we need to answer you and run this website. When you write to us through the contact form, we use your name, email, company and message to reply. We keep enquiries for [RETENTION PERIOD] and never sell or share them for advertising.",
-        "[DE] This website is hosted by [HOSTING PROVIDER, REGION]. We use [ANALYTICS: e.g. none / privacy-friendly analytics without cookies]."
+        "[DE] This website is hosted by Vercel Inc. ([REGION]). To learn which pages are useful, we use Vercel Web Analytics. It sets no cookies and does not identify you: visits are counted with a hash of the request that is discarded after 24 hours, and we only see totals such as page views, the referring website, country, browser and device type. We do not record names, email addresses or anything you type."
       ]
     },
     "ai": {

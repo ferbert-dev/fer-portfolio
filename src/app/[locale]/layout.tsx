@@ -6,6 +6,8 @@ import { getDictionary, locales } from '@/content';
 import { isLocale } from '@/lib/i18n';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { Tracker } from '@/components/layout/Tracker';
+import { Analytics } from '@vercel/analytics/next';
 import { Motion } from '@/components/layout/Motion';
 import { themeScript } from '@/components/layout/theme';
 import '../globals.css';
@@ -57,6 +59,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
         <main id="main" tabIndex={-1}>{children}</main>
         <Footer locale={locale} footer={t.footer} />
         <Motion />
+        <Analytics />
+        <Tracker />
       </body>
     </html>
   );

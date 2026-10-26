@@ -8,6 +8,7 @@ import { PlayPauseButton } from '@/components/ui/Controls';
 import { FramePanel } from '@/components/ui/Layout';
 import { LogoMark } from '@/components/ui/icons';
 import { nodeState, useWorkflow } from './WorkflowState';
+import { tag } from '@/lib/analytics';
 
 type Props = {
   hero: Dictionary['home']['hero'];
@@ -79,7 +80,7 @@ export function Hero({ hero, workflow, common, contactHref }: Props) {
   );
 
   return (
-    <section aria-label={hero.label} className="hero-sec">
+    <section aria-label={hero.label} className="hero-sec" data-section="hero">
       <FramePanel className="hero" glow="radial-gradient(80% 90% at 78% 30%, var(--glow) 0%, transparent 62%)">
         <svg aria-hidden="true" width="100%" height="100%" className="hero-grain">
           <filter id="d-grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves={2} stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
@@ -108,8 +109,8 @@ export function Hero({ hero, workflow, common, contactHref }: Props) {
           </h1>
           <p className="sub hero-lead" data-rv="" style={{ ['--dl' as string]: '.95s' }}>{hero.lead}</p>
           <div className="hero-ctas" data-rv="" style={{ ['--dl' as string]: '1.15s' }}>
-            <PrimaryButton href={contactHref} label={common.cta} />
-            <OutlineButton href="#demos">{hero.secondary}</OutlineButton>
+            <PrimaryButton href={contactHref} label={common.cta} track={tag('cta_click', 'hero', 'book-call')} />
+            <OutlineButton href="#demos" track={tag('cta_click', 'hero', 'watch-agent')}>{hero.secondary}</OutlineButton>
           </div>
           <p className="mono hero-note" data-rv="" style={{ ['--dl' as string]: '1.3s' }}>{common.ctaNote}</p>
 
