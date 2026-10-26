@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
+import { Analytics } from '@vercel/analytics/next';
 import { getDictionary, locales } from '@/content';
 import { isLocale } from '@/lib/i18n';
 import { Header } from '@/components/layout/Header';
@@ -57,6 +58,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
         <main id="main" tabIndex={-1}>{children}</main>
         <Footer locale={locale} footer={t.footer} />
         <Motion />
+        <Analytics />
       </body>
     </html>
   );
