@@ -7,6 +7,9 @@ import { Footer } from '@/components/layout/Footer';
 import { themeScript } from '@/components/layout/theme';
 import NotFound from './[locale]/not-found';
 import './globals.css';
+import '@/styles/chrome.css';
+import '@/styles/home.css';
+import '@/styles/pages.css';
 
 /**
  * 404 for URLs that match no route. Next renders it without the [locale]
@@ -26,7 +29,7 @@ export default function GlobalNotFound() {
       <body>
         <a className="skip" href="#main">{t.common.skip}</a>
         <Header locale="en" header={t.header} nav={t.nav} cta={t.common.cta} />
-        <main id="main" tabIndex={-1} style={{ outline: 'none' }}><NotFound /></main>
+        <main id="main" tabIndex={-1}><NotFound /></main>
         <Footer locale="en" footer={t.footer} />
       </body>
     </html>

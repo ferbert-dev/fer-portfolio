@@ -24,27 +24,27 @@ export default async function LegalPage({ params }: PageProps<'/[locale]/legal'>
   return (
     <Page>
       <PageHeader label={l.label} title={l.title} size="lg">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 440 }}>
+        <div className="legal-meta">
           <span className="mono">{l.updated}</span>
-          <p className="sub" style={{ margin: 0 }}>{l.binding}</p>
-          <p className="mono" style={{ margin: 0, padding: '10px 12px', border: '1px dashed var(--warn-bd)', borderRadius: 10, color: 'var(--warn-tx)', lineHeight: 1.5 }}>{l.draft}</p>
+          <p className="sub">{l.binding}</p>
+          <p className="mono draft">{l.draft}</p>
         </div>
       </PageHeader>
       <div className="lg-grid">
         <nav className="toc mono" aria-label={l.toc}>
-          <span style={{ paddingBottom: 14 }}>{l.toc}</span>
+          <span>{l.toc}</span>
           {toc.map(([id, title]) => (
             <a key={id} href={`#${id}`}>{title}<ArrowTile /></a>
           ))}
         </nav>
         <article className="art">
-          <section className="blk" id="impressum" style={{ paddingTop: 0 }}>
+          <section className="blk" id="impressum">
             <span className="mono">01</span>
             <h2 className="md">{l.impressum.title}</h2>
             <dl className="imp">
               {l.impressum.rows.map(([k, v]) => (
-                <div key={k} style={{ display: 'contents' }}>
-                  <dt className="mono" style={{ paddingTop: 17 }}>{k}</dt>
+                <div key={k}>
+                  <dt className="mono">{k}</dt>
                   <dd>{v}</dd>
                 </div>
               ))}
@@ -61,7 +61,7 @@ export default async function LegalPage({ params }: PageProps<'/[locale]/legal'>
             <ul className="chk">
               {l.ai.items.map((it) => (
                 <li key={it}>
-                  <span aria-hidden="true" style={{ flex: '0 0 20px', height: 20, marginTop: 1, borderRadius: '50%', background: 'var(--acc-tint)', color: 'var(--acc-tx)', display: 'grid', placeItems: 'center' }}>
+                  <span className="chk-dot" aria-hidden="true">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M2 5.3l2 2L8 3" /></svg>
                   </span>
                   <span>{it}</span>
@@ -72,7 +72,7 @@ export default async function LegalPage({ params }: PageProps<'/[locale]/legal'>
           <section className="blk" id="rights">
             <span className="mono">04</span>
             <h2 className="md">{l.rights.title}</h2>
-            <p>{l.rights.before}<a href={`mailto:${site.email}`} style={{ color: 'var(--tx)' }}>{site.email}</a>{l.rights.after}</p>
+            <p>{l.rights.before}<a href={`mailto:${site.email}`} className="c-tx">{site.email}</a>{l.rights.after}</p>
           </section>
         </article>
       </div>

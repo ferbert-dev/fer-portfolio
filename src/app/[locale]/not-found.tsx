@@ -8,12 +8,12 @@ import { Page } from '@/components/ui/Layout';
 export default function NotFound() {
   const t = getDictionary('en').notFound;
   return (
-    <Page style={{ minHeight: '50vh' }}>
+    <Page className="nf">
       <SectionLabel reveal={false}>404</SectionLabel>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 24, padding: 'clamp(28px, 4vw, 56px) 0' }}>
+      <div className="nf-body">
         <h1 className="lg">{t.title}</h1>
-        <p className="sub" style={{ margin: 0, maxWidth: '46ch' }}>{t.lead}</p>
-        <Link href="/" className="lnk mono" style={{ alignSelf: 'flex-start' }}>{t.home}<ArrowTile /></Link>
+        <p className="sub">{t.lead}</p>
+        <Link href="/" className="lnk mono self-start">{t.home}<ArrowTile /></Link>
       </div>
     </Page>
   );

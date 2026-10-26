@@ -1,0 +1,56 @@
+/* Inner pages: Contact, Blog, Legal and 404. Grids and breakpoints for these pages live in globals.css. */
+
+#main{outline:none}
+a.c-tx{color:var(--tx)}
+.btn-plain{border:0;background:none;padding:0;cursor:pointer}
+
+/* Contact */
+.ct-left{display:flex;flex-direction:column;gap:24px;min-width:0}
+.bk{display:flex;flex-direction:column;gap:28px;padding:clamp(20px,2.4vw,32px);text-decoration:none}
+.bk-meta{display:flex;justify-content:space-between;align-items:center}
+.bk-copy{display:flex;flex-direction:column;gap:10px}
+.ct-ch{padding:clamp(20px,2.4vw,32px)}
+.ct-ch-h{padding-bottom:14px}
+.ch-name{flex:0 0 96px;color:var(--tx)}
+.ch-handle{flex:1;min-width:0;overflow-wrap:anywhere}
+.ct-form{padding:clamp(20px,2.8vw,40px);min-width:0}
+.cform{display:flex;flex-direction:column;gap:28px}
+.cf-topics{margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:12px}
+.cf-topics>legend{padding:0 0 12px}
+.cf-chips{display:flex;flex-wrap:wrap;gap:8px}
+textarea.inp{resize:vertical;line-height:1.5}
+.cf-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:20px;border-top:1px solid var(--ln)}
+.cf-note{font-size:13px}
+.sent{display:flex;flex-direction:column;gap:20px;min-height:520px;justify-content:center;align-items:flex-start}
+.sent-ico{width:48px;height:48px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:grid;place-items:center}
+.sent>p{margin:0;max-width:460px}
+
+/* Blog */
+.blog-filters{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:24px}
+.cover>.pill{background:var(--p1)}
+.feat .cover{min-height:380px}
+.feat-body{display:flex;flex-direction:column;justify-content:space-between;gap:32px;padding:clamp(12px,2vw,28px)}
+.feat-copy{display:flex;flex-direction:column;gap:18px}
+.feat-copy>p{margin:0}
+.feat-title{font-size:clamp(26px,2.8vw,40px);line-height:1.08;letter-spacing:-.03em}
+.posts{margin-top:12px}
+.post .cover{aspect-ratio:1.5}
+.post-tags{display:flex;gap:6px;padding:0 8px}
+.post-title{margin:0;padding:0 8px;font-size:22px;line-height:1.2;font-weight:400;letter-spacing:-.02em}
+.post-read{padding:0 8px;margin-top:auto}
+.blog-empty{margin:24px 0 0}
+
+/* Legal */
+.legal-meta{display:flex;flex-direction:column;gap:12px;max-width:440px}
+.legal-meta>p{margin:0}
+.draft{padding:10px 12px;border:1px dashed var(--warn-bd);border-radius:10px;color:var(--warn-tx);line-height:1.5}
+.toc>span{padding-bottom:14px}
+.art>.blk:first-child{padding-top:0}
+.imp>div{display:contents}
+.imp dt{padding-top:17px}
+.chk-dot{flex:0 0 20px;height:20px;margin-top:1px;border-radius:50%;background:var(--acc-tint);color:var(--acc-tx);display:grid;place-items:center}
+
+/* 404 */
+.nf{min-height:50vh}
+.nf-body{display:flex;flex-direction:column;gap:24px;padding:clamp(28px,4vw,56px) 0}
+.nf-body>p{margin:0;max-width:46ch}
