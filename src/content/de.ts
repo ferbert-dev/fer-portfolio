@@ -208,7 +208,7 @@ export const de: Dictionary = {
         "mark": "analysis",
         "after": ", not a guess."
       },
-      "lead": "[DE] In two to three weeks we map how work moves through your company, measure every process in hours, and rank what AI can take over by savings and risk. You keep the report, whether or not we build anything.",
+      "lead": "[DE] In one week we map how work moves through your company, measure every process in hours, and rank what AI can take over by savings and risk. You keep the report, whether or not we build anything.",
       "deliverables": [
         "[DE] A map of your key processes: who does what, in which tools, how often",
         "[DE] Hours per week for each process, measured with your team",
@@ -638,11 +638,11 @@ export const de: Dictionary = {
       },
       "cadence": [
         "[DE] 30 min",
-        "[DE] 2–3 weeks",
-        "[N] weeks."
+        "[DE] 1 week",
+        "[DE] 2–6 weeks."
       ],
-      "cadenceLabel": "[DE] 30 minutes, 2 to 3 weeks, N weeks",
-      "cadenceLead": "[DE] A free first call. A process analysis in two to three weeks. Then your first agent, tested on your real cases before it goes live.",
+      "cadenceLabel": "[DE] 30 minutes, 1 week, 2 to 6 weeks",
+      "cadenceLead": "[DE] A free first call. A process analysis in one week. Then your first agent, tested on your real cases before it goes live.",
       "steps": [
         {
           "title": "[DE] Free call.",
@@ -676,7 +676,7 @@ export const de: Dictionary = {
         {
           "title": "[DE] Process analysis",
           "line": "[DE] Know what to automate before you pay for building.",
-          "time": "[DE] 2–3 weeks",
+          "time": "[DE] 1 week",
           "when": "[DE] Recommended first step",
           "items": [
             "[DE] A map of your key processes",
@@ -685,14 +685,14 @@ export const de: Dictionary = {
             "[DE] A build plan with cost, timeline and payback",
             "[DE] The report is yours to keep"
           ],
-          "price": "[PRICE]",
+          "price": "€500",
           "unit": "[DE] fixed",
           "recommended": true
         },
         {
           "title": "[DE] Agent build",
           "line": "[DE] Your first agents, built, tested and handed over.",
-          "time": "[N] weeks",
+          "time": "[DE] 2–6 weeks",
           "when": "[DE] Best if you already know the process",
           "items": [
             "[DE] The agents your analysis ranks highest",
@@ -716,7 +716,7 @@ export const de: Dictionary = {
             "[DE] Fixes when a tool or a model changes",
             "[DE] Monthly improvements"
           ],
-          "price": "[RATE]",
+          "price": "[DE] from €65",
           "unit": "/ hour",
           "recommended": false
         }
@@ -764,7 +764,7 @@ export const de: Dictionary = {
         },
         {
           "q": "[DE] How fast will we see something working?",
-          "a": "[DE] The process analysis takes two to three weeks. The first agent is live [N] weeks after that, depending on the process and the tools it connects to."
+          "a": "[DE] The process analysis takes one week. The first agent is live two to six weeks after that, depending on the process and the tools it connects to."
         },
         {
           "q": "[DE] Will agents replace people on our team?",

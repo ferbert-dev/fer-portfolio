@@ -105,7 +105,7 @@ export const en = {
     analysis: {
       label: 'Process analysis',
       title: { before: 'Start with an ', mark: 'analysis', after: ', not a guess.' },
-      lead: 'In two to three weeks we map how work moves through your company, measure every process in hours, and rank what AI can take over by savings and risk. You keep the report, whether or not we build anything.',
+      lead: 'In one week we map how work moves through your company, measure every process in hours, and rank what AI can take over by savings and risk. You keep the report, whether or not we build anything.',
       deliverables: [
         'A map of your key processes: who does what, in which tools, how often',
         'Hours per week for each process, measured with your team',
@@ -337,9 +337,9 @@ export const en = {
     how: {
       label: 'How we work',
       title: { before: 'From first call to ', mark: 'running agent', after: '.' },
-      cadence: ['30 min', '2–3 weeks', '[N] weeks.'],
-      cadenceLabel: '30 minutes, 2 to 3 weeks, N weeks',
-      cadenceLead: 'A free first call. A process analysis in two to three weeks. Then your first agent, tested on your real cases before it goes live.',
+      cadence: ['30 min', '1 week', '2–6 weeks.'],
+      cadenceLabel: '30 minutes, 1 week, 2 to 6 weeks',
+      cadenceLead: 'A free first call. A process analysis in one week. Then your first agent, tested on your real cases before it goes live.',
       steps: [
         { title: 'Free call.', body: 'We learn how your team works and where time goes.' },
         { title: 'Process analysis.', body: 'Each process measured in hours, with a clear list of what to automate.' },
@@ -358,7 +358,7 @@ export const en = {
         {
           title: 'Process analysis',
           line: 'Know what to automate before you pay for building.',
-          time: '2–3 weeks',
+          time: '1 week',
           when: 'Recommended first step',
           items: [
             'A map of your key processes',
@@ -367,14 +367,14 @@ export const en = {
             'A build plan with cost, timeline and payback',
             'The report is yours to keep',
           ],
-          price: '[PRICE]',
+          price: '€500',
           unit: 'fixed',
           recommended: true,
         },
         {
           title: 'Agent build',
           line: 'Your first agents, built, tested and handed over.',
-          time: '[N] weeks',
+          time: '2–6 weeks',
           when: 'Best if you already know the process',
           items: [
             'The agents your analysis ranks highest',
@@ -393,7 +393,7 @@ export const en = {
           time: 'Ongoing',
           when: 'Best if agents are already running',
           items: ['Monitoring and alerts', 'Cost tracking for each agent', 'Fixes when a tool or a model changes', 'Monthly improvements'],
-          price: '[RATE]',
+          price: 'from €65',
           unit: '/ hour',
           recommended: false,
         },
@@ -424,7 +424,7 @@ export const en = {
         },
         {
           q: 'How fast will we see something working?',
-          a: 'The process analysis takes two to three weeks. The first agent is live [N] weeks after that, depending on the process and the tools it connects to.',
+          a: 'The process analysis takes one week. The first agent is live two to six weeks after that, depending on the process and the tools it connects to.',
         },
         {
           q: 'Will agents replace people on our team?',
