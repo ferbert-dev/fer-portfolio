@@ -15,7 +15,7 @@ Everything needed to build the approved design in Next.js. The design itself liv
 
 1. Create the Next.js app (App Router, TypeScript) in this repo. Copy `tokens.css` into `src/styles/` and import it in the root layout. Load Geist and Geist Mono with `next/font`.
 2. Add the inline theme script (see ThemeSwitch in COMPONENTS.md) so the right theme is set before first paint.
-3. Build the shared parts first (header, menu, buttons, section head, footer), then the home sections in page order, then Contact, Blog, Legal.
+3. Build the shared parts first (header, menu, buttons, section head, footer), then the home sections in page order, then Contact and Legal. Blog is not linked at launch; build it last or later.
 4. Take every word from `src/content/en.ts`. Never type copy into a component; never fill a `[BRACKET]` with an invented value.
 5. Compare each page with its screenshots in `reference/` at the three widths, in both themes. The screenshots show the finished demo states and the page with reduced motion (everything revealed).
 6. Once a page matches, record Playwright screenshot baselines from the built site itself. Those baselines, not the design screenshots, are what the tests compare against later; fonts and rendering differ slightly between the canvas and the real site.

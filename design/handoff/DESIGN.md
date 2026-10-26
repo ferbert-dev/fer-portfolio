@@ -57,7 +57,7 @@ One word or short phrase per heading is highlighted with a lime block (`--acc` b
 
 The marked phrase and the punctuation that follows it stay on the same line. Wrap both in a `white-space: nowrap` span; the content file stores headings as `{ before, mark, after }` for this.
 
-On scroll the marker wipes in from right to left (`--dur-marker`, delay .25s). With reduced motion it is simply shown.
+On scroll the marker wipes in from right to left after the words of its heading have risen (see Headline rise in §4). In the hero and the closing panel the wipe starts from `--frame` instead of `--bg` (`--cover`). With reduced motion it is simply shown.
 
 ### Layout
 
@@ -83,9 +83,10 @@ All motion uses `cubic-bezier(.16, 1, .3, 1)`.
 
 | Effect | Where | Behaviour | Reduced motion |
 |---|---|---|---|
-| Loader | Over the hero on first load | Counter 0–100% with a lime bar, about 1s, then fades out | Skipped |
+| Loader | Over the hero on first load | Counter 0–100% with a lime bar over 1.3s (ease in-out), holds .25s, then fades out and lifts 14px over .7s while the hero starts its reveal | Skipped |
 | Scroll reveal | Blocks marked `data-rv` | Fade in, rise 22px, unblur 10px, .9s, staggered by `--dl` | Shown at once |
-| Text scramble | Hero headline, cadence numbers, button labels | Characters resolve left to right, 750ms on reveal, 420ms on button hover | Off |
+| Headline rise | Every h1 and section h2, the cadence line | Each word sits in its own clipped box and slides up from 115% below, 1.2s, staggered 70ms per word (80ms on Contact, Blog and Legal, where it plays on page load); the marker wipes in after the last word | Shown at once |
+| Text scramble | Primary button labels | Characters resolve left to right, 420ms, on hover | Off |
 | Button sweep | Primary button | Fill sweeps from `--inv` to lime, arrow tile nudges 3px right | Off |
 | Marquee | Tool list | Scrolls 36s per loop; pauses on hover, keyboard focus or the Pause button | Static list that wraps; no button |
 | Scroll progress | Top edge of the header | 2px lime bar showing page progress | Off in the design; may stay, it does not move content |
@@ -115,10 +116,11 @@ Until the owner supplies the booking link, "Book a free call" goes to `/contact`
 - Decorative SVG and the duplicated marquee items are `aria-hidden`.
 - Text contrast is at least 4.5:1 in both themes. The token values were chosen for this; keep them.
 
-## 7. Open questions for the owner (not design decisions to make in the build)
+## 7. Owner decisions (2026-10-26)
 
-1. **Fifth header link.** On the home page the desktop header shows FAQ in the fifth slot; inner pages show Blog. Pick one set for all pages. Suggestion: Analysis, Demos, What we automate, Pricing, Blog, because the FAQ is reached by scrolling.
-2. **Contact form delivery.** The design shows a "Thanks. Your message is with us." state. The build needs a way to deliver the message: an email API, a form service, or opening the visitor's mail app. This needs the owner's choice and, for an API, an account.
-3. **Blog at launch.** All posts are placeholders. Either hide Blog from the navigation until there are real posts, or launch with them.
-4. **German.** The language switch is drawn (EN / DE) but there is no German copy yet. Hide DE until `src/content/de.ts` exists.
-5. **Placeholders.** Analysis price, hourly rate, weeks to first agent, reply time, booking link, LinkedIn, WhatsApp, Telegram, X, legal name, address, phone, register entry, VAT ID, retention period, analytics, AI providers and regions, hosting region, blog posts.
+1. **Header links:** the same four on every page, desktop and phone menu: Analysis, Demos, What we automate, Pricing. The phone menu adds Contact. FAQ is reached by scrolling. Blog becomes the fifth link once it has real posts.
+2. **Contact form:** opens the visitor's email app (`mailto:`) with the message ready to send to ferbertigo@gmail.com. No form service or email API. See Contact in COMPONENTS.md for the exact email.
+3. **Blog:** not linked anywhere at launch (header, menu, footer). The page stays designed on the canvas and can be built later, or built now and left unlinked.
+4. **German:** no language switch until `src/content/de.ts` exists. The EN / DE switch was removed from the design.
+
+Still open: the placeholders in `[SQUARE BRACKETS]` (analysis price, hourly rate, weeks to first agent, reply time, booking link, LinkedIn, WhatsApp, Telegram, X, legal name, address, phone, register entry, VAT ID, retention period, analytics, AI providers and regions, hosting region, blog posts).
