@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
+import type { TrackTag } from '@/lib/analytics';
 import { PauseIcon, PlayIcon } from './icons';
 
 /**
@@ -9,10 +10,10 @@ import { PauseIcon, PlayIcon } from './icons';
  * - topic:   44px pill with a square marker, lime tint when pressed (contact topics)
  * - choice:  full-width card button, lime tint when pressed (document questions)
  */
-export function ToggleChip({ pressed, onClick, variant, mono, className, style, children }: { pressed: boolean; onClick: () => void; variant: 'segment' | 'filter' | 'topic' | 'choice'; mono?: boolean; className?: string; style?: CSSProperties; children: ReactNode }) {
+export function ToggleChip({ pressed, onClick, variant, mono, className, style, track, children }: { pressed: boolean; onClick: () => void; variant: 'segment' | 'filter' | 'topic' | 'choice'; mono?: boolean; className?: string; style?: CSSProperties; track?: TrackTag; children: ReactNode }) {
   const cls = ['chip', `chip-${variant}`, mono ? 'mono' : '', className ?? ''].filter(Boolean).join(' ');
   return (
-    <button type="button" className={cls} aria-pressed={pressed} onClick={onClick} style={style}>
+    <button type="button" className={cls} aria-pressed={pressed} onClick={onClick} style={style} {...track}>
       {variant === 'topic' ? <span className="chip-dot" aria-hidden="true" /> : null}
       {children}
     </button>

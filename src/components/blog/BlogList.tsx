@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { Dictionary } from '@/content';
 import { ArrowTile } from '@/components/ui/Button';
 import { Pill, ToggleChip } from '@/components/ui/Controls';
+import { trackEvent } from '@/lib/analytics';
 
 /**
  * Posts are placeholders until the owner supplies real ones, so cards are not
@@ -22,7 +23,7 @@ export function BlogList({ blog }: { blog: Dictionary['blog'] }) {
     <>
       <div className="mono blog-filters" role="group" aria-label={blog.filterLabel}>
         {blog.filters.map((f, i) => (
-          <ToggleChip key={f} variant="filter" mono pressed={i === tag} onClick={() => setTag(i)}>{f}</ToggleChip>
+          <ToggleChip key={f} variant="filter" mono pressed={i === tag} onClick={() => { setTag(i); trackEvent('blog_filter', 'blog', f); }}>{f}</ToggleChip>
         ))}
       </div>
       {showFeat ? (

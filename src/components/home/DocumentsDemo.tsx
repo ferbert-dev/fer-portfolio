@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { Dictionary } from '@/content';
 import { Pill, ToggleChip } from '@/components/ui/Controls';
 import { Section, SectionHead } from '@/components/ui/Layout';
+import { tag } from '@/lib/analytics';
 
 export function DocumentsDemo({ knowledge }: { knowledge: Dictionary['home']['knowledge'] }) {
   const [q, setQ] = useState(0);
@@ -16,7 +17,7 @@ export function DocumentsDemo({ knowledge }: { knowledge: Dictionary['home']['kn
         <div className="kb-col">
           <div className="mono kb-label">{knowledge.ask}</div>
           {knowledge.questions.map((item, i) => (
-            <ToggleChip key={item.text} variant="choice" pressed={i === q} onClick={() => setQ(i)}>{item.text}</ToggleChip>
+            <ToggleChip key={item.text} variant="choice" pressed={i === q} onClick={() => setQ(i)} track={tag('demo_question', 'documents', item.text)}>{item.text}</ToggleChip>
           ))}
         </div>
         <div className="kb-col">

@@ -4,12 +4,13 @@ import { ArrowLink, PrimaryButton } from '@/components/ui/Button';
 import { Heading, Lead } from '@/components/ui/Heading';
 import { FramePanel } from '@/components/ui/Layout';
 import { LogoMark } from '@/components/ui/icons';
+import { tag } from '@/lib/analytics';
 
 type Home = Dictionary['home'];
 
 export function Closing({ closing, cta, write, contactHref }: { closing: Home['closing']; cta: string; write: string; contactHref: string }) {
   return (
-    <section aria-labelledby="cta-title" className="sec closing">
+    <section aria-labelledby="cta-title" className="sec closing" data-section="closing">
       <FramePanel glow="radial-gradient(70% 90% at 50% 0%, var(--glow) 0%, transparent 65%)" className="closing-panel">
         <span className="mono" data-rv="">{closing.label}</span>
         <Heading id="cta-title" text={closing.title} size="xl" width="14ch" />
@@ -21,8 +22,8 @@ export function Closing({ closing, cta, write, contactHref }: { closing: Home['c
           <span className="mono closing-you">{closing.you}</span>
         </div>
         <div className="closing-ctas" data-rv="">
-          <PrimaryButton href={contactHref} label={cta} />
-          <ArrowLink href={`mailto:${site.email}`}>{write}</ArrowLink>
+          <PrimaryButton href={contactHref} label={cta} track={tag('cta_click', 'closing', 'book-call')} />
+          <ArrowLink href={`mailto:${site.email}`} track={tag('email_click', 'closing')}>{write}</ArrowLink>
         </div>
       </FramePanel>
     </section>

@@ -9,7 +9,7 @@ import { Heading, Lead, MarkedText, SectionLabel, type Marked } from './Heading'
 export function Section({ id, titleId, fit, className, style, children }: { id?: string; titleId: string; fit?: boolean; className?: string; style?: CSSProperties; children: ReactNode }) {
   const cls = ['wrap', 'sec', fit ? 'fit' : '', className ?? ''].filter(Boolean).join(' ');
   return (
-    <section id={id} aria-labelledby={titleId} className={cls} style={style}>
+    <section id={id} aria-labelledby={titleId} className={cls} style={style} data-section={id}>
       {children}
     </section>
   );

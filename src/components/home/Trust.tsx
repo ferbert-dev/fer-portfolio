@@ -5,6 +5,7 @@ import { Section } from '@/components/ui/Layout';
 import { CardGrid } from '@/components/ui/Lists';
 import { StrokeIcon } from '@/components/ui/icons';
 import { trustIcons } from './icons';
+import { tag } from '@/lib/analytics';
 
 type Home = Dictionary['home'];
 
@@ -16,7 +17,7 @@ export function Trust({ trust, legalHref }: { trust: Home['trust']; legalHref: s
         <div className="tr-copy">
           <Heading id="tr-title" text={trust.title} width="10ch" />
           <Lead width="40ch">{trust.lead}</Lead>
-          <ArrowLink href={legalHref} reveal className="self-start">{trust.link}</ArrowLink>
+          <ArrowLink href={legalHref} reveal className="self-start" track={tag('nav_click', 'trust', 'privacy')}>{trust.link}</ArrowLink>
         </div>
         <CardGrid min={260} className="tr-cards">
           {trust.items.map((t, i) => (

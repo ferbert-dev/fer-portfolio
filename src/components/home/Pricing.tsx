@@ -4,6 +4,7 @@ import { Pill } from '@/components/ui/Controls';
 import { Section, SectionHead } from '@/components/ui/Layout';
 import { CardGrid, CheckList } from '@/components/ui/Lists';
 import { pad } from './format';
+import { tag } from '@/lib/analytics';
 
 type Home = Dictionary['home'];
 
@@ -27,7 +28,7 @@ export function Pricing({ pricing, cta, contactHref }: { pricing: Home['pricing'
               <span className="mono offer-when">{o.when}</span>
             </div>
             <div className="offer-foot">
-              {o.recommended ? <PrimaryButton href={contactHref} label={cta} scramble={false} /> : null}
+              {o.recommended ? <PrimaryButton href={contactHref} label={cta} scramble={false} track={tag('cta_click', 'pricing', 'book-call')} /> : null}
               <span className="offer-price">{o.price} <span className="mono">{o.unit}</span></span>
             </div>
           </li>

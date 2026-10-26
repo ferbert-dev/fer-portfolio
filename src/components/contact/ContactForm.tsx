@@ -6,6 +6,7 @@ import type { Dictionary } from '@/content';
 import { site } from '@/content';
 import { ArrowTile, SubmitButton } from '@/components/ui/Button';
 import { Field, ToggleChip } from '@/components/ui/Controls';
+import { trackEvent } from '@/lib/analytics';
 
 type Props = { form: Dictionary['contact']['form']; sent: Dictionary['contact']['sent']; privacyHref: string };
 type Errors = Partial<Record<'name' | 'email' | 'message', string>>;
@@ -66,7 +67,10 @@ export function ContactForm({ form, sent, privacyHref }: Props) {
       (e.currentTarget.querySelector(`[name="${first}"]`) as HTMLElement | null)?.focus();
       return;
     }
-    const href = mailtoHref(form, input, form.topicList.filter((_, i) => on[i]));
+    const topics = form.topicList.filter((_, i) => on[i]);
+    const href = mailtoHref(form, input, topics);
+    // Topics only: never names, emails or message text.
+    trackEvent('contact_submit', 'contact', topics.join(', '));
     setValues(input);
     setMailto(href);
     window.location.href = href;

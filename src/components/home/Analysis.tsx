@@ -4,6 +4,7 @@ import { Pill } from '@/components/ui/Controls';
 import { Heading, Lead, SectionLabel } from '@/components/ui/Heading';
 import { Section } from '@/components/ui/Layout';
 import { pad } from './format';
+import { tag } from '@/lib/analytics';
 
 const levelTone = { high: 'good', medium: 'warn', low: 'muted' } as const;
 
@@ -24,7 +25,7 @@ export function Analysis({ analysis, cta, contactHref }: { analysis: Dictionary[
               </li>
             ))}
           </ul>
-          <PrimaryButton href={contactHref} label={cta} reveal className="self-start" />
+          <PrimaryButton href={contactHref} label={cta} reveal className="self-start" track={tag('cta_click', 'analysis', 'book-call')} />
         </div>
         <figure className="panel lift an-report" data-rv="" style={{ ['--dl' as string]: '.1s' }}>
           <div className="rep-head">

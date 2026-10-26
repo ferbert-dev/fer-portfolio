@@ -9,6 +9,7 @@ import { ArrowTile, ButtonFace } from '@/components/ui/Button';
 import { ToggleChip } from '@/components/ui/Controls';
 import { LogoMark } from '@/components/ui/icons';
 import { THEME_KEY, type ThemeMode } from './theme';
+import { tag, trackEvent } from '@/lib/analytics';
 
 const ORDER: ThemeMode[] = ['auto', 'light', 'dark'];
 
@@ -64,6 +65,7 @@ export function Header({ locale, header, nav, cta }: Props) {
 
   const setTheme = (mode: ThemeMode) => {
     setThemeState(mode);
+    trackEvent('theme_change', 'header', mode);
     document.documentElement.setAttribute('data-theme', mode);
     try {
       localStorage.setItem(THEME_KEY, mode);
@@ -78,7 +80,7 @@ export function Header({ locale, header, nav, cta }: Props) {
     <header className="hdr">
       <div id="d-progress" className="hdr-progress" aria-hidden="true" />
       <nav className="wrap mono hdr-nav" aria-label={header.navLabel}>
-        <Link href={localeHref(locale, '/')} aria-label={header.home} className="hdr-home">
+        <Link href={localeHref(locale, '/')} aria-label={header.home} className="hdr-home" {...tag('nav_click', 'header', 'home')}>
           <span className="hdr-logo">
             <LogoMark />
             ferbert
@@ -89,7 +91,7 @@ export function Header({ locale, header, nav, cta }: Props) {
         <div className="hdr-right">
           <div className="nav-links hdr-links">
             {desktop.map((n) => (
-              <Link key={n.href} className="navl" href={h(n.href)}>
+              <Link key={n.href} className="navl" href={h(n.href)} {...tag('nav_click', 'header', n.href)}>
                 {n.label}
               </Link>
             ))}
@@ -103,7 +105,7 @@ export function Header({ locale, header, nav, cta }: Props) {
             <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" strokeWidth="1.4" /><path d="M6 1a5 5 0 010 10z" fill="currentColor" /></svg>
             {names[theme]}
           </button>
-          <Link href={localeHref(locale, '/contact')} className="hdr-cta">{cta}</Link>
+          <Link href={localeHref(locale, '/contact')} className="hdr-cta" {...tag('cta_click', 'header', 'book-call')}>{cta}</Link>
           <button ref={menuBtn} type="button" className="mono menu-btn" onClick={() => setMenu((v) => !v)} aria-expanded={menu} aria-controls="d-menu">
             {menu ? header.close : header.menu}
           </button>
@@ -113,13 +115,13 @@ export function Header({ locale, header, nav, cta }: Props) {
         <div id="d-menu" className="wrap menu">
           <nav aria-label={header.mobileNavLabel} className="menu-nav">
             {nav.map((n) => (
-              <Link key={n.href} className="navl menu-link" href={h(n.href)} aria-current={!n.href.includes('#') && path === n.href ? 'page' : undefined} onClick={() => setMenu(false)}>
+              <Link key={n.href} className="navl menu-link" href={h(n.href)} {...tag('nav_click', 'menu', n.href)} aria-current={!n.href.includes('#') && path === n.href ? 'page' : undefined} onClick={() => setMenu(false)}>
                 {n.label}
                 <ArrowTile />
               </Link>
             ))}
           </nav>
-          <Link href={localeHref(locale, '/contact')} className="btn menu-cta" onClick={() => setMenu(false)}>
+          <Link href={localeHref(locale, '/contact')} className="btn menu-cta" onClick={() => setMenu(false)} {...tag('cta_click', 'menu', 'book-call')}>
             <ButtonFace label={cta} icon="chevron" />
           </Link>
         </div>

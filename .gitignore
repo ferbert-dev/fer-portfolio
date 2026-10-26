@@ -15,3 +15,5 @@ playwright-report/
 .impeccable/live/
 # Playwright MCP screenshots and traces
 .playwright-mcp/
+# Analytics CSV exports (may contain visitor statistics)
+analytics-export/

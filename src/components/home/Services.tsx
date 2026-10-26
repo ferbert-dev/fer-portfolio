@@ -2,6 +2,7 @@ import type { Dictionary } from '@/content';
 import { ArrowLink } from '@/components/ui/Button';
 import { Section, SectionHead } from '@/components/ui/Layout';
 import { pad } from './format';
+import { tag } from '@/lib/analytics';
 
 type Home = Dictionary['home'];
 
@@ -21,7 +22,7 @@ export function Services({ services }: { services: Home['services'] }) {
                   <li key={t}>{t}</li>
                 ))}
               </ul>
-              {s.href && s.link ? <ArrowLink href={s.href} className="self-start">{s.link}</ArrowLink> : null}
+              {s.href && s.link ? <ArrowLink href={s.href} className="self-start" track={tag('nav_click', 'services', s.href)}>{s.link}</ArrowLink> : null}
             </div>
           </li>
         ))}
