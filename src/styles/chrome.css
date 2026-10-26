@@ -29,3 +29,10 @@ a.hdr-cta{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;
 .ftr-side{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .ftr-links{display:flex;flex-wrap:wrap;gap:8px 22px}
 .ftr-link{padding:15px 0;margin:-15px 0}
+
+/* Responsive: from 900 px down the header swaps its links for the Menu button and the one-button theme switch. */
+@media (max-width:1279px){.tagl{display:none}}
+@media (max-width:900px){
+.nav-links,.th-seg,a.hdr-cta{display:none}
+.th-one,.menu-btn{display:inline-flex}
+}
