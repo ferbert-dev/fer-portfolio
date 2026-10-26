@@ -4,7 +4,7 @@ Paste the prompt below into a new Claude Code session on this repository, branch
 
 ---
 
-Continue the Ferbert agency website. Current state (2026-10-19): direction D is final; read `docs/decisions.md` (every owner decision), `design/handoff/README.md` (build package), then `PRODUCT.md`, `.impeccable/surfaces/src-app-locale-page-tsx.md` (direction contract) and the latest file in `.impeccable/critique/` first.
+Continue the Ferbert agency website. Current state (2026-10-26): direction D is final and built in Next.js; decision 17 in `docs/decisions.md` set four header links, hid Blog and the German switch, and made the contact form open the visitor's email app; read `docs/decisions.md` (every owner decision), `design/handoff/README.md` (build package), then `PRODUCT.md`, `.impeccable/surfaces/src-app-locale-page-tsx.md` (direction contract) and the latest file in `.impeccable/critique/` first.
 
 State (updated 2026-10-10, end of local session):
 - Brand: "Ferbert", an AI automation company (voice "we"). Main offer: process analysis (find what AI can automate), then building agents. Voice agents are out of scope for now.

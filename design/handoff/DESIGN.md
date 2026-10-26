@@ -118,10 +118,13 @@ Until the owner supplies the booking link, "Book a free call" goes to `/contact`
 - Decorative SVG and the duplicated marquee items are `aria-hidden`.
 - Text contrast is at least 4.5:1 in both themes. The token values were chosen for this; keep them.
 
-## 7. Open questions for the owner (not design decisions to make in the build)
+## 7. Owner decisions (2026-10-26, decision 17 in `docs/decisions.md`)
 
-1. **Fifth header link.** On the home page the desktop header shows FAQ in the fifth slot; inner pages show Blog. Pick one set for all pages. Suggestion: Analysis, Demos, What we automate, Pricing, Blog, because the FAQ is reached by scrolling.
-2. **Contact form delivery.** The design shows a "Thanks. Your message is with us." state. The build needs a way to deliver the message: an email API, a form service, or opening the visitor's mail app. This needs the owner's choice and, for an API, an account.
-3. **Blog at launch.** All posts are placeholders. Either hide Blog from the navigation until there are real posts, or launch with them.
-4. **German.** Decided 2026-10-19: the EN / DE switch works on every page. `src/content/de.ts` has the same shape as `en.ts`; until it is translated, every German text shows as `[DE] ` plus the English text. Translate in place in `de.ts`; `npm run check:content` fails if a key is missing.
+1. **Header links:** the same four on every page, desktop and phone menu: Analysis, Demos, What we automate, Pricing. The phone menu adds Contact. FAQ is reached by scrolling. Blog becomes the fifth link once it has real posts.
+2. **Contact form:** opens the visitor's email app (`mailto:`) with the message ready to send. No email service. See Contact in COMPONENTS.md for the exact email.
+3. **Blog:** not linked anywhere at launch (header, menu, footer); the page builds but is marked `noindex`.
+4. **German:** no language switch until `de.ts` is translated. The `/de` pages still build, marked `noindex`, without hreflang links.
+
+Still open:
+
 5. **Placeholders.** Analysis price, hourly rate, weeks to first agent, reply time, booking link, LinkedIn, WhatsApp, Telegram, X, legal name, address, phone, register entry, VAT ID, retention period, analytics, AI providers and regions, hosting region, blog posts.

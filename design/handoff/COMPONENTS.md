@@ -53,8 +53,8 @@ Two looks are kept as drawn and chosen by a prop: the primary button's arrow (`i
 ### Header (client part: menu)
 - Source: `D-Home.dc.html` header. Content: `header`, `nav`, `common.cta`.
 - Sticky, 56px tall, blurred `--hdr` background, 1px `--p3` bottom line, 2px lime scroll-progress bar on its top edge.
-- Desktop: logo, separator, tagline (≥1280px only), five links, theme switch, EN / DE, "Book a free call" pill (44px).
-- ≤900px: logo, theme button, Menu button. Menu opens a full-width panel below the header: large links (26px, 52px rows) with an arrow tile, the language choice, then the primary button. Selecting a link closes the menu. The Menu button reads "Close" while it is open.
+- Desktop: logo, separator, tagline (≥1280px only), four links (Analysis, Demos, What we automate, Pricing), theme switch, "Book a free call" pill (44px). No language switch until German is translated; Blog joins as a fifth link once it has real posts.
+- ≤900px: logo, theme button, Menu button. Menu opens a full-width panel below the header: large links (26px, 52px rows) with an arrow tile (the four links plus Contact), then the primary button. Selecting a link closes the menu. The Menu button reads "Close" while it is open.
 
 ### Button
 - Primary: label block (inverted fill) and a separate 46px lime arrow tile, 4px apart, both 46px tall, 10px radius. Hover sweeps the fill to lime and nudges the tile 3px right. Content: `common.cta`.
@@ -140,10 +140,16 @@ Two looks are kept as drawn and chosen by a prop: the primary button's arrow (`i
 - Desktop: header row (h1 left, lead right), then two columns (5fr / 7fr). Left: booking card (dot-grid background, whole card is a link) and "Other ways to reach us". Right: the form.
 - ≤900px: one column in the order booking card, form, channels. Form fields stay in two columns down to 561px; one column on phone. Channel label column 96px, 72px on phone.
 - Form: Name and Work email required; Team size defaults to 11–50; topic chips are toggle buttons in a `fieldset`. Validation copy is in `contact.form.errors` (not drawn; show it under the field, linked with `aria-describedby`).
-- Sent state replaces the form: lime tick, "Thanks. Your message is with us.", reply note, "Send another message". It needs `role="status"`.
+- Submit opens the visitor's email app; nothing is sent from the site (`mailtoHref` in `src/components/contact/ContactForm.tsx`):
+  - To: `site.email`. Subject: `Process enquiry from {name}, {company}` (without ", {company}" when empty).
+  - Body: the message, a blank line, then Name, Work email, Company, Team size, Topics, one per line ("not given" when empty). Labels are in `contact.form.mail`.
+  - The link stays under 1,800 characters; a longer message is shortened with "…", the details always stay.
+- After submit the form is replaced by a status panel (`role="status"`): lime envelope icon, "Your email app should be open now.", the reply note, "Nothing opened? Open the email again or write to …", and "Back to the form", which restores the form with the values still filled in.
 - Channels with a `[BRACKET]` handle have no link yet: render them as text.
 
 ## Blog (client: filters)
+
+**Not linked at launch** (decision 17): no header, menu or footer link points here until there are real posts; the page is marked `noindex`.
 
 - Content: `blog`.
 - Filters: All, RAG, Automation, Engineering (44px pills, `aria-pressed`). The featured post shows for All and Automation.

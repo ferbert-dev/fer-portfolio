@@ -1,10 +1,17 @@
 # Decisions
 
-Decisions made by the owner, Igor Ferbert. Dated 2026-10-10 unless noted. Decisions 12–15 (2026-10-19) override older ones where they differ.
+Decisions made by the owner, Igor Ferbert. Dated 2026-10-10 unless noted. Decisions 12–15 (2026-10-19) override older ones where they differ; decision 17 (2026-10-26) overrides 16.
 
 ## In force
 
-### 16. German switch works now, with placeholder text
+### 17. Four header links, Blog and German hidden, contact by email app
+2026-10-26, the owner's answers to the open questions in `design/handoff/DESIGN.md` §7:
+- **Header:** the same four links on every page, desktop and phone menu: Analysis, Demos, What we automate, Pricing. The phone menu adds Contact. FAQ is reached by scrolling. Blog becomes the fifth link once it has real posts.
+- **Blog:** not linked from the header, menu or footer until there are real posts. `/blog` still builds, marked `noindex`.
+- **German:** no EN / DE switch until German is translated. `src/content/de.ts` and the `/de` pages stay (the content check still enforces the same shape), marked `noindex`, with no hreflang links. Replaces decision 16.
+- **Contact form:** opens the visitor's email app (`mailto:` to the site email) with the message and details filled in. No email service; the Resend code path was removed.
+
+### 16. German switch works now, with placeholder text (replaced by 17)
 2026-10-19: the EN / DE switch is live on every page from the first build. German copy lives in `src/content/de.ts` with the same structure as English; untranslated texts show as `[DE] ` + English until the owner translates them. This replaces decision 3's "no working language switch".
 
 ### 12. Direction D is the design; B is retired
@@ -69,6 +76,6 @@ The owner approved six elements taken as structure from the reference site: FAQ,
 
 ## Open, waiting on the owner
 
-1. The open questions in `design/handoff/DESIGN.md` §7: fifth header link, contact form delivery, blog at launch, German.
+1. When German is translated, bring back the EN / DE switch and the hreflang links (decision 17).
 2. Whether the Telegram messenger entry stays on the contact page. It is a contact channel, not the news agent project.
 3. The values in [open-data.md](open-data.md).

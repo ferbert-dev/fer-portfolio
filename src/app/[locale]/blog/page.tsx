@@ -8,7 +8,8 @@ import { BlogList } from '@/components/blog/BlogList';
 export async function generateMetadata({ params }: PageProps<'/[locale]/blog'>): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return { title: getDictionary(locale).blog.metaTitle, alternates: { languages: { en: '/blog', de: '/de/blog' } } };
+  // Not linked until there are real posts (decision 17), so keep the placeholder page out of search.
+  return { title: getDictionary(locale).blog.metaTitle, robots: { index: false, follow: false } };
 }
 
 export default async function BlogPage({ params }: PageProps<'/[locale]/blog'>) {

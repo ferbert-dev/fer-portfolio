@@ -24,7 +24,8 @@ export async function generateMetadata({ params }: LayoutProps<'/[locale]'>): Pr
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ferbert.vercel.app'),
     title: t.meta.title,
     description: t.meta.description,
-    alternates: { languages: { en: '/', de: '/de' } },
+    // German is hidden until it is translated (decision 17): no hreflang links, and /de stays out of search.
+    robots: locale === 'de' ? { index: false, follow: false } : undefined,
     icons: { icon: '/icon.svg' },
     openGraph: { title: t.meta.title, description: t.meta.description, type: 'website', siteName: 'Ferbert' },
   };

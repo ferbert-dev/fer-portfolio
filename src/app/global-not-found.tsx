@@ -25,7 +25,7 @@ export default function GlobalNotFound() {
       </head>
       <body>
         <a className="skip" href="#main">{t.common.skip}</a>
-        <Header locale="en" header={t.header} nav={t.nav} cta={t.common.cta} langPath="/" />
+        <Header locale="en" header={t.header} nav={t.nav} cta={t.common.cta} />
         <main id="main" tabIndex={-1} style={{ outline: 'none' }}><NotFound /></main>
         <Footer locale="en" footer={t.footer} />
       </body>

@@ -46,8 +46,6 @@ export const en = {
     { href: '/#demos', label: 'Demos' },
     { href: '/#services', label: 'What we automate' },
     { href: '/#start', label: 'Pricing' },
-    { href: '/#faq', label: 'FAQ' },
-    { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
   ],
   footer: {
@@ -55,7 +53,6 @@ export const en = {
       { href: '/#analysis', label: 'Analysis' },
       { href: '/#demos', label: 'Demos' },
       { href: '/#services', label: 'What we automate' },
-      { href: '/blog', label: 'Blog' },
       { href: '/contact', label: 'Contact' },
     ],
     github: 'GitHub',
@@ -494,6 +491,7 @@ export const en = {
       message: 'Which process takes your team too long?',
       placeholder: 'e.g. Two people spend most of Monday copying orders from email into our ERP.',
       hint: 'Who does it, how often, in which tools. Rough numbers are fine.',
+      opensMail: 'Opens your email app with the message ready to send.',
       privacy: 'We only use your details to reply.',
       privacyLink: 'Privacy',
       submit: 'Send message',
@@ -503,15 +501,26 @@ export const en = {
         email: 'Enter a work email address, for example anna@company.com.',
         message: 'Describe the process in a sentence or two.',
       },
-      /** Not drawn: shown when the site has no email service configured and the visitor's mail app is opened instead. */
-      mailFallback: 'Your email app has opened with the message filled in. Press send there to reach us.',
-      sendError: 'The message could not be sent. Please try again, or write to us directly.',
-      sending: 'Sending…',
+      /** The email the form prepares in the visitor's mail app (decision 17). */
+      mail: {
+        subject: 'Process enquiry from',
+        anonymous: 'the website',
+        name: 'Name',
+        email: 'Work email',
+        company: 'Company',
+        size: 'Team size',
+        topics: 'Topics',
+        none: 'not given',
+      },
     },
+    /** Shown after submit, once the visitor's email app has been asked to open. */
     sent: {
-      title: 'Thanks. Your message is with us.',
-      body: 'We reply within [2 WORKING DAYS] from ferbertigo@gmail.com. If it’s urgent, book a call instead.',
-      again: 'Send another message',
+      title: 'Your email app should be open now.',
+      body: 'Your message is ready in a new email to ferbertigo@gmail.com. Send it from there and we reply within [2 WORKING DAYS].',
+      fallbackBefore: 'Nothing opened?',
+      fallbackLink: 'Open the email again',
+      fallbackAfter: 'or write to',
+      back: 'Back to the form',
     },
   },
 
