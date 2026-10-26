@@ -8,7 +8,7 @@ import { Page, PageHeader } from '@/components/ui/Layout';
 export async function generateMetadata({ params }: PageProps<'/[locale]/legal'>): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return { title: getDictionary(locale).legal.metaTitle, alternates: { languages: { en: '/legal', de: '/de/legal' } } };
+  return { title: getDictionary(locale).legal.metaTitle };
 }
 
 export default async function LegalPage({ params }: PageProps<'/[locale]/legal'>) {

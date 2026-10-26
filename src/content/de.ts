@@ -60,14 +60,6 @@ export const de: Dictionary = {
       "label": "[DE] Pricing"
     },
     {
-      "href": "/#faq",
-      "label": "[DE] FAQ"
-    },
-    {
-      "href": "/blog",
-      "label": "[DE] Blog"
-    },
-    {
       "href": "/contact",
       "label": "[DE] Contact"
     }
@@ -85,10 +77,6 @@ export const de: Dictionary = {
       {
         "href": "/#services",
         "label": "[DE] What we automate"
-      },
-      {
-        "href": "/blog",
-        "label": "[DE] Blog"
       },
       {
         "href": "/contact",
@@ -884,6 +872,7 @@ export const de: Dictionary = {
       "message": "[DE] Which process takes your team too long?",
       "placeholder": "[DE] e.g. Two people spend most of Monday copying orders from email into our ERP.",
       "hint": "[DE] Who does it, how often, in which tools. Rough numbers are fine.",
+      "opensMail": "[DE] Opens your email app with the message ready to send.",
       "privacy": "[DE] We only use your details to reply.",
       "privacyLink": "[DE] Privacy",
       "submit": "[DE] Send message",
@@ -892,14 +881,24 @@ export const de: Dictionary = {
         "email": "[DE] Enter a work email address, for example anna@company.com.",
         "message": "[DE] Describe the process in a sentence or two."
       },
-      "mailFallback": "[DE] Your email app has opened with the message filled in. Press send there to reach us.",
-      "sendError": "[DE] The message could not be sent. Please try again, or write to us directly.",
-      "sending": "[DE] Sending…"
+      "mail": {
+        "subject": "[DE] Process enquiry from",
+        "anonymous": "[DE] the website",
+        "name": "[DE] Name",
+        "email": "[DE] Work email",
+        "company": "[DE] Company",
+        "size": "[DE] Team size",
+        "topics": "[DE] Topics",
+        "none": "[DE] not given"
+      }
     },
     "sent": {
-      "title": "[DE] Thanks. Your message is with us.",
-      "body": "[DE] We reply within [2 WORKING DAYS] from ferbertigo@gmail.com. If it’s urgent, book a call instead.",
-      "again": "[DE] Send another message"
+      "title": "[DE] Your email app should be open now.",
+      "body": "[DE] Your message is ready in a new email to ferbertigo@gmail.com. Send it from there and we reply within [2 WORKING DAYS].",
+      "fallbackBefore": "[DE] Nothing opened?",
+      "fallbackLink": "[DE] Open the email again",
+      "fallbackAfter": "[DE] or write to",
+      "back": "[DE] Back to the form"
     }
   },
   "blog": {

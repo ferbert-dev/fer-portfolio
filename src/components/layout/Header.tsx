@@ -17,14 +17,16 @@ type Props = {
   header: Dictionary['header'];
   nav: Dictionary['nav'];
   cta: string;
-  /** Path the EN / DE links switch to; defaults to the current page (the 404 passes "/"). */
-  langPath?: string;
 };
 
-export function Header({ locale, header, nav, cta, langPath }: Props) {
+/**
+ * Desktop shows the in-page links (Analysis, Demos, What we automate, Pricing);
+ * the phone menu shows every `nav` entry, which adds Contact. There is no
+ * language switch until German is translated (decision 17).
+ */
+export function Header({ locale, header, nav, cta }: Props) {
   const pathname = usePathname() ?? '/';
   const path = stripLocale(pathname);
-  const switchTo = langPath ?? path;
   const isHome = path === '/';
   const [menu, setMenu] = useState(false);
   const menuBtn = useRef<HTMLButtonElement>(null);
@@ -70,10 +72,7 @@ export function Header({ locale, header, nav, cta, langPath }: Props) {
 
   const names = { auto: header.theme.auto, light: header.theme.light, dark: header.theme.dark };
   const h = (href: string) => localeHref(locale, isHome && href.startsWith('/#') ? href.slice(1) : href);
-  const anchors = nav.filter((n) => n.href.startsWith('/#'));
-  const blog = nav.find((n) => n.href === '/blog');
-  const faq = anchors.find((n) => n.href === '/#faq');
-  const desktop = [...anchors.filter((n) => n !== faq), ...(isHome ? [faq] : [blog])].filter(Boolean) as typeof nav;
+  const desktop = nav.filter((n) => n.href.startsWith('/#'));
 
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 20, background: 'var(--hdr)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', borderBottom: '1px solid var(--p3)' }}>
@@ -90,7 +89,7 @@ export function Header({ locale, header, nav, cta, langPath }: Props) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(16px, 3vw, 44px)' }}>
           <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(16px, 3vw, 44px)' }}>
             {desktop.map((n) => (
-              <Link key={n.href} className="navl" href={h(n.href)} aria-current={!n.href.includes('#') && path === n.href ? 'page' : undefined}>
+              <Link key={n.href} className="navl" href={h(n.href)}>
                 {n.label}
               </Link>
             ))}
@@ -104,11 +103,6 @@ export function Header({ locale, header, nav, cta, langPath }: Props) {
             <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" strokeWidth="1.4" /><path d="M6 1a5 5 0 010 10z" fill="currentColor" /></svg>
             {names[theme]}
           </button>
-          <span className="lang" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <Link href={localeHref('en', switchTo)} hrefLang="en" aria-current={locale === 'en' ? 'page' : undefined} aria-label={header.languages.en}>{header.languages.enShort}</Link>
-            <span aria-hidden="true" style={{ color: 'var(--ln4)' }}>/</span>
-            <Link href={localeHref('de', switchTo)} hrefLang="de" lang="de" aria-current={locale === 'de' ? 'page' : undefined} aria-label={header.languages.de}>{header.languages.deShort}</Link>
-          </span>
           <Link href={localeHref(locale, '/contact')} className="hdr-cta" style={{ display: 'inline-flex', alignItems: 'center', minHeight: 44, padding: '0 14px', borderRadius: 999, background: 'var(--inv)', color: 'var(--on-inv)', textDecoration: 'none', whiteSpace: 'nowrap', boxShadow: 'var(--sh-btn)' }}>{cta}</Link>
           <button ref={menuBtn} type="button" className="mono menu-btn" onClick={() => setMenu((v) => !v)} aria-expanded={menu} aria-controls="d-menu" style={{ alignItems: 'center', minHeight: 44, padding: '0 12px', border: '1px solid var(--tx)', borderRadius: 999, background: 'transparent', color: 'var(--tx)', cursor: 'pointer' }}>
             {menu ? header.close : header.menu}
@@ -119,16 +113,12 @@ export function Header({ locale, header, nav, cta, langPath }: Props) {
         <div id="d-menu" className="wrap" style={{ paddingTop: 8, paddingBottom: 24, borderTop: '1px solid var(--ln)', background: 'var(--bg)' }}>
           <nav aria-label={header.mobileNavLabel} style={{ display: 'flex', flexDirection: 'column' }}>
             {nav.map((n) => (
-              <Link key={n.href} className="navl" href={h(n.href)} onClick={() => setMenu(false)} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minHeight: 52, padding: 0, borderBottom: '1px solid var(--ln)', fontFamily: 'var(--font-sans)', fontSize: 26, letterSpacing: '-0.03em', textTransform: 'none' }}>
+              <Link key={n.href} className="navl" href={h(n.href)} aria-current={!n.href.includes('#') && path === n.href ? 'page' : undefined} onClick={() => setMenu(false)} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minHeight: 52, padding: 0, borderBottom: '1px solid var(--ln)', fontFamily: 'var(--font-sans)', fontSize: 26, letterSpacing: '-0.03em', textTransform: 'none' }}>
                 {n.label}
                 <ArrowTile />
               </Link>
             ))}
           </nav>
-          <div className="mono" style={{ display: 'flex', gap: 14, paddingTop: 18 }}>
-            <Link href={localeHref('en', switchTo)} hrefLang="en" aria-current={locale === 'en' ? 'page' : undefined} style={{ color: locale === 'en' ? 'var(--tx)' : 'var(--sub)', textDecoration: 'none', padding: '15px 0' }}>{header.languages.en}</Link>
-            <Link href={localeHref('de', switchTo)} hrefLang="de" lang="de" aria-current={locale === 'de' ? 'page' : undefined} style={{ color: locale === 'de' ? 'var(--tx)' : 'var(--sub)', textDecoration: 'none', padding: '15px 0' }}>{header.languages.de}</Link>
-          </div>
           <Link href={localeHref(locale, '/contact')} className="btn" onClick={() => setMenu(false)} style={{ marginTop: 20, textTransform: 'none', letterSpacing: '-0.01em', fontFamily: 'var(--font-sans)' }}>
             <ButtonFace label={cta} icon="chevron" />
           </Link>

@@ -9,7 +9,7 @@ import { ContactForm } from '@/components/contact/ContactForm';
 export async function generateMetadata({ params }: PageProps<'/[locale]/contact'>): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return { title: getDictionary(locale).contact.metaTitle, alternates: { languages: { en: '/contact', de: '/de/contact' } } };
+  return { title: getDictionary(locale).contact.metaTitle };
 }
 
 const channelHref: Record<string, string | null> = {
