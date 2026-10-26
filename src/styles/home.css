@@ -145,18 +145,24 @@
 .rep{overflow-x:auto}
 .rep table{width:100%;min-width:440px;border-collapse:collapse;font-size:15px}
 .rep thead tr{text-align:left}
-.rep thead th{font-weight:500;padding:0 0 12px}
+.rep thead th{font-weight:500}
 .rep thead th:nth-child(2){width:46%}
 .rep thead th:nth-child(3){text-align:right}
 .rep tbody tr{border-top:1px solid var(--ln)}
-.rep tbody th{text-align:left;font-weight:400;padding:14px 12px 14px 0}
-.rep tbody td{padding:14px 12px 14px 0}
-.rep tbody td:last-child{padding:14px 0;text-align:right}
+.rep tbody th{text-align:left;font-weight:400}
+.rep tbody td:last-child{text-align:right}
 .rep tfoot tr{border-top:1px solid var(--tx)}
-.rep tfoot th{text-align:left;padding:16px 12px 0 0;font-weight:500}
-.rep tfoot td{padding:16px 12px 0 0;font-weight:500}
+.rep tfoot th{text-align:left;font-weight:500}
+.rep tfoot td{font-weight:500}
 .rep tfoot td:nth-child(2){font-variant-numeric:tabular-nums}
-.rep tfoot td:last-child{padding:16px 0 0;text-align:right;color:var(--acc-tx)}
+.rep tfoot td:last-child{text-align:right;color:var(--acc-tx)}
+@media (min-width:561px){
+.rep thead th{padding:0 0 12px}
+.rep tbody th,.rep tbody td{padding:14px 12px 14px 0}
+.rep tbody td:last-child{padding:14px 0}
+.rep tfoot th,.rep tfoot td{padding:16px 12px 0 0}
+.rep tfoot td:last-child{padding:16px 0 0}
+}
 .rep-bars{display:flex;flex-direction:column;gap:6px}
 .rep-bar{display:flex;align-items:center;gap:8px}
 .rep-bar>.bar{height:6px;width:var(--w);background:var(--bar)}
@@ -240,3 +246,82 @@ div.co-half{display:flex;flex-direction:column;gap:28px}
 .closing-logo{background:var(--inv);color:var(--on-inv)}
 .closing-you{border:1px dashed var(--ln4);color:var(--tx)}
 .closing-ctas{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 32px}
+
+/*
+ * Responsive rules for the sections above. They come last so they win over the base rules
+ * by order, without !important.
+ */
+
+/* Support agent: on desktop the panel takes the window height so it fits on one screen. */
+@media (min-width:961px){
+.ag-panel{height:clamp(540px,calc(100svh - 112px),800px);flex-wrap:nowrap}
+.ag-steps{display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:thin}
+.ag-list{flex:1}
+.ag-list>li{flex:1 1 auto}
+.ag-list>li:last-child{flex:0 0 auto}
+.ag-chat{min-height:0}
+.ag-msgs{min-height:0;overflow:hidden;justify-content:flex-end}
+}
+@media (min-width:961px) and (max-height:860px){
+.ag-ico{width:32px;height:32px}
+.ag-t{font-size:15px}
+.ag-rag-t{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.ag-db th,.ag-db td{padding-top:4px;padding-bottom:4px}
+}
+@media (max-width:960px){
+.ag-panel{flex-direction:column;flex-wrap:nowrap}
+.ag-chat{order:-1;flex:0 0 auto;height:470px;min-height:0}
+.ag-msgs{min-height:0;overflow:hidden;justify-content:flex-end}
+.ag-steps{flex:0 0 auto;min-height:0;border-right:0;border-top:1px solid var(--ln)}
+}
+
+/* Tablet: documents demo and pricing in two columns. */
+@media (min-width:561px) and (max-width:1023px){
+.kb{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto 1fr;align-items:start}
+.kb>:nth-child(1){grid-column:1;grid-row:1}
+.kb>:nth-child(2){grid-column:2;grid-row:1/span 2}
+.kb>:nth-child(3){grid-column:1;grid-row:2}
+.offers{grid-template-columns:repeat(2,minmax(0,1fr))}
+.offers>li:first-child{grid-column:1/-1}
+}
+
+/* Tablet and phone */
+@media (max-width:900px){
+.wf-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.hero{min-height:0}
+.hero-card{margin-top:12px}
+.wf-link,.rail,.how-x{display:none}
+.svc{grid-template-columns:48px minmax(0,1fr);padding:28px 0 32px}.svc>div{grid-column:1/-1}
+.how{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px}
+}
+
+/* Phone */
+@media (max-width:560px){
+.rep table,.rep tbody,.rep tfoot{display:block;min-width:0}
+.rep thead{display:none}
+.rep-key{display:block;margin-bottom:4px}
+.rep tr{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:12px}
+.rep tbody tr{padding:14px 0}
+.rep tfoot tr{padding-top:16px}
+.rep tr>*{padding:0}
+.rep tr>:nth-child(2){grid-column:1/-1;grid-row:2;margin-top:10px}
+.rep tr>:nth-child(3){grid-column:2;grid-row:1}
+.wf-grid{grid-template-columns:minmax(0,1fr)}
+.wf-card{display:grid;grid-template-columns:34px minmax(0,1fr) 20px;column-gap:12px;row-gap:2px;align-items:center;padding:12px 14px}
+.wf-top{display:contents}
+.wf-top>:first-child{grid-column:1;grid-row:1/4;align-self:start}
+.wf-top>:last-child{grid-column:3;grid-row:1}
+.wf-card>:nth-child(2){grid-column:2;grid-row:1}
+.wf-card>:nth-child(3){grid-column:2;grid-row:2}
+.wf-card>:nth-child(4){grid-column:2;grid-row:3}
+.kb>:nth-child(1){order:0}.kb>:nth-child(3){order:1}.kb>:nth-child(2){order:2}
+.tc{min-height:0}
+.how{grid-template-columns:minmax(0,1fr);gap:36px}
+.co-p{font-size:21px}
+}
+@media (max-width:520px){
+.ag-chat{height:620px}
+.wf-log{min-height:210px}
+.hc-steps{flex-basis:126px;padding:12px}
+.hero-card .ctl-sm{margin-right:0}
+}
