@@ -1,8 +1,30 @@
 # Decisions
 
-Decisions made by the owner, Igor Ferbert. Newest first. All dated 2026-10-10 unless noted.
+Decisions made by the owner, Igor Ferbert. Dated 2026-10-10 unless noted. Decisions 12–15 (2026-10-19) override older ones where they differ; decision 17 (2026-10-26) overrides 16.
 
 ## In force
+
+### 17. Four header links, Blog and German hidden, contact by email app
+2026-10-26, the owner's answers to the open questions in `design/handoff/DESIGN.md` §7:
+- **Header:** the same four links on every page, desktop and phone menu: Analysis, Demos, What we automate, Pricing. The phone menu adds Contact. FAQ is reached by scrolling. Blog becomes the fifth link once it has real posts.
+- **Blog:** not linked from the header, menu or footer until there are real posts. `/blog` still builds, marked `noindex`.
+- **German:** no EN / DE switch until German is translated. `src/content/de.ts` and the `/de` pages stay (the content check still enforces the same shape), marked `noindex`, with no hreflang links. Replaces decision 16.
+- **Contact form:** opens the visitor's email app (`mailto:` to the site email) with the message and details filled in. No email service; the Resend code path was removed.
+
+### 16. German switch works now, with placeholder text (replaced by 17)
+2026-10-19: the EN / DE switch is live on every page from the first build. German copy lives in `src/content/de.ts` with the same structure as English; untranslated texts show as `[DE] ` + English until the owner translates them. This replaces decision 3's "no working language switch".
+
+### 12. Direction D is the design; B is retired
+2026-10-19: one design, D, with Auto / Light / Dark themes. B is retired: its artboards were removed from the canvas and from `design/canvas/` (recoverable from commit `e413cee`). Decisions 4 and 5 below are history.
+
+### 13. D critique fixed
+2026-10-19: all P0/P1 items of the D critique were fixed, and one main action label is used on every page: "Book a free call", with "Write to us" (email) as the secondary action. See `HANDOFF.md`.
+
+### 14. Confidentiality answer in the FAQ
+2026-10-19: the home FAQ says "Will you show our project to other clients?" / "No. Your project stays confidential. We never name clients or show their automations without permission."
+
+### 15. Responsive layouts and build handoff
+2026-10-19: every page has desktop (from 1024 px), tablet (561–1023 px) and phone (up to 560 px) layouts. The build package is `design/handoff/` (design guide, components, tokens, 24 reference screenshots). It replaces `design-system.md` and `design-directions.md`, which described B and an early D.
 
 ### 1. No real projects on the site
 The site shows no real projects, client names, case studies or side projects.
@@ -33,10 +55,16 @@ The owner works at an hourly rate and has no fixed prices for build work. See [p
 Only B and D remain on the canvas and in `design/canvas/`. A and C are recoverable from git commit `783ee4c`.
 
 ### 8. Agent demo: the chat must not move
-In direction D the chat column shifted down while the agent's steps unfolded. The owner asked for the panel to have its final size from the start. Done for D; see [design-directions.md](design-directions.md). The same shift exists in B and was left alone because of decision 4.
+In direction D the chat column shifted down while the agent's steps unfolded. The owner asked for the panel to have its final size from the start. Done for D; see `design/handoff/COMPONENTS.md`. The same shift exists in B and was left alone because of decision 4.
 
 ### 9. Approved additions from the reference study
 The owner approved six elements taken as structure from the reference site: FAQ, three ways to start, a case layout for the news agent (since removed with decision 1), numbered service rows, a cadence line, and a marker highlight on one headline word. Price placeholders were to be kept.
+
+### 10. One design with light and dark themes
+2026-10-10: instead of choosing between B and D, the owner asked for one design with an Auto / Light / Dark switch, based on D. Contact, blog, legal and a phone view were drawn in it.
+
+### 11. B's details carried over, B removed
+2026-10-11: the owner asked to bring B's strengths into the themed design: "What we automate" in B's row layout, two hero buttons, the EN / DE switch, soft shadows in light mode, and the highlighted first pricing card. A phone menu was added. The B artboards were deleted from the canvas and the repo (recoverable from commit `031451a`).
 
 ## Carried over from earlier sessions
 
@@ -48,9 +76,6 @@ The owner approved six elements taken as structure from the reference site: FAQ,
 
 ## Open, waiting on the owner
 
-1. Which direction continues: B, D, or a mix.
-2. Whether to fix the open critique items in D. The follow-up questions were dismissed, so nothing was fixed. See [critique.md](critique.md).
-3. Whether B gets the same pricing model as D. B still shows three `[PRICE]` placeholders.
-4. Whether to add a confidentiality statement to the site, for example: "Your project stays confidential. We never name clients or show their automations without permission." It would explain why the site has no client list.
-5. Whether the Telegram messenger entry stays on the contact page. It is a contact channel, not the news agent project.
-6. The values in [open-data.md](open-data.md).
+1. When German is translated, bring back the EN / DE switch and the hreflang links (decision 17).
+2. Whether the Telegram messenger entry stays on the contact page. It is a contact channel, not the news agent project.
+3. The values in [open-data.md](open-data.md).

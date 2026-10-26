@@ -1,0 +1,32 @@
+# Checks every pull request and every push to main before Vercel ships it.
+# Vercel deploys on its own through its GitHub connection; this workflow only
+# makes a broken change visible (red check) before it is merged.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Typecheck, content and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: English and German content match
+        run: npm run check:content
+      - name: Build
+        run: npm run build

@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit",
-    "test": "playwright test"
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "playwright test",
+    "check:content": "node --experimental-strip-types --no-warnings scripts/check-content.mjs"
   },
   "dependencies": {
-    "next": "^16.4.0",
+    "geist": "^1.8.1",
+    "next": "^16.4.3",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   },

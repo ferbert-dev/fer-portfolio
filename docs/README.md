@@ -1,15 +1,14 @@
 # Ferbert website: project record
 
-Everything decided and collected for the Ferbert website so far, in one place. Last updated 2026-10-10.
+Everything decided and collected for the Ferbert website so far, in one place. Last updated 2026-10-19.
 
-The site is in the design phase. No production code is approved yet.
+The design (direction D, light and dark, desktop, tablet and phone) is final. The build package is [`design/handoff/`](../design/handoff/README.md). No production code is written yet.
 
 | File | What it holds |
 |---|---|
 | [decisions.md](decisions.md) | Every decision the owner has made, with the date and what it changes |
 | [company-data.md](company-data.md) | Facts about Ferbert that the site may state, and facts it must not state |
-| [design-directions.md](design-directions.md) | The two home designs (B light, D dark), their sections, and how to compare them |
-| [design-system.md](design-system.md) | Colours, type, shapes, components and motion values of both designs |
+| [../design/handoff/](../design/handoff/README.md) | The design guide, components, tokens and reference screenshots for the build |
 | [pricing.md](pricing.md) | The pricing model and how each design presents it |
 | [open-data.md](open-data.md) | Every value the owner still has to supply, page by page |
 | [reference-tbdstudio.md](reference-tbdstudio.md) | What was taken from the reference site and what was left out |
