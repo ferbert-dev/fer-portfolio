@@ -1,6 +1,8 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDictionary } from '@/content';
 import { isLocale, localeHref } from '@/lib/i18n';
+import { organizationJsonLd } from '@/lib/seo';
 import { Hero } from '@/components/home/Hero';
 import { ToolMarquee } from '@/components/home/ToolMarquee';
 import { Workflow } from '@/components/home/Workflow';
@@ -16,6 +18,12 @@ import { Company } from '@/components/home/Company';
 import { Faq } from '@/components/home/Faq';
 import { Closing } from '@/components/home/Closing';
 
+export async function generateMetadata({ params }: PageProps<'/[locale]'>): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  return { alternates: { canonical: localeHref(locale, '/') } };
+}
+
 export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
@@ -25,6 +33,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
 
   return (
     <WorkflowProvider>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationJsonLd(t.meta.description) }} />
       <Hero hero={h.hero} workflow={h.workflow} common={t.common} contactHref={contact} />
       <ToolMarquee tools={h.tools} common={t.common} />
       <Workflow workflow={h.workflow} common={t.common} />

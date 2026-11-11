@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDictionary, site } from '@/content';
-import { isLocale } from '@/lib/i18n';
+import { isLocale, localeHref } from '@/lib/i18n';
 import { ArrowTile } from '@/components/ui/Button';
 import { Page, PageHeader } from '@/components/ui/Layout';
 
 export async function generateMetadata({ params }: PageProps<'/[locale]/legal'>): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return { title: getDictionary(locale).legal.metaTitle };
+  return { title: getDictionary(locale).legal.metaTitle, alternates: { canonical: localeHref(locale, '/legal') } };
 }
 
 export default async function LegalPage({ params }: PageProps<'/[locale]/legal'>) {

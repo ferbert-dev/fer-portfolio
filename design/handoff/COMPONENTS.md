@@ -113,6 +113,7 @@ Two looks are kept as drawn and chosen by a prop: the primary button's arrow (`i
 - Step tiles: idle (`--p2`), active (lime fill and pulsing ring), done (`--acc-tint`, lime icon). The help-centre step expands the retrieved passages with scores; the order step expands a small table.
 - The chat column reserves its height (see table above) so new messages do not push the page. Messages stick to the bottom; older ones scroll out of view at the top.
 - Chat messages: `aria-live="polite"`. Thinking dots: `aria-label="Agent is thinking"`.
+- ≤960px the steps panel is below the chat, so the typing bubble also names the running step (`.msg-step`: "3/6 Search the help centre"). Hidden on desktop, where the steps sit beside the chat.
 
 ### DocumentsDemo (client)
 - Content: `home.knowledge`. Three question buttons (`aria-pressed`); the selected one has a lime border and tint.
@@ -123,10 +124,13 @@ Two looks are kept as drawn and chosen by a prop: the primary button's arrow (`i
 - Static. Content: `home.services`, `home.trust`, `home.how`, `home.company`.
 - Service rows with a demo link scroll to that demo; "Integrations and software" has no link.
 - Cadence line: each value stays on one line and the slash stays with the value before it.
+- Phone: service rows hide their tags (they repeat the sentence above them).
+- Short desktop windows (≤820px tall): "How we work" shows its four steps in one row, without the two decorative tiles.
 
 ### Pricing
 - Content: `home.pricing`. Three cards; the first is `recommended`, carries the "Recommended" pill, the inverted theme and the only button. Card heading reserves 3.6em so prices line up; German may need more.
 - "How pricing works" panel below: three numbered steps.
+- Phone: offers 2 and 3 fold (`OfferCard.tsx`, client). Number, timeline, title and price stay; a "Details" button (`aria-expanded`) opens the list and the "best if" line. From 561px the list is always shown and the button is hidden.
 
 ### FAQ
 - Content: `home.faq`. `details/summary` items; the plus tile turns 45° and fills lime when open. Footer row: "Your question is not here?" and "Write to us".
@@ -145,7 +149,7 @@ Two looks are kept as drawn and chosen by a prop: the primary button's arrow (`i
   - Body: the message, a blank line, then Name, Work email, Company, Team size, Topics, one per line ("not given" when empty). Labels are in `contact.form.mail`.
   - The link stays under 1,800 characters; a longer message is shortened with "…", the details always stay.
 - After submit the form is replaced by a status panel (`role="status"`): lime envelope icon, "Your email app should be open now.", the reply note, "Nothing opened? Open the email again or write to …", and "Back to the form", which restores the form with the values still filled in.
-- Channels with a `[BRACKET]` handle have no link yet: render them as text.
+- Only channels with a link in `src/content/site.ts` are shown (decision 19). A handle still in `[BRACKETS]` never reaches visitors.
 
 ## Blog (client: filters)
 

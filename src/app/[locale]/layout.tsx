@@ -4,6 +4,7 @@ import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { getDictionary, locales } from '@/content';
 import { isLocale } from '@/lib/i18n';
+import { siteUrl } from '@/lib/seo';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Tracker } from '@/components/layout/Tracker';
@@ -26,13 +27,15 @@ export async function generateMetadata({ params }: LayoutProps<'/[locale]'>): Pr
   if (!isLocale(locale)) return {};
   const t = getDictionary(locale);
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ferbert.vercel.app'),
+    metadataBase: new URL(siteUrl),
     title: t.meta.title,
     description: t.meta.description,
     // German is hidden until it is translated (decision 17): no hreflang links, and /de stays out of search.
     robots: locale === 'de' ? { index: false, follow: false } : undefined,
     icons: { icon: '/icon.svg' },
+    // The preview image itself comes from ./opengraph-image.tsx.
     openGraph: { title: t.meta.title, description: t.meta.description, type: 'website', siteName: 'Ferbert' },
+    twitter: { card: 'summary_large_image' },
   };
 }
 

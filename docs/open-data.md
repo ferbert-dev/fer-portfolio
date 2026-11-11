@@ -18,14 +18,14 @@ For each item the owner can give the value, or say "hide" to remove the element.
 
 | # | Needed | Placeholder |
 |---|---|---|
-| 6 | Reply time promise | `[2 WORKING DAYS]` |
+| 6 | Reply time promise | `[2 WORKING DAYS]`. Left out of the page until given (decision 19) |
 | 7 | Booking link for the free call | `[BOOKING URL]` |
 | 8 | LinkedIn page | `[LINKEDIN PAGE]` |
 | 9 | WhatsApp number | `[NUMBER]` |
 | 10 | Telegram handle | `[HANDLE]` |
 | 11 | X handle | `[HANDLE]` |
 
-Already filled: email (ferbertigo@gmail.com) and GitHub (ferbert-dev).
+Already filled: email (ferbertigo@gmail.com) and GitHub (ferbert-dev). Channels 8–11 are hidden on the site until their link is set in `src/content/site.ts` (decision 19).
 
 ## Impressum and privacy
 

@@ -47,7 +47,7 @@ Rules:
 | Section h2 | `clamp(38px, 5vw, 72px)` | .97 | -.04em | 400 |
 | h3, lead statements | `clamp(24px, 2.4vw, 34px)` | 1.18 | -.02em | 400 |
 | Body | 16px (lead paragraphs 17px) | 1.45 | -.01em | 400 |
-| Label (Geist Mono) | 11px uppercase | 1.3 | .06em | 500 |
+| Label (Geist Mono) | 11px uppercase, 12px up to 900px wide | 1.3 | .06em | 500 |
 
 - Fonts: Geist 400/500/600 and Geist Mono 400/500 from Google Fonts. In Next.js load them with `next/font/google` (or the `geist` package) and map them to `--font-sans` and `--font-mono`.
 - Headlines use `text-wrap: balance` and a `max-width` in `ch` (11–15ch) so they break into deliberate lines.
@@ -66,7 +66,7 @@ On scroll the marker wipes in from right to left once the heading's words have r
 - Content width: `max-width: 1392px`, 24px side padding at every width.
 - Section rhythm: `clamp(84px, 10vw, 150px)` above each section; each section starts with a mono label row (a 6px lime square, the label, a hairline below), then the h2 and a lead paragraph side by side (they wrap below each other on small screens).
 - Card grids use an 8px gap. Panels have a 20px radius; framed hero, closing panel and footer 28px; inner cards 14px; buttons and inputs 10px.
-- The hero, the closing panel and the footer sit 12px from the window edge, not inside the 24px content width.
+- The hero, the closing panel and the footer sit 12px from the window edge, not inside the 24px content width. They stop at 1416px (the content width plus 12px each side) and stay centred, so on wide screens they line up with the header and the sections.
 
 ## 3. Breakpoints
 
@@ -75,7 +75,9 @@ On scroll the marker wipes in from right to left once the heading's words have r
 | Desktop | 1024px and up | Full layouts. Header tagline "AI automation company" only from 1280px. |
 | Tablet | 561–1023px | See the per-section table in COMPONENTS.md. From 900px down the header shows the theme button and Menu instead of links. |
 | Phone | up to 560px | One column everywhere; report table, workflow and data-protection cards switch to compact forms. |
-| Agent demo | 960px and down | Steps panel and chat stack, chat first. |
+| Agent demo | 960px and down | Steps panel and chat stack, chat first. The typing bubble names the running step ("3/6 Search the help centre"). |
+| Short desktop window | 1024px and wider, up to 820px tall | Section rhythm 64px instead of `clamp(84px, 10vw, 150px)`; h2 `clamp(34px, 3.6vw, 52px)`; anchors land with the label 28px below the header. "How we work" shows four steps in one row without the tiles. Goal: a section opened from the menu shows its content in the first window. |
+| Narrow phone | up to 380px | The hero card tightens its paddings so Pause and the step list do not touch. |
 
 Reference: the canvas artboards `*-Tablet.dc.html` (834px) and `*-Phone.dc.html` (390px), and the screenshots in `reference/`.
 
