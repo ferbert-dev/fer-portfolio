@@ -3,11 +3,13 @@ import { NextResponse, type NextRequest } from 'next/server';
 /**
  * English is served at the root, German under /de. Internally every page lives
  * under /[locale], so root paths are rewritten to /en and /en/... is redirected
- * to the root to keep one address per page.
+ * to the root to keep one address per page. The share image keeps its /en/…
+ * address so link previews load it without a redirect.
  */
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (pathname.endsWith('/opengraph-image')) return NextResponse.next();
   if (pathname === '/en' || pathname.startsWith('/en/')) {
     const url = request.nextUrl.clone();
     url.pathname = pathname.slice(3) || '/';

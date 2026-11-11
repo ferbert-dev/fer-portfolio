@@ -20,7 +20,8 @@ export function DocumentsDemo({ knowledge }: { knowledge: Dictionary['home']['kn
             <ToggleChip key={item.text} variant="choice" pressed={i === q} onClick={() => setQ(i)} track={tag('demo_question', 'documents', item.text)}>{item.text}</ToggleChip>
           ))}
         </div>
-        <div className="kb-col">
+        {/* Focusable so keyboard users can scroll it when the passages are taller than the panel (short windows). */}
+        <div className="kb-col" tabIndex={0} role="region" aria-label={knowledge.found}>
           <div className="mono kb-label">{knowledge.found}</div>
           {knowledge.docs.map((d, di) => (
             <div key={d.name} className="kb-doc">

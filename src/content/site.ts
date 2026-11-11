@@ -7,6 +7,8 @@
  */
 export const site = {
   name: 'Ferbert',
+  /** Public address of the site: used for canonical links, the sitemap and share previews. */
+  url: 'https://iferbert.vercel.app',
   email: 'ferbertigo@gmail.com',
   github: 'https://github.com/ferbert-dev',
   bookingUrl: null as string | null,

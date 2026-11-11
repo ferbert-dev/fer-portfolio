@@ -127,6 +127,11 @@ export function AgentDemo({ agent, demo }: { agent: Dictionary['home']['agent'];
             {busy ? (
               <div className="bub msg-typing" role="img" aria-label={agent.thinking}>
                 <span className="td" /><span className="td" /><span className="td" />
+                {/* Phones and tablets: the steps panel sits below the chat, so the running step is named here too. */}
+                <span className="msg-step">
+                  <span className="mono num">{step + 1}/{agent.steps.length}</span>
+                  {agent.steps[step].title}
+                </span>
               </div>
             ) : null}
             {answered && cur ? (

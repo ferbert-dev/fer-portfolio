@@ -353,6 +353,8 @@ export const en = {
       lead: 'Pick the stage you are at. If you are not sure, begin with the analysis: it tells you whether building is worth it.',
       recommended: 'Recommended',
       timeline: 'Timeline',
+      /** Phones: the button that opens what a folded offer includes. */
+      details: 'Details',
       /** Only the recommended offer carries the call-to-action button. */
       offers: [
         {
@@ -460,7 +462,7 @@ export const en = {
     metaTitle: 'Contact — Ferbert',
     label: 'Contact',
     title: { before: 'Tell us what eats your ', mark: 'week', after: '.' },
-    lead: 'Describe one process. We reply within [2 WORKING DAYS] with where AI fits, what it would take, and whether it’s worth it. In English, German or Spanish.',
+    lead: 'Describe one process. We reply with where AI fits, what it would take, and whether it’s worth it. In English, German or Spanish.',
     booking: {
       label: 'Free call · 30 min',
       format: 'Video',
@@ -469,7 +471,7 @@ export const en = {
       missingUrl: '[BOOKING URL]',
     },
     other: 'Other ways to reach us',
-    /** Handles in brackets have no link yet; render them as text, not as links. */
+    /** A channel is shown only once its link is set in site.ts; handles in brackets are still open. */
     channels: [
       { name: 'Email', handle: 'ferbertigo@gmail.com', key: 'email' },
       { name: 'LinkedIn', handle: '[LINKEDIN PAGE]', key: 'linkedin' },
@@ -516,7 +518,7 @@ export const en = {
     /** Shown after submit, once the visitor's email app has been asked to open. */
     sent: {
       title: 'Your email app should be open now.',
-      body: 'Your message is ready in a new email to ferbertigo@gmail.com. Send it from there and we reply within [2 WORKING DAYS].',
+      body: 'Your message is ready in a new email to ferbertigo@gmail.com. Send it from there and we’ll reply.',
       fallbackBefore: 'Nothing opened?',
       fallbackLink: 'Open the email again',
       fallbackAfter: 'or write to',

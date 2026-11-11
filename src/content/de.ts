@@ -672,6 +672,7 @@ export const de: Dictionary = {
       "lead": "[DE] Pick the stage you are at. If you are not sure, begin with the analysis: it tells you whether building is worth it.",
       "recommended": "[DE] Recommended",
       "timeline": "[DE] Timeline",
+      "details": "[DE] Details",
       "offers": [
         {
           "title": "[DE] Process analysis",
@@ -807,7 +808,7 @@ export const de: Dictionary = {
       "mark": "week",
       "after": "."
     },
-    "lead": "[DE] Describe one process. We reply within [2 WORKING DAYS] with where AI fits, what it would take, and whether it’s worth it. In English, German or Spanish.",
+    "lead": "[DE] Describe one process. We reply with where AI fits, what it would take, and whether it’s worth it. In English, German or Spanish.",
     "booking": {
       "label": "[DE] Free call · 30 min",
       "format": "[DE] Video",
@@ -894,7 +895,7 @@ export const de: Dictionary = {
     },
     "sent": {
       "title": "[DE] Your email app should be open now.",
-      "body": "[DE] Your message is ready in a new email to ferbertigo@gmail.com. Send it from there and we reply within [2 WORKING DAYS].",
+      "body": "[DE] Your message is ready in a new email to ferbertigo@gmail.com. Send it from there and we’ll reply.",
       "fallbackBefore": "[DE] Nothing opened?",
       "fallbackLink": "[DE] Open the email again",
       "fallbackAfter": "[DE] or write to",

@@ -1,10 +1,7 @@
 import type { Dictionary } from '@/content';
-import { PrimaryButton } from '@/components/ui/Button';
-import { Pill } from '@/components/ui/Controls';
 import { Section, SectionHead } from '@/components/ui/Layout';
-import { CardGrid, CheckList } from '@/components/ui/Lists';
-import { pad } from './format';
-import { tag } from '@/lib/analytics';
+import { CardGrid } from '@/components/ui/Lists';
+import { OfferCard } from './OfferCard';
 
 type Home = Dictionary['home'];
 
@@ -14,24 +11,7 @@ export function Pricing({ pricing, cta, contactHref }: { pricing: Home['pricing'
       <SectionHead label={pricing.label} title={pricing.title} titleId="st-title" lead={pricing.lead} leadWidth="42ch" />
       <CardGrid as="ol" min={320} className="offers">
         {pricing.offers.map((o, i) => (
-          <li key={o.title} className={`panel offer${o.recommended ? ' invert' : ''}`} data-rv="" style={{ ['--dl' as string]: `${i * 0.08}s` }}>
-            <div className="offer-body">
-              <div className="mono offer-meta">
-                <span className="offer-num">
-                  {pad(i)}
-                  {o.recommended ? <Pill tone="accent" mono={false} className="pill-sm">{pricing.recommended}</Pill> : null}
-                </span>
-                <span>{pricing.timeline}: <span className="c-tx">{o.time}</span></span>
-              </div>
-              <h3 className="md offer-title">{o.title}. <span className="sub">{o.line}</span></h3>
-              <CheckList items={o.items} />
-              <span className="mono offer-when">{o.when}</span>
-            </div>
-            <div className="offer-foot">
-              {o.recommended ? <PrimaryButton href={contactHref} label={cta} scramble={false} track={tag('cta_click', 'pricing', 'book-call')} /> : null}
-              <span className="offer-price">{o.price} <span className="mono">{o.unit}</span></span>
-            </div>
-          </li>
+          <OfferCard key={o.title} offer={o} index={i} pricing={pricing} cta={cta} contactHref={contactHref} />
         ))}
       </CardGrid>
       <div className="panel price-how" data-rv="">

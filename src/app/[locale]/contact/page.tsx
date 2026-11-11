@@ -10,7 +10,7 @@ import { tag } from '@/lib/analytics';
 export async function generateMetadata({ params }: PageProps<'/[locale]/contact'>): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return { title: getDictionary(locale).contact.metaTitle };
+  return { title: getDictionary(locale).contact.metaTitle, alternates: { canonical: localeHref(locale, '/contact') } };
 }
 
 const channelHref: Record<string, string | null> = {
@@ -52,16 +52,17 @@ export default async function ContactPage({ params }: PageProps<'/[locale]/conta
           )}
           <div className="panel ct-ch">
             <div className="mono ct-ch-h">{c.other}</div>
+            {/* Only channels that have a link: a handle still in [BRACKETS] never reaches visitors. */}
             {c.channels.map((ch) => {
               const href = channelHref[ch.key];
-              const content = (
-                <>
+              if (!href) return null;
+              return (
+                <a key={ch.key} className="ch" href={href} {...tag('contact_channel', 'contact', ch.key)}>
                   <span className="mono ch-name">{ch.name}</span>
                   <span className="sub ch-handle">{ch.handle}</span>
-                  {href ? <ArrowTile /> : null}
-                </>
+                  <ArrowTile />
+                </a>
               );
-              return href ? <a key={ch.key} className="ch" href={href} {...tag('contact_channel', 'contact', ch.key)}>{content}</a> : <div key={ch.key} className="ch">{content}</div>;
             })}
           </div>
         </div>

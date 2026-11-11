@@ -4,6 +4,15 @@ Decisions made by the owner, Igor Ferbert. Dated 2026-10-10 unless noted. Decisi
 
 ## In force
 
+### 19. Critique round: credibility basics and fit on every screen
+2026-11-11: the owner approved steps 1 and 2 of the site critique (live site checked at seven screen sizes).
+- **Nothing in brackets reaches visitors on Contact:** a contact channel is shown only once its link is set in `src/content/site.ts` (today: email and GitHub), and the reply-time clause is left out until the owner gives a number (open data 6, 8–11).
+- **Search and sharing:** share image drawn from the hero headline, `sitemap.xml`, `robots.txt`, canonical links and company data (JSON-LD) from known facts only. The site address is `site.url`; `NEXT_PUBLIC_SITE_URL` overrides it. The draft legal page stays out of the sitemap.
+- **Short laptop windows (up to 820 px tall):** tighter section rhythm and a smaller h2, so a section opened from the menu shows its content in the first window. "How we work" shows its four steps in one row there, without the two decorative tiles.
+- **Phones:** mono labels are 12px up to 900 px wide; the agent's running step is named in the chat's typing bubble; pricing offers 2 and 3 fold to title and price with a "Details" button; "What we automate" hides its tags.
+- **Wide screens:** the hero, closing panel and footer stop at 1416 px and stay centred with the content.
+- **Still open:** the booking link. Until it is set, "Book a free call" leads to the contact page.
+
 ### 18. Prices and timelines shown on the site
 2026-10-26, the owner's values for the pricing placeholders:
 - **Process analysis:** €500, fixed. Takes one week (a couple of meetings plus a full day of analysis), replacing "2–3 weeks" everywhere.
